@@ -1,103 +1,115 @@
-import { Component, createSignal } from "solid-js";
+import {
+  Component,
+  ComponentProps,
+  createMemo,
+  createSignal,
+  For,
+} from "solid-js";
 import { Drawer, DrawerItem } from "../../components/commons/Drawer";
 import { Typography } from "../../components/commons/Typogrtaphy";
+import { useFluent } from "@llelievr.dev/solid-fluent";
+import { SolidMarkdown } from "solid-markdown";
+import remarkGfm from "remark-gfm";
 
 const possibleImages = [
-  "/images/Nighty_For_FAQ_Block first_.png",
-  "/images/Nighty_For_FAQ_Block second_.png",
+  "/images/Nighty_For_FAQ_Block first_.webp",
+  "/images/Nighty_For_FAQ_Block second_.webp",
 ];
 
+const QUESTIONS_COUNT = 28;
+
+export interface FAQSchema {
+  "@context": "https://schema.org/";
+  "@type": "FAQPage";
+  mainEntity: MainEntity[];
+}
+
+export interface MainEntity {
+  "@type": "Question";
+  name: string;
+  acceptedAnswer: AcceptedAnswer;
+}
+
+export interface AcceptedAnswer {
+  "@type": "Answer";
+  text: string;
+}
+
+const MarkdownLink = (props: ComponentProps<"a">) => (
+  <a target="_blank" href={props.href} class="link text-background-20">
+    {props.children}
+  </a>
+);
+
 export const QASection: Component = () => {
+  const l10n = useFluent();
   const [currentImage, setCurrentImage] = createSignal<string>(
     possibleImages[0]
   );
 
   const onOpenDrawer = (index: number, size: number) => {
-    console.log("open", index);
-    setCurrentImage(possibleImages[index % size] ?? possibleImages[0]);
+    setCurrentImage(
+      possibleImages[index % possibleImages.length] ?? possibleImages[0]
+    );
   };
 
+  const questions = createMemo(() =>
+    Array.from({ length: QUESTIONS_COUNT }).map((_, index) => ({
+      question: `qa_question-${index + 1}-question`,
+      answer: `qa_question-${index + 1}-answer`,
+    }))
+  );
+
+  const schema = createMemo(() =>
+    JSON.stringify({
+      "@context": "https://schema.org/",
+      "@type": "FAQPage",
+      mainEntity: questions().map(({ question, answer }) => ({
+        "@type": "Question",
+        name: l10n.getString(question)(),
+        acceptedAnswer: { "@type": "Answer", text: l10n.getString(answer)() },
+      })),
+    })
+  );
+
   return (
-    <div class="flex gap-5 md:gap-12">
-      <div class="md:flex min-w-56 S items-center justify-center pt-12 hidden">
-        <img src={currentImage()} class="object-contain object-center"></img>
+    <div class="flex gap-5 md:gap-12 relative sm:pl-12">
+      <div class="sticky top-0 left-0 h-full sm:flex hidden">
+        <div class="md:flex w-72 items-center justify-center pt-12 hidden">
+          <img src={currentImage()} class="object-contain object-center"></img>
+        </div>
       </div>
-      <div class="flex flex-col flex-grow gap-3">
+      <div class="flex flex-col gap-3 w-full">
+        <script type="application/ld+json">{schema()}</script>
         <Typography tag="h3" variant="main-title" textAlign="text-center">
           Q&A Section
         </Typography>
-        <Drawer onOpen={onOpenDrawer}>
-          <DrawerItem
-            title={
-              <Typography tag="h4" variant="section-title">
-                How do SlimeVR Trackers work?
-              </Typography>
-            }
-            open
-          >
-            <Typography tag="p">
-              SlimeVR FBT provides simple, effective tracking of your body and
-              limbs in VR games and other applications. it makes full-body
-              tracking comfortable and affordable by leveraging high-quality
-              inertial measurement unit (IMU) sensors and a Wi-Fi connection to
-              your PC rather than wires, cameras, or base stations. Taking the
-              Lower-body set as an example, five trackers—one on each thigh,
-              another on each ankle, and a fifth at the chest—are enough to get
-              the job done. Each tracker monitors its own rotation in space, and
-              SlimeVR software uses your proportions and headset location to
-              calculate joint angles and estimate limb positions. In more
-              technical terms, SlimeVR relies on absolute-orientation sensors, a
-              configurable skeleton model, and forward kinematics. The result is
-              like having virtual Vive trackers at key locations on your body.
-            </Typography>
-          </DrawerItem>
-          <DrawerItem
-            title={
-              <Typography tag="h4" variant="section-title">
-                How do SlimeVR Trackers work? 2
-              </Typography>
-            }
-          >
-            <Typography tag="p">
-              SlimeVR FBT provides simple, effective tracking of your body and
-              limbs in VR games and other applications. it makes full-body
-              tracking comfortable and affordable by leveraging high-quality
-              inertial measurement unit (IMU) sensors and a Wi-Fi connection to
-              your PC rather than wires, cameras, or base stations. Taking the
-              Lower-body set as an example, five trackers—one on each thigh,
-              another on each ankle, and a fifth at the chest—are enough to get
-              the job done. Each tracker monitors its own rotation in space, and
-              SlimeVR software uses your proportions and headset location to
-              calculate joint angles and estimate limb positions. In more
-              technical terms, SlimeVR relies on absolute-orientation sensors, a
-              configurable skeleton model, and forward kinematics. The result is
-              like having virtual Vive trackers at key locations on your body.
-            </Typography>
-          </DrawerItem>
-          <DrawerItem
-            title={
-              <Typography tag="h4" variant="section-title">
-                How do SlimeVR Trackers work? 2
-              </Typography>
-            }
-          >
-            <Typography tag="p">
-              SlimeVR FBT provides simple, effective tracking of your body and
-              limbs in VR games and other applications. it makes full-body
-              tracking comfortable and affordable by leveraging high-quality
-              inertial measurement unit (IMU) sensors and a Wi-Fi connection to
-              your PC rather than wires, cameras, or base stations. Taking the
-              Lower-body set as an example, five trackers—one on each thigh,
-              another on each ankle, and a fifth at the chest—are enough to get
-              the job done. Each tracker monitors its own rotation in space, and
-              SlimeVR software uses your proportions and headset location to
-              calculate joint angles and estimate limb positions. In more
-              technical terms, SlimeVR relies on absolute-orientation sensors, a
-              configurable skeleton model, and forward kinematics. The result is
-              like having virtual Vive trackers at key locations on your body.
-            </Typography>
-          </DrawerItem>
-        </Drawer>
+        <div class="bg-background-70 w-full p-4 rounded-lg border border-background-30">
+          <Drawer onOpen={onOpenDrawer}>
+            <For each={questions()}>
+              {(question, index) => (
+                <DrawerItem
+                  title={
+                    <Typography
+                      tag="h4"
+                      variant="section-title"
+                      key={question.question}
+                    ></Typography>
+                  }
+                  open={index() === 0}
+                >
+                  <SolidMarkdown
+                    renderingStrategy="memo"
+                    remarkPlugins={[remarkGfm]}
+                    components={{ a: MarkdownLink }}
+                  >
+                    {l10n.getString(question.answer)()}
+                  </SolidMarkdown>
+                </DrawerItem>
+              )}
+            </For>
+          </Drawer>
+        </div>
       </div>
     </div>
   );

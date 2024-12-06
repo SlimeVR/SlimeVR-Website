@@ -63,6 +63,7 @@ export const DrawerItem: ParentComponent<DrawerItemProps> = (props) => {
   let itemRef: HTMLDivElement;
   let itemContentRef: HTMLDivElement;
   let itemIndex: number;
+  const contentSizeObserver = new ResizeObserver(() => onResize());
 
   if (!context) throw new Error("no context for the drawer found!");
 
@@ -78,22 +79,20 @@ export const DrawerItem: ParentComponent<DrawerItemProps> = (props) => {
   };
 
   const toggleOpen = () => {
-    if (isOpen()) {
-      setOpen(false);
-    } else {
+    if (!isOpen()) {
       context.open(itemIndex);
     }
   };
 
   onMount(() => {
-    itemContentRef.addEventListener("resize", onResize);
+    contentSizeObserver.observe(itemContentRef);
     context.events.addEventListener("open", onOpen);
     setContentSize(getContentSize(itemContentRef));
     itemIndex = context.getIndex(itemRef);
   });
 
   onCleanup(() => {
-    itemContentRef.removeEventListener("resize", onResize);
+    contentSizeObserver.unobserve(itemContentRef);
     context.events.removeEventListener("open", onOpen);
   });
 
@@ -107,21 +106,23 @@ export const DrawerItem: ParentComponent<DrawerItemProps> = (props) => {
     <>
       <div class="flex flex-col gap-3" ref={itemRef} id={props.id}>
         <div
-          class="flex justify-between border-b-2 border-background-50 hover:cursor-pointer hover:bg-background-50 px-4 py-1 rounded-md"
+          class={"rounded-lg group hover:cursor-pointer hover:bg-background-50"}
           onClick={toggleOpen}
         >
-          {props.title}
-          <ArrowIcon
-            direction={isOpen() ? "down" : "right"}
-            size={20}
-            class="fill-background-10"
-          ></ArrowIcon>
+          <div class="flex justify-between group-hover:border-transparent border-b-2 border-background-50 px-4 py-2 w-full">
+            {props.title}
+            <ArrowIcon
+              direction={isOpen() ? "down" : "right"}
+              size={20}
+              class="fill-background-10"
+            ></ArrowIcon>
+          </div>
         </div>
         <div
           class="overflow-clip transition-height bg-background-50 rounded-lg"
           style={style()}
         >
-          <div ref={itemContentRef} class="p-2 rounded-lg">
+          <div ref={itemContentRef} class="p-4 rounded-lg">
             {props.children}
           </div>
         </div>

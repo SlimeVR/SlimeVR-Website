@@ -18,7 +18,7 @@ const Home: Component = (props) => {
       <AppTitle>SlimeVR Full Body Trackers</AppTitle>
       <Section>
         <div class="flex flex-col items-center w-full gap-4">
-          <div class="rounded-2xl w-full bg-background-60 overflow-clip mt-5 grid grid-cols-1 md:grid-cols-2 gap-1">
+          <div class="rounded-2xl w-full bg-background-60 overflow-clip mt-5 grid grid-cols-1 md:grid-cols-2 gap-1 md:h-[800px]">
             <div class="flex flex-col gap-4 relative overflow-clip">
               <div class="p-4 md:p-12 z-10 gap-4 md:gap-10 justify-between h-full flex flex-col bg-accent-background-30">
                 <Typography variant="main-title" tag="h1">
@@ -29,8 +29,8 @@ const Home: Component = (props) => {
                   An affordable, comfortable, wireless, 360° solution for
                   full-body tracking in virtual reality
                 </Typography>
-                <div class="z-10 flex flex-col gap-5 h-full justify-center">
-                  <ArrowButton>
+                <div class="z-10 flex flex-col gap-5 h-full justify-end">
+                  {/* <ArrowButton>
                     <div class="flex flex-wrap gap-3 items-center  md:h-16 p-2">
                       <Typography
                         variant="section-title"
@@ -41,9 +41,9 @@ const Home: Component = (props) => {
                       </Typography>
                       <MouserIcon size={120}></MouserIcon>
                     </div>
-                  </ArrowButton>
+                  </ArrowButton> */}
                   <ArrowButton>
-                    <div class="flex flex-wrap gap-3 items-center md:h-16 p-2">
+                    <div class="flex flex-col flex-wrap gap-3 p-4">
                       <Typography
                         variant="section-title"
                         tag="h3"
@@ -57,13 +57,13 @@ const Home: Component = (props) => {
                 </div>
               </div>
             </div>
-            <div class="flex flex-col gap-3 justify-center relative">
+            <div class="flex flex-col gap-3 relative bg-accent-background-30">
               <img
                 class="absolute w-full h-full object-cover"
-                src="/images/poster.png"
+                src="/images/poster.webp"
               ></img>
 
-              <div class="z-10 flex flex-col gap-5 p-4 md:p-12 h-full justify-center">
+              <div class="z-10 flex flex-col gap-5 p-4 md:p-12 h-full justify-end">
                 <ArrowButton
                   prefixIcon={<DonwloadIcon size={35}></DonwloadIcon>}
                 >
@@ -81,25 +81,15 @@ const Home: Component = (props) => {
               </div>
             </div>
           </div>
-          <div class="md:flex hidden gap-5 fill-background-10">
-            <ArrowIcon direction="down" size={30}></ArrowIcon>
-            <Typography tag="h3" variant="main-title">
-              Learn More
-            </Typography>
-            <ArrowIcon direction="down" size={30}></ArrowIcon>
-          </div>
         </div>
       </Section>
 
-      <div class="flex flex-col pt-10 md:pt-28 gap-10 md:gap-28 w-full items-center">
-        <Section
-          gizmo="/images/Webpage_Design_Parts_first_block_bg.png"
-          rotate="rotate-12"
-        >
+      <div class="flex flex-col pt-10 md:pt-20 gap-10 md:gap-20 w-full items-center">
+        <Section gizmo="/images/Webpage_Design_Parts_first_block_bg.webp">
           <VideoSection></VideoSection>
         </Section>
 
-        <Section rotate="-rotate-12">
+        <Section>
           <div class="flex flex-col items-center gap-4">
             <Typography tag="h3" variant="main-title">
               Use cases
@@ -114,7 +104,7 @@ const Home: Component = (props) => {
                   VR Games
                 </Typography>
                 <div class="flex justify-center items-center h-52 md:h-auto">
-                  <img src="/images/vr.png" class="h-full" />
+                  <img src="/images/vr.webp" class="h-full" />
                 </div>
                 <Typography tag="p" textAlign="text-justify">
                   SlimeVR Trackers are compatible with any SteamVR games that
@@ -134,7 +124,7 @@ const Home: Component = (props) => {
                   VTubing
                 </Typography>
                 <div class="flex justify-center items-center h-52 md:h-auto">
-                  <img src="/images/vtubing.png" class="h-full" />
+                  <img src="/images/vtubing.webp" class="h-full" />
                 </div>
                 <Typography tag="p" textAlign="text-justify">
                   SlimeVR Trackers also work with VMC. No VR headset required!
@@ -150,7 +140,7 @@ const Home: Component = (props) => {
                   Motion Capture
                 </Typography>
                 <div class="flex justify-center items-center h-52 md:h-auto">
-                  <img src="/images/mocap.png" class="h-full" />
+                  <img src="/images/mocap.webp" class="h-full" />
                 </div>
                 <Typography tag="p" textAlign="text-justify">
                   SlimeVR can be used to export Motion Capture data via the BVH
@@ -163,7 +153,7 @@ const Home: Component = (props) => {
           </div>
         </Section>
 
-        <Section gizmo="/images/Webpage_Design_Parts_second_block_bg.png">
+        <Section gizmo="/images/Webpage_Design_Parts_second_block_bg.webp">
           <QASection></QASection>
         </Section>
       </div>

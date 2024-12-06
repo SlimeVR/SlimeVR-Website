@@ -7,7 +7,7 @@ interface ArrowButtonProps {
 
 export const ArrowButton: ParentComponent<ArrowButtonProps> = (props) => {
   return (
-    <div class="flex items-center gap-5 bg-background-60 rounded-2xl p-2 pl-5 pr-10 hover:cursor-pointer group hover:bg-background-50 opacity-95 transition-colors">
+    <div class="flex items-center gap-5 bg-background-60 rounded-2xl p-2 pl-5 pr-10 hover:cursor-pointer group hover:bg-background-50 opacity-95 transition-colors border border-background-30">
       <Show when={props.prefixIcon}>
         <div class="flex w-12 justify-center fill-white group-hover:fill-accent-background-10">
           {props.prefixIcon}

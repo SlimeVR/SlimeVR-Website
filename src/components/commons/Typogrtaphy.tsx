@@ -72,11 +72,9 @@ export const Typography: Component<TypographyProps> = (initialProps) => {
 
   if (props.key) {
     return (
-      <Localized id={props.key}>
-        <Dynamic component={props.tag} class={classes()}>
-          {props.children}
-        </Dynamic>
-      </Localized>
+      <Dynamic component={props.tag} class={classes()}>
+        <Localized id={props.key}>{props.children}</Localized>
+      </Dynamic>
     );
   }
 

@@ -11,8 +11,10 @@ export const config: Config = {
   ],
   theme: {
     screens: {
+      mobile: { raw: "not (min-width: 640px)" },
       sm: "640px",
-      md: "915px",
+      nmd: { raw: "not (min-width: 932px)" },
+      md: "932px",
       lg: "1024px",
       xl: "1280px",
       "2xl": "1536px",

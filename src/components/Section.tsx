@@ -3,7 +3,6 @@ import { ParentComponent, Show } from "solid-js";
 
 interface SectionProps {
   gizmo?: string;
-  rotate?: "rotate-12" | "-rotate-12";
 }
 
 export const Section: ParentComponent<SectionProps> = (props) => {
@@ -11,9 +10,9 @@ export const Section: ParentComponent<SectionProps> = (props) => {
     <div class="w-full relative flex justify-center">
       <Show when={props.gizmo}>
         {(gizmo) => (
-          <div class="flex absolute top-0 h-full justify-center w-full overflow-x-clip">
+          <div class="flex absolute top-0 h-fit justify-center w-full overflow-x-clip">
             <img
-              class={clsx("w-full object-contain scale-125", "rotate-12")}
+              class={clsx("w-full object-contain scale-[115%]", "rotate-12")}
               src={gizmo()}
             ></img>
           </div>
