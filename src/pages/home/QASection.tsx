@@ -99,7 +99,6 @@ export const QASection: Component = () => {
                   open={index() === 0}
                 >
                   <SolidMarkdown
-                    renderingStrategy="memo"
                     remarkPlugins={[remarkGfm]}
                     components={{ a: MarkdownLink }}
                   >

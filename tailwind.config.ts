@@ -17,10 +17,16 @@ export const config: Config = {
       md: "932px",
       lg: "1024px",
       xl: "1280px",
-      "2xl": "1536px",
+      "2xl": "1836px",
     },
     extend: {
       colors: {
+        status: {
+          success: "rgb(var(--success), <alpha-value>)",
+          warning: "rgb(var(--warning), <alpha-value>)",
+          critical: "rgb(var(--critical), <alpha-value>)",
+          special: "rgb(var(--special), <alpha-value>)",
+        },
         background: {
           10: "rgb(var(--background-10), <alpha-value>)",
           20: "rgb(var(--background-20), <alpha-value>)",
@@ -38,6 +44,7 @@ export const config: Config = {
           30: "rgb(var(--accent-background-30), <alpha-value>)",
           40: "rgb(var(--accent-background-40), <alpha-value>)",
           50: "rgb(var(--accent-background-50), <alpha-value>)",
+          60: "rgb(var(--accent-background-60), <alpha-value>)",
         },
       },
       fontSize: {
@@ -58,6 +65,33 @@ export const config: Config = {
         height: "height",
         carousel: "left scale transform",
         rotation: "rotate",
+      },
+      keyframes: {
+        explode: {
+          "0%": {
+            "transform-origin": "-100% 50%",
+            transform: "scale(0)",
+            rotate: "0deg",
+            opacity: "1",
+          },
+          "70%": { transform: "scale(100%)" },
+          "100%": { transform: "scale(100%)", rotate: "360deg", opacity: "0" },
+        },
+        floating: {
+          "0%": {
+            transform: "translateY(0%)",
+          },
+          "50%": {
+            transform: "translateY(3%)",
+          },
+          "100%": {
+            transform: "translateY(0%)",
+          },
+        },
+      },
+      animation: {
+        explode: "explode 6s ease-out",
+        floating: "floating 12s cubic-bezier(0.64, 0.57, 0.67, 1.53) infinite",
       },
     },
     data: {

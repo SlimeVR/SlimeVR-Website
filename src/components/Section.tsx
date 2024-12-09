@@ -12,13 +12,18 @@ export const Section: ParentComponent<SectionProps> = (props) => {
         {(gizmo) => (
           <div class="flex absolute top-0 h-fit justify-center w-full overflow-x-clip">
             <img
-              class={clsx("w-full object-contain scale-[115%]", "rotate-12")}
+              class={clsx(
+                "w-full object-contain scale-[110%]",
+                "rotate-[12deg]"
+              )}
               src={gizmo()}
             ></img>
           </div>
         )}
       </Show>
-      <div class="max-w-6xl w-full z-10 px-4">{props.children}</div>
+      <div class="max-w-6xl 2xl:max-w-[1400px] w-full z-10 px-4">
+        {props.children}
+      </div>
     </div>
   );
 };

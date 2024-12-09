@@ -18,6 +18,7 @@
   --accent-background-30: 101, 69, 154;
   --accent-background-40: 98, 59, 131;
   --accent-background-50: 46, 33, 69;
+  --accent-background-60: 30, 35, 60;
 
   --success: 80, 232, 151;
   --warning: 216, 205, 55;
@@ -63,4 +64,17 @@ a.link {
 .no-scrollbar {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+.linear-gradient {
+  background: #5f9d34;
+  background: radial-gradient(
+    at center,
+    #5f9d34,
+    #5595bc,
+    #ddda1d,
+    #630fc4,
+    #0f6dc4,
+    #0fc42d
+  );
 }

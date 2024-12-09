@@ -1,87 +1,129 @@
-import { Component, createSignal } from "solid-js";
+import { Component, createSignal, onCleanup, onMount } from "solid-js";
 import { Typography } from "../../components/commons/Typogrtaphy";
 import { Button } from "../../components/commons/Button";
 import { DiscordIcon } from "../../components/commons/icons/DiscordIcon";
-import { ArrowIcon } from "../../components/commons/icons/ArrowIcon";
 import { DonwloadIcon } from "../../components/commons/icons/DownloadIcon";
-import { MouserIcon } from "../../components/commons/icons/MouserIcon";
 import { CrowdSupplyIcon } from "../../components/commons/icons/CrowdSupplyIcon";
 import { ArrowButton } from "../../components/commons/ArrowButton";
 import { QASection } from "./QASection";
 import { VideoSection } from "./VideoSection";
 import { Section } from "../../components/Section";
 import { AppTitle } from "../../components/AppTitle";
+import { ArrowIcon } from "../../components/commons/icons/ArrowIcon";
+import { MouserIcon } from "../../components/commons/icons/MouserIcon";
+import { CartIcon } from "../../components/commons/icons/CartIcon";
 
 const Home: Component = (props) => {
   return (
     <>
       <AppTitle>SlimeVR Full Body Trackers</AppTitle>
       <Section>
-        <div class="flex flex-col items-center w-full gap-4">
-          <div class="rounded-2xl w-full bg-background-60 overflow-clip mt-5 grid grid-cols-1 md:grid-cols-2 gap-1 md:h-[800px]">
-            <div class="flex flex-col gap-4 relative overflow-clip">
-              <div class="p-4 md:p-12 z-10 gap-4 md:gap-10 justify-between h-full flex flex-col bg-accent-background-30">
-                <Typography variant="main-title" tag="h1">
-                  SlimeVR Full-Body Tracker
-                </Typography>
-                <img src="/images/trackers.webp"></img>
-                <Typography variant="section-title" tag="h2">
+        <div class="flex w-full mt-5 relative">
+          <div class="absolute top-0 h-full animate-floating right-0 hidden md:block">
+            <img
+              src="/images/floating_nighty.webp"
+              class="h-full object-contain"
+            ></img>
+          </div>
+          <div class="w-full grid grid-cols-1 md:grid-cols-2 sm:gap-4 md:h-[750px]">
+            <div class="z-10 h-full flex gap-4 flex-col relative justify-between py-5 px-0 sm:px-5">
+              <div class="z-10 flex flex-col gap-5 h-full justify-between relative">
+                <Typography variant="main-title" tag="p">
                   An affordable, comfortable, wireless, 360° solution for
                   full-body tracking in virtual reality
                 </Typography>
-                <div class="z-10 flex flex-col gap-5 h-full justify-end">
-                  {/* <ArrowButton>
-                    <div class="flex flex-wrap gap-3 items-center  md:h-16 p-2">
-                      <Typography
-                        variant="section-title"
-                        tag="h3"
-                        whitespace="whitespace-nowrap"
-                      >
-                        Order on
-                      </Typography>
-                      <MouserIcon size={120}></MouserIcon>
+
+                <img
+                  src="/images/SlimePCB3.webp"
+                  class="w-full object-cover"
+                ></img>
+                <ArrowButton
+                  variant="primary"
+                  prefixIcon={<CartIcon size={60}></CartIcon>}
+                >
+                  <div class="flex flex-col flex-wrap relative justify-center pb-2">
+                    <div
+                      class="absolute -top-12 sm:-top-14 -left-6 sm:-left-[6.8rem] w-fit rotate-[-10deg] text-2xl sm:text-4xl p-1 rounded-md shadow-lg shadow-accent-background-40 font-bold bg-accent-background-20"
+                      style={{
+                        "box-shadow":
+                          "#4e0097 0.5rem 0.5rem, rgb(241 241 241) -0.5rem -0.5rem",
+                      }}
+                    >
+                      From $195
                     </div>
-                  </ArrowButton> */}
-                  <ArrowButton>
-                    <div class="flex flex-col flex-wrap gap-3 p-4">
-                      <Typography
-                        variant="section-title"
-                        tag="h3"
-                        whitespace="whitespace-nowrap"
-                      >
-                        Order on
-                      </Typography>
-                      <CrowdSupplyIcon size={200}></CrowdSupplyIcon>
-                    </div>
-                  </ArrowButton>
-                </div>
+                    <Typography
+                      variant="main-title"
+                      tag="h3"
+                      whitespace="whitespace-nowrap"
+                    >
+                      Order on
+                    </Typography>
+                    <CrowdSupplyIcon size={256}></CrowdSupplyIcon>
+                  </div>
+                </ArrowButton>
               </div>
             </div>
-            <div class="flex flex-col gap-3 relative bg-accent-background-30">
-              <img
-                class="absolute w-full h-full object-cover"
-                src="/images/poster.webp"
-              ></img>
-
-              <div class="z-10 flex flex-col gap-5 p-4 md:p-12 h-full justify-end">
-                <ArrowButton
-                  prefixIcon={<DonwloadIcon size={35}></DonwloadIcon>}
-                >
-                  <Typography variant="section-title" tag="h3">
-                    Download the server
-                  </Typography>
-                  <Typography tag="p">Available on all platforms!</Typography>
-                </ArrowButton>
-                <ArrowButton prefixIcon={<DiscordIcon size={40}></DiscordIcon>}>
-                  <Typography variant="section-title" tag="h3">
-                    Join our Discord
-                  </Typography>
-                  <Typography tag="p">With 50.000 members</Typography>
-                </ArrowButton>
-              </div>
+            <div class="flex flex-col gap-3 z-10 py-5 px-0 sm:px-5 h-full justify-end">
+              <ArrowButton prefixIcon={<DonwloadIcon size={35}></DonwloadIcon>}>
+                <Typography variant="section-title" tag="h3">
+                  Download the server
+                </Typography>
+                <Typography tag="p">Available on all platforms!</Typography>
+              </ArrowButton>
+              <ArrowButton prefixIcon={<DiscordIcon size={40}></DiscordIcon>}>
+                <Typography variant="section-title" tag="h3">
+                  Join our Discord
+                </Typography>
+                <Typography tag="p">With 50.000 members</Typography>
+              </ArrowButton>
             </div>
           </div>
         </div>
+        {/* <div class="h-[750px] w-full flex flex-col relative justify-end">
+          <div class="absolute top-0 h-full animate-floating right-0">
+            <img
+              src="/images/floating_nighty.webp"
+              class="h-full object-contain"
+            ></img>
+          </div>
+          <div class="absolute top-40 h-full animate-floating left-0">
+            <img
+              src="https://media.discordapp.net/attachments/1069233272753758268/1314556183343796295/image.png?ex=67577f19&is=67562d99&hm=ffb62cec2075fff36571b731af485d8de113c3777ec4e2b7a5d9572a629660dc&=&format=webp&quality=lossless&width=1765&height=993"
+              class="w-[600px] object-contain"
+            ></img>
+          </div>
+          <div class="flex h-40 opacity-80 w-full rounded-2xl bg-background-70 border border-background-40 z-10 p-4 ">
+            <div class="grid grid-cols-2 w-full divide-background-40 divide-x-2 gap-3">
+              <div class="flex items-center justify-start gap-8 px-4">
+                <ArrowIcon
+                  class="fill-background-10"
+                  size={30}
+                  direction="left"
+                ></ArrowIcon>
+                <Typography variant="main-title" tag="h3">
+                  Download the server
+                </Typography>
+              </div>
+              <div class="flex items-center justify-end  gap-8  px-4">
+                <div class="flex gap-2 items-center">
+                  <Typography
+                    variant="main-title"
+                    tag="h3"
+                    whitespace="whitespace-nowrap"
+                  >
+                    Order on
+                  </Typography>
+                  <CrowdSupplyIcon size={200}></CrowdSupplyIcon>
+                </div>
+                <ArrowIcon
+                  class="fill-background-10"
+                  size={30}
+                  direction="right"
+                ></ArrowIcon>
+              </div>
+            </div>
+          </div>
+        </div> */}
       </Section>
 
       <div class="flex flex-col pt-10 md:pt-20 gap-10 md:gap-20 w-full items-center">
