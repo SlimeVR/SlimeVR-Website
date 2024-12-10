@@ -179,9 +179,12 @@ export const VideoSection: Component = () => {
 
   return (
     <div class="flex flex-col gap-4 relative">
-      <Typography tag="h3" variant="main-title" textAlign="text-center">
-        Reviews and Demos
-      </Typography>
+      <Typography
+        tag="h3"
+        variant="main-title"
+        textAlign="text-center"
+        key="home_video-section"
+      />
       <div class="flex">
         <div class="flex flex-grow flex-col gap-2 sm:gap-4 w-full">
           <div class="flex gap-4 flex-col justify-center">

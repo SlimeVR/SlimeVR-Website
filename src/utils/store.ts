@@ -16,6 +16,7 @@ export const createStoredSignal = <T>(
     }
     return defaultValue;
   };
+
   const signal = createSignal<T>(
     (options.onBeforeSave ?? ((v) => v))(getLocalValue())
   );

@@ -5,7 +5,6 @@ import {
   createContext,
   createRenderEffect,
   createResource,
-  createSignal,
   JSX,
   ParentComponent,
   Show,
@@ -21,7 +20,6 @@ const LOCALES = [
 ];
 
 async function loadCurrentLang(currentLang: string | null) {
-  console.log(currentLang);
   if (!currentLang) return null;
 
   try {

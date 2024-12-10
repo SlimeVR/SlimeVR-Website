@@ -76,6 +76,7 @@ export const MainLayout: ParentComponent = (props) => {
       <div class="flex flex-col w-full items-center pattern relative overflow-y-clip py-4">
         <img
           class="absolute w-full top-0"
+          loading="lazy"
           src="/images/Webpage_Design_Parts_header_block.webp"
         ></img>
         <div class="max-w-6xl 2xl:max-w-[1400px] w-full top-5 z-20 px-4">

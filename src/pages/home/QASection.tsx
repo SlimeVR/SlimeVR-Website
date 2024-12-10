@@ -7,7 +7,7 @@ import {
 } from "solid-js";
 import { Drawer, DrawerItem } from "../../components/commons/Drawer";
 import { Typography } from "../../components/commons/Typogrtaphy";
-import { useFluent } from "@llelievr.dev/solid-fluent";
+import { Localized, useFluent } from "@llelievr.dev/solid-fluent";
 import { SolidMarkdown } from "solid-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -73,7 +73,7 @@ export const QASection: Component = () => {
   );
 
   return (
-    <div class="flex gap-5 md:gap-12 relative sm:pl-12">
+    <div class="flex md:gap-12 relative md:pl-12">
       <div class="sticky top-0 left-0 h-full sm:flex hidden">
         <div class="md:flex w-72 items-center justify-center pt-12 hidden">
           <img src={currentImage()} class="object-contain object-center"></img>
@@ -81,9 +81,12 @@ export const QASection: Component = () => {
       </div>
       <div class="flex flex-col gap-3 w-full">
         <script type="application/ld+json">{schema()}</script>
-        <Typography tag="h3" variant="main-title" textAlign="text-center">
-          Q&A Section
-        </Typography>
+        <Typography
+          tag="h3"
+          variant="main-title"
+          textAlign="text-center"
+          key="home_qa-section_title"
+        />
         <div class="bg-background-70 w-full p-4 rounded-lg border border-background-30">
           <Drawer onOpen={onOpenDrawer}>
             <For each={questions()}>

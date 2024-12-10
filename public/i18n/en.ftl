@@ -1,10 +1,36 @@
-navbar-documentation = Documentation
-navbar-server = Server
-navbar-discord = Discord
-navbar-shop = Shop
-navbar-github = GitHub
+title = {$title} - SlimeVR Official 
 
+navbar_documentation = Documentation
+navbar_download = Download
+navbar_discord = Discord
+navbar_shop = Shop
+navbar_github = GitHub
+navbar_support = Support
+navbar_order = Order now
 
+home_title = SlimeVR Full Body Trackers
+
+hero_description = An affordable, comfortable, wireless, 360° solution for full-body tracking in virtual reality
+hero_price = From $195
+hero_order-btn = Order on
+hero_download-server = Download the server
+hero_download-server_desc = Available on all platforms!
+hero_join-discord = Join our Discord
+hero_join-discord_desc = With 50.000 members
+
+home_video-section = Reviews and Demos
+home_use-cases_title =  Use cases
+
+home_use-cases_vr_title = VR Games
+home_use-cases_vr_desc = SlimeVR Trackers are compatible with any SteamVR games that suport full body tracking. That includes social games like VRChat or Neos
+
+home_use-cases_vtubing_title = VTubing
+home_use-cases_vtubing_desc = SlimeVR Trackers also work with VMC. No VR headset required!
+
+home_use-cases_motion-capture_title = Motion Capture
+home_use-cases_motion-capture_desc = SlimeVR can be used to export Motion Capture data via the BVH file format. This allows for your tracking data to be imported inside 3d rendering software like Blende
+
+home_qa-section_title = Q&A Section
 
 qa_question-1-question = How Does SlimeVR Work?
 qa_question-1-answer = Each SlimeVR Tracker track its own absolute rotation using an IMU (Inertial Measurement Unit). It sends the data to SlimeVR Server running on your PC via Wi-Fi connection, where SlimeVR Server combines the data from multiple trackers on your body and your body proportions to calculate position of your body using your Headset as a reference point.

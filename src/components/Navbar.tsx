@@ -6,31 +6,32 @@ import { Button } from "./commons/Button";
 import { BarsIcon } from "./commons/icons/BarsIcon";
 import { createBreakpoint } from "../utils/dom";
 import clsx from "clsx";
+import { Localized } from "@llelievr.dev/solid-fluent";
 
 const NavItems: Component = () => {
   return (
     <>
       <a href="https://docs.slimevr.dev" target="_blank" class="link px-2">
-        <Typography key="navbar-documentation" tag="span" />
+        <Typography key="navbar_documentation" tag="span" />
       </a>
       <A href="/server" class="link px-2">
-        <Typography tag="span">Download</Typography>
+        <Typography tag="span" key="navbar_download" />
       </A>
       <a href="https://discord.gg/SlimeVR" target="_blank" class="link px-2">
-        <Typography key="navbar-discord" tag="span" />
+        <Typography key="navbar_discord" tag="span" />
       </a>
       <a href="https://shop.slimevr.dev/" class="link px-2">
-        <Typography key="navbar-shop" tag="span" />
+        <Typography key="navbar_shop" tag="span" />
       </a>
       <a href="https://github.com/SlimeVR" target="_blank" class="link px-2">
-        <Typography key="navbar-github" tag="span" />
+        <Typography key="navbar_github" tag="span" />
       </a>
       <a
         href="https://shop.slimevr.dev/pages/support"
         target="_blank"
         class="link px-2"
       >
-        <Typography tag="span">Support</Typography>
+        <Typography tag="span" key="navbar_support" />
       </a>
     </>
   );
@@ -57,7 +58,9 @@ export const Navbar: Component = (props) => {
             </Typography>
           </A>
           <div class="items-center hidden md:flex">
-            <Button variant="primary">Order now</Button>
+            <Button variant="primary">
+              <Localized id="navbar_order" />
+            </Button>
           </div>
           <div class="flex md:hidden justify-end">
             <button
