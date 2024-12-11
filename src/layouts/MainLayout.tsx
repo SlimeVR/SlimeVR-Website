@@ -7,6 +7,7 @@ import {
   ParentComponent,
 } from "solid-js";
 import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/Footer";
 
 const ANIMATION_TIME = 6000;
 const MIN_TIME = 6000;
@@ -68,22 +69,24 @@ const ExplosionDot: Component = () => {
 
 export const MainLayout: ParentComponent = (props) => {
   return (
-    <div class="relative bg-accent-background-60 overflow-clip">
-      <ExplosionDot></ExplosionDot>
-      <ExplosionDot></ExplosionDot>
-      <ExplosionDot></ExplosionDot>
-      <ExplosionDot></ExplosionDot>
-      <div class="flex flex-col w-full items-center pattern relative overflow-y-clip py-4">
-        <img
-          class="absolute w-full top-0"
-          loading="lazy"
-          src="/images/Webpage_Design_Parts_header_block.webp"
-        ></img>
-        <div class="max-w-6xl 2xl:max-w-[1400px] w-full top-5 z-20 px-4">
-          <Navbar></Navbar>
+    <>
+      <div class="relative bg-accent-background-60 overflow-clip">
+        <ExplosionDot></ExplosionDot>
+        <ExplosionDot></ExplosionDot>
+        <ExplosionDot></ExplosionDot>
+        <ExplosionDot></ExplosionDot>
+        <div class="flex flex-col w-full items-center pattern relative overflow-y-clip py-4">
+          <img
+            class="absolute w-full top-0"
+            src="/images/Webpage_Design_Parts_header_block.webp"
+          ></img>
+          <div class="max-w-6xl 2xl:max-w-[1400px] w-full top-5 z-20 px-4">
+            <Navbar></Navbar>
+          </div>
+          {props.children}
         </div>
-        {props.children}
       </div>
-    </div>
+      <Footer></Footer>
+    </>
   );
 };

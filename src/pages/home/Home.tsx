@@ -1,4 +1,4 @@
-import { Component, createSignal, onCleanup, onMount } from "solid-js";
+import { Component } from "solid-js";
 import { Typography } from "../../components/commons/Typogrtaphy";
 import { Button } from "../../components/commons/Button";
 import { DiscordIcon } from "../../components/commons/icons/DiscordIcon";
@@ -11,12 +11,14 @@ import { Section } from "../../components/Section";
 import { AppTitle } from "../../components/AppTitle";
 import { CartIcon } from "../../components/commons/icons/CartIcon";
 import { Localized } from "@llelievr.dev/solid-fluent";
-import { ServerSection } from "./ServerSection";
+import { DownloadSection } from "./DownloadSection";
+import { Link } from "@solidjs/meta";
 
 const Home: Component = (props) => {
   return (
     <>
       <AppTitle key="home_title"></AppTitle>
+      <Link rel="canonical" href="https:/slimevr.dev/" />
       <Section>
         <div class="flex w-full mt-5 relative">
           <div class="absolute top-0 h-full animate-floating right-0 w-full md:flex justify-end hidden">
@@ -34,7 +36,7 @@ const Home: Component = (props) => {
                   tag="p"
                   key="hero_description"
                 />
-                <div class="aspect-video p-12 pointer-events-none select-none">
+                <div class="aspect-video px-12 pointer-events-none select-none">
                   <img
                     src="/images/SlimePCB3.webp"
                     loading="lazy"
@@ -45,6 +47,7 @@ const Home: Component = (props) => {
                 <ArrowButton
                   variant="primary"
                   prefixIcon={<CartIcon size={60}></CartIcon>}
+                  href="https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker"
                 >
                   <div class="flex flex-col flex-wrap relative justify-center pb-2">
                     <div
@@ -68,7 +71,16 @@ const Home: Component = (props) => {
               </div>
             </div>
             <div class="flex flex-col gap-3 z-10 py-5 px-0 sm:px-5 h-full justify-end">
-              <ArrowButton prefixIcon={<DonwloadIcon size={35}></DonwloadIcon>}>
+              <ArrowButton
+                prefixIcon={<DonwloadIcon size={35}></DonwloadIcon>}
+                href="#download"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document
+                    .getElementById("download")
+                    .scrollIntoView({ behavior: "smooth", block: "center" });
+                }}
+              >
                 <Typography
                   variant="section-title"
                   tag="h3"
@@ -76,7 +88,10 @@ const Home: Component = (props) => {
                 />
                 <Typography tag="p" key="hero_download-server_desc" />
               </ArrowButton>
-              <ArrowButton prefixIcon={<DiscordIcon size={40}></DiscordIcon>}>
+              <ArrowButton
+                prefixIcon={<DiscordIcon size={40}></DiscordIcon>}
+                href="https://discord.gg/SlimeVR"
+              >
                 <Typography
                   variant="section-title"
                   tag="h3"
@@ -95,7 +110,7 @@ const Home: Component = (props) => {
         </Section>
 
         <Section>
-          <ServerSection></ServerSection>
+          <DownloadSection></DownloadSection>
         </Section>
 
         <Section>
@@ -121,9 +136,9 @@ const Home: Component = (props) => {
                   textAlign="text-justify"
                   key="home_use-cases_vr_desc"
                 />
-                <Button variant="tertiary" href="/#VR">
+                {/* <Button variant="tertiary" href="/#VR">
                   See more
-                </Button>
+                </Button> */}
               </div>
               <div class="bg-background-70 border border-background-40 rounded-2xl p-4 flex flex-col gap-4 justify-between">
                 <Typography
@@ -140,7 +155,7 @@ const Home: Component = (props) => {
                   textAlign="text-justify"
                   key="home_use-cases_vtubing_desc"
                 />
-                <Button variant="tertiary">See more</Button>
+                {/* <Button variant="tertiary">See more</Button> */}
               </div>
               <div class="bg-background-70 border border-background-40 rounded-2xl p-4 flex flex-col gap-4 justify-between">
                 <Typography
@@ -157,7 +172,7 @@ const Home: Component = (props) => {
                   textAlign="text-justify"
                   key="home_use-cases_motion-capture_desc"
                 />
-                <Button variant="tertiary">See more</Button>
+                {/* <Button variant="tertiary">See more</Button> */}
               </div>
             </div>
           </div>

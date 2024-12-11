@@ -16,7 +16,6 @@ export const Section: ParentComponent<SectionProps> = (props) => {
                 "w-full object-contain scale-[110%]",
                 "rotate-[12deg]"
               )}
-              loading="lazy"
               src={gizmo()}
             ></img>
           </div>

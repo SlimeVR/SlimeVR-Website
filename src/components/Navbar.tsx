@@ -8,13 +8,22 @@ import { createBreakpoint } from "../utils/dom";
 import clsx from "clsx";
 import { Localized } from "@llelievr.dev/solid-fluent";
 
-const NavItems: Component = () => {
+export const NavItems: Component = () => {
   return (
     <>
       <a href="https://docs.slimevr.dev" target="_blank" class="link px-2">
         <Typography key="navbar_documentation" tag="span" />
       </a>
-      <A href="/server" class="link px-2">
+      <A
+        href="/#download"
+        onClick={(e) => {
+          e.preventDefault();
+          document
+            .getElementById("download")
+            .scrollIntoView({ behavior: "smooth", block: "center" });
+        }}
+        class="link px-2"
+      >
         <Typography tag="span" key="navbar_download" />
       </A>
       <a href="https://discord.gg/SlimeVR" target="_blank" class="link px-2">
@@ -58,7 +67,10 @@ export const Navbar: Component = (props) => {
             </Typography>
           </A>
           <div class="items-center hidden md:flex">
-            <Button variant="primary">
+            <Button
+              variant="primary"
+              href="https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker"
+            >
               <Localized id="navbar_order" />
             </Button>
           </div>
