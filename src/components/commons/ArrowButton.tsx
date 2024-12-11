@@ -1,8 +1,9 @@
-import { JSX, mergeProps, ParentComponent, Show } from "solid-js";
+import { JSX, mergeProps, ParentComponent, Show, splitProps } from "solid-js";
 import { ArrowIcon } from "./icons/ArrowIcon";
 import clsx from "clsx";
+import { A, AnchorProps } from "@solidjs/router";
 
-interface ArrowButtonProps {
+interface ArrowButtonProps extends AnchorProps {
   prefixIcon?: JSX.Element;
   variant?: "primary" | "default";
 }
@@ -10,15 +11,21 @@ interface ArrowButtonProps {
 export const ArrowButton: ParentComponent<ArrowButtonProps> = (
   initialProps
 ) => {
-  const props = mergeProps(
+  const allProps = mergeProps(
     {
       variant: "default",
     } satisfies Partial<ArrowButtonProps>,
     initialProps
   );
+  const [props, anchorProps] = splitProps(allProps, [
+    "prefixIcon",
+    "variant",
+    "children",
+  ]);
 
   return (
-    <div
+    <A
+      {...anchorProps}
       class={clsx(
         "flex items-center sm:gap-5 gap-2 bg-background-60 rounded-2xl p-3 sm:pl-5 sm:pr-10 px-5 hover:cursor-pointer group hover:bg-background-50 opacity-95 transition-colors border",
         props.variant === "primary"
@@ -43,6 +50,6 @@ export const ArrowButton: ParentComponent<ArrowButtonProps> = (
           direction="right"
         ></ArrowIcon>
       </div>
-    </div>
+    </A>
   );
 };

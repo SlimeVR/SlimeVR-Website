@@ -18,17 +18,29 @@ export const ServerSection: Component = () => {
             Desktop
           </Typography>
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-2">
-            <ArrowButton prefixIcon={<WindowsIcon size={45}></WindowsIcon>}>
+            <ArrowButton
+              prefixIcon={<WindowsIcon size={45}></WindowsIcon>}
+              href="https://slimevr.dev/download"
+              target="_blank"
+            >
               <Typography variant="section-title" tag="h3">
                 Windows
               </Typography>
             </ArrowButton>
-            <ArrowButton prefixIcon={<LinuxIcon size={45}></LinuxIcon>}>
+            <ArrowButton
+              prefixIcon={<LinuxIcon size={45}></LinuxIcon>}
+              href="https://flathub.org/apps/dev.slimevr.SlimeVR"
+              target="_blank"
+            >
               <Typography variant="section-title" tag="h3">
                 Linux
               </Typography>
             </ArrowButton>
-            <ArrowButton prefixIcon={<AppleIcon size={40}></AppleIcon>}>
+            <ArrowButton
+              prefixIcon={<AppleIcon size={40}></AppleIcon>}
+              href="https://github.com/SlimeVR/SlimeVR-Server/releases/latest/download/SlimeVR-mac.dmg"
+              target="_blank"
+            >
               <Typography variant="section-title" tag="h3">
                 MacOS
               </Typography>
@@ -44,12 +56,20 @@ export const ServerSection: Component = () => {
             </Typography>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-2">
-            <ArrowButton prefixIcon={<AndroidIcon size={55}></AndroidIcon>}>
+            <ArrowButton
+              prefixIcon={<AndroidIcon size={55}></AndroidIcon>}
+              href="https://github.com/SlimeVR/SlimeVR-Server/releases/latest/download/SlimeVR-android.apk"
+              target="_blank"
+            >
               <Typography variant="section-title" tag="h3">
                 Android
               </Typography>
             </ArrowButton>
-            <ArrowButton prefixIcon={<AppleIcon size={40}></AppleIcon>}>
+            <ArrowButton
+              prefixIcon={<AppleIcon size={40}></AppleIcon>}
+              href="https://discord.com/channels/817184208525983775/1121564912292986880"
+              target="_blank"
+            >
               <Typography variant="section-title" tag="h3">
                 IOS
               </Typography>
