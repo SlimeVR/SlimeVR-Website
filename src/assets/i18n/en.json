@@ -25,7 +25,7 @@
         },
         "terms": "Terms of use",
         "privacy": "Privacy policy",
-        "cookies": " Update your cookies settings"
+        "cookies": "Update your cookies settings"
     },
     "home": {
         "title": "SlimeVR Full Body Trackers",
@@ -78,7 +78,7 @@
             },
             "question-5": {
                 "question": "What Is IMU Tracker Drift?",
-                "answer": "Due to the nature of IMU trackers they are susceptible to something called yaw drift.\\nThis is not the same as controller stick drift. IMU yaw drift is caused by very minor tracking imperfections that add up overtime and cause a tracker to think it has rotated further than it actually is.\\nThis takes some time to occur and can be very easily resolved with a reset!"
+                "answer": "Due to the nature of IMU trackers they are susceptible to something called yaw drift.\n\n This is not the same as controller stick drift. IMU yaw drift is caused by very minor tracking imperfections that add up overtime and cause a tracker to think it has rotated further than it actually is.\n\n This takes some time to occur and can be very easily resolved with a reset!"
             },
             "question-6": {
                 "question": "How Do I Reset IMU Tracker Drift?",

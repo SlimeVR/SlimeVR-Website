@@ -68,12 +68,12 @@ export const DownloadButton: ParentComponent<DownloadButtonProps> = (
 export const DownloadSection: Component = () => {
   return (
     <div class="flex flex-col gap-4 w-full items-center" id="download">
-      <Typography tag="h3" variant="main-title" textAlign="text-center">
+      <Typography tag="h2" variant="main-title" textAlign="text-center">
         Download SlimeVR Server
       </Typography>
       <div class="flex gap-4 md:gap-8 flex-col md:flex-row w-full">
         <div class="flex flex-col gap-2 md:w-[500px]">
-          <Typography tag="h4" textAlign="text-center" variant="section-title">
+          <Typography tag="h3" textAlign="text-center" variant="section-title">
             Desktop
           </Typography>
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-2 ">
@@ -82,7 +82,7 @@ export const DownloadSection: Component = () => {
               href="https://slimevr.dev/download"
               target="_blank"
             >
-              <Typography variant="section-title" tag="h3">
+              <Typography variant="section-title" tag="span">
                 Windows
               </Typography>
             </DownloadButton>
@@ -91,7 +91,7 @@ export const DownloadSection: Component = () => {
               href="https://flathub.org/apps/dev.slimevr.SlimeVR"
               target="_blank"
             >
-              <Typography variant="section-title" tag="h3">
+              <Typography variant="section-title" tag="span">
                 Linux
               </Typography>
             </DownloadButton>
@@ -100,14 +100,14 @@ export const DownloadSection: Component = () => {
               href="https://github.com/SlimeVR/SlimeVR-Server/releases/latest/download/SlimeVR-mac.dmg"
               target="_blank"
             >
-              <Typography variant="section-title" tag="h3">
+              <Typography variant="section-title" tag="span">
                 MacOS
               </Typography>
             </DownloadButton>
           </div>
           <div class="pt-4">
             <Typography
-              tag="h4"
+              tag="h3"
               textAlign="text-center"
               variant="section-title"
             >
@@ -120,7 +120,7 @@ export const DownloadSection: Component = () => {
               href="https://github.com/SlimeVR/SlimeVR-Server/releases/latest/download/SlimeVR-android.apk"
               target="_blank"
             >
-              <Typography variant="section-title" tag="h3">
+              <Typography variant="section-title" tag="span">
                 Android
               </Typography>
             </DownloadButton>
@@ -129,7 +129,7 @@ export const DownloadSection: Component = () => {
               href="https://discord.com/channels/817184208525983775/1121564912292986880"
               target="_blank"
             >
-              <Typography variant="section-title" tag="h3">
+              <Typography variant="section-title" tag="span">
                 IOS
               </Typography>
             </DownloadButton>

@@ -2,7 +2,6 @@ import {
   createContext,
   createMemo,
   createSignal,
-  ErrorBoundary,
   JSX,
   onCleanup,
   onMount,

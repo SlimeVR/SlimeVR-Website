@@ -18,7 +18,7 @@ export const Footer: Component = (props) => {
         </div>
         <div class="flex flex-col gap-2">
           <Typography
-            tag="h3"
+            tag="span"
             variant="section-title"
             key="footer.column.resources.title"
           />
@@ -55,7 +55,7 @@ export const Footer: Component = (props) => {
         </div>
         <div class="flex flex-col gap-2">
           <Typography
-            tag="h3"
+            tag="span"
             variant="section-title"
             key="footer.column.shop.title"
           />
@@ -74,7 +74,7 @@ export const Footer: Component = (props) => {
         </div>
         <div class="flex flex-col gap-2">
           <Typography
-            tag="h3"
+            tag="span"
             variant="section-title"
             key="footer.column.social.title"
           />
@@ -112,9 +112,9 @@ export const Footer: Component = (props) => {
       </div>
       <div class="bg-background-80 w-full py-4">
         <div class=" flex justify-center divide-x-[1px] divide-background-20">
-          <A class="link px-2" href="/terms">
+          {/* <A class="link px-2" href="/terms">
             <Typography tag="span" key="footer.terms" />
-          </A>
+          </A> */}
           <A class="link px-2" href="/privacy">
             <Typography tag="span" key="footer.privacy" />
           </A>

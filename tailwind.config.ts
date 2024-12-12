@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 import animate from "tailwindcss-animated";
 import plugin from "tailwindcss/plugin";
+import typography from "@tailwindcss/typography";
 
 import forms from "@tailwindcss/forms";
 
@@ -101,6 +102,7 @@ export const config: Config = {
   plugins: [
     forms,
     animate,
+    typography,
     plugin(function ({ addUtilities }) {
       const textConfig = (fontSize: any, fontWeight: any) => ({
         fontSize,

@@ -1,9 +1,26 @@
 import { A } from "@solidjs/router";
+import { ArrowButton } from "~/components/commons/ArrowButton";
+import { Typography } from "~/components/commons/Typogrtaphy";
+import { Section } from "~/components/Section";
+import { MainLayout } from "~/layouts/MainLayout";
 
 export default function NotFound() {
   return (
-    <main class="text-center mx-auto text-gray-700 p-4">
-      <h1 class="max-6-xs text-6xl text-sky-700 font-thin uppercase my-16">Not Found</h1>
-    </main>
+    <MainLayout>
+      <Section>
+        <div class="mt-4">
+          <div class="bg-background-70 border border-background-40 rounded-2xl p-4">
+            <Typography tag="h1" variant="main-title">Page not found</Typography>
+            <div class="flex justify-center">
+              <img src="/images/sad-slime.gif"></img>
+
+            </div>
+            <ArrowButton href="/">
+              Go back to the home page
+            </ArrowButton>
+          </div>
+        </div>
+      </Section>
+    </MainLayout>
   );
 }

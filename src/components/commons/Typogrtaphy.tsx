@@ -2,7 +2,6 @@ import clsx from "clsx";
 import {
   Component,
   createMemo,
-  ErrorBoundary,
   JSX,
   mergeProps,
 } from "solid-js";
@@ -73,19 +72,15 @@ export const Typography: Component<TypographyProps> = (initialProps) => {
 
   if (props.key) {
     return (
-      <ErrorBoundary fallback={(err) => { console.log('typo error', err); return <>KEY ERROR: {props.key}</> }}>
-        <Dynamic component={props.tag} class={classes()}>
-          <Localized id={props.key}></Localized>
-        </Dynamic>
-      </ErrorBoundary>
+      <Dynamic component={props.tag} class={classes()}>
+        <Localized id={props.key}></Localized>
+      </Dynamic>
     );
   }
 
   return (
-    <ErrorBoundary fallback={(err) => { console.log('typo2 error', err); return <>TYPO ERROR: {props.key}</> }}>
-      <Dynamic component={props.tag} class={classes()}>
-        {props.children}
-      </Dynamic>
-    </ErrorBoundary>
+    <Dynamic component={props.tag} class={classes()}>
+      {props.children}
+    </Dynamic>
   );
 };

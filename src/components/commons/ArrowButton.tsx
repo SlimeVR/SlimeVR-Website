@@ -35,13 +35,15 @@ export const ArrowButton: ParentComponent<ArrowButtonProps> = (
           : "border-background-30"
       )}
     >
-      <div
-        class={clsx(
-          "w-12 justify-center group-hover:fill-status-success fill-white hidden sm:flex"
-        )}
-      >
-        {prefixIcon()}
-      </div>
+      <Show when={prefixIcon()}>
+        <div
+          class={clsx(
+            "w-12 justify-center group-hover:fill-status-success fill-white hidden sm:flex"
+          )}
+        >
+          {prefixIcon()}
+        </div>
+      </Show>
       <div class="flex flex-col flex-grow">{props.children}</div>
       <div class="flex w-9 group-hover:translate-x-5 transition-transform duration-200">
         <ArrowIcon

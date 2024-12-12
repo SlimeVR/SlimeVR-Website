@@ -3,15 +3,14 @@ import {
   ComponentProps,
   createMemo,
   createSignal,
-  ErrorBoundary,
   For,
 } from "solid-js";
 import { Drawer, DrawerItem } from "../../components/commons/Drawer";
 import { Typography } from "../../components/commons/Typogrtaphy";
-import { Localized, useFluent } from "@llelievr.dev/solid-fluent";
 import { SolidMarkdown } from "solid-markdown";
 import remarkGfm from "remark-gfm";
 import { useI18n } from "~/i18n";
+import { MarkdownLink } from "../commons/Markdown";
 
 const possibleImages = [
   "/images/Nighty_For_FAQ_Block first_.webp",
@@ -37,14 +36,7 @@ export interface AcceptedAnswer {
   text: string;
 }
 
-const MarkdownLink = (props: ComponentProps<"a">) => (
-  <a target="_blank" href={props.href} class="link text-background-20">
-    {props.children}
-  </a>
-);
-
 export const QASection: Component = () => {
-  // const l10n = useFluent();
   const { translator } = useI18n()
   const [currentImage, setCurrentImage] = createSignal<string>(
     possibleImages[0]
@@ -76,49 +68,48 @@ export const QASection: Component = () => {
   );
 
   return (
-    <ErrorBoundary fallback={<>DRAWER ERROR</>}>
-      <div class="flex md:gap-12 relative md:pl-12">
-        <div class="sticky top-0 left-0 h-full sm:flex hidden">
-          <div class="md:flex w-72 items-center justify-center pt-12 hidden">
-            <img src={currentImage()} class="object-contain object-center"></img>
-          </div>
+    <div class="flex md:gap-12 relative md:pl-12">
+      <div class="sticky top-0 left-0 h-full sm:flex hidden">
+        <div class="md:flex w-72 items-center justify-center pt-12 hidden">
+          <img src={currentImage()} class="object-contain object-center"></img>
         </div>
-        <div class="flex flex-col gap-3 w-full">
-          <script type="application/ld+json">{schema()}</script>
-          <Typography
-            tag="h3"
-            variant="main-title"
-            textAlign="text-center"
-            key="home.qa.title"
-          />
-          <div class="bg-background-70 w-full p-4 rounded-lg border border-background-30">
-            <Drawer onOpen={onOpenDrawer}>
-              <For each={questions()}>
-                {(question, index) => (
-                  <DrawerItem
-                    title={
-                      <Typography
-                        tag="h4"
-                        variant="section-title"
-                        key={question.question}
-                      ></Typography>
-                    }
-                    open={index() === 0}
-                  >
+      </div>
+      <div class="flex flex-col gap-3 w-full">
+        <script type="application/ld+json">{schema()}</script>
+        <Typography
+          tag="h2"
+          variant="main-title"
+          textAlign="text-center"
+          key="home.qa.title"
+        />
+        <div class="bg-background-70 w-full p-4 rounded-lg border border-background-30">
+          <Drawer onOpen={onOpenDrawer}>
+            <For each={questions()}>
+              {(question, index) => (
+                <DrawerItem
+                  title={
+                    <Typography
+                      tag="h4"
+                      variant="section-title"
+                      key={question.question}
+                    ></Typography>
+                  }
+                  open={index() === 0}
+                >
+                  <div class="text-inherit w-full min-w-full prose-md prose text-background-10 prose-h1:text-background-10 prose-h2:text-background-10 prose-a:text-background-20 prose-strong:text-background-10 prose-code:text-background-20">
                     <SolidMarkdown
                       remarkPlugins={[remarkGfm]}
                       components={{ a: MarkdownLink }}
                     >
                       {translator(question.answer) as string}
                     </SolidMarkdown>
-                  </DrawerItem>
-                )}
-              </For>
-            </Drawer>
-          </div>
+                  </div>
+                </DrawerItem>
+              )}
+            </For>
+          </Drawer>
         </div>
       </div>
-    </ErrorBoundary>
-
+    </div>
   );
 };

@@ -69,13 +69,13 @@ const ExplosionDot: Component = () => {
 
 export const MainLayout: ParentComponent = (props) => {
   return (
-    <>
-      <div class="relative bg-accent-background-60 overflow-clip">
+    <div class="flex flex-col min-h-screen pattern">
+      <div class="relative overflow-clip flex-grow">
         <ExplosionDot></ExplosionDot>
         <ExplosionDot></ExplosionDot>
         <ExplosionDot></ExplosionDot>
         <ExplosionDot></ExplosionDot>
-        <div class="flex flex-col w-full items-center pattern relative overflow-y-clip py-4">
+        <div class="flex flex-col w-full items-center relative overflow-y-clip py-4">
           <img
             class="absolute w-full top-0"
             src="/images/Webpage_Design_Parts_header_block.webp"
@@ -87,6 +87,6 @@ export const MainLayout: ParentComponent = (props) => {
         </div>
       </div>
       <Footer></Footer>
-    </>
+    </div>
   );
 };

@@ -8,8 +8,7 @@ export default defineConfig({
   server: {
     static: true,
     prerender: {
-      routes: ["/"],
-      crawlLinks: false,
+      crawlLinks: true,
     },
     preset: "github-pages",
   },
