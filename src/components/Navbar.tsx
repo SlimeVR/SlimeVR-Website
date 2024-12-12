@@ -1,4 +1,4 @@
-import { Component, createEffect, createSignal, Show } from "solid-js";
+import { Component, createSignal, Show } from "solid-js";
 import { SlimeVRIcon } from "./commons/icons/SlimeVRIcon";
 import { Typography } from "./commons/Typogrtaphy";
 import { A } from "@solidjs/router";
@@ -6,13 +6,13 @@ import { Button } from "./commons/Button";
 import { BarsIcon } from "./commons/icons/BarsIcon";
 import { createBreakpoint } from "../utils/dom";
 import clsx from "clsx";
-import { Localized } from "@llelievr.dev/solid-fluent";
+import { Localized } from "~/i18n";
 
 export const NavItems: Component = () => {
   return (
     <>
       <a href="https://docs.slimevr.dev" target="_blank" class="link px-2">
-        <Typography key="navbar_documentation" tag="span" />
+        <Typography key="navbar.documentation" tag="span" />
       </a>
       <A
         href="/#download"
@@ -24,30 +24,31 @@ export const NavItems: Component = () => {
         }}
         class="link px-2"
       >
-        <Typography tag="span" key="navbar_download" />
+        <Typography tag="span" key="navbar.download" />
       </A>
       <a href="https://discord.gg/SlimeVR" target="_blank" class="link px-2">
-        <Typography key="navbar_discord" tag="span" />
+        <Typography key="navbar.discord" tag="span" />
       </a>
       <a href="https://shop.slimevr.dev/" class="link px-2">
-        <Typography key="navbar_shop" tag="span" />
+        <Typography key="navbar.shop" tag="span" />
       </a>
       <a href="https://github.com/SlimeVR" target="_blank" class="link px-2">
-        <Typography key="navbar_github" tag="span" />
+        <Typography key="navbar.github" tag="span" />
       </a>
       <a
         href="https://shop.slimevr.dev/pages/support"
         target="_blank"
         class="link px-2"
       >
-        <Typography tag="span" key="navbar_support" />
+        <Typography tag="span" key="navbar.support" />
       </a>
     </>
   );
 };
 
 export const Navbar: Component = (props) => {
-  const { isNmd } = createBreakpoint("nmd");
+  // const { isNmd } = createBreakpoint("nmd");
+  const { isNmd } = { isNmd: () => false };
   const [isOpen, setOpen] = createSignal(false);
 
   return (
@@ -71,7 +72,7 @@ export const Navbar: Component = (props) => {
               variant="primary"
               href="https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker"
             >
-              <Localized id="navbar_order" />
+              <Localized id="navbar.order" />
             </Button>
           </div>
           <div class="flex md:hidden justify-end">

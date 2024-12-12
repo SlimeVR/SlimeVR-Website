@@ -1,15 +1,12 @@
-import { Component, ParentComponent } from "solid-js";
+import { Component } from "solid-js";
 import { Title } from "@solidjs/meta";
-import { Localized, useFluent } from "@llelievr.dev/solid-fluent";
+import { useI18n } from "~/i18n";
 
 export const AppTitle: Component<{ key: string }> = (props) => {
-  const i10n = useFluent();
+  const { translator } = useI18n()
   return (
     <Title>
-      <Localized
-        id="title"
-        vars={{ title: i10n.getString(props.key)() }}
-      ></Localized>
+      {translator('title', { title: translator(props.key) }) as string}
     </Title>
   );
 };

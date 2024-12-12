@@ -20,11 +20,11 @@ export const Footer: Component = (props) => {
           <Typography
             tag="h3"
             variant="section-title"
-            key="footer_column_resources"
+            key="footer.column.resources.title"
           />
           <div class="flex flex-col gap-0.5">
-            <a href="https://docs.slimevr.dev" target="_blank" class="link">
-              <Typography key="navbar_documentation" tag="span" />
+            <a href="https://docs.slimevr.dev" target="_blank" class="link w-fit">
+              <Typography key="navbar.documentation" tag="span" />
             </a>
             <A
               href="/#download"
@@ -34,22 +34,22 @@ export const Footer: Component = (props) => {
                   .getElementById("download")
                   .scrollIntoView({ behavior: "smooth", block: "center" });
               }}
-              class="link"
+              class="link w-fit"
             >
-              <Typography tag="span" key="navbar_download" />
+              <Typography tag="span" key="navbar.download" />
             </A>
-            <a href="https://discord.gg/SlimeVR" target="_blank" class="link">
-              <Typography key="navbar_discord" tag="span" />
+            <a href="https://discord.gg/SlimeVR" target="_blank" class="link w-fit">
+              <Typography key="navbar.discord" tag="span" />
             </a>
-            <a href="https://github.com/SlimeVR" target="_blank" class="link">
-              <Typography key="navbar_github" tag="span" />
+            <a href="https://github.com/SlimeVR" target="_blank" class="link w-fit">
+              <Typography key="navbar.github" tag="span" />
             </a>
             <a
               href="https://shop.slimevr.dev/pages/support"
               target="_blank"
-              class="link"
+              class="link w-fit"
             >
-              <Typography tag="span" key="navbar_support" />
+              <Typography tag="span" key="navbar.support" />
             </a>
           </div>
         </div>
@@ -57,18 +57,18 @@ export const Footer: Component = (props) => {
           <Typography
             tag="h3"
             variant="section-title"
-            key="footer_column_shop"
+            key="footer.column.shop.title"
           />
           <div class="flex flex-col gap-0.5">
             <a
               href="https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker"
               target="_blank"
-              class="link"
+              class="link w-fit"
             >
-              <Typography tag="span" key="footer_column_shop_offical" />
+              <Typography tag="span" key="footer.column.shop.official" />
             </a>
-            <a href="https://shop.slimevr.dev" target="_blank" class="link">
-              <Typography tag="span" key="footer_column_shop_spare-parts" />
+            <a href="https://shop.slimevr.dev" target="_blank" class="link w-fit">
+              <Typography tag="span" key="footer.column.shop.spare-parts" />
             </a>
           </div>
         </div>
@@ -76,34 +76,34 @@ export const Footer: Component = (props) => {
           <Typography
             tag="h3"
             variant="section-title"
-            key="footer_column_social"
+            key="footer.column.social.title"
           />
           <div class="flex flex-col gap-0.5">
             <a
               href="https://bsky.app/profile/slimevr.dev"
               target="_blank"
-              class="link"
+              class="link w-fit"
             >
               <Typography tag="span">Bluesky</Typography>
             </a>
             <a
               href="https://www.youtube.com/@SlimeVR"
               target="_blank"
-              class="link"
+              class="link w-fit"
             >
               <Typography tag="span">YouTube</Typography>
             </a>
             <a
               href="https://www.tiktok.com/@officialslimevr"
               target="_blank"
-              class="link"
+              class="link w-fit"
             >
               <Typography tag="span">TikTok</Typography>
             </a>
             <a
               href="https://www.reddit.com/r/SlimeVR/"
               target="_blank"
-              class="link"
+              class="link w-fit"
             >
               <Typography tag="span">Reddit</Typography>
             </a>
@@ -113,13 +113,13 @@ export const Footer: Component = (props) => {
       <div class="bg-background-80 w-full py-4">
         <div class=" flex justify-center divide-x-[1px] divide-background-20">
           <A class="link px-2" href="/terms">
-            <Typography tag="span" key="footer_terms" />
+            <Typography tag="span" key="footer.terms" />
           </A>
           <A class="link px-2" href="/privacy">
-            <Typography tag="span" key="footer_privacy" />
+            <Typography tag="span" key="footer.privacy" />
           </A>
           <a href="javascript:openAxeptioCookies()" class="link px-2">
-            Update your cookies settings
+            <Typography tag="span" key="footer.cookies" />
           </a>
         </div>
       </div>

@@ -1,9 +1,9 @@
 import {
+  children,
   Component,
   JSX,
   mergeProps,
   ParentComponent,
-  Show,
   splitProps,
 } from "solid-js";
 import { Typography } from "../../components/commons/Typogrtaphy";
@@ -37,6 +37,9 @@ export const DownloadButton: ParentComponent<DownloadButtonProps> = (
     "children",
   ]);
 
+  const prefixIcon = children(() => props.prefixIcon)
+
+
   return (
     <A
       {...anchorProps}
@@ -47,15 +50,13 @@ export const DownloadButton: ParentComponent<DownloadButtonProps> = (
           : "border-background-30"
       )}
     >
-      <Show when={props.prefixIcon}>
-        <div
-          class={clsx(
-            "w-12 justify-center group-hover:fill-status-success fill-white hidden sm:flex"
-          )}
-        >
-          {props.prefixIcon}
-        </div>
-      </Show>
+      <div
+        class={clsx(
+          "w-12 justify-center group-hover:fill-status-success fill-white hidden sm:flex"
+        )}
+      >
+        {prefixIcon()}
+      </div>
       <div class="flex flex-col flex-grow">{props.children}</div>
       <div class="flex w-9">
         <DonwloadIcon size={30} class="fill-background-10"></DonwloadIcon>
@@ -138,7 +139,7 @@ export const DownloadSection: Component = () => {
           <div class="w-full relative aspect-video mt-4">
             <div class="bg-background-70 rounded-lg border border-background-40 absolute w-full top-0 left-0">
               <img
-                src="https://media.discordapp.net/attachments/1049443021118255114/1316087312001794100/Screenshot_20241210_180023.png?ex=6759c552&is=675873d2&hm=ad06b5434d8222bc387762b8cf0c37aa9a168033e287f2090af90207a2b72286&=&format=webp&quality=lossless&width=825&height=463"
+                src="/images/slimevr_desktop.webp"
                 class="w-full aspect-video p-2"
                 loading="lazy"
               ></img>
@@ -148,7 +149,7 @@ export const DownloadSection: Component = () => {
               <img
                 class="w-full"
                 loading="lazy"
-                src="https://media.discordapp.net/attachments/1049443021118255114/1316089544197668904/Screen_Shot_2024-12-10_at_18.09.17.png?ex=6759c767&is=675875e7&hm=5a5c8d0855c5e42c3cea71343262a6f4bf9492e43652692fd72463b14adaa00e&=&format=webp&quality=lossless&width=459&height=993"
+                src="/images/slimevr_mobile.webp"
               ></img>
             </div>
           </div>

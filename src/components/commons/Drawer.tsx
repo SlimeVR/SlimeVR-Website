@@ -2,6 +2,7 @@ import {
   createContext,
   createMemo,
   createSignal,
+  ErrorBoundary,
   JSX,
   onCleanup,
   onMount,
@@ -10,7 +11,7 @@ import {
 } from "solid-js";
 import { ArrowIcon } from "./icons/ArrowIcon";
 import { TypedEventTarget } from "typescript-event-target";
-import { getContentSize } from "../../utils/dom";
+import { getContentSize } from "~/utils/dom";
 import { isServer } from "solid-js/web";
 
 interface DrawerContextData {
@@ -45,11 +46,14 @@ export const Drawer: ParentComponent<DrawerProps> = (props) => {
   };
 
   return (
+
     <DrawerContext.Provider value={context}>
       <div class="flex flex-col gap-5" ref={drawerContainerRef}>
         {props.children}
       </div>
     </DrawerContext.Provider>
+
+
   );
 };
 
@@ -64,7 +68,7 @@ export const DrawerItem: ParentComponent<DrawerItemProps> = (props) => {
   let itemRef: HTMLDivElement;
   let itemContentRef: HTMLDivElement;
   let itemIndex: number;
-  const contentSizeObserver = new ResizeObserver(() => onResize());
+  let contentSizeObserver;
 
   if (!context) throw new Error("no context for the drawer found!");
 
@@ -85,19 +89,24 @@ export const DrawerItem: ParentComponent<DrawerItemProps> = (props) => {
     }
   };
 
-  onMount(() => {
-    contentSizeObserver.observe(itemContentRef);
-    context.events.addEventListener("open", onOpen);
-    setContentSize(getContentSize(itemContentRef));
-    itemIndex = context.getIndex(itemRef);
-  });
+  if (!isServer) {
+    onMount(() => {
+      contentSizeObserver = new ResizeObserver(() => onResize())
+      contentSizeObserver.observe(itemContentRef);
+      context.events.addEventListener("open", onOpen);
+      setContentSize(getContentSize(itemContentRef));
+      itemIndex = context.getIndex(itemRef);
+    });
 
-  onCleanup(() => {
-    contentSizeObserver.unobserve(itemContentRef);
-    context.events.removeEventListener("open", onOpen);
-  });
+    onCleanup(() => {
+      if (contentSizeObserver)
+        contentSizeObserver.unobserve(itemContentRef);
+      context.events.removeEventListener("open", onOpen);
+    });
+  }
 
   const style = createMemo(() => {
+    if (isServer) return { height: 'inherit' }
     if (!contentSize() || !isOpen()) return { height: `0px` };
 
     return { height: `${contentSize().height}px` };

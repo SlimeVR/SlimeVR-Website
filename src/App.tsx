@@ -1,26 +1,31 @@
-import { lazy, Suspense, type Component } from "solid-js";
-import { Route, Router } from "@solidjs/router";
-import { MainLayout } from "./layouts/MainLayout";
-import { I18nProvider } from "./i18n";
-import { MetaProvider, Title } from "@solidjs/meta";
-import { LoadingLayout } from "./layouts/LoadingLayout";
+import { Router } from "@solidjs/router";
+import { FileRoutes } from "@solidjs/start/router";
+import { ErrorBoundary, Suspense } from "solid-js";
+import "./app.css";
+import { I18nProvider } from "~/i18n";
+import { MetaProvider } from "@solidjs/meta";
 
-const Home = lazy(() => import("./pages/home/Home"));
-
-const App: Component = () => {
+export default function App() {
   return (
-    <I18nProvider fallback={<></>}>
-      <MetaProvider>
-        <Suspense fallback={<LoadingLayout></LoadingLayout>}>
-          <Router>
-            <Route path="/" component={MainLayout}>
-              <Route path="/" component={Home}></Route>
-            </Route>
-          </Router>
-        </Suspense>
-      </MetaProvider>
-    </I18nProvider>
-  );
-};
+    <ErrorBoundary fallback={(err) => {
+      console.error(err)
+      return <>error</>
+    }}>
+      <Suspense>
+        <I18nProvider fallback={<>LOADING</>}>
+          <Suspense>
+            <MetaProvider >
+              <ErrorBoundary fallback={(err) => { console.log('????', err); return <>ROUTER ERROR</> }}>
+                <Router root={(root) => <Suspense>{root.children}</Suspense>}>
+                  <FileRoutes />
+                </Router>
+              </ErrorBoundary>
+            </MetaProvider>
+          </Suspense>
+        </I18nProvider>
+      </Suspense>
 
-export default App;
+    </ErrorBoundary>
+
+  );
+}

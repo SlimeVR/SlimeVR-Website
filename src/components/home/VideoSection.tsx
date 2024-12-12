@@ -2,18 +2,17 @@ import {
   batch,
   Component,
   createMemo,
-  createResource,
   createSignal,
   For,
   onCleanup,
   onMount,
-  Show,
 } from "solid-js";
 import { Typography } from "../../components/commons/Typogrtaphy";
 import { PlayIcon } from "../../components/commons/icons/PlayIcon";
 import { ArrowIcon } from "../../components/commons/icons/ArrowIcon";
 import clsx from "clsx";
 import { getContentSize } from "../../utils/dom";
+import { isServer } from "solid-js/web";
 
 const videos = [
   {
@@ -23,7 +22,6 @@ const videos = [
   {
     src: "https://www.youtube.com/embed/s2zRppG0izI",
     thumbnail: "https://i.ytimg.com/vi/s2zRppG0izI/hqdefault.jpg",
-    descriptionKey: undefined,
   },
   {
     src: "https://www.youtube.com/embed/CzZhXpOiFh0?si=K7TJleoDlhsTxnR9",
@@ -40,8 +38,6 @@ const VideoThumbnail: Component<{
   active: boolean;
   onClick: () => void;
 }> = (props) => {
-  const [imgLoaded, setLoaded] = createSignal(false);
-
   return (
     <button
       class={clsx(
@@ -50,19 +46,19 @@ const VideoThumbnail: Component<{
       )}
       onClick={props.onClick}
     >
-      <img
-        src={props.thumbnail}
-        class="w-full h-full object-cover absolute top-0"
-        onload={() => setLoaded(true)}
-      ></img>
       <div
         class={clsx(
-          imgLoaded() ? "opacity-0" : "opacity-100",
           "absolute top-0 h-full w-full bg-background-80 transition-opacity"
         )}
       >
         <div class={clsx("h-full w-full bg-background-50 animate-pulse")}></div>
       </div>
+      <img
+        src={props.thumbnail}
+        class="w-full h-full object-cover absolute top-0"
+        loading="lazy"
+      ></img>
+
       <div
         class={clsx(
           "w-full h-full top-0 absolute bg-accent-background-10",
@@ -115,7 +111,7 @@ export const VideoSection: Component = () => {
   const [videosScroll, setVideosScroll] = createSignal<number>(0);
   let videosContainerRef: HTMLDivElement;
   let videosScrollRef: HTMLDivElement;
-  let resizeObserver = new ResizeObserver(() => onResize());
+  let resizeObserver;
 
   const shouldShowNext = createMemo(() => {
     const containerSize = videosContainerSize();
@@ -159,14 +155,20 @@ export const VideoSection: Component = () => {
   };
 
   onMount(() => {
-    videosScrollRef.addEventListener("scrollend", onScrollEnd);
-    resizeObserver.observe(videosScrollRef);
-    onResize();
+    if (!isServer) {
+      resizeObserver = new ResizeObserver(() => onResize())
+      videosScrollRef.addEventListener("scrollend", onScrollEnd);
+      resizeObserver.observe(videosScrollRef);
+      onResize();
+    }
   });
 
   onCleanup(() => {
-    videosScrollRef.addEventListener("scrollend", onScrollEnd);
-    resizeObserver.unobserve(videosScrollRef);
+    if (!isServer) {
+      videosScrollRef.removeEventListener("scrollend", onScrollEnd);
+      if (resizeObserver)
+        resizeObserver.unobserve(videosScrollRef);
+    }
   });
 
   const openVideo = (video) => {
@@ -182,7 +184,7 @@ export const VideoSection: Component = () => {
         tag="h3"
         variant="main-title"
         textAlign="text-center"
-        key="home_video-section"
+        key="home.video-section"
       />
       <div class="flex">
         <div class="flex flex-grow flex-col gap-2 sm:gap-4 w-full">
@@ -227,13 +229,6 @@ export const VideoSection: Component = () => {
               ></VideoControl>
             </div>
           </div>
-          <Show when={currentVideo().descriptionKey}>
-            <div class="flex p-4 bg-background-60 rounded-lg border border-background-40">
-              <Typography tag="p" key={currentVideo().descriptionKey}>
-                {currentVideo().descriptionKey}
-              </Typography>
-            </div>
-          </Show>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { JSX, mergeProps, ParentComponent, Show, splitProps } from "solid-js";
+import { children, Component, JSX, mergeProps, ParentComponent, Show, splitProps } from "solid-js";
 import { ArrowIcon } from "./icons/ArrowIcon";
 import clsx from "clsx";
 import { A, AnchorProps } from "@solidjs/router";
@@ -23,6 +23,8 @@ export const ArrowButton: ParentComponent<ArrowButtonProps> = (
     "children",
   ]);
 
+  const prefixIcon = children(() => props.prefixIcon)
+
   return (
     <A
       {...anchorProps}
@@ -33,15 +35,13 @@ export const ArrowButton: ParentComponent<ArrowButtonProps> = (
           : "border-background-30"
       )}
     >
-      <Show when={props.prefixIcon}>
-        <div
-          class={clsx(
-            "w-12 justify-center group-hover:fill-status-success fill-white hidden sm:flex"
-          )}
-        >
-          {props.prefixIcon}
-        </div>
-      </Show>
+      <div
+        class={clsx(
+          "w-12 justify-center group-hover:fill-status-success fill-white hidden sm:flex"
+        )}
+      >
+        {prefixIcon()}
+      </div>
       <div class="flex flex-col flex-grow">{props.children}</div>
       <div class="flex w-9 group-hover:translate-x-5 transition-transform duration-200">
         <ArrowIcon

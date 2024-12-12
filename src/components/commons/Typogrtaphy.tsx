@@ -2,12 +2,13 @@ import clsx from "clsx";
 import {
   Component,
   createMemo,
+  ErrorBoundary,
   JSX,
   mergeProps,
 } from "solid-js";
+import { AllUnionElements } from "~/utils/union";
 import { Dynamic } from "solid-js/web";
-import { AllUnionElements } from "../../utils/union";
-import { Localized } from "@llelievr.dev/solid-fluent";
+import { Localized } from "~/i18n";
 
 type Variants = "primary" | "secondary";
 
@@ -69,17 +70,22 @@ export const Typography: Component<TypographyProps> = (initialProps) => {
     ])
   );
 
+
   if (props.key) {
     return (
-      <Dynamic component={props.tag} class={classes()}>
-        <Localized id={props.key}>{props.children}</Localized>
-      </Dynamic>
+      <ErrorBoundary fallback={(err) => { console.log('typo error', err); return <>KEY ERROR: {props.key}</> }}>
+        <Dynamic component={props.tag} class={classes()}>
+          <Localized id={props.key}></Localized>
+        </Dynamic>
+      </ErrorBoundary>
     );
   }
 
   return (
-    <Dynamic component={props.tag} class={classes()}>
-      {props.children}
-    </Dynamic>
+    <ErrorBoundary fallback={(err) => { console.log('typo2 error', err); return <>TYPO ERROR: {props.key}</> }}>
+      <Dynamic component={props.tag} class={classes()}>
+        {props.children}
+      </Dynamic>
+    </ErrorBoundary>
   );
 };

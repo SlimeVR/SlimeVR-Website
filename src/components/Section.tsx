@@ -6,6 +6,7 @@ interface SectionProps {
 }
 
 export const Section: ParentComponent<SectionProps> = (props) => {
+
   return (
     <div class="w-full relative flex justify-center">
       <Show when={props.gizmo}>
