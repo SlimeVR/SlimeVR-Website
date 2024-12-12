@@ -129,14 +129,17 @@ const Home: Component = (props) => {
                   key="home_use-cases_vr_title"
                 />
                 <div class="flex justify-center items-center h-52 md:h-auto select-none pointer-events-none">
-                  <img src="/images/vr.webp" class="h-full" />
+                  <img src="/images/vr.webp" loading="lazy" class="h-full" />
                 </div>
                 <Typography
                   tag="p"
                   textAlign="text-justify"
                   key="home_use-cases_vr_desc"
                 />
-                {/* <Button variant="tertiary" href="/#VR">
+                {/* <Button
+                  variant="tertiary"
+                  href="https://docs.slimevr.dev/server/index.html"
+                >
                   See more
                 </Button> */}
               </div>
@@ -148,14 +151,23 @@ const Home: Component = (props) => {
                   key="home_use-cases_vtubing_title"
                 />
                 <div class="flex justify-center items-center h-52 md:h-auto select-none pointer-events-none">
-                  <img src="/images/vtubing.webp" class="h-full" />
+                  <img
+                    src="/images/vtubing.webp"
+                    loading="lazy"
+                    class="h-full"
+                  />
                 </div>
                 <Typography
                   tag="p"
                   textAlign="text-justify"
                   key="home_use-cases_vtubing_desc"
                 />
-                {/* <Button variant="tertiary">See more</Button> */}
+                {/* <Button
+                  variant="tertiary"
+                  href="https://docs.slimevr.dev/server/osc-information.html"
+                >
+                  See more
+                </Button> */}
               </div>
               <div class="bg-background-70 border border-background-40 rounded-2xl p-4 flex flex-col gap-4 justify-between">
                 <Typography
@@ -165,14 +177,19 @@ const Home: Component = (props) => {
                   key="home_use-cases_motion-capture_title"
                 />
                 <div class="flex justify-center items-center h-52 md:h-auto select-none pointer-events-none">
-                  <img src="/images/mocap.webp" class="h-full" />
+                  <img src="/images/mocap.webp" loading="lazy" class="h-full" />
                 </div>
                 <Typography
                   tag="p"
                   textAlign="text-justify"
                   key="home_use-cases_motion-capture_desc"
                 />
-                {/* <Button variant="tertiary">See more</Button> */}
+                {/* <Button
+                  variant="tertiary"
+                  href="https://docs.slimevr.dev/server/osc-information.html"
+                >
+                  See more
+                </Button> */}
               </div>
             </div>
           </div>

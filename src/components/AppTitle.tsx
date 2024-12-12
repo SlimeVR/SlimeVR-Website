@@ -6,10 +6,10 @@ export const AppTitle: Component<{ key: string }> = (props) => {
   const i10n = useFluent();
   return (
     <Title>
-      {/* <Localized
+      <Localized
         id="title"
         vars={{ title: i10n.getString(props.key)() }}
-      ></Localized> */}
+      ></Localized>
     </Title>
   );
 };

@@ -155,7 +155,6 @@ export const VideoSection: Component = () => {
   };
 
   const onScrollEnd = () => {
-    console;
     setVideosScroll(videosScrollRef.scrollLeft);
   };
 
@@ -167,7 +166,7 @@ export const VideoSection: Component = () => {
 
   onCleanup(() => {
     videosScrollRef.addEventListener("scrollend", onScrollEnd);
-    resizeObserver.observe(videosScrollRef);
+    resizeObserver.unobserve(videosScrollRef);
   });
 
   const openVideo = (video) => {

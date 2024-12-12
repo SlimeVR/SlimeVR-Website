@@ -4,7 +4,6 @@ import {
   createMemo,
   JSX,
   mergeProps,
-  ParentComponent,
 } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import { AllUnionElements } from "../../utils/union";
@@ -20,18 +19,18 @@ interface TypographyProps {
   block?: boolean;
   color?: Variants | string;
   whitespace?:
-    | "whitespace-normal"
-    | "whitespace-nowrap"
-    | "whitespace-pre"
-    | "whitespace-pre-line"
-    | "whitespace-pre-wrap";
+  | "whitespace-normal"
+  | "whitespace-nowrap"
+  | "whitespace-pre"
+  | "whitespace-pre-line"
+  | "whitespace-pre-wrap";
   textAlign?:
-    | "text-left"
-    | "text-center"
-    | "text-right"
-    | "text-justify"
-    | "text-start"
-    | "text-end";
+  | "text-left"
+  | "text-center"
+  | "text-right"
+  | "text-justify"
+  | "text-start"
+  | "text-end";
   tag: "h1" | "h2" | "h3" | "h4" | "p" | "span";
   key?: string;
   children?: JSX.Element;
@@ -55,14 +54,14 @@ export const Typography: Component<TypographyProps> = (initialProps) => {
       props.variant === "main-title" && "text-main-title",
       props.variant === "section-title" && "text-section-title",
       props.variant === "standard" &&
-        (props.bold ? "text-standard-bold" : "text-standard"),
+      (props.bold ? "text-standard-bold" : "text-standard"),
       props.color === "primary" && "text-background-10",
       props.color === "secondary" && "text-background-30",
       props.color &&
-        !(
-          ["primary", "secondary"] satisfies AllUnionElements<Variants>
-        ).includes(props.color as Variants) &&
-        props.color,
+      !(
+        ["primary", "secondary"] satisfies AllUnionElements<Variants>
+      ).includes(props.color as Variants) &&
+      props.color,
       props.whitespace,
       props.textAlign,
       props.italic && "italic",

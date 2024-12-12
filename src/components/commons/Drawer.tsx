@@ -11,6 +11,7 @@ import {
 import { ArrowIcon } from "./icons/ArrowIcon";
 import { TypedEventTarget } from "typescript-event-target";
 import { getContentSize } from "../../utils/dom";
+import { isServer } from "solid-js/web";
 
 interface DrawerContextData {
   openDrawer?: number;

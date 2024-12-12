@@ -118,6 +118,9 @@ export const Footer: Component = (props) => {
           <A class="link px-2" href="/privacy">
             <Typography tag="span" key="footer_privacy" />
           </A>
+          <a href="javascript:openAxeptioCookies()" class="link px-2">
+            Update your cookies settings
+          </a>
         </div>
       </div>
     </footer>
