@@ -11,7 +11,7 @@ permissions:
   deployments: write
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -29,16 +29,6 @@ jobs:
         run: pnpm install
       - name: Build solid
         run: pnpm build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
-
-  # Deployment job
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: Publish
         uses: cloudflare/pages-action@v1
         with:
