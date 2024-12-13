@@ -122,7 +122,7 @@ export default function HomeLayout(props: ParentProps) {
               key="home.use-cases.title"
             />
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full">
-              <div class="bg-background-70 border border-background-40 rounded-2xl p-4 flex flex-col gap-4 justify-between">
+              <div class="bg-background-70 border border-background-40 rounded-2xl p-4 flex flex-col gap-4">
                 <Typography
                   tag="h3"
                   variant="main-title"
@@ -136,14 +136,8 @@ export default function HomeLayout(props: ParentProps) {
                   tag="p"
                   key="home.use-cases.vr.desc"
                 />
-                {/* <Button
-                  variant="tertiary"
-                  href="https://docs.slimevr.dev/server/index.html"
-                >
-                  See more
-                </Button> */}
               </div>
-              <div class="bg-background-70 border border-background-40 rounded-2xl p-4 flex flex-col gap-4 justify-between">
+              <div class="bg-background-70 border border-background-40 rounded-2xl p-4 flex flex-col gap-4">
                 <Typography
                   tag="h3"
                   variant="main-title"
@@ -161,14 +155,8 @@ export default function HomeLayout(props: ParentProps) {
                   tag="p"
                   key="home.use-cases.vtubing.desc"
                 />
-                {/* <Button
-                  variant="tertiary"
-                  href="https://docs.slimevr.dev/server/osc-information.html"
-                >
-                  See more
-                </Button> */}
               </div>
-              <div class="bg-background-70 border border-background-40 rounded-2xl p-4 flex flex-col gap-4 justify-between">
+              <div class="bg-background-70 border border-background-40 rounded-2xl p-4 flex flex-col gap-4">
                 <Typography
                   tag="h3"
                   variant="main-title"
@@ -182,12 +170,6 @@ export default function HomeLayout(props: ParentProps) {
                   tag="p"
                   key="home.use-cases.motion-capture.desc"
                 />
-                {/* <Button
-                  variant="tertiary"
-                  href="https://docs.slimevr.dev/server/osc-information.html"
-                >
-                  See more
-                </Button> */}
               </div>
             </div>
           </div>
