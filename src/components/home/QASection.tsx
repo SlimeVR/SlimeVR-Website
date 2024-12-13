@@ -17,7 +17,7 @@ const possibleImages = [
   "/images/Nighty_For_FAQ_Block second_.webp",
 ];
 
-const QUESTIONS_COUNT = 28;
+const QUESTIONS_COUNT = 27;
 
 export interface FAQSchema {
   "@context": "https://schema.org/";
