@@ -58,6 +58,14 @@ export default createHandler(() => (
               f.parentNode.insertBefore(j, f);
               })(window, document, "script", "dataLayer", "GTM-N42PM2BF");`}
           </script>
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-QF88MJTX40"></script>
+          <script>
+            {`window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-QF88MJTX40');`}
+          </script>
           <script>
             {`window.axeptioSettings = {
               clientId: "67592ee8f13a61bf84a6d076",
