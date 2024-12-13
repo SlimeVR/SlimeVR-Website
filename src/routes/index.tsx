@@ -134,7 +134,6 @@ export default function HomeLayout(props: ParentProps) {
                 </div>
                 <Typography
                   tag="p"
-                  textAlign="text-justify"
                   key="home.use-cases.vr.desc"
                 />
                 {/* <Button
@@ -160,7 +159,6 @@ export default function HomeLayout(props: ParentProps) {
                 </div>
                 <Typography
                   tag="p"
-                  textAlign="text-justify"
                   key="home.use-cases.vtubing.desc"
                 />
                 {/* <Button
@@ -182,7 +180,6 @@ export default function HomeLayout(props: ParentProps) {
                 </div>
                 <Typography
                   tag="p"
-                  textAlign="text-justify"
                   key="home.use-cases.motion-capture.desc"
                 />
                 {/* <Button

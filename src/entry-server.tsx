@@ -67,29 +67,6 @@ export default createHandler(() => (
 
               gtag('config', 'G-NWK0CGTXML');`}
           </script>
-          {/* <script>
-            {`window.axeptioSettings = {
-              clientId: "67592ee8f13a61bf84a6d076",
-              cookiesVersion: "slimevr-en-EU",
-              googleConsentMode: {
-                  default: {
-                      analytics_storage: "denied",
-                    ad_storage: "denied",
-                    ad_user_data: "denied",
-                    ad_personalization: "denied",
-                    wait_for_update: 500,
-                  },
-                },
-              };
-
-                    (function (d, s) {
-                var t = d.getElementsByTagName(s)[0],
-                    e = d.createElement(s);
-                    e.async = true;
-                    e.src = "//static.axept.io/sdk.js";
-                    t.parentNode.insertBefore(e, t);
-              })(document, "script");`}
-          </script> */}
         </body>
       </html>
 

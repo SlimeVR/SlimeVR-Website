@@ -79,7 +79,7 @@ export const DownloadSection: Component = () => {
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-2 ">
             <DownloadButton
               prefixIcon={<WindowsIcon size={45}></WindowsIcon>}
-              href="https://slimevr.dev/download"
+              href="https://github.com/SlimeVR/SlimeVR-Installer/releases/latest/download/slimevr_web_installer.exe"
               target="_blank"
             >
               <Typography variant="section-title" tag="span">
