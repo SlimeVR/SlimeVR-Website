@@ -47,8 +47,6 @@ export const NavItems: Component = () => {
 };
 
 export const Navbar: Component = (props) => {
-  // const { isNmd } = createBreakpoint("nmd");
-  const { isNmd } = { isNmd: () => false };
   const [isOpen, setOpen] = createSignal(false);
 
   return (
@@ -84,24 +82,20 @@ export const Navbar: Component = (props) => {
             </button>
           </div>
         </div>
-        <Show when={!isNmd()}>
-          <div class="flex divide-x-[1px] divide-background-20 justify-center items-center">
-            <NavItems></NavItems>
-          </div>
-        </Show>
-      </div>
-      <Show when={isNmd()}>
-        <div
-          class={clsx(
-            "flex flex-col divide-background-20 gap-2 absolute top-full mt-2 bg-background-70 overflow-clip z-10",
-            isOpen()
-              ? "h-fit p-4 border border-background-40 w-full rounded-lg "
-              : "h-0"
-          )}
-        >
+        <div class="divide-x-[1px] divide-background-20 justify-center items-center hidden md:flex">
           <NavItems></NavItems>
         </div>
-      </Show>
+      </div>
+      <div
+        class={clsx(
+          "flex flex-col divide-background-20 gap-2 absolute top-full mt-2 bg-background-70 overflow-clip z-10",
+          isOpen()
+            ? "h-fit p-4 border border-background-40 w-full rounded-lg "
+            : "h-0"
+        )}
+      >
+        <NavItems></NavItems>
+      </div>
     </div>
   );
 };
