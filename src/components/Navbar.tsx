@@ -88,7 +88,7 @@ export const Navbar: Component = (props) => {
       </div>
       <div
         class={clsx(
-          "flex flex-col divide-background-20 gap-2 absolute top-full mt-2 bg-background-70 overflow-clip z-10",
+          "flex flex-col divide-background-20 gap-2 absolute top-full mt-2 bg-background-70 overflow-clip z-10 md:hidden",
           isOpen()
             ? "h-fit p-4 border border-background-40 w-full rounded-lg "
             : "h-0"
