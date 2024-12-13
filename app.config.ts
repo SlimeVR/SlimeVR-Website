@@ -10,6 +10,5 @@ export default defineConfig({
     prerender: {
       crawlLinks: true,
     },
-    preset: "cloudflare-pages",
   },
 });
