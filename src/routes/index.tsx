@@ -1,5 +1,5 @@
 import { Link, Meta } from "@solidjs/meta";
-import { ParentProps } from "solid-js";
+import { Component, ParentProps } from "solid-js";
 import { AppTitle } from "~/components/AppTitle";
 import { ArrowButton } from "~/components/commons/ArrowButton";
 import { CartIcon } from "~/components/commons/icons/CartIcon";
@@ -13,6 +13,39 @@ import { VideoSection } from "~/components/home/VideoSection";
 import { Section } from "~/components/Section";
 import { Localized } from "~/i18n";
 import { MainLayout } from "~/layouts/MainLayout";
+
+
+const UseCaseCard: Component<{ title: string, image: string, desc: string }> = (props) => {
+  return (
+    <div class="bg-background-70 border border-background-40 rounded-2xl p-4 gap-4 flex flex-col sm:flex-row md:flex-col">
+      <div class="sm:hidden md:block">
+        <Typography
+          tag="h3"
+          variant="main-title"
+          textAlign="text-center"
+          key={props.title}
+        />
+      </div>
+      <div class="flex justify-center items-center sm:justify-start h-52 md:h-auto select-none pointer-events-none sm:w-fit">
+        <img src={props.image} loading="lazy" class="h-full sm:w-full sm:h-auto sm:p-8 md:p-0" />
+      </div>
+      <div class="flex flex-col sm:gap-4 sm:justify-center sm:w-full">
+        <div class="hidden sm:block md:hidden">
+          <Typography
+            tag="h3"
+            variant="main-title"
+            textAlign="text-center"
+            key={props.title}
+          />
+        </div>
+        <Typography
+          tag="p"
+          key={props.desc}
+        />
+      </div>
+    </div>
+  )
+}
 
 export default function HomeLayout(props: ParentProps) {
   return (
@@ -121,56 +154,22 @@ export default function HomeLayout(props: ParentProps) {
               variant="main-title"
               key="home.use-cases.title"
             />
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full">
-              <div class="bg-background-70 border border-background-40 rounded-2xl p-4 flex flex-col gap-4">
-                <Typography
-                  tag="h3"
-                  variant="main-title"
-                  textAlign="text-center"
-                  key="home.use-cases.vr.title"
-                />
-                <div class="flex justify-center items-center h-52 md:h-auto select-none pointer-events-none">
-                  <img src="/images/vr.webp" loading="lazy" class="h-full" />
-                </div>
-                <Typography
-                  tag="p"
-                  key="home.use-cases.vr.desc"
-                />
-              </div>
-              <div class="bg-background-70 border border-background-40 rounded-2xl p-4 flex flex-col gap-4">
-                <Typography
-                  tag="h3"
-                  variant="main-title"
-                  textAlign="text-center"
-                  key="home.use-cases.vtubing.title"
-                />
-                <div class="flex justify-center items-center h-52 md:h-auto select-none pointer-events-none">
-                  <img
-                    src="/images/vtubing.webp"
-                    loading="lazy"
-                    class="h-full"
-                  />
-                </div>
-                <Typography
-                  tag="p"
-                  key="home.use-cases.vtubing.desc"
-                />
-              </div>
-              <div class="bg-background-70 border border-background-40 rounded-2xl p-4 flex flex-col gap-4">
-                <Typography
-                  tag="h3"
-                  variant="main-title"
-                  textAlign="text-center"
-                  key="home.use-cases.motion-capture.title"
-                />
-                <div class="flex justify-center items-center h-52 md:h-auto select-none pointer-events-none">
-                  <img src="/images/mocap.webp" loading="lazy" class="h-full" />
-                </div>
-                <Typography
-                  tag="p"
-                  key="home.use-cases.motion-capture.desc"
-                />
-              </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+              <UseCaseCard
+                title="home.use-cases.vr.title"
+                image="/images/vr.webp"
+                desc="home.use-cases.vr.desc"
+              ></UseCaseCard>
+              <UseCaseCard
+                title="home.use-cases.vtubing.title"
+                image="/images/vtubing.webp"
+                desc="home.use-cases.vtubing.desc"
+              ></UseCaseCard>
+              <UseCaseCard
+                title="home.use-cases.motion-capture.title"
+                image="/images/mocap.webp"
+                desc="home.use-cases.motion-capture.desc"
+              ></UseCaseCard>
             </div>
           </div>
         </Section>
