@@ -22,23 +22,23 @@ export const NavItems: Component = () => {
             .getElementById("download")
             .scrollIntoView({ behavior: "smooth", block: "center" });
         }}
-        class="link px-2"
+        class="link p-2"
       >
         <Typography tag="span" key="navbar.download" />
       </A>
-      <a href="https://discord.gg/SlimeVR" target="_blank" class="link px-2">
+      <a href="https://discord.gg/SlimeVR" target="_blank" class="link p-2">
         <Typography key="navbar.discord" tag="span" />
       </a>
-      <a href="https://shop.slimevr.dev/" class="link px-2">
+      <a href="https://shop.slimevr.dev/" class="link p-2">
         <Typography key="navbar.shop" tag="span" />
       </a>
-      <a href="https://github.com/SlimeVR" target="_blank" class="link px-2">
+      <a href="https://github.com/SlimeVR" target="_blank" class="link p-2">
         <Typography key="navbar.github" tag="span" />
       </a>
       <a
         href="https://shop.slimevr.dev/pages/support"
         target="_blank"
-        class="link px-2"
+        class="link p-2"
       >
         <Typography tag="span" key="navbar.support" />
       </a>

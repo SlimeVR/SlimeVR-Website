@@ -25,7 +25,7 @@
         },
         "terms": "Terms of use",
         "privacy": "Privacy policy",
-        "cookies": "Update your cookies settings"
+        "cookies": "Update your cookie settings"
     },
     "home": {
         "title": "SlimeVR Full Body Trackers",
@@ -44,7 +44,7 @@
         },
         "video-section": "Reviews and Demos",
         "use-cases": {
-            "title": " Use cases",
+            "title": " Use Cases",
             "vr": {
                 "title": "VR Games",
                 "desc": "SlimeVR Trackers are compatible with any SteamVR or standalone games that support full body tracking. That includes social games like VRChat."
@@ -55,21 +55,21 @@
             },
             "motion-capture": {
                 "title": "Motion Capture",
-                "desc": "SlimeVR can be used for motion capture using things like VMC or directly recording BVH files for use in programs like blender!"
+                "desc": "SlimeVR can be used for motion capture using things like VMC or directly recording BVH files for use in programs like Blender!"
             }
         },
         "qa": {
             "title": "Q&A Section",
             "question-1": {
                 "question": "How Does SlimeVR Work?",
-                "answer": "Each SlimeVR Tracker track its own absolute rotation using an IMU (Inertial Measurement Unit). It sends the data to SlimeVR Server running on your PC or smartphone via Wi-Fi. The SlimeVR Server combines the data from multiple trackers and your body proportions to calculate position of your body parts using your Headset as a reference point."
+                "answer": "Each SlimeVR Tracker tracks its own absolute rotation using an IMU (Inertial Measurement Unit). It sends the data to SlimeVR Server running on your PC or smartphone via Wi-Fi. The SlimeVR Server combines the data from multiple trackers and your body proportions to calculate the position of your body parts using your headset as a reference point."
             },
             "question-2": {
                 "question": "Does SlimeVR Require Base Stations?",
-                "answer": "SlimeVR Trackers don't require base stations or other outside tracking systems."
+                "answer": "SlimeVR Trackers don't require base stations or other external tracking systems."
             },
             "question-3": {
-                "question": "Does SlimeVR Needs Cameras?",
+                "question": "Does SlimeVR Need Cameras?",
                 "answer": "SlimeVR Trackers don't need and don't use cameras."
             },
             "question-4": {
@@ -78,11 +78,11 @@
             },
             "question-5": {
                 "question": "What Is IMU Tracker Drift?",
-                "answer": "Due to the nature of IMU trackers they are susceptible to something called yaw drift.\n\n This is not the same as controller stick drift. IMU yaw drift is caused by very minor tracking imperfections that add up overtime and cause a tracker to think it has rotated further than it actually is.\n\n This takes some time to occur and can be very easily resolved with a reset!"
+                "answer": "Due to the nature of IMU trackers they are susceptible to something called yaw drift.\n\n This is not the same as controller stick drift. IMU yaw drift is caused by very minor tracking imperfections that add up overtime and cause a tracker to think it has rotated further than it actually has.\n\n This takes some time to occur and can be very easily resolved with a reset!"
             },
             "question-6": {
                 "question": "How Do I Reset IMU Tracker Drift?",
-                "answer": "For SlimeVR reset is very simple: just take a reset pose (by default, standing up or I-pose), and tap your chest tracker two times. You can configure other ways to reset, like key- or controller-bind or other taps."
+                "answer": "With SlimeVR, reseting is very simple: just look forward, and tap your chest tracker two times. You can configure other ways to reset, like key- or controller-bindings or other taps."
             },
             "question-7": {
                 "question": "How Do I Calibrate SlimeVR?",
@@ -94,30 +94,30 @@
             },
             "question-9": {
                 "question": "Which Games Does SlimeVR Work With?",
-                "answer": "SlimeVR Trackers work with any VR game that supports Full-Body Tracking, including but not limited to **VRChat**, **NeosVR**, **Blade And Sorcery**, **Dance Dash**, **Zenith: Nexus**, **Chillout VR**, **Resonite**, **LIV** and many others! Any game that supports FBT via SteamVR, OSC or VMC are compatible with SlimeVR Trackers!"
+                "answer": "SlimeVR Trackers work with any VR game that supports Full-Body Tracking, including but not limited to **VRChat**, **NeosVR**, **Blade And Sorcery**, **Dance Dash**, **Zenith: Nexus**, **Chillout VR**, **Resonite**, **LIV** and many others! Any game that supports FBT via SteamVR, OSC or VMC is compatible with SlimeVR Trackers!"
             },
             "question-10": {
-                "question": "Which Headsets Are Compatible With SlimeVR ?",
-                "answer": "SlimeVR Trackers work with any modern VR or XR headset that can work with SteamVR, as well as many standalone headsets, including but not limited to Valve Index, Meta Quest 1, 2, 3, Pro and others (aka Oculus Quest 1, 2, 3, Pro), Oculus Quest, HTC Vive, Vive Pro, Vajro, Bigscreen Byond, Pico 3, Pico 4, and many-many others!"
+                "question": "Which Headsets Are Compatible With SlimeVR?",
+                "answer": "SlimeVR Trackers work with any modern VR or XR headset that can work with SteamVR, as well as many standalone headsets, including but not limited to Valve Index, Meta Quest 1, 2, 3 or Pro, HTC Vive, Vive Pro, Varjo, Bigscreen Beyond, Pico 3, Pico 4, and many-many others!"
             },
             "question-11": {
-                "question": "Which vTubing Software SlimeVR is Compatible With?",
+                "question": "Which vTubing Software Is SlimeVR Compatible With?",
                 "answer": "SlimeVR Trackers are compatible with any vTubing software that can work with OSC, VMC protocols or SteamVR, which most of them support, including VSeeFace, Warudo, Tracking Worlds and many more!"
             },
             "question-12": {
-                "question": "Which Motion Capture Software SlimeVR is Compatible With?",
-                "answer": "SlimeVR Trackers are compatible with Motion Capture (MoCap) software that can work with OSC, VMC protocols, SteamVR, or ones that can import BVH files, including Blender, Unreal Engine and more!."
+                "question": "Which Motion Capture Software Is SlimeVR Compatible With?",
+                "answer": "SlimeVR Trackers are compatible with Motion Capture (MoCap) software that can work with OSC, VMC protocols, SteamVR, or ones that can import BVH files, including Blender, Unreal Engine and more!"
             },
             "question-13": {
-                "question": "Does SlimeVR Have a Warranty?",
-                "answer": "SlimeVR Trackers have 2-year transferable warranty."
+                "question": "Does SlimeVR Come With A Warranty?",
+                "answer": "SlimeVR Trackers come with a 2-year transferable warranty."
             },
             "question-14": {
-                "question": "How Long Do SlimeVR Tracker's Battery Lasts?",
+                "question": "How Long Do SlimeVR Trackers' Battery Last?",
                 "answer": "SlimeVR Trackers last 10-15 hours on a full charge."
             },
             "question-15": {
-                "question": "Which Operating Systems does SlimeVR Work On?",
+                "question": "Which Operating Systems Does SlimeVR Work On?",
                 "answer": "SlimeVR is compatible with Windows 8, 8.1, 10, 11, Linux, MacOS X, Android and iPhone OS."
             },
             "question-16": {
@@ -126,11 +126,11 @@
             },
             "question-17": {
                 "question": "What Are SlimeVR Extensions?",
-                "answer": "SlimeVR Tracker Extensions are smaller trackers that connects to a Main Tracker via a wire. It uses Main Tracker's Wi-Fi connection, battery and processing power, so it can be smaller and cheaper than a full tracker!"
+                "answer": "SlimeVR Tracker Extensions are smaller trackers that connect to a main tracker via a cable. It uses the main tracker's Wi-Fi connection, battery and processing power, so it can be smaller and cheaper than a full tracker!"
             },
             "question-18": {
-                "question": "How Does SlimeVR Connects To My PC Or Smartphone?",
-                "answer": "SlimeVR Trackers connect to your local network via Wi-Fi and connect to your PC or smartphone on the same network. Your PC doesn't need to have a Wi-Fi connection, as long as it's connected to the same network as trackers."
+                "question": "How Does SlimeVR Connect To My PC Or Smartphone?",
+                "answer": "SlimeVR Trackers connect to your local network via Wi-Fi and connect to your PC or smartphone on the same network. Your PC doesn't need to have a Wi-Fi connection, as long as it's connected to the same network as the trackers."
             },
             "question-19": {
                 "question": "Do I Need Fast Internet For SlimeVR?",
@@ -138,11 +138,11 @@
             },
             "question-20": {
                 "question": "Do I Need Good Wi-Fi For SlimeVR?",
-                "answer": "SlimeVR Trackers don't require good Wi-Fi, but if your network is congested or has too many devices, you may experience connection issues or lag spikes, so the experience may vary."
+                "answer": "SlimeVR Trackers don't require good Wi-Fi, but if your network is congested or has too many devices, you may experience connection issues or lag spikes."
             },
             "question-21": {
                 "question": "How Many SlimeVR Trackers Do I Need?",
-                "answer": "You need a minimum of 5 trackers to track your legs - one for chest, two for thighs, and two for ankles. This will give you hip and ankle tracking (3-point FBT) as well as knee tracking as a bonus."
+                "answer": "You need a minimum of 5 trackers to track your legs - one for your chest, two for your thighs, and two for your ankles. This will give you hip and ankle tracking (3-point FBT) as well as knee tracking as a bonus."
             },
             "question-22": {
                 "question": "How Can I Use Additional SlimeVR Trackers?",
@@ -161,12 +161,12 @@
                 "answer": "SlimeVR is completely open-source, you can find all of the source code on our [GitHub](https://github.com/slimevr)!"
             },
             "question-26": {
-                "question": "Where Do I Buy SllimeVR Trackers?",
+                "question": "Where Do I Buy SlimeVR Trackers?",
                 "answer": "Original SlimeVR Trackers are only sold through our official distributors - Crowd Supply and Mouser Electronics."
             },
             "question-27": {
                 "question": "Do I Need 2.4Ghz Wi-Fi?",
-                "answer": "Yes. SlimeVR Trackers can only connect to 2.4Ghz Wi-Fi 4 networks. Most modern Wi-Fi routers support dual-band operation where you can have both 2.4Ghz and 5Ghz devices on the same network, so you don't need to downgrade your wi-fi for SlimeVR."
+                "answer": "Yes. SlimeVR Trackers can only connect to 2.4Ghz Wi-Fi 4 networks. All modern 5GHz Wi-Fi routers support dual-band operation where you can have both 2.4Ghz and 5Ghz devices on the same network, so you don't need to downgrade your Wi-Fi for SlimeVR."
             }
         }
     },
