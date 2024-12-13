@@ -173,5 +173,8 @@
                 "answer": "Yes. SlimeVR Trackers can only connect to 2.4Ghz Wi-Fi 4 networks. Most modern Wi-Fi routers support dual-band operation where you can have both 2.4Ghz and 5Ghz devices on the same network, so you don't need to downgrade your wi-fi for SlimeVR."
             }
         }
+    },
+    "privacy": {
+        "title": "Privacy Policy"
     }
 }

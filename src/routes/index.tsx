@@ -18,7 +18,7 @@ export default function HomeLayout(props: ParentProps) {
   return (
     <MainLayout>
       <AppTitle key="home.title"></AppTitle>
-      <Link rel="canonical" href="https:/slimevr.dev/" />
+      <Link rel="canonical" href="https://slimevr.dev/" />
       <Section>
         <div class="flex w-full mt-5 relative">
           <div class="absolute top-0 h-full animate-floating right-0 w-full md:flex justify-end hidden">

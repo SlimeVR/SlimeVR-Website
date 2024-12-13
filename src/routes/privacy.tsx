@@ -1,6 +1,8 @@
+import { Link } from "@solidjs/meta";
 import remarkGfm from "remark-gfm";
 import { ParentProps } from "solid-js";
 import { SolidMarkdown } from "solid-markdown";
+import { AppTitle } from "~/components/AppTitle";
 import { MarkdownLink } from "~/components/commons/Markdown";
 import { Typography } from "~/components/commons/Typogrtaphy";
 import { Section } from "~/components/Section";
@@ -10,6 +12,8 @@ import { MainLayout } from "~/layouts/MainLayout";
 export default function PrivacyPage(props: ParentProps) {
     return (
         <MainLayout>
+            <AppTitle key="privacy.title"></AppTitle>
+            <Link rel="canonical" href="https://slimevr.dev/privacy" />
             <Section>
                 <div class="mt-4">
                     <div class="bg-background-70 border border-background-40 rounded-2xl p-4">
