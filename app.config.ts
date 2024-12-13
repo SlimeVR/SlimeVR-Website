@@ -10,5 +10,9 @@ export default defineConfig({
     prerender: {
       crawlLinks: true,
     },
+    // How to do redirects without workers:
+    // routeRules: {
+    //   "/download": { redirect: { to: "#download", statusCode: 301 } },
+    // },
   },
 });
