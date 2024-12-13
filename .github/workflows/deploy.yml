@@ -32,7 +32,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./.output/public
+          path: ./dist
 
   # Deployment job
   deploy:
@@ -45,5 +45,5 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: slimevr-website
-          directory: ./.output/public
+          directory: ./dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
