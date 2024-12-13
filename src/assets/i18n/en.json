@@ -129,8 +129,8 @@
                 "answer": "SlimeVR Tracker Extensions are smaller trackers that connects to a Main Tracker via a wire. It uses Main Tracker's Wi-Fi connection, battery and processing power, so it can be smaller and cheaper than a full tracker!"
             },
             "question-18": {
-                "question": "How Does SlimeVR Connects To My PC Or Smartphone?",
-                "answer": "SlimeVR Trackers connect to your local network via Wi-Fi and connect to your PC or smartphone on the same network. Your PC doesn't need to have a Wi-Fi connection, as long as it's connected to the same network as trackers."
+                "question": "How Does SlimeVR Connect To My PC Or Smartphone?",
+                "answer": "SlimeVR Trackers connect to your local network via Wi-Fi and connect to your PC or smartphone on the same network. Your PC doesn't need to have a Wi-Fi connection, as long as it's connected to the same network as the trackers."
             },
             "question-19": {
                 "question": "Do I Need Fast Internet For SlimeVR?",
@@ -161,7 +161,7 @@
                 "answer": "SlimeVR is completely open-source, you can find all of the source code on our [GitHub](https://github.com/slimevr)!"
             },
             "question-26": {
-                "question": "Where Do I Buy SllimeVR Trackers?",
+                "question": "Where Do I Buy SlimeVR Trackers?",
                 "answer": "Original SlimeVR Trackers are only sold through our official distributors - Crowd Supply and Mouser Electronics."
             },
             "question-27": {
