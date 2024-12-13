@@ -140,14 +140,14 @@ export const DownloadSection: Component = () => {
             <div class="bg-background-70 rounded-lg border border-background-40 absolute w-full top-0 left-0">
               <img
                 src="/images/slimevr_desktop.webp"
-                class="w-full aspect-video p-2"
+                class="w-full aspect-video p-2 rounded-2xl"
                 loading="lazy"
               ></img>
             </div>
 
             <div class="bg-background-70 rounded-lg border border-background-40 absolute overflow-clip top-[15%] sm:top-[12%] md:top-[16%] -right-8 p-1 shadow-background-80 w-1/4 sm:w-[27%] md:w-[24%]">
               <img
-                class="w-full"
+                class="w-full rounded-lg"
                 loading="lazy"
                 src="/images/slimevr_mobile.webp"
               ></img>

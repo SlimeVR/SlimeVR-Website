@@ -42,7 +42,7 @@ This Privacy Policy applies to all information collected or submitted on the web
 
 ## How We Use Information
 
-We may use your email address to communicate with you, for example, to notify you of content that you might find of interest. We use return email addresses to answer the email we receive.
+We may use your email address to communicate with you, for example, to notify you of content that you might find of interest. We use return email addresses to answer the emails we receive.
 
 We will never sell your personal information to any other company.
 
@@ -68,7 +68,7 @@ You can opt out of Google Analytics if you disable or refuse the cookie, disable
 We use the remarketing feature from Google Ads. 
 This feature is used to present website users advertising within the Google ad network. 
 A "cookie" is stored in the browser of a user to the website that enables the user to be recognized on Google's network after they leave our site. 
-Google can present the user with advertisements that relate to content that they had previously viewed up on websites that use the remarketing feature from Google.
+Google can present the user with advertisements that relate to content that they had previously viewed on websites that use the remarketing feature from Google.
 According to its own policy, Google does not collect any personal data with this process. 
 Nevertheless, if you do not want to use the remarketing feature from Google, you can disable it by changing the appropriate settings at Google Ad Settings.
 
@@ -81,7 +81,7 @@ Please review the privacy policy of these services if you choose to interact wit
 
 If you have any questions about this Privacy Policy, please contact us via email (support@slimevr.dev) or through our [support system](https://shop.slimevr.dev/pages/support)
 
-Last updated: 12/12/24
+Last updated: 12/13/24
                 `}
                         </SolidMarkdown>
                     </div>
