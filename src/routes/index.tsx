@@ -1,4 +1,4 @@
-import { Link } from "@solidjs/meta";
+import { Link, Meta } from "@solidjs/meta";
 import { ParentProps } from "solid-js";
 import { AppTitle } from "~/components/AppTitle";
 import { ArrowButton } from "~/components/commons/ArrowButton";
@@ -18,6 +18,7 @@ export default function HomeLayout(props: ParentProps) {
   return (
     <MainLayout>
       <AppTitle key="home.title"></AppTitle>
+      <Meta name="robots" content="index, follow" />
       <Link rel="canonical" href="https://slimevr.dev/" />
       <Section>
         <div class="flex w-full mt-5 relative">

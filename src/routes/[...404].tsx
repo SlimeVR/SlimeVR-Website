@@ -1,4 +1,4 @@
-import { A } from "@solidjs/router";
+import { Meta } from "@solidjs/meta";
 import { ArrowButton } from "~/components/commons/ArrowButton";
 import { Typography } from "~/components/commons/Typogrtaphy";
 import { Section } from "~/components/Section";
@@ -8,6 +8,7 @@ export default function NotFound() {
   return (
     <MainLayout>
       <Section>
+        <Meta name="robots" content="noindex, nofollow" />
         <div class="mt-4">
           <div class="bg-background-70 border border-background-40 rounded-2xl p-4">
             <Typography tag="h1" variant="main-title">Page not found</Typography>

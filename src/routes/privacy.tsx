@@ -1,4 +1,4 @@
-import { Link } from "@solidjs/meta";
+import { Link, Meta } from "@solidjs/meta";
 import remarkGfm from "remark-gfm";
 import { ParentProps } from "solid-js";
 import { SolidMarkdown } from "solid-markdown";
@@ -14,6 +14,8 @@ export default function PrivacyPage(props: ParentProps) {
         <MainLayout>
             <AppTitle key="privacy.title"></AppTitle>
             <Link rel="canonical" href="https://slimevr.dev/privacy" />
+            <Meta name="robots" content="index, follow" />
+
             <Section>
                 <div class="mt-4">
                     <div class="bg-background-70 border border-background-40 rounded-2xl p-4">
