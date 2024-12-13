@@ -67,7 +67,7 @@ export default createHandler(() => (
 
               gtag('config', 'G-NWK0CGTXML');`}
           </script>
-          <script>
+          {/* <script>
             {`window.axeptioSettings = {
               clientId: "67592ee8f13a61bf84a6d076",
               cookiesVersion: "slimevr-en-EU",
@@ -89,7 +89,7 @@ export default createHandler(() => (
                     e.src = "//static.axept.io/sdk.js";
                     t.parentNode.insertBefore(e, t);
               })(document, "script");`}
-          </script>
+          </script> */}
         </body>
       </html>
 
