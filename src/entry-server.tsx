@@ -59,13 +59,13 @@ export default createHandler(() => (
               f.parentNode.insertBefore(j, f);
               })(window, document, "script", "dataLayer", "GTM-N42PM2BF");`}
           </script>
-          <script async src="https://www.googletagmanager.com/gtag/js?id=G-QF88MJTX40"></script>
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-NWK0CGTXML"></script>
           <script>
             {`window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
 
-            gtag('config', 'G-QF88MJTX40');`}
+              gtag('config', 'G-NWK0CGTXML');`}
           </script>
           <script>
             {`window.axeptioSettings = {
