@@ -141,34 +141,30 @@
                 "answer": "SlimeVR Trackers don't require good Wi-Fi, but if your network is congested or has too many devices, you may experience connection issues or lag spikes, so the experience may vary."
             },
             "question-21": {
-                "question": "Do I Need Good Wi-Fi For SlimeVR?",
-                "answer": "SlimeVR Trackers don't require good Wi-Fi, but if your network is congested or has too many devices, you may experience connection issues or lags, so the experience may vary."
-            },
-            "question-22": {
                 "question": "How Many SlimeVR Trackers Do I Need?",
                 "answer": "You need a minimum of 5 trackers to track your legs - one for chest, two for thighs, and two for ankles. This will give you hip and ankle tracking (3-point FBT) as well as knee tracking as a bonus."
             },
-            "question-23": {
+            "question-22": {
                 "question": "How Can I Use Additional SlimeVR Trackers?",
                 "answer": "Simply connect your SlimeVR trackers and assign them to any available locations on your body of your choosing!"
             },
-            "question-24": {
+            "question-23": {
                 "question": "How Do I Charge SlimeVR Trackers?",
                 "answer": "SlimeVR Trackers can be charged with any USB-C charging cable and any compatible USB charger."
             },
-            "question-25": {
+            "question-24": {
                 "question": "Can I Use SlimeVR With ShadowPC or Similar Services?",
                 "answer": "Yes. For remote setup please follow [our guides](https://docs.slimevr.dev/tools/shadowpc.html)."
             },
-            "question-26": {
+            "question-25": {
                 "question": "Is SlimeVR Open-Source?",
                 "answer": "SlimeVR is completely open-source, you can find all of the source code on our [GitHub](https://github.com/slimevr)!"
             },
-            "question-27": {
+            "question-26": {
                 "question": "Where Do I Buy SllimeVR Trackers?",
                 "answer": "Original SlimeVR Trackers are only sold through our official distributors - Crowd Supply and Mouser Electronics."
             },
-            "question-28": {
+            "question-27": {
                 "question": "Do I Need 2.4Ghz Wi-Fi?",
                 "answer": "Yes. SlimeVR Trackers can only connect to 2.4Ghz Wi-Fi 4 networks. Most modern Wi-Fi routers support dual-band operation where you can have both 2.4Ghz and 5Ghz devices on the same network, so you don't need to downgrade your wi-fi for SlimeVR."
             }
