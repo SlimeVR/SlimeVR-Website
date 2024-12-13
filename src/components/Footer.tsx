@@ -6,8 +6,8 @@ import { A } from "@solidjs/router";
 export const Footer: Component = (props) => {
   return (
     <footer class="bg-background-70 border-t border-background-50 w-full flex flex-col items-center">
-      <div class="max-w-6xl 2xl:max-w-[1400px] w-full px-4 grid grid-cols-4 py-10">
-        <div class="flex flex-col">
+      <div class="max-w-6xl 2xl:max-w-[1400px] w-full px-4 grid grid-cols-1 gap-5 sm:grid-cols-4 py-10">
+        <div class="flex flex-col mobile:order-last mobile:items-center">
           <SlimeVRIcon
             size={150}
             class="stroke-accent-background-10"
@@ -22,7 +22,7 @@ export const Footer: Component = (props) => {
             variant="section-title"
             key="footer.column.resources.title"
           />
-          <div class="flex flex-col gap-0.5">
+          <div class="flex sm:flex-col sm:gap-0.5 gap-3 flex-wrap">
             <a href="https://docs.slimevr.dev" target="_blank" class="link w-fit">
               <Typography key="navbar.documentation" tag="span" />
             </a>
@@ -59,7 +59,7 @@ export const Footer: Component = (props) => {
             variant="section-title"
             key="footer.column.shop.title"
           />
-          <div class="flex flex-col gap-0.5">
+          <div class="flex sm:flex-col sm:gap-0.5 gap-3 flex-wrap">
             <a
               href="https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker"
               target="_blank"
@@ -78,7 +78,7 @@ export const Footer: Component = (props) => {
             variant="section-title"
             key="footer.column.social.title"
           />
-          <div class="flex flex-col gap-0.5">
+          <div class="flex sm:flex-col sm:gap-0.5 gap-3 flex-wrap">
             <a
               href="https://bsky.app/profile/slimevr.dev"
               target="_blank"
