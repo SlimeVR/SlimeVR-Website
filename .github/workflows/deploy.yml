@@ -8,8 +8,7 @@ on:
 # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
 permissions:
   contents: read
-  pages: write # to deploy to Pages
-  id-token: write # to verify the deployment originates from an appropriate source
+  deployments: write
 
 jobs:
   build:
@@ -37,12 +36,14 @@ jobs:
 
   # Deployment job
   deploy:
-    environment:
-      name: github_pages
-      url: ${{ steps.deployment.outputs.page_url }}
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Publish
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: slimevr-website
+          directory: ./.output/public
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}

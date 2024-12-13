@@ -73,7 +73,7 @@ Please review the privacy policy of these services if you choose to interact wit
 
 ## How To Contact Us
 
-If you have any questions about this Privacy Policy, please contact us via email (contact@slimevr.dev) or through our [support system](https://shop.slimevr.dev/pages/support)
+If you have any questions about this Privacy Policy, please contact us via email (support@slimevr.dev) or through our [support system](https://shop.slimevr.dev/pages/support)
 
 Last updated: 12/12/24
                 `}

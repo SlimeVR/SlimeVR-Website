@@ -10,6 +10,7 @@ export default defineConfig({
     prerender: {
       crawlLinks: true,
     },
-    preset: "github-pages",
+    preset: "cloudflare-pages",
+    baseURL: "/SlimeVR-Website/",
   },
 });
