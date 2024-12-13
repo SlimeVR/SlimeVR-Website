@@ -61,7 +61,7 @@ const ExplosionDot: Component = () => {
   });
 
   return (
-    <div class="absolute" style={explodeStyle()}>
+    <div class="absolute -z-10" style={explodeStyle()}>
       <div class="linear-gradient size-[300px] rounded-full animate-explode"></div>
     </div>
   );
@@ -69,24 +69,28 @@ const ExplosionDot: Component = () => {
 
 export const MainLayout: ParentComponent = (props) => {
   return (
-    <div class="flex flex-col min-h-screen pattern">
-      <div class="relative overflow-clip flex-grow">
-        <ExplosionDot></ExplosionDot>
-        <ExplosionDot></ExplosionDot>
-        <ExplosionDot></ExplosionDot>
-        <ExplosionDot></ExplosionDot>
-        <div class="flex flex-col w-full items-center relative overflow-y-clip py-4">
-          <img
-            class="absolute w-full top-0"
-            src="/images/Webpage_Design_Parts_header_block.webp"
-          ></img>
-          <div class="max-w-6xl 2xl:max-w-[1400px] w-full top-5 z-20 px-4">
-            <Navbar></Navbar>
+    <>
+      <ExplosionDot></ExplosionDot>
+      <ExplosionDot></ExplosionDot>
+      <ExplosionDot></ExplosionDot>
+      <ExplosionDot></ExplosionDot>
+      <div class="flex flex-col min-h-screen pattern">
+        <div class="relative overflow-clip flex-grow">
+
+          <div class="flex flex-col w-full items-center relative overflow-y-clip py-4">
+            <img
+              class="absolute w-full top-0"
+              src="/images/Webpage_Design_Parts_header_block.webp"
+            ></img>
+            <div class="max-w-6xl 2xl:max-w-[1400px] w-full top-5 z-20 px-4">
+              <Navbar></Navbar>
+            </div>
+            {props.children}
           </div>
-          {props.children}
         </div>
+        <Footer></Footer>
       </div>
-      <Footer></Footer>
-    </div>
+    </>
+
   );
 };
