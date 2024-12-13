@@ -9,7 +9,7 @@ import {
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 
-const ANIMATION_TIME = 6000;
+const ANIMATION_TIME = 5500;
 const MIN_TIME = 6000;
 const RANDOM_TIME = 5000;
 const ExplosionDot: Component = () => {
@@ -36,13 +36,10 @@ const ExplosionDot: Component = () => {
       animate();
       animateLoop();
     }, Math.random() * RANDOM_TIME + MIN_TIME);
-    animate();
   };
 
   onMount(() => {
-    setTimeout(() => {
-      animateLoop();
-    }, Math.floor(Math.random() * 3) * 1000);
+    animateLoop();
   });
 
   onCleanup(() => {
