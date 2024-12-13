@@ -1,5 +1,5 @@
 {
-  "name": "example-with-tailwindcss",
+  "name": "slimevr-website",
   "type": "module",
   "scripts": {
     "dev": "vinxi dev",

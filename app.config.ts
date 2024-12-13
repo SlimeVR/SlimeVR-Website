@@ -11,6 +11,5 @@ export default defineConfig({
       crawlLinks: true,
     },
     preset: "cloudflare-pages",
-    baseURL: "/SlimeVR-Website/",
   },
 });
