@@ -45,14 +45,11 @@ export const Drawer: ParentComponent<DrawerProps> = (props) => {
   };
 
   return (
-
     <DrawerContext.Provider value={context}>
       <div class="flex flex-col gap-5" ref={drawerContainerRef}>
         {props.children}
       </div>
     </DrawerContext.Provider>
-
-
   );
 };
 
@@ -90,7 +87,7 @@ export const DrawerItem: ParentComponent<DrawerItemProps> = (props) => {
 
   if (!isServer) {
     onMount(() => {
-      contentSizeObserver = new ResizeObserver(() => onResize())
+      contentSizeObserver = new ResizeObserver(() => onResize());
       contentSizeObserver.observe(itemContentRef);
       context.events.addEventListener("open", onOpen);
       setContentSize(getContentSize(itemContentRef));
@@ -98,14 +95,13 @@ export const DrawerItem: ParentComponent<DrawerItemProps> = (props) => {
     });
 
     onCleanup(() => {
-      if (contentSizeObserver)
-        contentSizeObserver.unobserve(itemContentRef);
+      if (contentSizeObserver) contentSizeObserver.unobserve(itemContentRef);
       context.events.removeEventListener("open", onOpen);
     });
   }
 
   const style = createMemo(() => {
-    if (isServer) return { height: 'inherit' }
+    if (isServer) return { height: "inherit" };
     if (!contentSize() || !isOpen()) return { height: `0px` };
 
     return { height: `${contentSize().height}px` };

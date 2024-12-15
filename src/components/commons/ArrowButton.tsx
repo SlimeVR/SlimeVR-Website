@@ -1,4 +1,12 @@
-import { children, Component, JSX, mergeProps, ParentComponent, Show, splitProps } from "solid-js";
+import {
+  children,
+  Component,
+  JSX,
+  mergeProps,
+  ParentComponent,
+  Show,
+  splitProps,
+} from "solid-js";
 import { ArrowIcon } from "./icons/ArrowIcon";
 import clsx from "clsx";
 import { A, AnchorProps } from "@solidjs/router";
@@ -23,7 +31,7 @@ export const ArrowButton: ParentComponent<ArrowButtonProps> = (
     "children",
   ]);
 
-  const prefixIcon = children(() => props.prefixIcon)
+  const prefixIcon = children(() => props.prefixIcon);
 
   return (
     <A

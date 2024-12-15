@@ -37,8 +37,7 @@ export const DownloadButton: ParentComponent<DownloadButtonProps> = (
     "children",
   ]);
 
-  const prefixIcon = children(() => props.prefixIcon)
-
+  const prefixIcon = children(() => props.prefixIcon);
 
   return (
     <A
