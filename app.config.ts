@@ -8,6 +8,7 @@ export default defineConfig({
   server: {
     static: true,
     prerender: {
+      routes: ["/404.html"],
       crawlLinks: true,
     },
     // How to do redirects without workers:

@@ -13,8 +13,8 @@ import { useI18n } from "~/i18n";
 import { MarkdownLink } from "../commons/Markdown";
 
 const possibleImages = [
-  "/images/Nighty_For_FAQ_Block first_.webp",
-  "/images/Nighty_For_FAQ_Block second_.webp",
+  "/images/Nighty_For_FAQ_Block_first_.webp",
+  "/images/Nighty_For_FAQ_Block_second_.webp",
 ];
 
 const QUESTIONS_COUNT = 28;
