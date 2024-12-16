@@ -59,7 +59,7 @@ export default createHandler(() => (
               f.parentNode.insertBefore(j, f);
               })(window, document, "script", "dataLayer", "GTM-N42PM2BF");`}
           </script>
-          <script>
+          {/* <script>
             {`window.dataLayer = window.dataLayer ||[];
             function gtag()
             gtag('consent','default',{
@@ -76,7 +76,7 @@ export default createHandler(() => (
               gtag('js', new Date());
 
               gtag('config', 'G-NWK0CGTXML');`}
-          </script>
+          </script> */}
         </body>
       </html>
 
