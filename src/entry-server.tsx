@@ -59,6 +59,16 @@ export default createHandler(() => (
               f.parentNode.insertBefore(j, f);
               })(window, document, "script", "dataLayer", "GTM-N42PM2BF");`}
           </script>
+          <script>
+            {`window.dataLayer = window.dataLayer ||[];
+            function gtag()
+            gtag('consent','default',{
+              'ad_storage':'denied',
+              'analytics_storage':'denied',
+              'personalization_storage':'denied'
+            });
+            gtag("set", "ads_data_redaction", true);`}
+          </script>
           <script async src="https://www.googletagmanager.com/gtag/js?id=G-NWK0CGTXML"></script>
           <script>
             {`window.dataLayer = window.dataLayer || [];
