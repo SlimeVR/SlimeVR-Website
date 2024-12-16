@@ -7,7 +7,7 @@ import {
   onCleanup,
   onMount,
 } from "solid-js";
-import { Typography } from "../../components/commons/Typogrtaphy";
+import { Typography } from "../commons/Typography";
 import { PlayIcon } from "../../components/commons/icons/PlayIcon";
 import { ArrowIcon } from "../../components/commons/icons/ArrowIcon";
 import clsx from "clsx";

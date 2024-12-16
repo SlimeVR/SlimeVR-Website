@@ -6,7 +6,7 @@ import {
   For,
 } from "solid-js";
 import { Drawer, DrawerItem } from "../../components/commons/Drawer";
-import { Typography } from "../../components/commons/Typogrtaphy";
+import { Typography } from "../commons/Typography";
 import { SolidMarkdown } from "solid-markdown";
 import remarkGfm from "remark-gfm";
 import { useI18n } from "~/i18n";

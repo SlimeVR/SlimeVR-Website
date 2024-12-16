@@ -4,7 +4,7 @@ import { ParentProps } from "solid-js";
 import { SolidMarkdown } from "solid-markdown";
 import { AppTitle } from "~/components/AppTitle";
 import { MarkdownLink } from "~/components/commons/Markdown";
-import { Typography } from "~/components/commons/Typogrtaphy";
+import { Typography } from "~/components/commons/Typography";
 import { Section } from "~/components/Section";
 import { MainLayout } from "~/layouts/MainLayout";
 

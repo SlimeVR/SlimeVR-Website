@@ -1,6 +1,6 @@
 import { Meta } from "@solidjs/meta";
 import { ArrowButton } from "~/components/commons/ArrowButton";
-import { Typography } from "~/components/commons/Typogrtaphy";
+import { Typography } from "~/components/commons/Typography";
 import { Section } from "~/components/Section";
 import { MainLayout } from "~/layouts/MainLayout";
 

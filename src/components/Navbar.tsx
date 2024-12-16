@@ -1,6 +1,6 @@
 import { Component, createSignal, Show } from "solid-js";
 import { SlimeVRIcon } from "./commons/icons/SlimeVRIcon";
-import { Typography } from "./commons/Typogrtaphy";
+import { Typography } from "./commons/Typography";
 import { A } from "@solidjs/router";
 import { Button } from "./commons/Button";
 import { BarsIcon } from "./commons/icons/BarsIcon";
