@@ -6,15 +6,15 @@ import {
   For,
 } from "solid-js";
 import { Drawer, DrawerItem } from "../../components/commons/Drawer";
-import { Typography } from "../../components/commons/Typogrtaphy";
+import { Typography } from "../commons/Typography";
 import { SolidMarkdown } from "solid-markdown";
 import remarkGfm from "remark-gfm";
 import { useI18n } from "~/i18n";
 import { MarkdownLink } from "../commons/Markdown";
 
 const possibleImages = [
-  "/images/Nighty_For_FAQ_Block first_.webp",
-  "/images/Nighty_For_FAQ_Block second_.webp",
+  "/images/Nighty_For_FAQ_Block_first_.webp",
+  "/images/Nighty_For_FAQ_Block_second_.webp",
 ];
 
 const QUESTIONS_COUNT = 27;

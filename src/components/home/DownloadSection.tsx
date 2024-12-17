@@ -6,7 +6,7 @@ import {
   ParentComponent,
   splitProps,
 } from "solid-js";
-import { Typography } from "../../components/commons/Typogrtaphy";
+import { Typography } from "../commons/Typography";
 import {
   AndroidIcon,
   AppleIcon,

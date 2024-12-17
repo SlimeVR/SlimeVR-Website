@@ -6,7 +6,7 @@ import { CartIcon } from "~/components/commons/icons/CartIcon";
 import { CrowdSupplyIcon } from "~/components/commons/icons/CrowdSupplyIcon";
 import { DiscordIcon } from "~/components/commons/icons/DiscordIcon";
 import { DonwloadIcon } from "~/components/commons/icons/DownloadIcon";
-import { Typography } from "~/components/commons/Typogrtaphy";
+import { Typography } from "~/components/commons/Typography";
 import { DownloadSection } from "~/components/home/DownloadSection";
 import { QASection } from "~/components/home/QASection";
 import { VideoSection } from "~/components/home/VideoSection";
