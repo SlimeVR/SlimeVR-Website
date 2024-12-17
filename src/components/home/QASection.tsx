@@ -37,7 +37,7 @@ export interface AcceptedAnswer {
 }
 
 export const QASection: Component = () => {
-  const { translator } = useI18n()
+  const { translator } = useI18n();
   const [currentImage, setCurrentImage] = createSignal<string>(
     possibleImages[0]
   );

@@ -156,7 +156,7 @@ export const VideoSection: Component = () => {
 
   onMount(() => {
     if (!isServer) {
-      resizeObserver = new ResizeObserver(() => onResize())
+      resizeObserver = new ResizeObserver(() => onResize());
       videosScrollRef.addEventListener("scrollend", onScrollEnd);
       resizeObserver.observe(videosScrollRef);
       onResize();
@@ -166,8 +166,7 @@ export const VideoSection: Component = () => {
   onCleanup(() => {
     if (!isServer) {
       videosScrollRef.removeEventListener("scrollend", onScrollEnd);
-      if (resizeObserver)
-        resizeObserver.unobserve(videosScrollRef);
+      if (resizeObserver) resizeObserver.unobserve(videosScrollRef);
     }
   });
 

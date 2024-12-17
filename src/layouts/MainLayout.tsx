@@ -32,10 +32,13 @@ const ExplosionDot: Component = () => {
   };
 
   const animateLoop = () => {
-    animationId = setTimeout(() => {
-      animate();
-      animateLoop();
-    }, Math.random() * RANDOM_TIME + MIN_TIME);
+    animationId = setTimeout(
+      () => {
+        animate();
+        animateLoop();
+      },
+      Math.random() * RANDOM_TIME + MIN_TIME
+    );
   };
 
   onMount(() => {

@@ -14,8 +14,9 @@ import { Section } from "~/components/Section";
 import { Localized } from "~/i18n";
 import { MainLayout } from "~/layouts/MainLayout";
 
-
-const UseCaseCard: Component<{ title: string, image: string, desc: string }> = (props) => {
+const UseCaseCard: Component<{ title: string; image: string; desc: string }> = (
+  props
+) => {
   return (
     <div class="bg-background-70 border border-background-40 rounded-2xl p-4 gap-4 flex flex-col sm:flex-row md:flex-col">
       <div class="sm:hidden md:block">
@@ -27,7 +28,11 @@ const UseCaseCard: Component<{ title: string, image: string, desc: string }> = (
         />
       </div>
       <div class="flex justify-center items-center sm:justify-start h-52 md:h-auto select-none pointer-events-none sm:w-fit">
-        <img src={props.image} loading="lazy" class="h-full sm:w-full sm:h-auto sm:p-8 md:p-0" />
+        <img
+          src={props.image}
+          loading="lazy"
+          class="h-full sm:w-full sm:h-auto sm:p-8 md:p-0"
+        />
       </div>
       <div class="flex flex-col sm:gap-4 sm:justify-center sm:w-full">
         <div class="hidden sm:block md:hidden">
@@ -38,14 +43,11 @@ const UseCaseCard: Component<{ title: string, image: string, desc: string }> = (
             key={props.title}
           />
         </div>
-        <Typography
-          tag="p"
-          key={props.desc}
-        />
+        <Typography tag="p" key={props.desc} />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default function HomeLayout(props: ParentProps) {
   return (
@@ -181,4 +183,3 @@ export default function HomeLayout(props: ParentProps) {
     </MainLayout>
   );
 }
-

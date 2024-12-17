@@ -7,15 +7,22 @@ import { MetaProvider } from "@solidjs/meta";
 
 export default function App() {
   return (
-    <ErrorBoundary fallback={(err) => {
-      console.error(err)
-      return <>error</>
-    }}>
+    <ErrorBoundary
+      fallback={(err) => {
+        console.error(err);
+        return <>error</>;
+      }}
+    >
       <Suspense>
         <I18nProvider fallback={<>LOADING</>}>
           <Suspense>
-            <MetaProvider >
-              <ErrorBoundary fallback={(err) => { console.log('????', err); return <>ROUTER ERROR</> }}>
+            <MetaProvider>
+              <ErrorBoundary
+                fallback={(err) => {
+                  console.log("????", err);
+                  return <>ROUTER ERROR</>;
+                }}
+              >
                 <Router root={(root) => <Suspense>{root.children}</Suspense>}>
                   <FileRoutes />
                 </Router>
@@ -24,8 +31,6 @@ export default function App() {
           </Suspense>
         </I18nProvider>
       </Suspense>
-
     </ErrorBoundary>
-
   );
 }

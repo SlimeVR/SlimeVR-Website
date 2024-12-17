@@ -23,7 +23,11 @@ export const Footer: Component = (props) => {
             key="footer.column.resources.title"
           />
           <div class="flex sm:flex-col sm:gap-0.5 gap-3 flex-wrap">
-            <a href="https://docs.slimevr.dev" target="_blank" class="link w-fit">
+            <a
+              href="https://docs.slimevr.dev"
+              target="_blank"
+              class="link w-fit"
+            >
               <Typography key="navbar.documentation" tag="span" />
             </a>
             <A
@@ -38,10 +42,18 @@ export const Footer: Component = (props) => {
             >
               <Typography tag="span" key="navbar.download" />
             </A>
-            <a href="https://discord.gg/SlimeVR" target="_blank" class="link w-fit">
+            <a
+              href="https://discord.gg/SlimeVR"
+              target="_blank"
+              class="link w-fit"
+            >
               <Typography key="navbar.discord" tag="span" />
             </a>
-            <a href="https://github.com/SlimeVR" target="_blank" class="link w-fit">
+            <a
+              href="https://github.com/SlimeVR"
+              target="_blank"
+              class="link w-fit"
+            >
               <Typography key="navbar.github" tag="span" />
             </a>
             <a
@@ -67,7 +79,11 @@ export const Footer: Component = (props) => {
             >
               <Typography tag="span" key="footer.column.shop.official" />
             </a>
-            <a href="https://shop.slimevr.dev" target="_blank" class="link w-fit">
+            <a
+              href="https://shop.slimevr.dev"
+              target="_blank"
+              class="link w-fit"
+            >
               <Typography tag="span" key="footer.column.shop.spare-parts" />
             </a>
           </div>

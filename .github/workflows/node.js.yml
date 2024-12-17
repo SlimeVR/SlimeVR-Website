@@ -5,28 +5,26 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - uses: pnpm/action-setup@v4
-      with:
-        version: 9
-    - name: Use Node.js 22
-      uses: actions/setup-node@v4
-      with:
-        node-version: 22.x
-        cache: 'pnpm'
-    - run: pnpm i
-    - run: NITRO_PRESET=cloudflare_pages_static pnpm build
-    - name: Deploy
-      uses: cloudflare/wrangler-action@v3
-      with:
-        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        command: pages deploy dist/ --project-name "slimevr-main-website" --branch "main"
-    
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: "pnpm"
+      - run: pnpm i
+      - run: NITRO_PRESET=cloudflare_pages_static pnpm build
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          command: pages deploy dist/ --project-name "slimevr-main-website" --branch "main"

@@ -8,23 +8,22 @@ import { Typography } from "~/components/commons/Typography";
 import { Section } from "~/components/Section";
 import { MainLayout } from "~/layouts/MainLayout";
 
-
 export default function PrivacyPage(props: ParentProps) {
-    return (
-        <MainLayout>
-            <AppTitle key="privacy.title"></AppTitle>
-            <Link rel="canonical" href="https://slimevr.dev/privacy" />
-            <Meta name="robots" content="index, follow" />
+  return (
+    <MainLayout>
+      <AppTitle key="privacy.title"></AppTitle>
+      <Link rel="canonical" href="https://slimevr.dev/privacy" />
+      <Meta name="robots" content="index, follow" />
 
-            <Section>
-                <div class="mt-4">
-                    <div class="bg-background-70 border border-background-40 rounded-2xl p-4">
-                        <SolidMarkdown
-                            remarkPlugins={[remarkGfm]}
-                            components={{ a: MarkdownLink }}
-                            class="text-sm w-full min-w-full prose-xl prose text-background-10 prose-h1:text-background-10 prose-h2:text-background-10 prose-a:text-background-20 prose-strong:text-background-10 prose-code:text-background-20"
-                        >
-                            {`
+      <Section>
+        <div class="mt-4">
+          <div class="bg-background-70 border border-background-40 rounded-2xl p-4">
+            <SolidMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={{ a: MarkdownLink }}
+              class="text-sm w-full min-w-full prose-xl prose text-background-10 prose-h1:text-background-10 prose-h2:text-background-10 prose-a:text-background-20 prose-strong:text-background-10 prose-code:text-background-20"
+            >
+              {`
 # Privacy Policy
 
 
@@ -83,12 +82,10 @@ If you have any questions about this Privacy Policy, please contact us via email
 
 Last updated: 12/13/24
                 `}
-                        </SolidMarkdown>
-                    </div>
-                </div>
-
-            </Section>
-
-        </MainLayout>
-    )
+            </SolidMarkdown>
+          </div>
+        </div>
+      </Section>
+    </MainLayout>
+  );
 }
