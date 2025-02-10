@@ -57,7 +57,7 @@ export const DownloadButton: ParentComponent<DownloadButtonProps> = (
         {prefixIcon()}
       </div>
       <div class="flex flex-col flex-grow">{props.children}</div>
-      <div class="flex w-9">
+      <div class="flex w-9 group-hover:translate-y-1 transition-transform duration-2">
         <DonwloadIcon size={30} class="fill-background-10"></DonwloadIcon>
       </div>
     </A>
