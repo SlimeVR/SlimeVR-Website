@@ -12,7 +12,7 @@ export default createHandler(
               name="viewport"
               content="width=device-width, initial-scale=1"
             />
-
+            <link rel="me" href="https://mastodon.social/@SlimeVR" />
             <meta name="theme-color" content="#65459a" />
             <meta name="darkreader-lock" />
             <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
