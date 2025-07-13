@@ -39,7 +39,7 @@ export default createHandler(
             />
             <meta
               name="description"
-              content="SlimeVR Full-Body Tracking is a set of open hardware sensors and open source software that facilitates full-body tracking (FBT) for Virtual Reality, VTubing and Motion Capture. SlimeVR FBT is designed to require no base stations, be affordable, comfortable and open."
+              content="SlimeVR Full-Body Tracking is a set of open hardware sensors and open-source software that facilitates full-body tracking (FBT) for Virtual Reality, VTubing, and Motion Capture. SlimeVR FBT is designed to require no base stations, be affordable, comfortable, and open."
             />
             <meta
               name="keywords"
