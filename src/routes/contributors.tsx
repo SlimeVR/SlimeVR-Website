@@ -9,6 +9,7 @@ import { Section } from "~/components/Section";
 import { Localized } from "~/i18n";
 import { MainLayout } from "~/layouts/MainLayout";
 import { Card } from "~/components/contributors/Card";
+import { contributors, type Contributor } from "~/components/contributors";
 
 export default function ContributorsLayout(props: ParentProps) {
   return (
@@ -59,16 +60,12 @@ export default function ContributorsLayout(props: ParentProps) {
           </div>
 
           <div class="flex flex-row flex-wrap gap-4 mt-8 justify-around">
-            {[...Array(25)].map((_, i) => (
+            {contributors.map((contributor, i) => (
               <Card
-              name={`JovannMC`}
-              roles={["artist", "dev", "founder"]}
-              socials={{ /* TODO: socials */ }}
-              image="/images/contrib-slime.png"
-              tags={["Tag one", "Another tag", "Smol tag", "Tag four"]}
-              background={{ /* TODO: background */ }}
-              border={{ /* TODO: border */ }}
-            />
+                contributor={contributor}
+                background={{ /* TODO: background */ }}
+                border={{ /* TODO: border */ }}
+              />
             ))}
           </div>
         </Container>

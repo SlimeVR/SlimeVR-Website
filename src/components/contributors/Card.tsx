@@ -8,12 +8,18 @@ import {
 import CircularIcon from "./CircularIcon";
 import { DevIcon } from "../commons/icons/DevIcon";
 import { ArtistIcon } from "../commons/icons/ArtistIcon";
-import { FounderIcon } from "../commons/icons/FounderIcon";
 import { Typography } from "../commons/Typography";
-
-interface Socials {
-  // TODO: socials structure
-}
+import { Contributor } from ".";
+import { PeopleIcon } from "../commons/icons/PeopleIcon";
+import { GithubIcon } from "../commons/icons/socials/GithubIcon";
+import { TwitterIcon } from "../commons/icons/socials/TwitterIcon";
+import { BlueskyIcon } from "../commons/icons/socials/BlueskyIcon";
+import { InstagramIcon } from "../commons/icons/socials/InstagramIcon";
+import { YoutubeIcon } from "../commons/icons/socials/YoutubeIcon";
+import { TwitchIcon } from "../commons/icons/socials/TwitchIcon";
+import { KofiIcon } from "../commons/icons/socials/KofiIcon";
+import { DiscordIcon } from "../commons/icons/socials/DiscordIcon";
+import { WebsiteIcon } from "../commons/icons/socials/WebsiteIcon";
 
 interface Background {
   // TODO: background structure
@@ -24,17 +30,14 @@ interface Border {
 }
 
 interface CardProps extends ComponentProps<"div"> {
-  name: string;
-  roles: ("dev" | "artist" | "founder")[];
-  socials: Socials;
-  image: string;
-  tags: string[];
+  contributor: Contributor;
   background: Background;
   border: Border;
 }
 
 export const Card: ParentComponent<CardProps> = (initialProps) => {
   const props = mergeProps({} satisfies Partial<CardProps>, initialProps);
+  const { name, roles, socials, image, tags } = props.contributor;
 
   const classes = createMemo(() => {
     return clsx(
@@ -56,50 +59,60 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
               variant="section-title"
               color="text-background-90"
             >
-              {props.name}
+              {name}
             </Typography>
-            {/* TODO: scale with card size */}
+            {/* TODO: scale with card size (?) */}
             <div class="flex flex-row -space-x-2.5">
-              {props.roles.includes("dev") && (
+              {roles.includes("dev") && (
                 <CircularIcon size={32} class="z-0">
                   <DevIcon size={22} />
                 </CircularIcon>
               )}
-              {props.roles.includes("artist") && (
+              {roles.includes("artist") && (
                 <CircularIcon size={32} class="z-10">
                   <ArtistIcon size={22} />
                 </CircularIcon>
               )}
-              {props.roles.includes("founder") && (
+              {roles.includes("community") && (
                 <CircularIcon size={32} class="z-20">
-                  <FounderIcon size={22} />
+                  <PeopleIcon size={26} />
                 </CircularIcon>
               )}
             </div>
           </div>
           {/* card image - bg and slime photo */}
           <div class="w-full rounded-2xl rounded-tr-[70px] pattern">
-            <img
-              src={props.image}
-              alt={props.name}
-              class="object-cover h-full"
-            />
+            <img src={image} alt={name} class="object-cover h-full" />
           </div>
         </div>
 
-        {/* card info/footer*/}
+        {/* card info/footer */}
         <div class="flex flex-col items-center gap-4">
           {/* socials */}
           <div class="flex flex-row flex-wrap gap-2 justify-center">
-            {[...Array(5)].map((_, i) => (
-              <CircularIcon size={30}>
-                <ArtistIcon size={20} />
-              </CircularIcon>
-            ))}
+            {Object.entries(socials).map(([key, value], i) => {
+              if (!value) return null;
+              return (
+                <CircularIcon size={30}>
+                  <a href={value} target="_blank" rel="noopener noreferrer">
+                    {key === "github" && <GithubIcon size={20} />}
+                    {key === "twitter" && <TwitterIcon size={20} />}
+                    {key === "bluesky" && <BlueskyIcon size={18} />}
+                    {key === "instagram" && <InstagramIcon size={22} />}
+                    {key === "youtube" && <YoutubeIcon size={22} />}
+                    {key === "twitch" && <TwitchIcon size={18} class="mt-[2px] mr-[2px]" />}
+                    {key === "kofi" && <KofiIcon size={20} />}
+                    {key === "discord" && <DiscordIcon size={20} />}
+                    {key === "website" && <WebsiteIcon size={20} />}
+                  </a>
+                </CircularIcon>
+              );
+            })}
           </div>
+
           {/* tags */}
           <div class="flex flex-row flex-wrap gap-2 justify-center">
-            {props.tags.map((tag, i) => (
+            {tags.map((tag, i) => (
               <span class="bg-background-10 opacity-80 text-background-90 px-4 py-1.5 text-xs rounded-lg">
                 {tag}
               </span>
