@@ -10,7 +10,7 @@ export default function NotFound() {
     <MainLayout>
       <Section>
         <Meta name="robots" content="noindex, nofollow" />
-        <Container className="mt-4">
+        <Container class="mt-4">
           <Typography tag="h1" variant="main-title">
             Page not found
           </Typography>

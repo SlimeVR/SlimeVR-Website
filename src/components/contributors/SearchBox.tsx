@@ -5,7 +5,7 @@ import {
   mergeProps,
   ParentComponent,
 } from "solid-js";
-import { SearchIcon } from "./icons/SearchIcon";
+import { SearchIcon } from "../commons/icons/SearchIcon";
 
 interface SearchProps extends ComponentProps<"input"> {
   onChange?: (e: Event) => void;

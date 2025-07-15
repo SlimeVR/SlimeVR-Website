@@ -3,11 +3,12 @@ import { Component, ParentProps } from "solid-js";
 import { AppTitle } from "~/components/AppTitle";
 import { Button } from "~/components/commons/Button";
 import { Container } from "~/components/commons/Container";
-import { SearchBox } from "~/components/commons/SearchBox";
+import { SearchBox } from "~/components/contributors/SearchBox";
 import { Typography } from "~/components/commons/Typography";
 import { Section } from "~/components/Section";
 import { Localized } from "~/i18n";
 import { MainLayout } from "~/layouts/MainLayout";
+import { Card } from "~/components/contributors/Card";
 
 export default function ContributorsLayout(props: ParentProps) {
   return (
@@ -16,7 +17,7 @@ export default function ContributorsLayout(props: ParentProps) {
       <Meta name="robots" content="index, follow" />
       <Link rel="canonical" href="https://slimevr.dev/" />
       <Section>
-        <Container className="mt-4">
+        <Container class="mt-4">
           <div class="flex flex-row justify-between items-center mb-8">
             <Typography
               tag="h2"
@@ -57,11 +58,17 @@ export default function ContributorsLayout(props: ParentProps) {
             </Button>
           </div>
 
-          <div class="flex flex-row flex-wrap gap-4 mt-8">
+          <div class="flex flex-row flex-wrap gap-4 mt-8 justify-around">
             {[...Array(25)].map((_, i) => (
-              <div class="w-[208px] h-72 bg-background-60 p-4 items-center rounded-xl">
-                something {i + 1}
-              </div>
+              <Card
+              name={`JovannMC`}
+              roles={["artist", "dev", "founder"]}
+              socials={{ /* TODO: socials */ }}
+              image="/images/contrib-slime.png"
+              tags={["Tag one", "Another tag", "Smol tag", "Tag four"]}
+              background={{ /* TODO: background */ }}
+              border={{ /* TODO: border */ }}
+            />
             ))}
           </div>
         </Container>

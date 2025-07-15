@@ -19,7 +19,7 @@ const UseCaseCard: Component<{ title: string; image: string; desc: string }> = (
   props
 ) => {
   return (
-    <Container className="gap-4 flex flex-col sm:flex-row md:flex-col">
+    <Container class="gap-4 flex flex-col sm:flex-row md:flex-col">
       <div class="sm:hidden md:block">
         <Typography
           tag="h3"
