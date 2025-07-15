@@ -11,6 +11,8 @@ export interface Contributor {
     twitch?: string;
     kofi?: string;
     discord?: string;
+    tiktok?: string;
+    printables?: string;
   };
   image: string;
   tags: string[];
@@ -109,6 +111,7 @@ export const contributors: Contributor[] = [
       "#infographics",
       "#<3",
       "#girlkisser",
+      "#paintnet_abuser"
     ],
   },
   {
@@ -260,7 +263,7 @@ export const contributors: Contributor[] = [
     tags: ["#eepy", "#skittle", "shaped", "#friend"],
   },
   {
-    name: "Elle / lmore377",
+    name: "Elle",
     roles: ["dev", "community"],
     socials: {
       github: "https://github.com/lmore377",
@@ -321,12 +324,32 @@ export const contributors: Contributor[] = [
   {
     name: "Polymoria",
     roles: ["dev", "artist", "community"],
+    socials: {},
+    image: "/images/contrib-slime.png",
+    tags: ["#placeholder", "#loremipsum"],
+  },
+  {
+    name: "Jaberrocky",
+    roles: ["dev"],
     socials: {
-      github: "https://github.com/kruemmelbande",
-      kofi: "https://ko-fi.com/aokiuwu",
-      website: "https://agoi.gay",
+      twitch: "https://www.twitch.tv/jabberrocky",
+      bluesky: "https://bsky.app/profile/jabberrocky.bsky.social",
     },
     image: "/images/contrib-slime.png",
-    tags: ["#meow", "#arch-btw"],
+    tags: ["#stayaligned", "#programmer", "#wolf", "#petsplz", "#speedrunner"],
   },
+      {
+      name: "Vyolex",
+      roles: ["dev"],
+      socials: {
+        github: "https://github.com/Vyolex",
+        bluesky: "https://bsky.app/profile/vyolex.bsky.social",
+        kofi: "https://ko-fi.com/vyolex",
+        printables: "https://www.printables.com/@Vyolex_327889",
+      },
+      image: "/images/contrib-slime.png",
+      tags: ["#raccoon", "#dingus", "#maker", "#snackie_stealer", "#imu_muncher"],
+    },
 ];
+
+export const contributorsAlphabetical = contributors.sort((a, b) => a.name.localeCompare(b.name));

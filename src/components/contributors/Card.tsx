@@ -20,6 +20,8 @@ import { TwitchIcon } from "../commons/icons/socials/TwitchIcon";
 import { KofiIcon } from "../commons/icons/socials/KofiIcon";
 import { DiscordIcon } from "../commons/icons/socials/DiscordIcon";
 import { WebsiteIcon } from "../commons/icons/socials/WebsiteIcon";
+import { TiktokIcon } from "../commons/icons/socials/TiktokIcon";
+import { PrintablesIcon } from "../commons/icons/socials/PrintablesIcon";
 
 interface Background {
   // TODO: background structure
@@ -35,6 +37,7 @@ interface CardProps extends ComponentProps<"div"> {
   border: Border;
 }
 
+// TODO: fancy pokemon card-like hover/glowy effects (steal from branch or https://poke-holo.simey.me/ :nya_umu:)
 export const Card: ParentComponent<CardProps> = (initialProps) => {
   const props = mergeProps({} satisfies Partial<CardProps>, initialProps);
   const { name, roles, socials, image, tags } = props.contributor;
@@ -103,6 +106,8 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
                     {key === "twitch" && <TwitchIcon size={18} class="mt-[2px] mr-[2px]" />}
                     {key === "kofi" && <KofiIcon size={20} />}
                     {key === "discord" && <DiscordIcon size={20} />}
+                    {key === "tiktok" && <TiktokIcon size={20} />}
+                    {key === "printables" && <PrintablesIcon size={18} />}
                     {key === "website" && <WebsiteIcon size={20} />}
                   </a>
                 </CircularIcon>

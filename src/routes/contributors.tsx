@@ -9,7 +9,7 @@ import { Section } from "~/components/Section";
 import { Localized } from "~/i18n";
 import { MainLayout } from "~/layouts/MainLayout";
 import { Card } from "~/components/contributors/Card";
-import { contributors, type Contributor } from "~/components/contributors";
+import { contributors, contributorsAlphabetical, type Contributor } from "~/components/contributors";
 
 export default function ContributorsLayout(props: ParentProps) {
   return (
@@ -39,6 +39,7 @@ export default function ContributorsLayout(props: ParentProps) {
             whitespace="whitespace-pre-line"
           />
 
+          {/* TODO: searching & shuffling slimes */}
           <div class="flex flex-row justify-between items-center mt-8">
             <SearchBox
               class="w-full max-w-60"
@@ -60,9 +61,9 @@ export default function ContributorsLayout(props: ParentProps) {
           </div>
 
           <div class="flex flex-row flex-wrap gap-4 mt-8 justify-around">
-            {contributors.map((contributor, i) => (
+            {contributorsAlphabetical.map((contrib, i) => (
               <Card
-                contributor={contributor}
+                contributor={contrib}
                 background={{ /* TODO: background */ }}
                 border={{ /* TODO: border */ }}
               />
