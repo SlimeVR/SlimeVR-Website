@@ -5,6 +5,7 @@ export const DevIcon: Component<IconProps> = (props) => {
     <svg
       width={props.size}
       height={props.size}
+      class={props.class}
       viewBox="0 0 60 42"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

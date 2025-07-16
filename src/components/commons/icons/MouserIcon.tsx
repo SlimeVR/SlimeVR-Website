@@ -4,6 +4,7 @@ export const MouserIcon: Component<IconProps> = (props) => {
   return (
     <svg
       width={props.size}
+      class={props.class}
       version="1.1"
       viewBox="0 0 1997.4 770.78"
       xmlns="http://www.w3.org/2000/svg"
