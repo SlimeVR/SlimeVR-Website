@@ -22,6 +22,8 @@ import { DiscordIcon } from "../commons/icons/socials/DiscordIcon";
 import { WebsiteIcon } from "../commons/icons/socials/WebsiteIcon";
 import { TiktokIcon } from "../commons/icons/socials/TiktokIcon";
 import { PrintablesIcon } from "../commons/icons/socials/PrintablesIcon";
+import { SteamIcon } from "../commons/icons/socials/SteamIcon";
+import { MatrixIcon } from "../commons/icons/socials/MatrixIcon";
 
 interface Background {
   // TODO: background structure
@@ -92,37 +94,45 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
         {/* card info/footer */}
         <div class="flex flex-col items-center gap-4">
           {/* socials */}
-          <div class="flex flex-row flex-wrap gap-2 justify-center">
-            {Object.entries(socials).map(([key, value], i) => {
-              if (!value) return null;
-              return (
-                <CircularIcon size={30}>
-                  <a href={value} target="_blank" rel="noopener noreferrer">
-                    {key === "github" && <GithubIcon size={20} />}
-                    {key === "twitter" && <TwitterIcon size={20} />}
-                    {key === "bluesky" && <BlueskyIcon size={18} />}
-                    {key === "instagram" && <InstagramIcon size={22} />}
-                    {key === "youtube" && <YoutubeIcon size={22} />}
-                    {key === "twitch" && <TwitchIcon size={18} class="mt-[2px] mr-[2px]" />}
-                    {key === "kofi" && <KofiIcon size={20} />}
-                    {key === "discord" && <DiscordIcon size={20} />}
-                    {key === "tiktok" && <TiktokIcon size={20} />}
-                    {key === "printables" && <PrintablesIcon size={18} />}
-                    {key === "website" && <WebsiteIcon size={20} />}
-                  </a>
-                </CircularIcon>
-              );
-            })}
-          </div>
+          {Object.keys(socials).length > 0 && (
+            <div class="flex flex-row flex-wrap gap-2 justify-center">
+              {Object.entries(socials).map(([key, value], i) => {
+                if (!value) return null;
+                return (
+                  <CircularIcon size={30}>
+                    <a href={value} target="_blank" rel="noopener noreferrer">
+                      {key === "github" && <GithubIcon size={20} />}
+                      {key === "twitter" && <TwitterIcon size={20} />}
+                      {key === "bluesky" && <BlueskyIcon size={18} />}
+                      {key === "instagram" && <InstagramIcon size={22} />}
+                      {key === "youtube" && <YoutubeIcon size={22} />}
+                      {key === "twitch" && (
+                        <TwitchIcon size={18} class="mt-[2px] mr-[2px]" />
+                      )}
+                      {key === "kofi" && <KofiIcon size={20} />}
+                      {key === "discord" && <DiscordIcon size={20} />}
+                      {key === "tiktok" && <TiktokIcon size={20} />}
+                      {key === "printables" && <PrintablesIcon size={18} />}
+                      {key === "steam" && <SteamIcon size={18} />}
+                      {key === "matrix" && <MatrixIcon size={16} />}
+                      {key === "website" && <WebsiteIcon size={20} />}
+                    </a>
+                  </CircularIcon>
+                );
+              })}
+            </div>
+          )}
 
           {/* tags */}
-          <div class="flex flex-row flex-wrap gap-2 justify-center">
-            {tags.map((tag, i) => (
-              <span class="bg-background-10 opacity-80 text-background-90 px-4 py-1.5 text-xs rounded-lg">
-                {tag}
-              </span>
-            ))}
-          </div>
+          {tags && tags.length > 0 && (
+            <div class="flex flex-row flex-wrap gap-2 justify-center">
+              {tags.map((tag, i) => (
+                <span class="bg-background-10 opacity-80 text-background-90 px-4 py-1.5 text-xs rounded-lg">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

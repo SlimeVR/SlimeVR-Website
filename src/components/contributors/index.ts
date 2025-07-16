@@ -13,6 +13,8 @@ export interface Contributor {
     discord?: string;
     tiktok?: string;
     printables?: string;
+    steam?: string;
+    matrix?: string;
   };
   image: string;
   tags: string[];
@@ -70,6 +72,8 @@ export const contributors: Contributor[] = [
     name: "Anna",
     roles: ["dev"],
     socials: {
+      discord: "https://discordapp.com/users/602597585764483083",
+      matrix: "https://matrix.to/#/@devminer:devminer.xyz",
       website: "https://devminer.xyz",
     },
     image: "/images/contrib-slime.png",
@@ -111,7 +115,7 @@ export const contributors: Contributor[] = [
       "#infographics",
       "#<3",
       "#girlkisser",
-      "#paintnet_abuser"
+      "#paintnet_abuser",
     ],
   },
   {
@@ -241,10 +245,10 @@ export const contributors: Contributor[] = [
       youtube: "https://www.youtube.com/@JovannMC",
       github: "https://github.com/JovannMC",
       twitter: "https://x.com/JovannMC",
-      bluesky: "https://bsky.app/profile/femboyfurry.net",
+      matrix: "https://matrix.to/#/@jovannmc:tchncs.de",
     },
     image: "/images/contrib-slime.png",
-    tags: ["#programmer", "#trans", "#silly", "#meow", "#slimetora"],
+    tags: ["#slimetora", "#trans", "#silly", "#meow", "#programmer"],
   },
   {
     name: "Em",
@@ -299,7 +303,7 @@ export const contributors: Contributor[] = [
       kofi: "https://ko-fi.com/dqmaged",
     },
     image: "/images/contrib-slime.png",
-    tags: ["#3dmodeler", "#PCBDesign", "#Pink", "#freeslime", "#fuckingboat"],
+    tags: ["#3dmodeler", "#Pink", "#PCBDesign", "#freeslime", "#fuckingboat"],
   },
   {
     name: "Shine Bright",
@@ -338,18 +342,31 @@ export const contributors: Contributor[] = [
     image: "/images/contrib-slime.png",
     tags: ["#stayaligned", "#programmer", "#wolf", "#petsplz", "#speedrunner"],
   },
-      {
-      name: "Vyolex",
-      roles: ["dev"],
-      socials: {
-        github: "https://github.com/Vyolex",
-        bluesky: "https://bsky.app/profile/vyolex.bsky.social",
-        kofi: "https://ko-fi.com/vyolex",
-        printables: "https://www.printables.com/@Vyolex_327889",
-      },
-      image: "/images/contrib-slime.png",
-      tags: ["#raccoon", "#dingus", "#maker", "#snackie_stealer", "#imu_muncher"],
+  {
+    name: "Vyolex",
+    roles: ["dev"],
+    socials: {
+      github: "https://github.com/Vyolex",
+      bluesky: "https://bsky.app/profile/vyolex.bsky.social",
+      kofi: "https://ko-fi.com/vyolex",
+      printables: "https://www.printables.com/@Vyolex_327889",
     },
+    image: "/images/contrib-slime.png",
+    tags: ["#snackiestealer", "#raccoon", "#dingus", "#maker", "#imu_muncher"],
+  },
+  {
+    name: "Ashy",
+    roles: ["community"],
+    socials: {
+      twitch: "https://www.twitch.tv/ashyfire33",
+      steam: "https://steamcommunity.com/id/ashyfire33",
+      discord: "https://discordapp.com/users/951394014240858142",
+    },
+    image: "/images/contrib-slime.png",
+    tags: ["#techsupportsoldier", "#eepy", "#silly", "#unityhater"],
+  },
 ];
 
-export const contributorsAlphabetical = contributors.sort((a, b) => a.name.localeCompare(b.name));
+export const contributorsAlphabetical = contributors.sort((a, b) =>
+  a.name.localeCompare(b.name)
+);
