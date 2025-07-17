@@ -2,7 +2,10 @@ import clsx from "clsx";
 import {
   ComponentProps,
   createMemo,
+  createSignal,
   mergeProps,
+  onCleanup,
+  onMount,
   ParentComponent,
 } from "solid-js";
 import CircularIcon from "./CircularIcon";
@@ -44,6 +47,84 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
   const props = mergeProps({} satisfies Partial<CardProps>, initialProps);
   const { name, roles, socials, image, tags } = props.contributor;
 
+  let card: HTMLDivElement;
+  let glow: HTMLDivElement;
+  const [focus, setFocus] = createSignal(false);
+
+  const cardTilt = (e: MouseEvent) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const percentX = (x - centerX) / centerX;
+    const percentY = -((y - centerY) / centerY);
+
+    card.style.transform = `perspective(1000px) rotateY(${percentX * 15}deg) rotateX(${percentY * 15}deg)`;
+    glow.style.opacity = "1";
+    glow.style.backgroundImage = `
+                radial-gradient(
+                    circle at 
+                    ${x}px ${y}px, 
+                    #ffffff66,
+                    #0000000f
+                )
+            `;
+  };
+
+  const cardReset = () => {
+    card.style.transform = "perspective(1000px) rotateY(0deg) rotateX(0deg)";
+    glow.style.opacity = "0";
+  };
+
+  const cardFocus = () => {
+    if (focus()) return;
+    card.style.scale = "1.2";
+    card.style.zIndex = "1";
+    const pos = card.getBoundingClientRect();
+    card.style.top =
+      window.innerHeight / 2 - card.clientHeight / 2 - pos.top + "px";
+    card.style.left =
+      window.innerWidth / 2 - card.clientWidth / 2 - pos.left + "px";
+    card.style.boxShadow = "0px 10px 20px 8px #02111db8";
+    card.onmousemove = cardTilt;
+    setFocus(true);
+  };
+
+  const isOnCard = (x: number, y: number) => {
+    const pos = card.getBoundingClientRect();
+    return x >= pos.left && x <= pos.right && y >= pos.top && y <= pos.bottom;
+  };
+
+  const handleClick = (e: MouseEvent) => {
+    if (focus() && !isOnCard(e.x, e.y)) {
+      card.style.scale = "1";
+      card.style.position = "relative";
+      card.style.top = "0px";
+      card.style.left = "0px";
+      card.style.zIndex = "0";
+      card.style.boxShadow = "none";
+      card.onmousemove = null;
+      setFocus(false);
+    }
+  };
+
+  onMount(() => {
+    if (typeof window === "undefined") {
+      return null;
+    }
+    document.addEventListener("mouseup", handleClick);
+  });
+
+  onCleanup(() => {
+    if (typeof window === "undefined") {
+      return null;
+    }
+    document.removeEventListener("mouseup", handleClick);
+  });
+
   const classes = createMemo(() => {
     return clsx(
       "max-w-[250px] max-h-[348px] w-full h-full p-2 bg-background-60 shadow-lg flex flex-col items-center aspect-[0.72/1]",
@@ -54,7 +135,13 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
 
   return (
     // TODO: background and border styles
-    <div class={classes() + "bg-background-40 rounded-2xl shadow-lg"}>
+    <div
+      class={classes() + "bg-background-40 rounded-2xl shadow-lg"}
+      ref={card}
+      onMouseLeave={cardReset}
+      onClick={focus() ? null : cardFocus}
+    >
+      <div ref={glow} class="absolute w-full h-full rounded-2xl"></div>
       <div class="aspect-[0.71/1] max-w-[237px] max-h-[336px] w-full h-full bg-background-40 flex flex-col items-center justify-evenly rounded-xl px-2">
         {/* card header - name, role(s), image */}
         <div class="flex flex-col flex-1">
