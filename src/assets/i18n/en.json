@@ -175,7 +175,8 @@
     "description": "Welcome to the SlimeVR contributor page where you can find the list of all the lovely slimes that have worked on this project together!\n\nBeing a contributor comes with some great perks: we pay our contributors, our community is cosy and open-minded, and you get your own personalized slime on this page.\nInterested in joining? Check out our contributor guide to learn more!",
     "guide": "Contributor Guide",
     "search": "Find a slime",
-    "shuffle": "Shuffle slimes"
+    "shuffle": "Shuffle slimes",
+    "none": "No slimes found :("
   },
   "privacy": {
     "title": "Privacy Policy"

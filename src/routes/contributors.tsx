@@ -52,6 +52,23 @@ const contribs = contributors
 
 const [finalContribs, setFinalContribs] = createSignal(contribs);
 const [searchTerm, setSearchTerm] = createSignal("");
+const [isShuffling, setIsShuffling] = createSignal(false);
+
+const maxShuffles = 7;
+function shuffle() {
+  setIsShuffling(true);
+
+  let shuffleCount = 0;
+  const shuffleInterval = setInterval(() => {
+    setFinalContribs([...contribs].sort(() => Math.random() - 0.5));
+    shuffleCount++;
+
+    if (shuffleCount >= maxShuffles) {
+      clearInterval(shuffleInterval);
+      setIsShuffling(false);
+    }
+  }, 100);
+}
 
 export default function ContributorsLayout(props: ParentProps) {
   return (
@@ -93,34 +110,48 @@ export default function ContributorsLayout(props: ParentProps) {
             <Button
               variant="quaternary"
               class="border border-background-40 !rounded-full"
-              onClick={() =>
-                setFinalContribs([...contribs].sort(() => Math.random() - 0.5))
-              }
+              onClick={shuffle}
             >
               <Localized id="contributors.shuffle" />
             </Button>
           </div>
 
           <div class="flex flex-row flex-wrap gap-4 mt-8 justify-around">
+            {/* filter slimes by search term if exists */}
             {finalContribs()
               .filter((contrib) =>
                 contrib.name.toLowerCase().includes(searchTerm().toLowerCase())
               )
               .map((contrib, i) => (
-                <Card
-                  contributor={contrib}
-                  background={
-                    {
-                      /* TODO: background */
+                <div
+                  class={`transition-all duration-200 ${
+                    isShuffling()
+                      ? "animate-pulse scale-95 opacity-80 transform rotate-1"
+                      : "scale-100 opacity-100 transform rotate-0"
+                  }`}
+                  style={{
+                    "animation-delay": isShuffling() ? `${i * 20}ms` : "0ms",
+                  }}
+                >
+                  <Card
+                    contributor={contrib}
+                    background={
+                      {
+                        /* TODO: background */
+                      }
                     }
-                  }
-                  border={
-                    {
-                      /* TODO: border */
+                    border={
+                      {
+                        /* TODO: border */
+                      }
                     }
-                  }
-                />
+                  />
+                </div>
               ))}
+            {/* if none found, show sad message */}
+            {finalContribs().filter((contrib) =>
+              contrib.name.toLowerCase().includes(searchTerm().toLowerCase())
+            ).length === 0 && <Localized id="contributors.none" />}
           </div>
         </Container>
       </Section>
