@@ -42,7 +42,6 @@ interface CardProps extends ComponentProps<"div"> {
   border: Border;
 }
 
-// TODO: fancy pokemon card-like hover/glowy effects (steal from branch or https://poke-holo.simey.me/ :nya_umu:)
 export const Card: ParentComponent<CardProps> = (initialProps) => {
   const props = mergeProps({} satisfies Partial<CardProps>, initialProps);
   const { name, roles, socials, image, tags } = props.contributor;
@@ -65,6 +64,7 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
     const percentX = rawX / (1 + Math.abs(rawX) * 0.6);
     const percentY = rawY / (1 + Math.abs(rawY) * 0.6);
 
+    card.style.transition = "none";
     card.style.transform = `perspective(1000px) rotateY(${percentX * intensity}deg) rotateX(${percentY * intensity}deg)`;
     glow.style.opacity = glowOpacity.toString();
     glow.style.backgroundImage = `
@@ -82,16 +82,18 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
   const cardTilt = (e: MouseEvent) => applyTilt(e, 15, 1);
   const cardHoverTilt = (e: MouseEvent) => {
     if (focus()) return;
-    applyTilt(e, 10, 0.5);
+    applyTilt(e, 15, 0.7);
   };
 
   const cardReset = () => {
+    card.style.transition = "transform 0.5s ease";
     card.style.transform = "perspective(1000px) rotateY(0deg) rotateX(0deg)";
     glow.style.opacity = "0";
   };
 
   const cardHoverEnter = () => {
     if (focus()) return;
+    card.style.transition = "transform 0.2s ease";
     card.addEventListener("mousemove", cardHoverTilt);
   };
 
@@ -103,6 +105,7 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
 
   const cardFocus = () => {
     if (focus()) return;
+    card.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
     card.style.scale = "1.3";
     card.style.zIndex = "1";
     const pos = card.getBoundingClientRect();
@@ -118,6 +121,7 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
 
   const handleClick = (e: MouseEvent) => {
     if (focus() && !isOnCard(e.x, e.y)) {
+      card.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
       card.style.scale = "1";
       card.style.position = "relative";
       card.style.top = "0px";
@@ -166,7 +170,12 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
       onMouseEnter={cardHoverEnter}
       onMouseLeave={cardHoverLeave}
     >
-      <div ref={glow} class="absolute w-full h-full rounded-2xl"></div>
+      <div
+        ref={glow}
+        class="absolute w-full h-full rounded-2xl transition-opacity duration-200"
+        onMouseEnter={() => glow && (glow.style.transitionDuration = "0.2s")}
+        onMouseLeave={() => glow && (glow.style.transitionDuration = "0.4s")}
+      ></div>
       <div class="aspect-[0.71/1] max-w-[237px] max-h-[336px] w-full h-full bg-background-40 flex flex-col items-center justify-evenly rounded-xl px-2">
         {/* card header - name, role(s), image */}
         <div class="flex flex-col flex-1">
