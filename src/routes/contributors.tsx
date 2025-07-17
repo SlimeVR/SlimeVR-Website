@@ -1,5 +1,5 @@
 import { Link, Meta } from "@solidjs/meta";
-import { Component, ParentProps } from "solid-js";
+import { Component, createSignal, ParentProps } from "solid-js";
 import { AppTitle } from "~/components/AppTitle";
 import { Button } from "~/components/commons/Button";
 import { Container } from "~/components/commons/Container";
@@ -27,7 +27,7 @@ const socialsPriority = [
   "kofi",
 ];
 
-const finalContribs = contributors
+const contribs = contributors
   .slice()
   // sort alphabetically by name
   .sort((a, b) => a.name.localeCompare(b.name))
@@ -49,6 +49,9 @@ const finalContribs = contributors
     }
     return contributor;
   });
+
+const [finalContribs, setFinalContribs] = createSignal(contribs);
+const [searchTerm, setSearchTerm] = createSignal("");
 
 export default function ContributorsLayout(props: ParentProps) {
   return (
@@ -78,43 +81,46 @@ export default function ContributorsLayout(props: ParentProps) {
             whitespace="whitespace-pre-line"
           />
 
-          {/* TODO: searching & shuffling slimes */}
           <div class="flex flex-row justify-between items-center mt-8">
             <SearchBox
               class="w-full max-w-60"
-              onChange={(e) => {
-                console.log(
-                  `Search input changed: ${(e.currentTarget as HTMLInputElement).value}`
-                );
-              }}
+              onChange={(e) =>
+                setSearchTerm((e.currentTarget as HTMLInputElement).value)
+              }
             >
               <Localized id="contributors.search" />
             </SearchBox>
             <Button
               variant="quaternary"
               class="border border-background-40 !rounded-full"
-              href="https://github.com/SlimeVR/SlimeVR-Server/blob/main/CONTRIBUTING.md"
+              onClick={() =>
+                setFinalContribs([...contribs].sort(() => Math.random() - 0.5))
+              }
             >
               <Localized id="contributors.shuffle" />
             </Button>
           </div>
 
           <div class="flex flex-row flex-wrap gap-4 mt-8 justify-around">
-            {finalContribs.map((contrib, i) => (
-              <Card
-                contributor={contrib}
-                background={
-                  {
-                    /* TODO: background */
+            {finalContribs()
+              .filter((contrib) =>
+                contrib.name.toLowerCase().includes(searchTerm().toLowerCase())
+              )
+              .map((contrib, i) => (
+                <Card
+                  contributor={contrib}
+                  background={
+                    {
+                      /* TODO: background */
+                    }
                   }
-                }
-                border={
-                  {
-                    /* TODO: border */
+                  border={
+                    {
+                      /* TODO: border */
+                    }
                   }
-                }
-              />
-            ))}
+                />
+              ))}
           </div>
         </Container>
       </Section>
