@@ -59,8 +59,11 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
 
-    const percentX = (x - centerX) / centerX;
-    const percentY = -((y - centerY) / centerY);
+    const rawX = (x - centerX) / centerX;
+    const rawY = -((y - centerY) / centerY);
+
+    const percentX = rawX / (1 + Math.abs(rawX) * 0.6);
+    const percentY = rawY / (1 + Math.abs(rawY) * 0.6);
 
     card.style.transform = `perspective(1000px) rotateY(${percentX * 15}deg) rotateX(${percentY * 15}deg)`;
     glow.style.opacity = "1";
@@ -89,7 +92,7 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
     card.style.left =
       window.innerWidth / 2 - card.clientWidth / 2 - pos.left + "px";
     card.style.boxShadow = "0px 10px 20px 8px #02111db8";
-    card.onmousemove = cardTilt;
+    document.addEventListener("mousemove", cardTilt);
     setFocus(true);
   };
 
@@ -106,8 +109,9 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
       card.style.left = "0px";
       card.style.zIndex = "0";
       card.style.boxShadow = "none";
-      card.onmousemove = null;
+      document.removeEventListener("mousemove", cardTilt);
       setFocus(false);
+      cardReset();
     }
   };
 
@@ -136,9 +140,8 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
   return (
     // TODO: background and border styles
     <div
-      class={classes() + "bg-background-40 rounded-2xl shadow-lg"}
+      class={classes() + "bg-background-40 rounded-2xl shadow-lg relative"}
       ref={card}
-      onMouseLeave={cardReset}
       onClick={focus() ? null : cardFocus}
     >
       <div ref={glow} class="absolute w-full h-full rounded-2xl"></div>
@@ -161,12 +164,12 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
                 </CircularIcon>
               )}
               {roles.includes("artist") && (
-                <CircularIcon size={32} class="z-10">
+                <CircularIcon size={32} class="z-1">
                   <ArtistIcon size={22} />
                 </CircularIcon>
               )}
               {roles.includes("community") && (
-                <CircularIcon size={32} class="z-20">
+                <CircularIcon size={32} class="z-2">
                   <PeopleIcon size={26} />
                 </CircularIcon>
               )}
