@@ -51,7 +51,7 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
   let glow: HTMLDivElement;
   const [focus, setFocus] = createSignal(false);
 
-  const cardTilt = (e: MouseEvent) => {
+  const applyTilt = (e: MouseEvent, intensity: number, glowOpacity: number) => {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -65,16 +65,24 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
     const percentX = rawX / (1 + Math.abs(rawX) * 0.6);
     const percentY = rawY / (1 + Math.abs(rawY) * 0.6);
 
-    card.style.transform = `perspective(1000px) rotateY(${percentX * 15}deg) rotateX(${percentY * 15}deg)`;
-    glow.style.opacity = "1";
+    card.style.transform = `perspective(1000px) rotateY(${percentX * intensity}deg) rotateX(${percentY * intensity}deg)`;
+    glow.style.opacity = glowOpacity.toString();
     glow.style.backgroundImage = `
                 radial-gradient(
                     circle at 
                     ${x}px ${y}px, 
-                    #ffffff66,
+                    #ffffff${Math.round(glowOpacity * 102)
+                      .toString(16)
+                      .padStart(2, "0")},
                     #0000000f
                 )
             `;
+  };
+
+  const cardTilt = (e: MouseEvent) => applyTilt(e, 15, 1);
+  const cardHoverTilt = (e: MouseEvent) => {
+    if (focus()) return;
+    applyTilt(e, 10, 0.5);
   };
 
   const cardReset = () => {
@@ -82,9 +90,20 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
     glow.style.opacity = "0";
   };
 
+  const cardHoverEnter = () => {
+    if (focus()) return;
+    card.addEventListener("mousemove", cardHoverTilt);
+  };
+
+  const cardHoverLeave = () => {
+    if (focus()) return;
+    card.removeEventListener("mousemove", cardHoverTilt);
+    cardReset();
+  };
+
   const cardFocus = () => {
     if (focus()) return;
-    card.style.scale = "1.2";
+    card.style.scale = "1.3";
     card.style.zIndex = "1";
     const pos = card.getBoundingClientRect();
     card.style.top =
@@ -92,13 +111,9 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
     card.style.left =
       window.innerWidth / 2 - card.clientWidth / 2 - pos.left + "px";
     card.style.boxShadow = "0px 10px 20px 8px #02111db8";
+    card.removeEventListener("mousemove", cardHoverTilt);
     document.addEventListener("mousemove", cardTilt);
     setFocus(true);
-  };
-
-  const isOnCard = (x: number, y: number) => {
-    const pos = card.getBoundingClientRect();
-    return x >= pos.left && x <= pos.right && y >= pos.top && y <= pos.bottom;
   };
 
   const handleClick = (e: MouseEvent) => {
@@ -113,6 +128,11 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
       setFocus(false);
       cardReset();
     }
+  };
+
+  const isOnCard = (x: number, y: number) => {
+    const pos = card.getBoundingClientRect();
+    return x >= pos.left && x <= pos.right && y >= pos.top && y <= pos.bottom;
   };
 
   onMount(() => {
@@ -143,6 +163,8 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
       class={classes() + "bg-background-40 rounded-2xl shadow-lg relative"}
       ref={card}
       onClick={focus() ? null : cardFocus}
+      onMouseEnter={cardHoverEnter}
+      onMouseLeave={cardHoverLeave}
     >
       <div ref={glow} class="absolute w-full h-full rounded-2xl"></div>
       <div class="aspect-[0.71/1] max-w-[237px] max-h-[336px] w-full h-full bg-background-40 flex flex-col items-center justify-evenly rounded-xl px-2">
