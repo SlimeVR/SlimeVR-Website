@@ -55,6 +55,8 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
   let transitionTimeout: ReturnType<typeof setTimeout> | null = null; // prevent multiple transitions / out of sync (from multiple clicks)
 
   const applyTilt = (e: MouseEvent, intensity: number, glowOpacity: number) => {
+    if (transitioning()) return;
+
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -69,7 +71,7 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
     const percentY = rawY / (1 + Math.abs(rawY) * 0.6);
 
     card.style.transition = "none";
-    const scale = focus() ? "1.3" : "1";
+    const scale = focus() ? "1.4" : "1";
     card.style.transform = `perspective(1000px) rotateY(${percentX * intensity}deg) rotateX(${percentY * intensity}deg) scale(${scale})`;
     glow.style.opacity = glowOpacity.toString();
     glow.style.backgroundImage = `
@@ -85,7 +87,6 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
   };
 
   const cardTilt = (e: MouseEvent) => {
-    if (transitioning()) return;
     applyTilt(e, 15, 1);
   };
 
@@ -95,7 +96,7 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
   };
 
   const cardReset = () => {
-    card.style.transition = "transform 0.5s ease";
+    card.style.transition = "transform 0.45s ease";
     card.style.transform = "perspective(1000px) rotateY(0deg) rotateX(0deg)";
     glow.style.opacity = "0";
   };
@@ -132,7 +133,7 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
     placeholder.style.display = "block";
 
     card.style.transition = "none";
-    card.style.zIndex = "1";
+    card.style.zIndex = "10";
     card.style.position = "fixed";
     card.style.top = `${rect.top}px`;
     card.style.left = `${rect.left}px`;
@@ -141,15 +142,15 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
 
     card.offsetHeight;
     card.style.transition =
-      "transform 0.5s ease, top 0.5s ease, left 0.5s ease, box-shadow 0.5s ease";
+      "transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), top 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), left 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.45s ease";
 
     const viewportWidth = document.documentElement.clientWidth;
     const viewportHeight = document.documentElement.clientHeight;
 
     card.style.transform =
-      "perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.3)";
-    card.style.top = `${viewportHeight / 2 - (card.clientHeight * 1.3) / 2}px`;
-    card.style.left = `${viewportWidth / 2 - (card.clientWidth * 1.3) / 2}px`;
+      "perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.4)";
+    card.style.top = `${viewportHeight / 2 - (card.clientHeight * 1.4) / 2}px`;
+    card.style.left = `${viewportWidth / 2 - (card.clientWidth * 1.4) / 2}px`;
     card.style.boxShadow = "0px 10px 20px 8px #02111db8";
     card.removeEventListener("mousemove", cardHoverTilt);
     document.addEventListener("mousemove", cardTilt);
@@ -158,7 +159,7 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
     transitionTimeout = setTimeout(() => {
       setTransitioning(false);
       transitionTimeout = null;
-    }, 500);
+    }, 450);
   };
 
   const handleClick = (e: MouseEvent) => {
@@ -170,8 +171,9 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
 
       setTransitioning(true);
 
+      card.style.zIndex = "5"; // lower z-index for cards unfocusing so the new one takes priority
       card.style.transition =
-        "transform 0.5s ease, top 0.5s ease, left 0.5s ease, box-shadow 0.5s ease";
+        "transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), top 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), left 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.45s ease";
       card.style.boxShadow = "none";
 
       if (originalPosition) {
@@ -197,7 +199,7 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
         placeholder.style.display = "none";
         setTransitioning(false);
         transitionTimeout = null;
-      }, 500);
+      }, 450);
     }
   };
 
@@ -257,7 +259,7 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
           ref={glow}
           class="absolute inset-0 rounded-2xl transition-opacity duration-200 pointer-events-none"
           onMouseEnter={() => glow && (glow.style.transitionDuration = "0.2s")}
-          onMouseLeave={() => glow && (glow.style.transitionDuration = "0.4s")}
+          onMouseLeave={() => glow && (glow.style.transitionDuration = "0.45s")}
         ></div>
         <div class="aspect-[0.71/1] max-w-[237px] max-h-[336px] w-full h-full bg-background-40 flex flex-col items-center justify-evenly rounded-xl px-2">
           {/* card header - name, role(s), image */}
