@@ -22,7 +22,7 @@ export interface Contributor {
 
 export const contributors: Contributor[] = [
   {
-    name: "Butterscotch!",
+    name: "Butterscotch",
     roles: ["dev", "community"],
     socials: {
       github: "https://github.com/ButterscotchV/",
@@ -151,7 +151,7 @@ export const contributors: Contributor[] = [
     roles: ["community"],
     socials: {},
     image: "/images/contrib-slime.png",
-    tags: ["#coffee_addict", "#fashionista", "#foodporn", "#blogging", "☺️"],
+    tags: ["#coffee_addict", "#fashionista", "#foodporn", "#blogging", "#☺️"],
   },
   {
     name: "Yexo",

@@ -57,8 +57,8 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
     <div class={classes() + "bg-background-40 rounded-2xl shadow-lg"}>
       <div class="aspect-[0.71/1] max-w-[237px] max-h-[336px] w-full h-full bg-background-40 flex flex-col items-center justify-evenly rounded-xl px-2">
         {/* card header - name, role(s), image */}
-        <div class="flex flex-col">
-          <div class="flex flex-row justify-between">
+        <div class="flex flex-col flex-1">
+          <div class="flex flex-row justify-between p-2">
             <Typography
               tag="h3"
               variant="section-title"
@@ -66,8 +66,8 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
             >
               {name}
             </Typography>
-            {/* TODO: scale with card size (?) */}
-            <div class="flex flex-row -space-x-2.5">
+            {/* roles */}
+            <div class="flex flex-row -space-x-2.5 mt-1">
               {roles.includes("dev") && (
                 <CircularIcon size={32} class="z-0">
                   <DevIcon size={22} />
@@ -86,13 +86,13 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
             </div>
           </div>
           {/* card image - bg and slime photo */}
-          <div class="w-full rounded-2xl rounded-tr-[70px] pattern">
+          <div class="w-full rounded-2xl rounded-tr-[70px] pattern !bg-[size:80%] !bg-[#1E2442] mt-[-2px]">
             <img src={image} alt={name} class="object-cover h-full" />
           </div>
         </div>
 
         {/* card info/footer */}
-        <div class="flex flex-col items-center gap-4">
+        <div class="flex flex-col items-center gap-4 flex-1 mt-4">
           {/* socials */}
           {Object.keys(socials).length > 0 && (
             <div class="flex flex-row flex-wrap gap-2 justify-center">
