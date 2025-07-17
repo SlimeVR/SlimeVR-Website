@@ -123,30 +123,24 @@ export default function ContributorsLayout(props: ParentProps) {
                 contrib.name.toLowerCase().includes(searchTerm().toLowerCase())
               )
               .map((contrib, i) => (
-                <div
+                <Card
                   class={`transition-all duration-200 ${
                     isShuffling()
-                      ? "animate-pulse scale-95 opacity-80 transform rotate-1"
+                      ? "animate-pulse scale-95 opacity-80 transform rotate-1 pointer-events-none"
                       : "scale-100 opacity-100 transform rotate-0"
                   }`}
-                  style={{
-                    "animation-delay": isShuffling() ? `${i * 20}ms` : "0ms",
-                  }}
-                >
-                  <Card
-                    contributor={contrib}
-                    background={
-                      {
-                        /* TODO: background */
-                      }
+                  contributor={contrib}
+                  background={
+                    {
+                      /* TODO: background */
                     }
-                    border={
-                      {
-                        /* TODO: border */
-                      }
+                  }
+                  border={
+                    {
+                      /* TODO: border */
                     }
-                  />
-                </div>
+                  }
+                />
               ))}
             {/* if none found, show sad message */}
             {finalContribs().filter((contrib) =>

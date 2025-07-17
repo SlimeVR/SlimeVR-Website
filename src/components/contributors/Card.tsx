@@ -246,14 +246,14 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
       {/* invisible placeholder - used when card is focused to keep its position */}
       <div
         ref={placeholder}
-        class={classes() + "!bg-transparent !p-0"}
+        class={classes() + " !bg-transparent !p-0"}
         style={{ display: "none" }}
         aria-hidden="true"
       />
 
       {/* the actual card*/}
       <div
-        class={classes() + "bg-background-40 rounded-2xl shadow-lg relative"}
+        class={classes() + " bg-background-40 rounded-2xl shadow-lg relative"}
         ref={card}
         onClick={focus() ? null : cardFocus}
         onMouseEnter={cardHoverEnter}
