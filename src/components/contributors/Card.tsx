@@ -50,6 +50,7 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
   let glow: HTMLDivElement;
   let placeholder: HTMLDivElement; // placeholder for the card when focused to keep its position in list
   const [focus, setFocus] = createSignal(false);
+  // TODO: allow hover/tilting during animation without it interrupting the animation - idk how to do this without breaking other things tbh
   const [transitioning, setTransitioning] = createSignal(false); // prevent tilting while transitioning (interrupting it)
   let originalPosition: { top: number; left: number } | null = null;
   let transitionTimeout: ReturnType<typeof setTimeout> | null = null; // prevent multiple transitions / out of sync (from multiple clicks)
@@ -144,13 +145,16 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
     card.style.transition =
       "transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), top 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), left 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.45s ease";
 
-    const viewportWidth = document.documentElement.clientWidth;
-    const viewportHeight = document.documentElement.clientHeight;
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    card.style.transformOrigin = "center center";
+    const centerX = viewportWidth / 2 - card.clientWidth / 2;
+    const centerY = viewportHeight / 2 - card.clientHeight / 2;
 
     card.style.transform =
       "perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.4)";
-    card.style.top = `${viewportHeight / 2 - (card.clientHeight * 1.4) / 2}px`;
-    card.style.left = `${viewportWidth / 2 - (card.clientWidth * 1.4) / 2}px`;
+    card.style.top = `${centerY}px`;
+    card.style.left = `${centerX}px`;
     card.style.boxShadow = "0px 10px 20px 8px #02111db8";
     card.removeEventListener("mousemove", cardHoverTilt);
     document.addEventListener("mousemove", cardTilt);
