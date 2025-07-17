@@ -348,7 +348,6 @@ export const contributors: Contributor[] = [
     socials: {
       github: "https://github.com/Vyolex",
       bluesky: "https://bsky.app/profile/vyolex.bsky.social",
-      kofi: "https://ko-fi.com/vyolex",
       printables: "https://www.printables.com/@Vyolex_327889",
     },
     image: "/images/contrib-slime.png",

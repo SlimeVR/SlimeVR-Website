@@ -279,17 +279,17 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
               {/* roles */}
               <div class="flex flex-row -space-x-2.5 mt-1">
                 {roles.includes("dev") && (
-                  <CircularIcon size={32} class="z-0">
+                  <CircularIcon size={32} class="z-1">
                     <DevIcon size={22} />
                   </CircularIcon>
                 )}
                 {roles.includes("artist") && (
-                  <CircularIcon size={32} class="z-1">
+                  <CircularIcon size={32} class="z-2">
                     <ArtistIcon size={22} />
                   </CircularIcon>
                 )}
                 {roles.includes("community") && (
-                  <CircularIcon size={32} class="z-2">
+                  <CircularIcon size={32} class="z-3">
                     <PeopleIcon size={26} />
                   </CircularIcon>
                 )}
@@ -304,9 +304,9 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
           {/* card info/footer */}
           <div class="flex flex-col items-center gap-4 flex-1 mt-4">
             {/* socials */}
-            {Object.keys(socials).length > 0 && (
-              <div class="flex flex-row flex-wrap gap-2 justify-center">
-                {Object.entries(socials).map(([key, value], i) => {
+            <div class="flex flex-row flex-wrap gap-2 justify-center min-h-[32px]">
+              {Object.keys(socials).length > 0 &&
+                Object.entries(socials).map(([key, value], i) => {
                   if (!value) return null;
                   return (
                     <CircularIcon size={30}>
@@ -330,8 +330,7 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
                     </CircularIcon>
                   );
                 })}
-              </div>
-            )}
+            </div>
 
             {/* tags */}
             {tags && tags.length > 0 && (
