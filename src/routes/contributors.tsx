@@ -9,7 +9,46 @@ import { Section } from "~/components/Section";
 import { Localized } from "~/i18n";
 import { MainLayout } from "~/layouts/MainLayout";
 import { Card } from "~/components/contributors/Card";
-import { contributors, contributorsAlphabetical, type Contributor } from "~/components/contributors";
+import { contributors } from "~/components/contributors";
+
+const socialsPriority = [
+  "website",
+  "discord",
+  "matrix",
+  "github",
+  "youtube",
+  "twitch",
+  "twitter",
+  "bluesky",
+  "instagram",
+  "tiktok",
+  "steam",
+  "printables",
+  "kofi",
+];
+
+const finalContribs = contributors
+  .slice()
+  // sort alphabetically by name
+  .sort((a, b) => a.name.localeCompare(b.name))
+  .map((contributor) => {
+    if (contributor.socials) {
+      // sort socials by priority
+      // i don't feel like sorting it in the object manually lmao, kill me if you want to -maya
+      const sortedEntries = Object.entries(contributor.socials).sort(
+        ([a], [b]) => {
+          const aIndex = socialsPriority.indexOf(a);
+          const bIndex = socialsPriority.indexOf(b);
+          if (aIndex === -1 && bIndex === -1) return 0;
+          if (aIndex === -1) return 1;
+          if (bIndex === -1) return -1;
+          return aIndex - bIndex;
+        }
+      );
+      contributor.socials = Object.fromEntries(sortedEntries);
+    }
+    return contributor;
+  });
 
 export default function ContributorsLayout(props: ParentProps) {
   return (
@@ -61,11 +100,19 @@ export default function ContributorsLayout(props: ParentProps) {
           </div>
 
           <div class="flex flex-row flex-wrap gap-4 mt-8 justify-around">
-            {contributorsAlphabetical.map((contrib, i) => (
+            {finalContribs.map((contrib, i) => (
               <Card
                 contributor={contrib}
-                background={{ /* TODO: background */ }}
-                border={{ /* TODO: border */ }}
+                background={
+                  {
+                    /* TODO: background */
+                  }
+                }
+                border={
+                  {
+                    /* TODO: border */
+                  }
+                }
               />
             ))}
           </div>

@@ -327,10 +327,10 @@ export const contributors: Contributor[] = [
   },
   {
     name: "Polymoria",
-    roles: ["dev", "artist", "community"],
+    roles: ["artist", "community"],
     socials: {},
     image: "/images/contrib-slime.png",
-    tags: ["#placeholder", "#loremipsum"],
+    tags: ["#silly", "#friend", "#uwu", "#owo", "#ryr"],
   },
   {
     name: "Jaberrocky",
@@ -365,8 +365,14 @@ export const contributors: Contributor[] = [
     image: "/images/contrib-slime.png",
     tags: ["#techsupportsoldier", "#eepy", "#silly", "#unityhater"],
   },
+    {
+    name: "BracketProto",
+    roles: ["dev"],
+    socials: {
+      website: "https://bracketproto.com/",
+    },
+    image: "/images/contrib-slime.png",
+    tags: ["#slimetora", "#silly", "#trans", "programmer"],
+  },
 ];
 
-export const contributorsAlphabetical = contributors.sort((a, b) =>
-  a.name.localeCompare(b.name)
-);
