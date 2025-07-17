@@ -172,7 +172,7 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
     >
       <div
         ref={glow}
-        class="absolute w-full h-full rounded-2xl transition-opacity duration-200"
+        class="absolute inset-0 rounded-2xl transition-opacity duration-200 pointer-events-none"
         onMouseEnter={() => glow && (glow.style.transitionDuration = "0.2s")}
         onMouseLeave={() => glow && (glow.style.transitionDuration = "0.4s")}
       ></div>
