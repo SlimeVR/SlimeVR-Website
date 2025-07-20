@@ -16,8 +16,8 @@ export interface Contributor {
     steam?: string;
     matrix?: string;
   };
-  image: string;
   tags: string[];
+  classes?: string;
 }
 
 export const contributors: Contributor[] = [
@@ -27,8 +27,8 @@ export const contributors: Contributor[] = [
     socials: {
       github: "https://github.com/ButterscotchV/",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#skunk", "#creature", "#programmer"],
+    classes: "ml-5 !scale-[85%]"
   },
   {
     name: "loucass003",
@@ -36,8 +36,8 @@ export const contributors: Contributor[] = [
     socials: {
       github: "https://github.com/loucass003",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#programmer", "#french"],
+    classes: "-mt-5 !scale-[115%]"
   },
   {
     name: "Summer",
@@ -45,7 +45,6 @@ export const contributors: Contributor[] = [
     socials: {
       github: "https://github.com/SummerSigh",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#programmer", "#drivenbydata", "#neuralnoodle"],
   },
   {
@@ -54,7 +53,6 @@ export const contributors: Contributor[] = [
     socials: {
       youtube: "https://www.youtube.com/@ZRock35VR",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#demon_cat", "#slimevr_mascot", "#beta_tester"],
   },
   {
@@ -65,7 +63,6 @@ export const contributors: Contributor[] = [
       instagram: "https://www.instagram.com/shoyuwoyu",
       twitter: "https://x.com/shoyuwoyu",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#shark", "#fish", "#illustrator", "#2d3d"],
   },
   {
@@ -76,8 +73,8 @@ export const contributors: Contributor[] = [
       matrix: "https://matrix.to/#/@devminer:devminer.xyz",
       website: "https://devminer.xyz",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#programmer", "#meow"],
+    classes: "-mt-2 !scale-[110%]"
   },
   {
     name: "Smeltie",
@@ -86,7 +83,6 @@ export const contributors: Contributor[] = [
       github: "https://github.com/smeltie",
       bluesky: "https://bsky.app/profile/smeltie.dev",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#possum", "#chaotic", "#grilled_cheese_connoisseur"],
   },
   {
@@ -95,7 +91,6 @@ export const contributors: Contributor[] = [
     socials: {
       website: "https://imbluewisp.com/",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#artist", "#gremlin", "#friend", "#furry"],
   },
   {
@@ -105,10 +100,9 @@ export const contributors: Contributor[] = [
       twitch: "https://www.twitch.tv/spazzwan",
       youtube: "https://www.youtube.com/spazzwan",
       bluesky: "https://bsky.app/profile/spazzwan.bsky.social",
-      discord: "https://discordapp.com/users/418337866574200833",
+      kofi: "https://ko-fi.com/spazzwan",
       github: "https://github.com/spazznyan",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#menace", "#infographics", "#<3", "#paintnet_abuser"],
   },
   {
@@ -118,7 +112,6 @@ export const contributors: Contributor[] = [
       bluesky: "https://bsky.app/profile/meia.gay",
       github: "https://github.com/kounocom",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#cosmic", "#starry", "#dumb"],
   },
   {
@@ -127,7 +120,6 @@ export const contributors: Contributor[] = [
     socials: {
       website: "https://flarchenskii.carrd.co/",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#artist"],
   },
   {
@@ -136,14 +128,12 @@ export const contributors: Contributor[] = [
     socials: {
       github: "https://github.com/sctanf",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#cat", "#kitty"],
   },
   {
     name: "nataly",
     roles: ["community"],
     socials: {},
-    image: "/images/contrib-slime.png",
     tags: ["#coffee_addict", "#fashionista", "#foodporn", "#blogging", "#☺️"],
   },
   {
@@ -152,14 +142,13 @@ export const contributors: Contributor[] = [
     socials: {
       website: "https://linktr.ee/yex0",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#silly", "#yes", "#DIYtheWorld"],
+    classes: "-mt-5 ml-2 !scale-[120%]"
   },
   {
     name: "Snaila",
     roles: ["artist"],
     socials: {},
-    image: "/images/contrib-slime.png",
     tags: ["#snailing", "#caring", "#pink", "#maid"],
   },
   {
@@ -168,7 +157,6 @@ export const contributors: Contributor[] = [
     socials: {
       bluesky: "https://bsky.app/profile/evenightingale.bsky.social",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#cute", "#cool", "#fun", "#comfy", "#silly"],
   },
   {
@@ -178,14 +166,13 @@ export const contributors: Contributor[] = [
       github: "https://github.com/tort32",
       bluesky: "https://bsky.app/profile/tort32.bsky.social",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#diy", "#electronics", "#prog", "#rock"],
+    classes: "ml-3 -mt-2 !scale-[110%]"
   },
   {
     name: "Az",
     roles: ["community"],
     socials: {},
-    image: "/images/contrib-slime.png",
     tags: ["#~"],
   },
   {
@@ -197,8 +184,8 @@ export const contributors: Contributor[] = [
       twitter: "https://x.com/auyerimel",
       discord: "https://discordapp.com/users/695085311994232902",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#fox", "#owo", "#programmer"],
+    classes: "-mt-2 !scale-[120%]"
   },
   {
     name: "Gorbit99",
@@ -206,7 +193,6 @@ export const contributors: Contributor[] = [
     socials: {
       github: "https://github.com/gorbit99",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#programmer", "#not_creative"],
   },
   {
@@ -215,8 +201,8 @@ export const contributors: Contributor[] = [
     socials: {
       website: "https://imurx.github.io",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#eevee", "#silly", "#:3", "#funky", "#rust"],
+    classes: "scale-[105%]"
   },
   {
     name: "Eiren",
@@ -227,7 +213,6 @@ export const contributors: Contributor[] = [
       github: "https://github.com/eirenliel",
       youtube: "https://www.youtube.com/@eirenrain",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#robot", "#friend", "#eldritch", "#tinkerer"],
   },
   {
@@ -240,14 +225,12 @@ export const contributors: Contributor[] = [
       twitter: "https://x.com/JovannMC",
       matrix: "https://matrix.to/#/@jovannmc:tchncs.de",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#slimetora", "#silly", "#trans", "programmer"],
   },
   {
     name: "Em",
     roles: ["dev", "artist"],
     socials: {},
-    image: "/images/contrib-slime.png",
     tags: ["#shy", "#weeb", "#justhappytobehere"],
   },
   {
@@ -256,7 +239,6 @@ export const contributors: Contributor[] = [
     socials: {
       github: "https://github.com/PlatinumVsReality",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#eepy", "#skittle", "shaped", "#friend"],
   },
   {
@@ -267,7 +249,6 @@ export const contributors: Contributor[] = [
       twitter: "https://twitter.com/lmore377",
       discord: "https://discordapp.com/users/245072764321398784",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#gay", "#eepy", "#silly"],
   },
   {
@@ -276,8 +257,8 @@ export const contributors: Contributor[] = [
     socials: {
       kofi: "https://ko-fi.com/sigtyr",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#it", "#corgi", "#support"],
+    classes: "mt-2 !scale-[105%]"
   },
   {
     name: "Fate",
@@ -286,7 +267,6 @@ export const contributors: Contributor[] = [
       bluesky: "https://bsky.app/profile/threadsoffate.bsky.social",
       github: "https://github.com/ThreadOfFate",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#cute", "#programmer", "#scatterbrain"],
   },
   {
@@ -295,8 +275,8 @@ export const contributors: Contributor[] = [
     socials: {
       kofi: "https://ko-fi.com/dqmaged",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#3dmodeler", "#Pink", "#PCBDesign", "#freeslime", "#fuckingboat"],
+    classes: "-mt-1 !scale-[105%]"
   },
   {
     name: "Shine Bright",
@@ -304,7 +284,6 @@ export const contributors: Contributor[] = [
     socials: {
       github: "https://github.com/ShineBrightMeow",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#cat", "#smol", "#kitty", "#meow", "#cute"],
   },
   {
@@ -315,15 +294,15 @@ export const contributors: Contributor[] = [
       kofi: "https://ko-fi.com/aokiuwu",
       website: "https://agoi.gay",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#meow", "#arch-btw"],
+    classes: "-mt-1 !scale-[105%]"
   },
   {
     name: "Polymoria",
     roles: ["artist", "community"],
-    socials: {},
-    image: "/images/contrib-slime.png",
+    socials: { bluesky: "https://bsky.app/profile/polymoria.bsky.social" },
     tags: ["#silly", "#friend", "#uwu", "#owo", "#ryr"],
+    classes: "-mt-1 !scale-[110%]"
   },
   {
     name: "Jaberrocky",
@@ -332,8 +311,7 @@ export const contributors: Contributor[] = [
       twitch: "https://www.twitch.tv/jabberrocky",
       bluesky: "https://bsky.app/profile/jabberrocky.bsky.social",
     },
-    image: "/images/contrib-slime.png",
-    tags: ["#stayaligned", "#programmer", "#wolf", "#petsplz", "#speedrunner"],
+    tags: ["#stayaligned", "#wolf", "#programmer", "#petsplz"],
   },
   {
     name: "Vyolex",
@@ -343,8 +321,8 @@ export const contributors: Contributor[] = [
       bluesky: "https://bsky.app/profile/vyolex.bsky.social",
       printables: "https://www.printables.com/@Vyolex_327889",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#snackiestealer", "#maker", "#raccoon", "#dingus"],
+    classes: "mt-5 !scale-[102%]"
   },
   {
     name: "Ashy",
@@ -354,7 +332,6 @@ export const contributors: Contributor[] = [
       steam: "https://steamcommunity.com/id/ashyfire33",
       discord: "https://discordapp.com/users/951394014240858142",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#techsupportsoldier", "#eepy", "#silly", "#unityhater"],
   },
   {
@@ -363,7 +340,6 @@ export const contributors: Contributor[] = [
     socials: {
       website: "https://bracketproto.com/",
     },
-    image: "/images/contrib-slime.png",
     tags: ["#slimetora", "#silly", "#trans", "programmer"],
   },
 ];

@@ -37,13 +37,14 @@ interface CardProps extends ComponentProps<"div"> {
 
 export const Card: ParentComponent<CardProps> = (initialProps) => {
   const props = mergeProps({} satisfies Partial<CardProps>, initialProps);
-  const { name, roles, socials, image, tags } = props.contributor;
+  const { name, roles, socials, tags, classes } = props.contributor;
 
   let card: HTMLDivElement;
   let glow: HTMLDivElement;
   let placeholder: HTMLDivElement; // placeholder for the card when focused to keep its position in list
   let innerDiv: HTMLDivElement;
   const [focus, setFocus] = createSignal(false);
+  const [imageError, setImageError] = createSignal(false);
   // TODO: allow hover/tilting during animation without it interrupting the animation - idk how to do this without breaking other things tbh
   const [transitioning, setTransitioning] = createSignal(false); // prevent tilting while transitioning (interrupting it)
   let originalPosition: { top: number; left: number } | null = null;
@@ -220,7 +221,7 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
     }
   };
 
-  const classes = createMemo(() => {
+  const cardClasses = createMemo(() => {
     return clsx(
       "max-w-[250px] max-h-[348px] w-full h-full p-2 shadow-lg flex flex-col items-center aspect-[0.72/1]",
       props.class
@@ -293,14 +294,14 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
       {/* invisible placeholder - used when card is focused to keep its position in list */}
       <div
         ref={placeholder}
-        class={classes() + " !bg-transparent !p-0"}
+        class={cardClasses() + " !bg-transparent !p-0"}
         style={{ display: "none" }}
         aria-hidden="true"
       />
 
       {/* the actual card*/}
       <div
-        class={classes() + " rounded-2xl shadow-lg relative"}
+        class={cardClasses() + " rounded-2xl shadow-lg relative"}
         ref={card}
         onClick={focus() ? null : cardFocus}
         onMouseEnter={cardHoverEnter}
@@ -352,8 +353,32 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
                 </div>
               </div>
               {/* card image - bg and slime photo */}
-              <div class="w-full rounded-2xl rounded-tr-[70px] pattern !bg-[size:80%] !bg-[#1E2442] mt-[-2px]">
-                <img src={image} alt={name} class="object-cover w-full" />
+              <div class="w-[218px] h-[141px] overflow-visible rounded-2xl rounded-tr-[70px] pattern !bg-[size:80%] !bg-[#1E2442] mt-[-2px] relative">
+                <div class="absolute inset-0 pointer-events-none" />
+                <img
+                  src={
+                    imageError()
+                      ? "images/contributors/jovannmc.png" // who's that slime? it's maya- FUUUU-
+                      : `images/contributors/${name}.png`
+                  }
+                  alt={name}
+                  class={clsx(
+                    "object-contain w-[calc(100%+16px)] scale-[103%]",
+                    imageError() ? "brightness-[0.01]" : "",
+                    props.contributor.classes
+                  )}
+                  style={{
+                    // so doessn't overflow with large slimes, but we scale w/ scale property up to let it overflow a lil
+                    "max-height": "148px",
+                    overflow: "visible",
+                  }}
+                  onError={() => setImageError(true)}
+                />
+                {imageError() && (
+                  <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <span class="text-6xl font-bold text-white">?</span>
+                  </div>
+                )}
               </div>
             </div>
 
