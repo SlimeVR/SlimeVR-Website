@@ -20,6 +20,10 @@ export interface Contributor {
   classes?: string;
 }
 
+// TODO: get transparent version for em
+// TODO: depending on UTC time, choose 5 random slimes to make shiny (maybe hash the date/time so that everyone gets same shinies :3)
+// TODO: grab colours for bg and border for all slimes
+
 export const contributors: Contributor[] = [
   {
     name: "Butterscotch",
@@ -27,7 +31,7 @@ export const contributors: Contributor[] = [
     socials: {
       github: "https://github.com/ButterscotchV/",
     },
-    tags: ["#skunk", "#creature", "#programmer"],
+    tags: ["#skunk", "#creature", "#programmer", "#cowboy"],
     classes: "ml-5 !scale-[85%]"
   },
   {
@@ -49,11 +53,11 @@ export const contributors: Contributor[] = [
   },
   {
     name: "ZRock35",
-    roles: ["community"],
+    roles: ["community", "artist"],
     socials: {
       youtube: "https://www.youtube.com/@ZRock35VR",
     },
-    tags: ["#demon_cat", "#slimevr_mascot", "#beta_tester"],
+    tags: ["#demon_cat", "#artist", "#slimevr_mascot"],
   },
   {
     name: "Shoyu",
@@ -73,7 +77,7 @@ export const contributors: Contributor[] = [
       matrix: "https://matrix.to/#/@devminer:devminer.xyz",
       website: "https://devminer.xyz",
     },
-    tags: ["#programmer", "#meow"],
+    tags: ["#programmer", "#meow", "#klipperize-it"],
     classes: "-mt-2 !scale-[110%]"
   },
   {
@@ -92,6 +96,7 @@ export const contributors: Contributor[] = [
       website: "https://imbluewisp.com/",
     },
     tags: ["#artist", "#gremlin", "#friend", "#furry"],
+    classes: "-mt-1 !scale-[110%]"
   },
   {
     name: "Spazzwan",
@@ -332,7 +337,7 @@ export const contributors: Contributor[] = [
       steam: "https://steamcommunity.com/id/ashyfire33",
       discord: "https://discordapp.com/users/951394014240858142",
     },
-    tags: ["#techsupportsoldier", "#eepy", "#silly", "#unityhater"],
+    tags: ["#techsupportsoldier", "#eepy", "#unityhater"],
   },
   {
     name: "BracketProto",
@@ -340,6 +345,6 @@ export const contributors: Contributor[] = [
     socials: {
       website: "https://bracketproto.com/",
     },
-    tags: ["#slimetora", "#silly", "#trans", "programmer"],
+    tags: ["#slimetora", "#silly", "#trans", "#programmer"],
   },
 ];
