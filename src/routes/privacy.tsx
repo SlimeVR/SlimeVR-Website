@@ -16,7 +16,7 @@ export default function PrivacyPage(props: ParentProps) {
       <Meta name="robots" content="index, follow" />
 
       <Section>
-        <Container>
+        <Container class="mt-4">
           <SolidMarkdown
             remarkPlugins={[remarkGfm]}
             components={{ a: MarkdownLink }}
