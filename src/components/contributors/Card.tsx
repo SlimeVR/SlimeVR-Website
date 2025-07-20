@@ -165,6 +165,10 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
     card.style.boxShadow = "0px 10px 20px 8px #02111db8";
     card.removeEventListener("mousemove", cardHoverTilt);
     document.addEventListener("mousemove", cardTilt);
+
+    // prevent scrolling when card is focused
+    document.body.style.overflow = "hidden";
+
     setFocus(true);
 
     transitionTimeout = setTimeout(() => {
@@ -196,9 +200,10 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
 
       document.removeEventListener("mousemove", cardTilt);
       glow.style.opacity = "0";
+
       setFocus(false);
 
-      // switch back to relative positioning and hide placeholder after transition completes
+      // switch back to relative positioning, hide placeholder, and allow scrolling after transition completes
       transitionTimeout = setTimeout(() => {
         card.style.transition = "none";
         card.style.position = "relative";
@@ -208,6 +213,7 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
         card.style.transform =
           "perspective(1000px) rotateY(0deg) rotateX(0deg)";
         placeholder.style.display = "none";
+        document.body.style.overflow = "";
         setTransitioning(false);
         transitionTimeout = null;
       }, 450);
@@ -255,6 +261,8 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
     document.removeEventListener("mousemove", cardTilt);
     card.removeEventListener("mousemove", cardHoverTilt);
 
+    if (focus()) document.body.style.overflow = "";
+
     if (transitionTimeout) {
       clearTimeout(transitionTimeout);
       transitionTimeout = null;
@@ -299,6 +307,7 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
         onMouseLeave={cardHoverLeave}
         style={borderStyle()}
       >
+        {/* glow effect when hovering */}
         <div
           ref={glow}
           class="absolute inset-0 rounded-2xl transition-opacity duration-200 pointer-events-none z-20"
