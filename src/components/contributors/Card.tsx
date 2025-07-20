@@ -359,11 +359,11 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
                   src={
                     imageError()
                       ? "images/contributors/jovannmc.png" // who's that slime? it's maya- FUUUU-
-                      : `images/contributors/${name}.png`
+                      : `images/contributors/${name.toLowerCase()}.png`
                   }
                   alt={name}
                   class={clsx(
-                    "object-contain w-[calc(100%+16px)] scale-[103%]",
+                    "object-contain w-[calc(100%+16px)] scale-[103%] select-none",
                     imageError() ? "brightness-[0.01]" : "",
                     props.contributor.classes
                   )}
@@ -376,7 +376,7 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
                 />
                 {imageError() && (
                   <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <span class="text-6xl font-bold text-white">?</span>
+                    <span class="text-6xl font-bold text-white select-none">?</span>
                   </div>
                 )}
               </div>
