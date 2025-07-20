@@ -122,26 +122,26 @@ export default function ContributorsLayout(props: ParentProps) {
               .filter((contrib) =>
                 contrib.name.toLowerCase().includes(searchTerm().toLowerCase())
               )
-              .map((contrib, i) => (
-                <Card
-                  class={`transition-all duration-200 ${
-                    isShuffling()
-                      ? "animate-pulse scale-95 opacity-80 transform rotate-1 pointer-events-none"
-                      : "scale-100 opacity-100 transform rotate-0"
-                  }`}
-                  contributor={contrib}
-                  background={
-                    {
-                      /* TODO: background */
-                    }
-                  }
-                  border={
-                    {
-                      /* TODO: border */
-                    }
-                  }
-                />
-              ))}
+              .map((contrib, i) => {
+                // ! this is just placeholder stuff, to replace with actual colours for slimes
+                const gradient =
+                  "linear-gradient(292.18deg, #FA5858 -0.23%, #FFFFFF 4.63%, #FFD324 9.49%, #02FFD5 14.35%, #FFFFFF 19.22%, #A200FF 24.08%, #0077FF 28.94%, #00FFAE 33.81%, #FBFFC7 38.67%, #FA5858 43.53%, #FF7700 48.4%, #FFFFFF 53.26%, #FFF47B 58.12%, #FBFFC7 62.99%, #FFFFFF 67.85%, #CDFFC7 72.71%, #5BFAFF 77.58%, #FF82CD 82.44%, #E34B4B 87.3%, #FBFFC7 97.03%)";
+
+                const isGradientCard = i % 3 === 2;
+
+                return (
+                  <Card
+                    class={`transition-all duration-200 ${
+                      isShuffling()
+                        ? "animate-pulse scale-95 opacity-80 transform rotate-1 pointer-events-none"
+                        : "scale-100 opacity-100 transform rotate-0"
+                    }`}
+                    contributor={contrib}
+                    background={isGradientCard ? gradient : "#d9d9d9"}
+                    border={isGradientCard ? gradient : "#d9d9d9"}
+                  />
+                );
+              })}
             {/* if none found, show sad message */}
             {finalContribs().filter((contrib) =>
               contrib.name.toLowerCase().includes(searchTerm().toLowerCase())
