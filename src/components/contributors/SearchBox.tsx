@@ -35,9 +35,12 @@ export const SearchBox: ParentComponent<SearchProps> = (initialProps) => {
       )}
       style={{ position: "relative" }}
     >
-      <span class="text-background-10 text-lg">{props.children}</span>
+      {/* hide text on mobile */}
+      <span class={"text-background-10 text-lg hidden sm:inline"}>
+        {props.children}
+      </span>
       <SearchIcon size={20} />
-      <span class="relative">
+      <span class="relative flex-1">
         <input
           {...props}
           class={classes()}

@@ -10,6 +10,7 @@ import { Localized } from "~/i18n";
 import { MainLayout } from "~/layouts/MainLayout";
 import { Card } from "~/components/contributors/Card";
 import { contributors } from "~/components/contributors";
+import { ShuffleIcon } from "~/components/commons/icons/ShuffleIcon";
 
 const socialsPriority = [
   "website",
@@ -98,9 +99,9 @@ export default function TeamPage(props: ParentProps) {
             whitespace="whitespace-pre-line"
           />
 
-          <div class="flex flex-row justify-between items-center mt-8">
+          <div class="flex flex-row justify-between gap-4 items-center mt-8">
             <SearchBox
-              class="w-full max-w-60"
+              class="w-full sm:max-w-60"
               onChange={(e) =>
                 setSearchTerm((e.currentTarget as HTMLInputElement).value)
               }
@@ -109,10 +110,13 @@ export default function TeamPage(props: ParentProps) {
             </SearchBox>
             <Button
               variant="quaternary"
-              class="border border-background-40 !rounded-full"
+              class="border border-background-40 !rounded-full !p-2.5 sm:!px-5 sm:!py-2.5"
               onClick={shuffle}
             >
-              <Localized id="contributors.shuffle" />
+              <span class="hidden sm:inline">
+                <Localized id="contributors.shuffle" />
+              </span>
+              <ShuffleIcon size={24} class="block sm:hidden" />
             </Button>
           </div>
 
