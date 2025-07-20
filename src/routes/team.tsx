@@ -70,7 +70,7 @@ function shuffle() {
   }, 100);
 }
 
-export default function ContributorsLayout(props: ParentProps) {
+export default function TeamPage(props: ParentProps) {
   return (
     <MainLayout>
       <AppTitle key="contributors.title"></AppTitle>

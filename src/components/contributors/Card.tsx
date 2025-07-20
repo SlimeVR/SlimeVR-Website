@@ -360,9 +360,9 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
             {/* card info/footer */}
             <div class="flex flex-col items-center gap-4 flex-1 mt-4">
               {/* socials */}
-              <div class="flex flex-row flex-wrap gap-2 justify-center min-h-[32px]">
-                {Object.keys(socials).length > 0 &&
-                  Object.entries(socials).map(([key, value], i) => {
+              {Object.keys(socials).length > 0 && (
+                <div class="flex flex-row flex-wrap gap-2 justify-center min-h-[32px]">
+                  {Object.entries(socials).map(([key, value], i) => {
                     if (!value) return null;
                     return (
                       <CircularIcon size={30}>
@@ -390,8 +390,8 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
                       </CircularIcon>
                     );
                   })}
-              </div>
-
+                </div>
+              )}
               {/* tags */}
               {tags && tags.length > 0 && (
                 <div class="flex flex-row flex-wrap gap-2 justify-center">

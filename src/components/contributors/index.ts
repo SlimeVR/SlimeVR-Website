@@ -100,7 +100,7 @@ export const contributors: Contributor[] = [
   },
   {
     name: "Spazzwan",
-    roles: ["community"],
+    roles: ["community", "artist", "dev"],
     socials: {
       twitch: "https://www.twitch.tv/spazzwan",
       youtube: "https://www.youtube.com/spazzwan",
@@ -109,14 +109,7 @@ export const contributors: Contributor[] = [
       github: "https://github.com/spazznyan",
     },
     image: "/images/contrib-slime.png",
-    tags: [
-      "#calibration_cat",
-      "#menace",
-      "#infographics",
-      "#<3",
-      "#girlkisser",
-      "#paintnet_abuser",
-    ],
+    tags: ["#menace", "#infographics", "#<3", "#paintnet_abuser"],
   },
   {
     name: "Meia",
@@ -171,12 +164,12 @@ export const contributors: Contributor[] = [
   },
   {
     name: "Eve",
-    roles: ["community"],
+    roles: ["community", "dev"],
     socials: {
       bluesky: "https://bsky.app/profile/evenightingale.bsky.social",
     },
     image: "/images/contrib-slime.png",
-    tags: ["#cute", "#cool", "#comfy", "#silly", "#fun"],
+    tags: ["#cute", "#cool", "#fun", "#comfy", "#silly"],
   },
   {
     name: "Cake",
@@ -248,7 +241,7 @@ export const contributors: Contributor[] = [
       matrix: "https://matrix.to/#/@jovannmc:tchncs.de",
     },
     image: "/images/contrib-slime.png",
-    tags: ["#slimetora", "#trans", "#silly", "#meow", "#programmer"],
+    tags: ["#slimetora", "#silly", "#trans", "programmer"],
   },
   {
     name: "Em",
@@ -312,7 +305,7 @@ export const contributors: Contributor[] = [
       github: "https://github.com/ShineBrightMeow",
     },
     image: "/images/contrib-slime.png",
-    tags: ["#cat", "#kitty", "#meow", "#cute", "#smol"],
+    tags: ["#cat", "#smol", "#kitty", "#meow", "#cute"],
   },
   {
     name: "Aoki",
@@ -351,7 +344,7 @@ export const contributors: Contributor[] = [
       printables: "https://www.printables.com/@Vyolex_327889",
     },
     image: "/images/contrib-slime.png",
-    tags: ["#snackiestealer", "#raccoon", "#dingus", "#maker", "#imu_muncher"],
+    tags: ["#snackiestealer", "#maker", "#raccoon", "#dingus"],
   },
   {
     name: "Ashy",
@@ -364,7 +357,7 @@ export const contributors: Contributor[] = [
     image: "/images/contrib-slime.png",
     tags: ["#techsupportsoldier", "#eepy", "#silly", "#unityhater"],
   },
-    {
+  {
     name: "BracketProto",
     roles: ["dev"],
     socials: {
@@ -374,4 +367,3 @@ export const contributors: Contributor[] = [
     tags: ["#slimetora", "#silly", "#trans", "programmer"],
   },
 ];
-
