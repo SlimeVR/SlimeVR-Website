@@ -353,7 +353,7 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
               </div>
               {/* card image - bg and slime photo */}
               <div class="w-full rounded-2xl rounded-tr-[70px] pattern !bg-[size:80%] !bg-[#1E2442] mt-[-2px]">
-                <img src={image} alt={name} class="object-cover h-full" />
+                <img src={image} alt={name} class="object-cover w-full" />
               </div>
             </div>
 
