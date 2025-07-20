@@ -32,7 +32,7 @@ export const contributors: Contributor[] = [
       github: "https://github.com/ButterscotchV/",
     },
     tags: ["#skunk", "#creature", "#programmer", "#cowboy"],
-    classes: "ml-5 !scale-[85%]"
+    classes: "ml-5 !scale-[85%]",
   },
   {
     name: "loucass003",
@@ -41,7 +41,7 @@ export const contributors: Contributor[] = [
       github: "https://github.com/loucass003",
     },
     tags: ["#programmer", "#french"],
-    classes: "-mt-5 !scale-[115%]"
+    classes: "-mt-5 !scale-[115%]",
   },
   {
     name: "Summer",
@@ -49,7 +49,7 @@ export const contributors: Contributor[] = [
     socials: {
       github: "https://github.com/SummerSigh",
     },
-    tags: ["#programmer", "#drivenbydata", "#neuralnoodle"],
+    tags: ["#dev", "#drivenbydata", "#neuralnoodle"],
   },
   {
     name: "ZRock35",
@@ -78,7 +78,7 @@ export const contributors: Contributor[] = [
       website: "https://devminer.xyz",
     },
     tags: ["#programmer", "#meow", "#klipperize-it"],
-    classes: "-mt-2 !scale-[110%]"
+    classes: "-mt-2 !scale-[110%]",
   },
   {
     name: "Smeltie",
@@ -96,7 +96,7 @@ export const contributors: Contributor[] = [
       website: "https://imbluewisp.com/",
     },
     tags: ["#artist", "#gremlin", "#friend", "#furry"],
-    classes: "-mt-1 !scale-[110%]"
+    classes: "-mt-1 !scale-[110%]",
   },
   {
     name: "Spazzwan",
@@ -148,7 +148,7 @@ export const contributors: Contributor[] = [
       website: "https://linktr.ee/yex0",
     },
     tags: ["#silly", "#yes", "#DIYtheWorld"],
-    classes: "-mt-5 ml-2 !scale-[120%]"
+    classes: "-mt-5 ml-2 !scale-[120%]",
   },
   {
     name: "Snaila",
@@ -172,7 +172,7 @@ export const contributors: Contributor[] = [
       bluesky: "https://bsky.app/profile/tort32.bsky.social",
     },
     tags: ["#diy", "#electronics", "#prog", "#rock"],
-    classes: "ml-3 -mt-2 !scale-[110%]"
+    classes: "ml-3 -mt-2 !scale-[110%]",
   },
   {
     name: "Az",
@@ -190,7 +190,7 @@ export const contributors: Contributor[] = [
       discord: "https://discordapp.com/users/695085311994232902",
     },
     tags: ["#fox", "#owo", "#programmer"],
-    classes: "-mt-2 !scale-[120%]"
+    classes: "-mt-2 !scale-[120%]",
   },
   {
     name: "Gorbit99",
@@ -207,7 +207,7 @@ export const contributors: Contributor[] = [
       website: "https://imurx.github.io",
     },
     tags: ["#eevee", "#silly", "#:3", "#funky", "#rust"],
-    classes: "scale-[105%]"
+    classes: "scale-[105%]",
   },
   {
     name: "Eiren",
@@ -263,7 +263,7 @@ export const contributors: Contributor[] = [
       kofi: "https://ko-fi.com/sigtyr",
     },
     tags: ["#it", "#corgi", "#support"],
-    classes: "mt-2 !scale-[105%]"
+    classes: "mt-2 !scale-[105%]",
   },
   {
     name: "Fate",
@@ -280,8 +280,8 @@ export const contributors: Contributor[] = [
     socials: {
       kofi: "https://ko-fi.com/dqmaged",
     },
-    tags: ["#3dmodeler", "#Pink", "#PCBDesign", "#freeslime", "#fuckingboat"],
-    classes: "-mt-1 !scale-[105%]"
+    tags: ["#PCBDesign", "#freeslime", "#Pink", "#fuckingboat"],
+    classes: "-mt-1 !scale-[105%]",
   },
   {
     name: "Shine Bright",
@@ -300,14 +300,14 @@ export const contributors: Contributor[] = [
       website: "https://agoi.gay",
     },
     tags: ["#meow", "#arch-btw"],
-    classes: "-mt-1 !scale-[105%]"
+    classes: "-mt-1 !scale-[105%]",
   },
   {
     name: "Polymoria",
     roles: ["artist", "community"],
     socials: { bluesky: "https://bsky.app/profile/polymoria.bsky.social" },
     tags: ["#silly", "#friend", "#uwu", "#owo", "#ryr"],
-    classes: "-mt-1 !scale-[110%]"
+    classes: "-mt-1 !scale-[110%]",
   },
   {
     name: "Jaberrocky",
@@ -327,7 +327,7 @@ export const contributors: Contributor[] = [
       printables: "https://www.printables.com/@Vyolex_327889",
     },
     tags: ["#snackiestealer", "#maker", "#raccoon", "#dingus"],
-    classes: "mt-5 !scale-[102%]"
+    classes: "mt-5 !scale-[102%]",
   },
   {
     name: "Ashy",
