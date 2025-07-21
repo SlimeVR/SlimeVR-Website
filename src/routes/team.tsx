@@ -9,8 +9,9 @@ import { Section } from "~/components/Section";
 import { Localized } from "~/i18n";
 import { MainLayout } from "~/layouts/MainLayout";
 import { Card } from "~/components/contributors/Card";
-import { contributors } from "~/components/contributors";
+import { Contributor, contributors } from "~/components/contributors";
 import { ShuffleIcon } from "~/components/commons/icons/ShuffleIcon";
+import Rand from "rand-seed";
 
 const socialsPriority = [
   "website",
@@ -71,6 +72,27 @@ function shuffle() {
   }, 100);
 }
 
+// random "shiny" slimes (up to 5), where it is seeded by the current date (so everyone gets the same shinies)
+const shinyGradient =
+  "linear-gradient(292.18deg, #FA5858 -0.23%, #FFFFFF 4.63%, #FFD324 9.49%, #02FFD5 14.35%, #FFFFFF 19.22%, #A200FF 24.08%, #0077FF 28.94%, #00FFAE 33.81%, #FBFFC7 38.67%, #FA5858 43.53%, #FF7700 48.4%, #FFFFFF 53.26%, #FFF47B 58.12%, #FBFFC7 62.99%, #FFFFFF 67.85%, #CDFFC7 72.71%, #5BFAFF 77.58%, #FF82CD 82.44%, #E34B4B 87.3%, #FBFFC7 97.03%)";
+function getShinyContribs(contribs: Contributor[], count = 5) {
+  const seed = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+  const rand = new Rand(seed);
+  const slimes = contribs.slice();
+  // Fisher-Yates shuffle algorithm
+  for (let i = slimes.length - 1; i > 0; i--) {
+    const j = Math.floor(rand.next() * (i + 1));
+    [slimes[i], slimes[j]] = [slimes[j], slimes[i]];
+  }
+
+  const finalSlimes = slimes.slice(0, count);
+  console.log(
+    `Shiny slimes for ${seed}:`,
+    finalSlimes.map((s) => s.name)
+  );
+  return finalSlimes;
+}
+
 export default function TeamPage(props: ParentProps) {
   return (
     <MainLayout>
@@ -127,11 +149,9 @@ export default function TeamPage(props: ParentProps) {
                 contrib.name.toLowerCase().includes(searchTerm().toLowerCase())
               )
               .map((contrib, i) => {
-                // ! this is just placeholder stuff, to replace with actual colours for slimes
-                const gradient =
-                  "linear-gradient(292.18deg, #FA5858 -0.23%, #FFFFFF 4.63%, #FFD324 9.49%, #02FFD5 14.35%, #FFFFFF 19.22%, #A200FF 24.08%, #0077FF 28.94%, #00FFAE 33.81%, #FBFFC7 38.67%, #FA5858 43.53%, #FF7700 48.4%, #FFFFFF 53.26%, #FFF47B 58.12%, #FBFFC7 62.99%, #FFFFFF 67.85%, #CDFFC7 72.71%, #5BFAFF 77.58%, #FF82CD 82.44%, #E34B4B 87.3%, #FBFFC7 97.03%)";
-
-                const isGradientCard = i % 3 === 2;
+                const isShiny = getShinyContribs(finalContribs(), 5).some(
+                  (s) => s.name === contrib.name
+                );
 
                 return (
                   <Card
@@ -141,8 +161,8 @@ export default function TeamPage(props: ParentProps) {
                         : "scale-100 opacity-100 transform rotate-0"
                     }`}
                     colors={
-                      isGradientCard
-                        ? { background: gradient, border: gradient }
+                      isShiny
+                        ? { background: shinyGradient, border: shinyGradient }
                         : contrib.colors
                     }
                     {...contrib}

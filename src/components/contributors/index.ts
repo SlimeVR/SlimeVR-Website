@@ -25,7 +25,6 @@ export interface Contributor {
 }
 
 // TODO: get transparent version for em
-// TODO: depending on UTC time, choose 5 random slimes to make shiny (hash the date/time so that everyone gets same shinies :3)
 // TODO: grab colours for bg and border for all slimes
 
 export const contributors: Contributor[] = [
