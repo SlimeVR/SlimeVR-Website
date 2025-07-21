@@ -123,8 +123,14 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
    */
 
   const isOnCard = (x: number, y: number) => {
+    const padding = 16; // extra pixels of padding because you can focus multiple cards if clicked on edge (i think it's due to bounding rect isn't being updated when tilted?)
     const pos = card.getBoundingClientRect();
-    return x >= pos.left && x <= pos.right && y >= pos.top && y <= pos.bottom;
+    return (
+      x >= pos.left + padding &&
+      x <= pos.right - padding &&
+      y >= pos.top + padding &&
+      y <= pos.bottom - padding
+    );
   };
 
   const cardFocus = () => {

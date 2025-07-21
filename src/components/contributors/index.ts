@@ -31,7 +31,7 @@ export const contributors: Contributor[] = [
     socials: {
       github: "https://github.com/ButterscotchV/",
     },
-    tags: ["#skunk", "#creature", "#hungry"],
+    tags: ["#skunk", "#creature", "#🦨", "#hungry"],
     classes: "ml-5 !scale-[85%]",
   },
   {
@@ -251,7 +251,7 @@ export const contributors: Contributor[] = [
       twitter: "https://x.com/JovannMC",
       matrix: "https://matrix.to/#/@jovannmc:tchncs.de",
     },
-    tags: ["#slimetora", "#silly", "#trans", "programmer"],
+    tags: ["#slimetora", "#silly", "#trans", "#eepy", "#zz"],
   },
   {
     name: "Em",
