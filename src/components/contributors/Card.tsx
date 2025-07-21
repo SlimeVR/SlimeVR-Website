@@ -53,8 +53,7 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
   let originalPosition: { top: number; left: number } | null = null;
   let transitionTimeout: ReturnType<typeof setTimeout> | null = null; // prevent multiple transitions / out of sync (from multiple clicks)
 
-  let bgColor = props.colors?.background || fallbackColor;
-  let borderColor = props.colors?.border || fallbackColor;
+  let borderColor = props.color || fallbackColor;
 
   /*
    * Tilt effect things for card
@@ -239,12 +238,12 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
   });
 
   const backgroundStyle = createMemo(() => {
-    if (bgColor.startsWith("linear-gradient")) {
-      return { background: `${bgColor} !important` };
-    }
-
+    const imgUrl = `images/contributors/${name.toLowerCase()}.png`;
     return {
-      background: `radial-gradient(circle at center, ${bgColor}, ${bgColor}66) !important`,
+      background: `
+        url('${imgUrl}') center center / 500% 500% no-repeat
+      `,
+      filter: "blur(16px) brightness(0.7)",
     };
   });
 
@@ -301,15 +300,6 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
     // ensure bg and border is set when re-rendered
     card.style.setProperty("background", borderColor, "important");
 
-    if (bgColor.startsWith("linear-gradient")) {
-      innerDiv.style.setProperty("background", bgColor, "important");
-    } else {
-      innerDiv.style.setProperty(
-        "background",
-        `radial-gradient(circle at center, ${bgColor}, ${bgColor}66)`,
-        "important"
-      );
-    }
   });
 
   return (
@@ -340,11 +330,21 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
         />
         <div
           ref={innerDiv}
-          class="aspect-[0.71/1] max-w-[237px] max-h-[336px] w-full h-full flex flex-col items-center justify-evenly rounded-xl px-2 relative"
-          style={backgroundStyle()}
+          class="aspect-[0.71/1] max-w-[237px] max-h-[336px] w-full h-full flex flex-col items-center justify-evenly rounded-xl px-2 relative overflow-hidden"
         >
-          {/* slight blur for bg */}
-          <div class="absolute inset-0 bg-black bg-opacity-20 backdrop-blur-lg rounded-xl" />
+          {/* blurred background image */}
+          <div
+            class="absolute inset-0 rounded-xl z-0"
+            style={{
+              "background-image": `url(${imgSrc()})`,
+              "background-size": "500%",
+              "background-position": "center",
+              filter: "blur(128px) brightness(1.5)",
+            }}
+            aria-hidden="true"
+          />
+          {/* slight blur for bg overlay */}
+          <div class="absolute inset-0 bg-black bg-opacity-20 backdrop-blur-lg rounded-xl z-0" />
           <div class="relative z-10 w-full h-full flex flex-col items-center justify-evenly">
             {/* card header - name, role(s), image */}
             <div class="flex flex-col flex-1">
@@ -389,7 +389,9 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
                 />
                 {(imageLoading() || imageError()) && (
                   <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <span class="text-6xl font-bold text-white select-none">?</span>
+                    <span class="text-6xl font-bold text-white select-none">
+                      ?
+                    </span>
                   </div>
                 )}
               </div>

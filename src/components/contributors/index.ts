@@ -1,10 +1,7 @@
 export interface Contributor {
   name: string;
   roles: ("dev" | "artist" | "community")[];
-  colors?: {
-    background?: string;
-    border?: string;
-  };
+  color?: string;
   socials: {
     twitter?: string;
     bluesky?: string;
@@ -30,10 +27,7 @@ export const contributors: Contributor[] = [
   {
     name: "Butterscotch",
     roles: ["dev", "community"],
-    colors: {
-      background: "#e18400",
-      border: "#e18400",
-    },
+    color: "#e18400",
     socials: {
       github: "https://github.com/ButterscotchV/",
     },
@@ -43,10 +37,7 @@ export const contributors: Contributor[] = [
   {
     name: "loucass003",
     roles: ["dev"],
-    colors: {
-      background: "#ffe276",
-      border: "#ffe276",
-    },
+    color: "#ffe276",
     socials: {
       github: "https://github.com/loucass003",
     },
@@ -56,10 +47,7 @@ export const contributors: Contributor[] = [
   {
     name: "Summer",
     roles: ["dev"],
-    colors: {
-      background: "#98a2d3",
-      border: "#98a2d3",
-    },
+    color: "#98a2d3",
     socials: {
       github: "https://github.com/SummerSigh",
     },
@@ -68,10 +56,7 @@ export const contributors: Contributor[] = [
   {
     name: "ZRock35",
     roles: ["community", "artist"],
-    colors: {
-      background: "#bb1e40",
-      border: "#bb1e40",
-    },
+    color: "#bb1e40",
     socials: {
       youtube: "https://www.youtube.com/@ZRock35VR",
     },
@@ -80,10 +65,7 @@ export const contributors: Contributor[] = [
   {
     name: "Shoyu",
     roles: ["artist"],
-    colors: {
-      background: "#c0ddec",
-      border: "#c0ddec",
-    },
+    color: "#c0ddec",
     socials: {
       bluesky: "https://bsky.app/profile/shoyuwoyu.bsky.social",
       instagram: "https://www.instagram.com/shoyuwoyu",
@@ -94,10 +76,7 @@ export const contributors: Contributor[] = [
   {
     name: "Anna",
     roles: ["dev"],
-    colors: {
-      background: "#f8c4bf",
-      border: "#f8c4bf",
-    },
+    color: "#f8c4bf",
     socials: {
       discord: "https://discordapp.com/users/602597585764483083",
       matrix: "https://matrix.to/#/@devminer:devminer.xyz",
@@ -109,10 +88,7 @@ export const contributors: Contributor[] = [
   {
     name: "Smeltie",
     roles: ["dev"],
-    colors: {
-      background: "#ffd5ff",
-      border: "#ffd5ff",
-    },
+    color: "#ffd5ff",
     socials: {
       github: "https://github.com/smeltie",
       bluesky: "https://bsky.app/profile/smeltie.dev",
@@ -122,10 +98,7 @@ export const contributors: Contributor[] = [
   {
     name: "Blue",
     roles: ["artist"],
-    colors: {
-      background: "#a9c3c1",
-      border: "#a9c3c1",
-    },
+    color: "#a9c3c1",
     socials: {
       website: "https://imbluewisp.com/",
     },
@@ -134,10 +107,7 @@ export const contributors: Contributor[] = [
   },
   {
     name: "Spazzwan",
-    colors: {
-      background: "#e5b5d5",
-      border: "#e5b5d5",
-    },
+    color: "#e5b5d5",
     roles: ["community", "artist", "dev"],
     socials: {
       twitch: "https://www.twitch.tv/spazzwan",
@@ -151,10 +121,7 @@ export const contributors: Contributor[] = [
   {
     name: "Meia",
     roles: ["dev", "community"],
-    colors: {
-      background: "#e3d2e3",
-      border: "#e3d2e3",
-    },
+    color: "#e3d2e3",
     socials: {
       bluesky: "https://bsky.app/profile/meia.gay",
       github: "https://github.com/kounocom",
@@ -164,10 +131,7 @@ export const contributors: Contributor[] = [
   {
     name: "Flarchenskii",
     roles: ["artist"],
-    colors: {
-      background: "#fadade",
-      border: "#fadade",
-    },
+    color: "#fadade",
     socials: {
       website: "https://flarchenskii.carrd.co/",
     },
@@ -176,10 +140,7 @@ export const contributors: Contributor[] = [
   {
     name: "sctanf",
     roles: ["dev"],
-    colors: {
-      background: "#c9d7ef",
-      border: "#c9d7ef",
-    },
+    color: "#c9d7ef",
     socials: {
       github: "https://github.com/sctanf",
     },
@@ -188,20 +149,14 @@ export const contributors: Contributor[] = [
   {
     name: "nataly",
     roles: ["community"],
-    colors: {
-      background: "#ffe8a9",
-      border: "#ffe8a9",
-    },
+    color: "#ffe8a9",
     socials: {},
     tags: ["#coffee_addict", "#fashionista", "#foodporn", "#blogging", "#☺️"],
   },
   {
     name: "Yexo",
     roles: ["community"],
-    colors: {
-      background: "#d048a7",
-      border: "#d048a7",
-    },
+    color: "#d048a7",
     socials: {
       website: "https://linktr.ee/yex0",
     },
@@ -217,10 +172,7 @@ export const contributors: Contributor[] = [
   {
     name: "Eve",
     roles: ["community", "dev"],
-    colors: {
-      background: "#b1caeb",
-      border: "#b1caeb",
-    },
+    color: "#b1caeb",
     socials: {
       bluesky: "https://bsky.app/profile/evenightingale.bsky.social",
     },
@@ -229,10 +181,7 @@ export const contributors: Contributor[] = [
   {
     name: "Cake",
     roles: ["dev"],
-    colors: {
-      background: "#f8c661",
-      border: "#f8c661",
-    },
+    color: "#f8c661",
     socials: {
       github: "https://github.com/tort32",
       bluesky: "https://bsky.app/profile/tort32.bsky.social",
@@ -243,20 +192,14 @@ export const contributors: Contributor[] = [
   {
     name: "Az",
     roles: ["community"],
-    colors: {
-      background: "#64c954",
-      border: "#64c954",
-    },
+    color: "#64c954",
     socials: {},
     tags: ["#~"],
   },
   {
     name: "Erimel",
     roles: ["dev", "community"],
-    colors: {
-      background: "#f8ab01",
-      border: "#f8ab01",
-    },
+    color: "#f8ab01",
     socials: {
       github: "https://github.com/Erimelowo",
       youtube: "https://youtube.com/channel/UCq2GXb43iplH8IqB2u0iOZA",
@@ -269,10 +212,7 @@ export const contributors: Contributor[] = [
   {
     name: "Gorbit99",
     roles: ["dev"],
-    colors: {
-      background: "#45b1d4",
-      border: "#45b1d4",
-    },
+    color: "#45b1d4",
     socials: {
       github: "https://github.com/gorbit99",
     },
@@ -281,10 +221,7 @@ export const contributors: Contributor[] = [
   {
     name: "ImUrX",
     roles: ["dev"],
-    colors: {
-      background: "#fde09c",
-      border: "#fde09c",
-    },
+    color: "#fde09c",
     socials: {
       website: "https://imurx.github.io",
     },
@@ -294,7 +231,6 @@ export const contributors: Contributor[] = [
   {
     name: "Eiren",
     roles: ["dev", "community"],
-    colors: {},
     socials: {
       website: "https://eiren.io",
       bluesky: "https://bsky.app/profile/eiren.io",
@@ -307,10 +243,7 @@ export const contributors: Contributor[] = [
   {
     name: "JovannMC",
     roles: ["dev", "community"],
-    colors: {
-      background: "#b59ec8",
-      border: "#b59ec8",
-    },
+    color: "#b59ec8",
     socials: {
       website: "https://jovann.me",
       youtube: "https://www.youtube.com/@JovannMC",
@@ -323,10 +256,7 @@ export const contributors: Contributor[] = [
   {
     name: "Em",
     roles: ["dev", "artist"],
-    colors: {
-      background: "#e7c1da",
-      border: "#e7c1da",
-    },
+    color: "#e7c1da",
     socials: {},
     tags: ["#shy", "#weeb", "#justhappytobehere"],
   },
@@ -351,10 +281,7 @@ export const contributors: Contributor[] = [
   {
     name: "Sigtyr",
     roles: ["community"],
-    colors: {
-      background: "#e88d40",
-      border: "#e88d40",
-    },
+    color: "#e88d40",
     socials: {
       kofi: "https://ko-fi.com/sigtyr",
     },
@@ -373,10 +300,7 @@ export const contributors: Contributor[] = [
   {
     name: "Dqmaged",
     roles: ["community"],
-    colors: {
-      background: "#dfabc8",
-      border: "#dfabc8",
-    },
+    color: "#dfabc8",
     socials: {
       kofi: "https://ko-fi.com/dqmaged",
     },
@@ -394,10 +318,7 @@ export const contributors: Contributor[] = [
   {
     name: "Aoki",
     roles: ["community"],
-    colors: {
-      background: "#b0d7d2",
-      border: "#b0d7d2",
-    },
+    color: "#b0d7d2",
     socials: {
       github: "https://github.com/kruemmelbande",
       kofi: "https://ko-fi.com/aokiuwu",
@@ -409,10 +330,7 @@ export const contributors: Contributor[] = [
   {
     name: "Polymoria",
     roles: ["artist", "community"],
-    colors: {
-      background: "#93cdb2",
-      border: "#93cdb2",
-    },
+    color: "#93cdb2",
     socials: { bluesky: "https://bsky.app/profile/polymoria.bsky.social" },
     tags: ["#silly", "#friend", "#uwu", "#owo", "#ryr"],
     classes: "-mt-1 !scale-[110%]",
@@ -429,10 +347,7 @@ export const contributors: Contributor[] = [
   {
     name: "Vyolex",
     roles: ["dev"],
-    colors: {
-      background: "#f08523",
-      border: "#f08523",
-    },
+    color: "#f08523",
     socials: {
       github: "https://github.com/Vyolex",
       bluesky: "https://bsky.app/profile/vyolex.bsky.social",

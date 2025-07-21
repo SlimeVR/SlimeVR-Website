@@ -161,11 +161,7 @@ export default function TeamPage(props: ParentProps) {
                         : "scale-100 opacity-100 transform rotate-0"
                     }`}
                     {...contrib}
-                    colors={
-                      isShiny
-                        ? { background: shinyGradient, border: shinyGradient }
-                        : contrib.colors
-                    }
+                    color={isShiny ? shinyGradient : contrib.color}
                   />
                 );
               })}
