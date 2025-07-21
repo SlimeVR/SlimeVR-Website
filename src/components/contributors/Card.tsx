@@ -43,6 +43,11 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
   let innerDiv: HTMLDivElement;
   const [focus, setFocus] = createSignal(false);
   const [imageError, setImageError] = createSignal(false);
+  const [imageLoading, setImageLoading] = createSignal(true);
+  const [imgSrc, setImgSrc] = createSignal(`images/contributors/jovannmc.png`);
+  const [imgClasses, setImgClasses] = createSignal(
+    "object-contain w-[calc(100%+16px)] scale-[103%] select-none brightness-[0.01]"
+  );
   // TODO: allow hover/tilting during animation without it interrupting the animation - idk how to do this without breaking other things tbh
   const [transitioning, setTransitioning] = createSignal(false); // prevent tilting while transitioning (interrupting it)
   let originalPosition: { top: number; left: number } | null = null;
@@ -268,6 +273,28 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
     }
   });
 
+  // loading image - shows the "fallback" image while loading or if it fails to load
+  createEffect(() => {
+    setImageLoading(true);
+    const image = new Image();
+    image.src = `images/contributors/${name.toLowerCase()}.png`;
+    image.onload = () => {
+      setImgSrc(image.src);
+      setImgClasses(
+        clsx(
+          "object-contain w-[calc(100%+16px)] scale-[103%] select-none",
+          classes
+        )
+      );
+      setImageError(false);
+      setImageLoading(false);
+    };
+    image.onerror = () => {
+      setImageError(true);
+      setImageLoading(false);
+    };
+  });
+
   createEffect(() => {
     if (!card || !innerDiv) return;
 
@@ -350,31 +377,19 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
               </div>
               {/* card image - bg and slime photo */}
               <div class="w-[218px] h-[141px] overflow-visible rounded-2xl rounded-tr-[70px] pattern !bg-[size:80%] !bg-[#1E2442] mt-[-2px] relative">
-                <div class="absolute inset-0 pointer-events-none" />
                 <img
-                  src={
-                    imageError()
-                      ? "images/contributors/jovannmc.png" // who's that slime? it's maya- FUUUU-
-                      : `images/contributors/${name.toLowerCase()}.png`
-                  }
+                  src={imgSrc()}
                   alt={name}
-                  class={clsx(
-                    "object-contain w-[calc(100%+16px)] scale-[103%] select-none",
-                    imageError() ? "brightness-[0.01]" : "",
-                    classes
-                  )}
+                  class={imgClasses()}
                   style={{
                     // so doessn't overflow with large slimes, but we scale w/ scale property up to let it overflow a lil
                     "max-height": "148px",
                     overflow: "visible",
                   }}
-                  onError={() => setImageError(true)}
                 />
-                {imageError() && (
+                {(imageLoading() || imageError()) && (
                   <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <span class="text-6xl font-bold text-white select-none">
-                      ?
-                    </span>
+                    <span class="text-6xl font-bold text-white select-none">?</span>
                   </div>
                 )}
               </div>
