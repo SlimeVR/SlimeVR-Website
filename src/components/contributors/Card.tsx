@@ -91,12 +91,28 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
             `;
   };
 
-  const cardTilt = (e: MouseEvent) => {
+  const cardTilt = (e: PointerEvent) => {
+    if (e.pointerType === "touch") return;
     applyTilt(e, 15, 1.1);
   };
 
-  const cardHoverTilt = (e: MouseEvent) => {
+  const cardHoverEnter = (e: PointerEvent) => {
     if (focus() || transitioning()) return;
+    if (e.pointerType === "touch") return;
+    card.style.transition = "transform 0.2s ease";
+    card.addEventListener("pointermove", cardHoverTilt);
+  };
+
+  const cardHoverLeave = (e: PointerEvent) => {
+    if (focus() || transitioning()) return;
+    if (e.pointerType === "touch") return;
+    card.removeEventListener("pointermove", cardHoverTilt);
+    cardReset();
+  };
+
+  const cardHoverTilt = (e: PointerEvent) => {
+    if (focus() || transitioning()) return;
+    if (e.pointerType === "touch") return;
     applyTilt(e, 15, 0.9);
   };
 
@@ -104,18 +120,6 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
     card.style.transition = "transform 0.45s ease";
     card.style.transform = "perspective(1000px) rotateY(0deg) rotateX(0deg)";
     glow.style.opacity = "0";
-  };
-
-  const cardHoverEnter = () => {
-    if (focus() || transitioning()) return;
-    card.style.transition = "transform 0.2s ease";
-    card.addEventListener("mousemove", cardHoverTilt);
-  };
-
-  const cardHoverLeave = () => {
-    if (focus() || transitioning()) return;
-    card.removeEventListener("mousemove", cardHoverTilt);
-    cardReset();
   };
 
   /*
@@ -175,8 +179,8 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
     card.style.top = `${centerY}px`;
     card.style.left = `${centerX}px`;
     card.style.boxShadow = "0px 10px 20px 8px #02111db8";
-    card.removeEventListener("mousemove", cardHoverTilt);
-    document.addEventListener("mousemove", cardTilt);
+    card.removeEventListener("pointermove", cardHoverTilt);
+    document.addEventListener("pointermove", cardTilt);
 
     // prevent scrolling when card is focused
     document.body.style.overflow = "hidden";
@@ -210,7 +214,7 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
     card.style.transform =
       "perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)";
 
-    document.removeEventListener("mousemove", cardTilt);
+    document.removeEventListener("pointermove", cardTilt);
     glow.style.opacity = "0";
 
     setFocus(false);
@@ -224,6 +228,7 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
       card.style.zIndex = "0";
       card.style.transform = "perspective(1000px) rotateY(0deg) rotateX(0deg)";
       placeholder.style.display = "none";
+      // FIXME: race condition where if you are focused on a card, then focus another card, body overflow is set back to "" (allowing scrolling while card is focused) after transition
       document.body.style.overflow = "";
       setTransitioning(false);
       transitionTimeout = null;
@@ -264,8 +269,8 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
     if (typeof window === "undefined") return null;
 
     document.removeEventListener("mouseup", handleClick);
-    document.removeEventListener("mousemove", cardTilt);
-    card.removeEventListener("mousemove", cardHoverTilt);
+    document.removeEventListener("pointermove", cardTilt);
+    card.removeEventListener("pointermove", cardHoverTilt);
 
     if (focus()) document.body.style.overflow = "";
 
@@ -319,8 +324,8 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
         class={cardClasses() + " rounded-2xl shadow-lg relative"}
         ref={card}
         onClick={focus() ? null : cardFocus}
-        onMouseEnter={cardHoverEnter}
-        onMouseLeave={cardHoverLeave}
+        onPointerEnter={cardHoverEnter}
+        onPointerLeave={cardHoverLeave}
         style={borderStyle()}
       >
         {/* glow effect when hovering */}
