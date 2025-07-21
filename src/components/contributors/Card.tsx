@@ -48,8 +48,8 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
   let originalPosition: { top: number; left: number } | null = null;
   let transitionTimeout: ReturnType<typeof setTimeout> | null = null; // prevent multiple transitions / out of sync (from multiple clicks)
 
-  let bgColor = props.colors?.background ?? fallbackColor;
-  let borderColor = props.colors?.border ?? fallbackColor;
+  let bgColor = props.colors?.background || fallbackColor;
+  let borderColor = props.colors?.border || fallbackColor;
 
   /*
    * Tilt effect things for card
@@ -88,12 +88,12 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
   };
 
   const cardTilt = (e: MouseEvent) => {
-    applyTilt(e, 15, 1.2);
+    applyTilt(e, 15, 1.1);
   };
 
   const cardHoverTilt = (e: MouseEvent) => {
     if (focus() || transitioning()) return;
-    applyTilt(e, 15, 1);
+    applyTilt(e, 15, 0.9);
   };
 
   const cardReset = () => {

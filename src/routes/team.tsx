@@ -160,12 +160,12 @@ export default function TeamPage(props: ParentProps) {
                         ? "animate-pulse scale-95 opacity-80 transform rotate-1 pointer-events-none"
                         : "scale-100 opacity-100 transform rotate-0"
                     }`}
+                    {...contrib}
                     colors={
                       isShiny
                         ? { background: shinyGradient, border: shinyGradient }
                         : contrib.colors
                     }
-                    {...contrib}
                   />
                 );
               })}
