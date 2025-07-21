@@ -1,6 +1,10 @@
 export interface Contributor {
   name: string;
   roles: ("dev" | "artist" | "community")[];
+  colors?: {
+    background?: string;
+    border?: string;
+  };
   socials: {
     twitter?: string;
     bluesky?: string;
@@ -21,7 +25,7 @@ export interface Contributor {
 }
 
 // TODO: get transparent version for em
-// TODO: depending on UTC time, choose 5 random slimes to make shiny (maybe hash the date/time so that everyone gets same shinies :3)
+// TODO: depending on UTC time, choose 5 random slimes to make shiny (hash the date/time so that everyone gets same shinies :3)
 // TODO: grab colours for bg and border for all slimes
 
 export const contributors: Contributor[] = [
@@ -219,6 +223,7 @@ export const contributors: Contributor[] = [
       youtube: "https://www.youtube.com/@eirenrain",
     },
     tags: ["#robot", "#friend", "#eldritch", "#tinkerer"],
+    classes: "-mt-1 !scale-[105%]",
   },
   {
     name: "JovannMC",

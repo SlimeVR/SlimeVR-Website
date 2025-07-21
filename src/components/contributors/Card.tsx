@@ -29,15 +29,13 @@ import { PrintablesIcon } from "../commons/icons/socials/PrintablesIcon";
 import { SteamIcon } from "../commons/icons/socials/SteamIcon";
 import { MatrixIcon } from "../commons/icons/socials/MatrixIcon";
 
-interface CardProps extends ComponentProps<"div"> {
-  contributor: Contributor;
-  background: string;
-  border: string;
-}
+const fallbackColor = "#d9d9d9"; // fallback color for cards without a background or border set
 
-export const Card: ParentComponent<CardProps> = (initialProps) => {
-  const props = mergeProps({} satisfies Partial<CardProps>, initialProps);
-  const { name, roles, socials, tags, classes } = props.contributor;
+export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
+  initialProps
+) => {
+  const props = mergeProps({} satisfies Partial<Contributor>, initialProps);
+  const { name, roles, socials, tags, classes } = props;
 
   let card: HTMLDivElement;
   let glow: HTMLDivElement;
@@ -49,6 +47,9 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
   const [transitioning, setTransitioning] = createSignal(false); // prevent tilting while transitioning (interrupting it)
   let originalPosition: { top: number; left: number } | null = null;
   let transitionTimeout: ReturnType<typeof setTimeout> | null = null; // prevent multiple transitions / out of sync (from multiple clicks)
+
+  let bgColor = props.colors?.background ?? fallbackColor;
+  let borderColor = props.colors?.border ?? fallbackColor;
 
   /*
    * Tilt effect things for card
@@ -229,19 +230,16 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
   });
 
   const borderStyle = createMemo(() => {
-    const borderColor = props.border;
     return { background: `${borderColor} !important` };
   });
 
   const backgroundStyle = createMemo(() => {
-    const color = props.background;
-
-    if (color.startsWith("linear-gradient")) {
-      return { background: `${color} !important` };
+    if (bgColor.startsWith("linear-gradient")) {
+      return { background: `${bgColor} !important` };
     }
 
     return {
-      background: `radial-gradient(circle at center, ${color}, ${color}66) !important`,
+      background: `radial-gradient(circle at center, ${bgColor}, ${bgColor}66) !important`,
     };
   });
 
@@ -274,10 +272,8 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
     if (!card || !innerDiv) return;
 
     // ensure bg and border is set when re-rendered
-    const borderColor = props.border;
     card.style.setProperty("background", borderColor, "important");
 
-    const bgColor = props.background;
     if (bgColor.startsWith("linear-gradient")) {
       innerDiv.style.setProperty("background", bgColor, "important");
     } else {
@@ -365,7 +361,7 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
                   class={clsx(
                     "object-contain w-[calc(100%+16px)] scale-[103%] select-none",
                     imageError() ? "brightness-[0.01]" : "",
-                    props.contributor.classes
+                    classes
                   )}
                   style={{
                     // so doessn't overflow with large slimes, but we scale w/ scale property up to let it overflow a lil
@@ -376,7 +372,9 @@ export const Card: ParentComponent<CardProps> = (initialProps) => {
                 />
                 {imageError() && (
                   <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <span class="text-6xl font-bold text-white select-none">?</span>
+                    <span class="text-6xl font-bold text-white select-none">
+                      ?
+                    </span>
                   </div>
                 )}
               </div>
