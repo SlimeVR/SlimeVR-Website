@@ -31,7 +31,7 @@ export const contributors: Contributor[] = [
     socials: {
       github: "https://github.com/ButterscotchV/",
     },
-    tags: ["#skunk", "#creature", "#programmer", "#cowboy"],
+    tags: ["#skunk", "#creature", "#hungry"],
     classes: "ml-5 !scale-[85%]",
   },
   {
@@ -107,7 +107,7 @@ export const contributors: Contributor[] = [
   },
   {
     name: "Spazzwan",
-    color: "#e5b5d5",
+    color: "#d4bbff",
     roles: ["community", "artist", "dev"],
     socials: {
       twitch: "https://www.twitch.tv/spazzwan",
@@ -126,7 +126,7 @@ export const contributors: Contributor[] = [
       bluesky: "https://bsky.app/profile/meia.gay",
       github: "https://github.com/kounocom",
     },
-    tags: ["#cosmic", "#starry", "#dumb"],
+    tags: ["#cosmic", "#starry", "#dumb", "#miku"],
   },
   {
     name: "Flarchenskii",
@@ -237,7 +237,7 @@ export const contributors: Contributor[] = [
       github: "https://github.com/eirenliel",
       youtube: "https://www.youtube.com/@eirenrain",
     },
-    tags: ["#robot", "#friend", "#eldritch", "#tinkerer"],
+    tags: ["#robit", "#friend", "#eldritch", "#tinkerer"],
     classes: "-mt-1 !scale-[105%]",
   },
   {

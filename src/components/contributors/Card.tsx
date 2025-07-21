@@ -183,46 +183,50 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
     }, 450);
   };
 
+  const unfocusCard = () => {
+    if (!focus()) return;
+    if (transitionTimeout) {
+      clearTimeout(transitionTimeout);
+      transitionTimeout = null;
+    }
+
+    setTransitioning(true);
+
+    card.style.zIndex = "5"; // lower z-index for cards unfocusing so the new one takes priority
+    card.style.transition =
+      "transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), top 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), left 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.45s ease";
+    card.style.boxShadow = "none";
+
+    if (originalPosition) {
+      card.style.top = `${originalPosition.top}px`;
+      card.style.left = `${originalPosition.left}px`;
+    }
+    card.style.transform =
+      "perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)";
+
+    document.removeEventListener("mousemove", cardTilt);
+    glow.style.opacity = "0";
+
+    setFocus(false);
+
+    // switch back to relative positioning, hide placeholder, and allow scrolling after transition completes
+    transitionTimeout = setTimeout(() => {
+      card.style.transition = "none";
+      card.style.position = "relative";
+      card.style.top = "";
+      card.style.left = "";
+      card.style.zIndex = "0";
+      card.style.transform = "perspective(1000px) rotateY(0deg) rotateX(0deg)";
+      placeholder.style.display = "none";
+      document.body.style.overflow = "";
+      setTransitioning(false);
+      transitionTimeout = null;
+    }, 450);
+  };
+
   const handleClick = (e: MouseEvent) => {
     if (focus() && !isOnCard(e.x, e.y)) {
-      if (transitionTimeout) {
-        clearTimeout(transitionTimeout);
-        transitionTimeout = null;
-      }
-
-      setTransitioning(true);
-
-      card.style.zIndex = "5"; // lower z-index for cards unfocusing so the new one takes priority
-      card.style.transition =
-        "transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), top 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), left 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.45s ease";
-      card.style.boxShadow = "none";
-
-      if (originalPosition) {
-        card.style.top = `${originalPosition.top}px`;
-        card.style.left = `${originalPosition.left}px`;
-      }
-      card.style.transform =
-        "perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)";
-
-      document.removeEventListener("mousemove", cardTilt);
-      glow.style.opacity = "0";
-
-      setFocus(false);
-
-      // switch back to relative positioning, hide placeholder, and allow scrolling after transition completes
-      transitionTimeout = setTimeout(() => {
-        card.style.transition = "none";
-        card.style.position = "relative";
-        card.style.top = "";
-        card.style.left = "";
-        card.style.zIndex = "0";
-        card.style.transform =
-          "perspective(1000px) rotateY(0deg) rotateX(0deg)";
-        placeholder.style.display = "none";
-        document.body.style.overflow = "";
-        setTransitioning(false);
-        transitionTimeout = null;
-      }, 450);
+      unfocusCard();
     }
   };
 
@@ -237,16 +241,6 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
     return { background: `${borderColor} !important` };
   });
 
-  const backgroundStyle = createMemo(() => {
-    const imgUrl = `images/contributors/${name.toLowerCase()}.png`;
-    return {
-      background: `
-        url('${imgUrl}') center center / 500% 500% no-repeat
-      `,
-      filter: "blur(16px) brightness(0.7)",
-    };
-  });
-
   /*
    * Reactivity and life cycle stuff
    */
@@ -255,6 +249,9 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
     if (typeof window === "undefined") return null;
 
     document.addEventListener("mouseup", handleClick);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") unfocusCard();
+    });
   });
 
   onCleanup(() => {
@@ -299,7 +296,6 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
 
     // ensure bg and border is set when re-rendered
     card.style.setProperty("background", borderColor, "important");
-
   });
 
   return (
