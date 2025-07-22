@@ -1,10 +1,8 @@
 import clsx from "clsx";
 import {
-  ComponentProps,
   createEffect,
   createMemo,
   createSignal,
-  mergeProps,
   onCleanup,
   onMount,
   ParentComponent,
@@ -94,6 +92,17 @@ export const Card: ParentComponent<CardProps> = (props) => {
             `;
   };
 
+  const isMouseOverCard = (e: PointerEvent) => {
+    const rect = card.getBoundingClientRect();
+    const tolerance = 8; // extra pixels of tolerance to prevent glitching on edges
+    return (
+      e.clientX >= rect.left - tolerance &&
+      e.clientX <= rect.right + tolerance &&
+      e.clientY >= rect.top - tolerance &&
+      e.clientY <= rect.bottom + tolerance
+    );
+  };
+
   const cardTilt = (e: PointerEvent) => {
     if (e.pointerType === "touch") return;
     applyTilt(e, 15, 1.1);
@@ -103,20 +112,29 @@ export const Card: ParentComponent<CardProps> = (props) => {
     if (props.isFocused || transitioning()) return;
     if (e.pointerType === "touch") return;
     card.style.transition = "transform 0.2s ease";
-    card.addEventListener("pointermove", cardHoverTilt);
+    document.addEventListener("pointermove", cardHoverTilt);
   };
 
   const cardHoverLeave = (e: PointerEvent) => {
     if (props.isFocused || transitioning()) return;
     if (e.pointerType === "touch") return;
-    card.removeEventListener("pointermove", cardHoverTilt);
-    cardReset();
+    if (!isMouseOverCard(e)) {
+      document.removeEventListener("pointermove", cardHoverTilt);
+      cardReset();
+    }
   };
 
   const cardHoverTilt = (e: PointerEvent) => {
     if (props.isFocused || transitioning()) return;
     if (e.pointerType === "touch") return;
-    applyTilt(e, 15, 0.9);
+
+    if (isMouseOverCard(e)) {
+      applyTilt(e, 15, 0.9);
+    } else {
+      // mouse outside tolerance area
+      document.removeEventListener("pointermove", cardHoverTilt);
+      cardReset();
+    }
   };
 
   const cardReset = () => {
@@ -174,7 +192,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
     card.style.top = `${centerY}px`;
     card.style.left = `${centerX}px`;
     card.style.boxShadow = "0px 10px 20px 8px #02111db8";
-    card.removeEventListener("pointermove", cardHoverTilt);
+    document.removeEventListener("pointermove", cardHoverTilt);
     document.addEventListener("pointermove", cardTilt);
 
     transitionTimeout = setTimeout(() => {
@@ -243,7 +261,8 @@ export const Card: ParentComponent<CardProps> = (props) => {
   onCleanup(() => {
     if (typeof window === "undefined") return null;
 
-    card.removeEventListener("pointermove", cardHoverTilt);
+    document.removeEventListener("pointermove", cardHoverTilt);
+    document.removeEventListener("pointermove", cardTilt);
 
     if (transitionTimeout) {
       clearTimeout(transitionTimeout);
