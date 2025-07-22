@@ -164,7 +164,13 @@ export const Card: ParentComponent<CardProps> = (props) => {
     setTransitioning(true);
     setIsFocused(true);
 
-    // store original position before moving to return to later
+    // reset tilt effect to get actual position
+    card.style.transition = "none";
+    card.style.transform = "perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)";
+    glow.style.opacity = "0";
+
+    card.offsetHeight;
+
     const rect = card.getBoundingClientRect();
     originalPosition = {
       top: rect.top,
@@ -173,13 +179,10 @@ export const Card: ParentComponent<CardProps> = (props) => {
 
     placeholder.style.display = "block";
 
-    card.style.transition = "none";
     card.style.zIndex = "10";
     card.style.position = "fixed";
     card.style.top = `${rect.top}px`;
     card.style.left = `${rect.left}px`;
-    card.style.transform =
-      "perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)";
 
     card.offsetHeight;
     card.style.transition =
