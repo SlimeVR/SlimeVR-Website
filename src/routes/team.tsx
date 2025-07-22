@@ -52,6 +52,11 @@ const contribs = contributors
     return contributor;
   });
 
+// random "shiny" slimes (up to 5), where it is seeded by the current date (so everyone gets the same shinies)
+const shinyGradient =
+  "linear-gradient(292.18deg, #FA5858 -0.23%, #FFFFFF 4.63%, #FFD324 9.49%, #02FFD5 14.35%, #FFFFFF 19.22%, #A200FF 24.08%, #0077FF 28.94%, #00FFAE 33.81%, #FBFFC7 38.67%, #FA5858 43.53%, #FF7700 48.4%, #FFFFFF 53.26%, #FFF47B 58.12%, #FBFFC7 62.99%, #FFFFFF 67.85%, #CDFFC7 72.71%, #5BFAFF 77.58%, #FF82CD 82.44%, #E34B4B 87.3%, #FBFFC7 97.03%)";
+const shinyContribs = getShinyContribs(contribs, 5);
+
 const [finalContribs, setFinalContribs] = createSignal(contribs);
 const [searchTerm, setSearchTerm] = createSignal("");
 const [isShuffling, setIsShuffling] = createSignal(false);
@@ -72,9 +77,6 @@ function shuffle() {
   }, 100);
 }
 
-// random "shiny" slimes (up to 5), where it is seeded by the current date (so everyone gets the same shinies)
-const shinyGradient =
-  "linear-gradient(292.18deg, #FA5858 -0.23%, #FFFFFF 4.63%, #FFD324 9.49%, #02FFD5 14.35%, #FFFFFF 19.22%, #A200FF 24.08%, #0077FF 28.94%, #00FFAE 33.81%, #FBFFC7 38.67%, #FA5858 43.53%, #FF7700 48.4%, #FFFFFF 53.26%, #FFF47B 58.12%, #FBFFC7 62.99%, #FFFFFF 67.85%, #CDFFC7 72.71%, #5BFAFF 77.58%, #FF82CD 82.44%, #E34B4B 87.3%, #FBFFC7 97.03%)";
 function getShinyContribs(contribs: Contributor[], count = 5) {
   const seed = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
   const rand = new Rand(seed);
@@ -149,7 +151,7 @@ export default function TeamPage(props: ParentProps) {
                 contrib.name.toLowerCase().includes(searchTerm().toLowerCase())
               )
               .map((contrib, i) => {
-                const isShiny = getShinyContribs(finalContribs(), 5).some(
+                const isShiny = shinyContribs.some(
                   (s) => s.name === contrib.name
                 );
 
