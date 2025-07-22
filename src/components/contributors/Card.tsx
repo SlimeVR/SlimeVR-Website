@@ -57,6 +57,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
   const [isFocused, setIsFocused] = createSignal(false);
   let originalPosition: { top: number; left: number } | null = null;
   let transitionTimeout: ReturnType<typeof setTimeout> | null = null; // prevent multiple transitions / out of sync (from multiple clicks)
+  let lastMousePosition: { x: number; y: number } = { x: 0, y: 0 };
 
   let borderColor = props.color || fallbackColor;
 
@@ -109,6 +110,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
 
   const cardTilt = (e: PointerEvent) => {
     if (e.pointerType === "touch") return;
+    lastMousePosition = { x: e.clientX, y: e.clientY };
     applyTilt(e, 15, 1.1);
   };
 
@@ -131,6 +133,8 @@ export const Card: ParentComponent<CardProps> = (props) => {
   const cardHoverTilt = (e: PointerEvent) => {
     if (props.isFocused || transitioning()) return;
     if (e.pointerType === "touch") return;
+
+    lastMousePosition = { x: e.clientX, y: e.clientY };
 
     if (isMouseOverCard(e)) {
       applyTilt(e, 15, 0.9);
@@ -243,6 +247,18 @@ export const Card: ParentComponent<CardProps> = (props) => {
       placeholder.style.display = "none";
       setTransitioning(false);
       transitionTimeout = null;
+      
+      // check if mouse is still over the card after unfocusing and re-enable hover tilt
+      // fixes issue where unfocusing card while mouse is over its spot will not have the tilt (because removed when unfocused)
+      const mockEvent = {
+        clientX: lastMousePosition.x,
+        clientY: lastMousePosition.y,
+        pointerType: "mouse"
+      } as PointerEvent;
+      
+      if (isMouseOverCard(mockEvent)) {
+        document.addEventListener("pointermove", cardHoverTilt);
+      }
     }, 450);
   };
 
