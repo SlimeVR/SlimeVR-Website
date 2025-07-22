@@ -1,6 +1,13 @@
 import { Link, Meta } from "@solidjs/meta";
 import Rand from "rand-seed";
-import { createEffect, createSignal, onCleanup, onMount, ParentProps } from "solid-js";
+import clsx from "clsx";
+import {
+  createEffect,
+  createSignal,
+  onCleanup,
+  onMount,
+  ParentProps,
+} from "solid-js";
 import { AppTitle } from "~/components/AppTitle";
 import { Button } from "~/components/commons/Button";
 import { Container } from "~/components/commons/Container";
@@ -56,27 +63,6 @@ const contribs = contributors
 const shinyGradient =
   "linear-gradient(292.18deg, #FA5858 -0.23%, #FFFFFF 4.63%, #FFD324 9.49%, #02FFD5 14.35%, #FFFFFF 19.22%, #A200FF 24.08%, #0077FF 28.94%, #00FFAE 33.81%, #FBFFC7 38.67%, #FA5858 43.53%, #FF7700 48.4%, #FFFFFF 53.26%, #FFF47B 58.12%, #FBFFC7 62.99%, #FFFFFF 67.85%, #CDFFC7 72.71%, #5BFAFF 77.58%, #FF82CD 82.44%, #E34B4B 87.3%, #FBFFC7 97.03%)";
 const shinyContribs = getShinyContribs(contribs, 5);
-
-const [finalContribs, setFinalContribs] = createSignal(contribs);
-const [searchTerm, setSearchTerm] = createSignal("");
-const [isShuffling, setIsShuffling] = createSignal(false);
-
-const maxShuffles = 7;
-function shuffle() {
-  setIsShuffling(true);
-
-  let shuffleCount = 0;
-  const shuffleInterval = setInterval(() => {
-    setFinalContribs([...contribs].sort(() => Math.random() - 0.5));
-    shuffleCount++;
-
-    if (shuffleCount >= maxShuffles) {
-      clearInterval(shuffleInterval);
-      setIsShuffling(false);
-    }
-  }, 100);
-}
-
 function getShinyContribs(contribs: Contributor[], count = 5) {
   const seed = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
   const rand = new Rand(seed);
@@ -93,6 +79,63 @@ function getShinyContribs(contribs: Contributor[], count = 5) {
     finalSlimes.map((s) => s.name)
   );
   return finalSlimes;
+}
+
+const [finalContribs, setFinalContribs] = createSignal(contribs);
+const [searchTerm, setSearchTerm] = createSignal("");
+const [isShuffling, setIsShuffling] = createSignal(false);
+
+// cache for images to load during shuffles/searches (because they are re-rendered during those)
+const imageCache = new Map<
+  string,
+  { src: string; classes: string; error: boolean }
+>();
+const preloadImage = (name: string, classes?: string): Promise<void> => {
+  return new Promise((resolve) => {
+    if (imageCache.has(name)) {
+      resolve();
+      return;
+    }
+
+    const image = new Image();
+    image.src = `images/contributors/${name.toLowerCase()}.png`;
+    image.onload = () => {
+      imageCache.set(name, {
+        src: image.src,
+        classes: clsx(
+          "object-contain w-[calc(100%+16px)] scale-[103%] select-none",
+          classes
+        ),
+        error: false,
+      });
+      resolve();
+    };
+    image.onerror = () => {
+      imageCache.set(name, {
+        src: `images/contributors/jovannmc.png`, // fallback
+        classes:
+          "object-contain w-[calc(100%+16px)] scale-[103%] select-none brightness-[0.01]",
+        error: true,
+      });
+      resolve();
+    };
+  });
+};
+
+const maxShuffles = 7;
+function shuffle() {
+  setIsShuffling(true);
+
+  let shuffleCount = 0;
+  const shuffleInterval = setInterval(() => {
+    setFinalContribs([...contribs].sort(() => Math.random() - 0.5));
+    shuffleCount++;
+
+    if (shuffleCount >= maxShuffles) {
+      clearInterval(shuffleInterval);
+      setIsShuffling(false);
+    }
+  }, 100);
 }
 
 export default function TeamPage(props: ParentProps) {
@@ -116,7 +159,7 @@ export default function TeamPage(props: ParentProps) {
 
   // prevent scrolling when a card is focused
   // doing it here "fixes" the weird issue where you can scroll after focusing a second card without unfocusing first
-  // ..i don't know either but it works
+  // ..i don't know either but it works -maya
   createEffect(() => {
     if (focusedCard()) {
       document.body.style.overflow = "hidden";
@@ -131,6 +174,11 @@ export default function TeamPage(props: ParentProps) {
     if (typeof window === "undefined") return;
     document.addEventListener("keydown", handleEscapeKey);
     document.addEventListener("mouseup", handleClickOutside);
+
+    // preload all contributor images
+    contribs.forEach((contrib) => {
+      preloadImage(contrib.name, contrib.classes);
+    });
   });
 
   onCleanup(() => {
@@ -197,19 +245,22 @@ export default function TeamPage(props: ParentProps) {
                 const isShiny = shinyContribs.some(
                   (s) => s.name === contrib.name
                 );
+                const cachedImage = imageCache.get(contrib.name);
 
                 return (
                   <Card
-                    class={`transition-all duration-200 ${
+                    class={clsx(
+                      "transition-all duration-200",
                       isShuffling()
                         ? "animate-pulse scale-95 opacity-80 transform rotate-1 pointer-events-none"
                         : "scale-100 opacity-100 transform rotate-0"
-                    }`}
+                    )}
                     {...contrib}
                     color={isShiny ? shinyGradient : contrib.color}
                     isFocused={focusedCard() === contrib.name}
                     onClick={() => handleCardClick(contrib.name)}
                     data-card-name={contrib.name}
+                    cachedImage={cachedImage}
                   />
                 );
               })}

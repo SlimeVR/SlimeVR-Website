@@ -22,6 +22,7 @@ export interface Contributor {
 }
 
 // TODO: get transparent version for em
+// TODO: role icon legend
 
 export const contributors: Contributor[] = [
   {

@@ -33,20 +33,24 @@ interface CardProps extends Contributor {
   class?: string; // additional classes for the card
   onClick?: () => void;
   isFocused?: boolean;
+  cachedImage?: { src: string; classes: string; error: boolean };
 }
 
 export const Card: ParentComponent<CardProps> = (props) => {
-  const { name, roles, socials, tags, classes, onClick } = props;
+  const { name, roles, socials, tags, classes, onClick, cachedImage } = props;
 
   let card: HTMLDivElement;
   let glow: HTMLDivElement;
   let placeholder: HTMLDivElement; // placeholder for the card when focused to keep its position in list
   let innerDiv: HTMLDivElement;
-  const [imageError, setImageError] = createSignal(false);
-  const [imageLoading, setImageLoading] = createSignal(true);
-  const [imgSrc, setImgSrc] = createSignal(`images/contributors/jovannmc.png`);
+  const [imageError, setImageError] = createSignal(cachedImage?.error ?? false);
+  const [imageLoading, setImageLoading] = createSignal(!cachedImage);
+  const [imgSrc, setImgSrc] = createSignal(
+    cachedImage?.src ?? `images/contributors/jovannmc.png`
+  );
   const [imgClasses, setImgClasses] = createSignal(
-    "object-contain w-[calc(100%+16px)] scale-[103%] select-none brightness-[0.01]"
+    cachedImage?.classes ??
+      "object-contain w-[calc(100%+16px)] scale-[103%] select-none brightness-[0.01]"
   );
   // TODO: allow hover/tilting during animation without it interrupting the animation - idk how to do this without breaking other things tbh
   const [transitioning, setTransitioning] = createSignal(false); // prevent tilting while transitioning (interrupting it)
@@ -272,6 +276,16 @@ export const Card: ParentComponent<CardProps> = (props) => {
 
   // loading image - shows the "fallback" image while loading or if it fails to load
   createEffect(() => {
+    // if cached image data, use it and skip loading
+    if (cachedImage) {
+      setImgSrc(cachedImage.src);
+      setImgClasses(cachedImage.classes);
+      setImageError(cachedImage.error);
+      setImageLoading(false);
+      return;
+    }
+
+    // only load via network request if not cached
     setImageLoading(true);
     const image = new Image();
     image.src = `images/contributors/${name.toLowerCase()}.png`;
