@@ -57,7 +57,7 @@ export const contributors: Contributor[] = [
   {
     name: "ZRock35",
     roles: ["community", "artist"],
-    color: "#bb1e40",
+    color: "#f01817",
     socials: {
       youtube: "https://www.youtube.com/@ZRock35VR",
     },
@@ -77,7 +77,7 @@ export const contributors: Contributor[] = [
   {
     name: "Anna",
     roles: ["dev"],
-    color: "#f8c4bf",
+    color: "#c80f8d",
     socials: {
       discord: "https://discordapp.com/users/602597585764483083",
       matrix: "https://matrix.to/#/@devminer:devminer.xyz",
@@ -193,7 +193,7 @@ export const contributors: Contributor[] = [
   {
     name: "Az",
     roles: ["community"],
-    color: "#64c954",
+    color: "#74f062",
     socials: {},
     tags: ["#~"],
   },
