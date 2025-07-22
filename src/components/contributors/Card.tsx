@@ -81,7 +81,6 @@ export const Card: ParentComponent<CardProps> = (props) => {
     const percentX = rawX / (1 + Math.abs(rawX) * 0.6);
     const percentY = rawY / (1 + Math.abs(rawY) * 0.6);
 
-    card.style.transition = "none";
     const scale = props.isFocused ? "1.4" : "1";
     card.style.transform = `perspective(1000px) rotateY(${percentX * intensity}deg) rotateX(${percentY * intensity}deg) scale(${scale})`;
     glow.style.opacity = glowOpacity.toString();
@@ -117,7 +116,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
   const cardHoverEnter = (e: PointerEvent) => {
     if (props.isFocused || transitioning()) return;
     if (e.pointerType === "touch") return;
-    card.style.transition = "transform 0.2s ease";
+    card.style.transition = "transform 0.1s ease";
     document.addEventListener("pointermove", cardHoverTilt);
   };
 
