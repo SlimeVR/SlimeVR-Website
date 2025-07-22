@@ -1,17 +1,17 @@
 import { Link, Meta } from "@solidjs/meta";
-import { createSignal, ParentProps, onMount, onCleanup, createEffect } from "solid-js";
+import Rand from "rand-seed";
+import { createEffect, createSignal, onCleanup, onMount, ParentProps } from "solid-js";
 import { AppTitle } from "~/components/AppTitle";
 import { Button } from "~/components/commons/Button";
 import { Container } from "~/components/commons/Container";
-import { SearchBox } from "~/components/contributors/SearchBox";
+import { ShuffleIcon } from "~/components/commons/icons/ShuffleIcon";
 import { Typography } from "~/components/commons/Typography";
+import { Contributor, contributors } from "~/components/contributors";
+import { Card } from "~/components/contributors/Card";
+import { SearchBox } from "~/components/contributors/SearchBox";
 import { Section } from "~/components/Section";
 import { Localized } from "~/i18n";
 import { MainLayout } from "~/layouts/MainLayout";
-import { Card } from "~/components/contributors/Card";
-import { Contributor, contributors } from "~/components/contributors";
-import { ShuffleIcon } from "~/components/commons/icons/ShuffleIcon";
-import Rand from "rand-seed";
 
 const socialsPriority = [
   "website",

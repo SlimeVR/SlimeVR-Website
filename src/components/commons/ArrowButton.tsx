@@ -1,6 +1,7 @@
+import { A, AnchorProps } from "@solidjs/router";
+import clsx from "clsx";
 import {
   children,
-  Component,
   JSX,
   mergeProps,
   ParentComponent,
@@ -8,8 +9,6 @@ import {
   splitProps,
 } from "solid-js";
 import { ArrowIcon } from "./icons/ArrowIcon";
-import clsx from "clsx";
-import { A, AnchorProps } from "@solidjs/router";
 
 interface ArrowButtonProps extends AnchorProps {
   prefixIcon?: JSX.Element;

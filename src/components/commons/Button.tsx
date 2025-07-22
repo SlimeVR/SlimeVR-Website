@@ -1,3 +1,4 @@
+import { A } from "@solidjs/router";
 import clsx from "clsx";
 import {
   ComponentProps,
@@ -5,7 +6,6 @@ import {
   mergeProps,
   ParentComponent,
 } from "solid-js";
-import { A } from "@solidjs/router";
 
 interface ButtonProps extends ComponentProps<"button"> {
   variant: "primary" | "secondary" | "tertiary" | "quaternary";

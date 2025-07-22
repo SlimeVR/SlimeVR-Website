@@ -7,25 +7,25 @@ import {
   onMount,
   ParentComponent,
 } from "solid-js";
-import CircularIcon from "./CircularIcon";
-import { DevIcon } from "../commons/icons/DevIcon";
-import { ArtistIcon } from "../commons/icons/ArtistIcon";
-import { Typography } from "../commons/Typography";
 import { Contributor } from ".";
+import { ArtistIcon } from "../commons/icons/ArtistIcon";
+import { DevIcon } from "../commons/icons/DevIcon";
 import { PeopleIcon } from "../commons/icons/PeopleIcon";
-import { GithubIcon } from "../commons/icons/socials/GithubIcon";
-import { TwitterIcon } from "../commons/icons/socials/TwitterIcon";
 import { BlueskyIcon } from "../commons/icons/socials/BlueskyIcon";
-import { InstagramIcon } from "../commons/icons/socials/InstagramIcon";
-import { YoutubeIcon } from "../commons/icons/socials/YoutubeIcon";
-import { TwitchIcon } from "../commons/icons/socials/TwitchIcon";
-import { KofiIcon } from "../commons/icons/socials/KofiIcon";
 import { DiscordIcon } from "../commons/icons/socials/DiscordIcon";
-import { WebsiteIcon } from "../commons/icons/socials/WebsiteIcon";
-import { TiktokIcon } from "../commons/icons/socials/TiktokIcon";
+import { GithubIcon } from "../commons/icons/socials/GithubIcon";
+import { InstagramIcon } from "../commons/icons/socials/InstagramIcon";
+import { KofiIcon } from "../commons/icons/socials/KofiIcon";
+import { MatrixIcon } from "../commons/icons/socials/MatrixIcon";
 import { PrintablesIcon } from "../commons/icons/socials/PrintablesIcon";
 import { SteamIcon } from "../commons/icons/socials/SteamIcon";
-import { MatrixIcon } from "../commons/icons/socials/MatrixIcon";
+import { TiktokIcon } from "../commons/icons/socials/TiktokIcon";
+import { TwitchIcon } from "../commons/icons/socials/TwitchIcon";
+import { TwitterIcon } from "../commons/icons/socials/TwitterIcon";
+import { WebsiteIcon } from "../commons/icons/socials/WebsiteIcon";
+import { YoutubeIcon } from "../commons/icons/socials/YoutubeIcon";
+import { Typography } from "../commons/Typography";
+import CircularIcon from "./CircularIcon";
 
 const fallbackColor = "#d9d9d9"; // fallback color for cards without a background or border set
 

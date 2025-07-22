@@ -1,9 +1,9 @@
+import { MetaProvider } from "@solidjs/meta";
 import { Router } from "@solidjs/router";
 import { FileRoutes } from "@solidjs/start/router";
 import { ErrorBoundary, Suspense } from "solid-js";
-import "./app.css";
 import { I18nProvider } from "~/i18n";
-import { MetaProvider } from "@solidjs/meta";
+import "./app.css";
 
 export default function App() {
   return (

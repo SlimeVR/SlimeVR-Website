@@ -8,10 +8,10 @@ import {
   ParentComponent,
   useContext,
 } from "solid-js";
-import { ArrowIcon } from "./icons/ArrowIcon";
+import { isServer } from "solid-js/web";
 import { TypedEventTarget } from "typescript-event-target";
 import { getContentSize } from "~/utils/dom";
-import { isServer } from "solid-js/web";
+import { ArrowIcon } from "./icons/ArrowIcon";
 
 interface DrawerContextData {
   openDrawer?: number;
