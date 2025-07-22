@@ -177,9 +177,6 @@ export const Card: ParentComponent<CardProps> = (props) => {
     card.removeEventListener("pointermove", cardHoverTilt);
     document.addEventListener("pointermove", cardTilt);
 
-    // prevent scrolling when card is focused
-    document.body.style.overflow = "hidden";
-
     transitionTimeout = setTimeout(() => {
       setTransitioning(false);
       transitionTimeout = null;
@@ -219,8 +216,6 @@ export const Card: ParentComponent<CardProps> = (props) => {
       card.style.zIndex = "0";
       card.style.transform = "perspective(1000px) rotateY(0deg) rotateX(0deg)";
       placeholder.style.display = "none";
-      // FIXME: race condition where if you are focused on a card, then focus another card, body overflow is set back to "" (allowing scrolling while card is focused) after transition
-      document.body.style.overflow = "";
       setTransitioning(false);
       transitionTimeout = null;
     }, 450);

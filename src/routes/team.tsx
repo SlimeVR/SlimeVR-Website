@@ -1,5 +1,5 @@
 import { Link, Meta } from "@solidjs/meta";
-import { createSignal, ParentProps, onMount, onCleanup } from "solid-js";
+import { createSignal, ParentProps, onMount, onCleanup, createEffect } from "solid-js";
 import { AppTitle } from "~/components/AppTitle";
 import { Button } from "~/components/commons/Button";
 import { Container } from "~/components/commons/Container";
@@ -113,6 +113,19 @@ export default function TeamPage(props: ParentProps) {
     const clickedCard = target.closest("[data-card-name]");
     if (!clickedCard) setFocusedCard(null);
   };
+
+  // prevent scrolling when a card is focused
+  // doing it here "fixes" the weird issue where you can scroll after focusing a second card without unfocusing first
+  // ..i don't know either but it works
+  createEffect(() => {
+    if (focusedCard()) {
+      document.body.style.overflow = "hidden";
+    } else {
+      setTimeout(() => {
+        document.body.style.overflow = "";
+      }, 450);
+    }
+  });
 
   onMount(() => {
     if (typeof window === "undefined") return;
