@@ -19,6 +19,10 @@ import { SearchBox } from "~/components/contributors/SearchBox";
 import { Section } from "~/components/Section";
 import { Localized } from "~/i18n";
 import { MainLayout } from "~/layouts/MainLayout";
+import { DevIcon } from "~/components/commons/icons/DevIcon";
+import { ArtistIcon } from "~/components/commons/icons/ArtistIcon";
+import { PeopleIcon } from "~/components/commons/icons/PeopleIcon";
+import CircularIcon from "~/components/contributors/CircularIcon";
 
 const socialsPriority = [
   "website",
@@ -194,6 +198,7 @@ export default function TeamPage(props: ParentProps) {
       <Link rel="canonical" href="https://slimevr.dev/" />
       <Section>
         <Container class="mt-4">
+          {/* page text */}
           <div class="flex flex-row justify-between items-center mb-8">
             <Typography
               tag="h2"
@@ -214,6 +219,45 @@ export default function TeamPage(props: ParentProps) {
             whitespace="whitespace-pre-line"
           />
 
+          {/* roles legend */}
+            <div
+              class={clsx(
+              "flex flex-col gap-4 mt-6 p-4 bg-background-70 border border-background-40 rounded-xl text-center",
+              "sm:flex-row sm:text-left"
+              )}
+            >
+            <Typography tag="h3" variant="section-title">
+              <Localized id="contributors.roles.title" />
+            </Typography>
+            <div class="flex flex-wrap justify-evenly gap-4">
+              <div class="flex items-center gap-2">
+                <CircularIcon size={28}>
+                  <DevIcon size={20} />
+                </CircularIcon>
+                <Typography tag="span" variant="standard">
+                  <Localized id="contributors.roles.developer" />
+                </Typography>
+              </div>
+              <div class="flex items-center gap-2">
+                <CircularIcon size={28}>
+                  <PeopleIcon size={22} />
+                </CircularIcon>
+                <Typography tag="span" variant="standard">
+                  <Localized id="contributors.roles.community" />
+                </Typography>
+              </div>
+              <div class="flex items-center gap-2">
+                <CircularIcon size={28}>
+                  <ArtistIcon size={18} />
+                </CircularIcon>
+                <Typography tag="span" variant="standard">
+                  <Localized id="contributors.roles.artist" />
+                </Typography>
+              </div>
+            </div>
+          </div>
+
+          {/* poge actions - search & shuffle */}
           <div class="flex flex-row justify-between gap-4 items-center mt-8">
             <SearchBox
               class="w-full sm:max-w-60"
@@ -235,6 +279,7 @@ export default function TeamPage(props: ParentProps) {
             </Button>
           </div>
 
+          {/* page cards - slimevr contributors */}
           <div class="flex flex-row flex-wrap gap-4 mt-8 justify-around">
             {/* filter slimes by search term if exists */}
             {finalContribs()

@@ -177,7 +177,13 @@
     "guide": "Contributing Guide",
     "search": "Find a slime",
     "shuffle": "Shuffle slimes",
-    "none": "No slimes found :("
+    "none": "No slimes found :(",
+    "roles": {
+      "title": "Roles:",
+      "developer": "Developer",
+      "artist": "Artist",
+      "community": "Community"
+    }
   },
   "privacy": {
     "title": "Privacy Policy"
