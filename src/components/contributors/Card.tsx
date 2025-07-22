@@ -31,17 +31,19 @@ import { MatrixIcon } from "../commons/icons/socials/MatrixIcon";
 
 const fallbackColor = "#d9d9d9"; // fallback color for cards without a background or border set
 
-export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
-  initialProps
-) => {
-  const props = mergeProps({} satisfies Partial<Contributor>, initialProps);
-  const { name, roles, socials, tags, classes } = props;
+interface CardProps extends Contributor {
+  class?: string; // additional classes for the card
+  onClick?: () => void;
+  isFocused?: boolean;
+}
+
+export const Card: ParentComponent<CardProps> = (props) => {
+  const { name, roles, socials, tags, classes, onClick } = props;
 
   let card: HTMLDivElement;
   let glow: HTMLDivElement;
   let placeholder: HTMLDivElement; // placeholder for the card when focused to keep its position in list
   let innerDiv: HTMLDivElement;
-  const [focus, setFocus] = createSignal(false);
   const [imageError, setImageError] = createSignal(false);
   const [imageLoading, setImageLoading] = createSignal(true);
   const [imgSrc, setImgSrc] = createSignal(`images/contributors/jovannmc.png`);
@@ -50,6 +52,7 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
   );
   // TODO: allow hover/tilting during animation without it interrupting the animation - idk how to do this without breaking other things tbh
   const [transitioning, setTransitioning] = createSignal(false); // prevent tilting while transitioning (interrupting it)
+  const [isFocused, setIsFocused] = createSignal(false);
   let originalPosition: { top: number; left: number } | null = null;
   let transitionTimeout: ReturnType<typeof setTimeout> | null = null; // prevent multiple transitions / out of sync (from multiple clicks)
 
@@ -76,7 +79,7 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
     const percentY = rawY / (1 + Math.abs(rawY) * 0.6);
 
     card.style.transition = "none";
-    const scale = focus() ? "1.4" : "1";
+    const scale = props.isFocused ? "1.4" : "1";
     card.style.transform = `perspective(1000px) rotateY(${percentX * intensity}deg) rotateX(${percentY * intensity}deg) scale(${scale})`;
     glow.style.opacity = glowOpacity.toString();
     glow.style.backgroundImage = `
@@ -97,21 +100,21 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
   };
 
   const cardHoverEnter = (e: PointerEvent) => {
-    if (focus() || transitioning()) return;
+    if (props.isFocused || transitioning()) return;
     if (e.pointerType === "touch") return;
     card.style.transition = "transform 0.2s ease";
     card.addEventListener("pointermove", cardHoverTilt);
   };
 
   const cardHoverLeave = (e: PointerEvent) => {
-    if (focus() || transitioning()) return;
+    if (props.isFocused || transitioning()) return;
     if (e.pointerType === "touch") return;
     card.removeEventListener("pointermove", cardHoverTilt);
     cardReset();
   };
 
   const cardHoverTilt = (e: PointerEvent) => {
-    if (focus() || transitioning()) return;
+    if (props.isFocused || transitioning()) return;
     if (e.pointerType === "touch") return;
     applyTilt(e, 15, 0.9);
   };
@@ -126,26 +129,18 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
    * General card stuff
    */
 
-  const isOnCard = (x: number, y: number) => {
-    const padding = 16; // extra pixels of padding because you can focus multiple cards if clicked on edge (i think it's due to bounding rect isn't being updated when tilted?)
-    const pos = card.getBoundingClientRect();
-    return (
-      x >= pos.left + padding &&
-      x <= pos.right - padding &&
-      y >= pos.top + padding &&
-      y <= pos.bottom - padding
-    );
+  const handleClick = () => {
+    if (onClick) onClick();
   };
 
   const cardFocus = () => {
-    if (focus() || transitioning()) return;
-
     if (transitionTimeout) {
       clearTimeout(transitionTimeout);
       transitionTimeout = null;
     }
 
     setTransitioning(true);
+    setIsFocused(true);
 
     // store original position before moving to return to later
     const rect = card.getBoundingClientRect();
@@ -185,22 +180,20 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
     // prevent scrolling when card is focused
     document.body.style.overflow = "hidden";
 
-    setFocus(true);
-
     transitionTimeout = setTimeout(() => {
       setTransitioning(false);
       transitionTimeout = null;
     }, 450);
   };
 
-  const unfocusCard = () => {
-    if (!focus()) return;
+  const cardUnfocus = () => {
     if (transitionTimeout) {
       clearTimeout(transitionTimeout);
       transitionTimeout = null;
     }
 
     setTransitioning(true);
+    setIsFocused(false);
 
     card.style.zIndex = "5"; // lower z-index for cards unfocusing so the new one takes priority
     card.style.transition =
@@ -217,8 +210,6 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
     document.removeEventListener("pointermove", cardTilt);
     glow.style.opacity = "0";
 
-    setFocus(false);
-
     // switch back to relative positioning, hide placeholder, and allow scrolling after transition completes
     transitionTimeout = setTimeout(() => {
       card.style.transition = "none";
@@ -233,12 +224,6 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
       setTransitioning(false);
       transitionTimeout = null;
     }, 450);
-  };
-
-  const handleClick = (e: MouseEvent) => {
-    if (focus() && !isOnCard(e.x, e.y)) {
-      unfocusCard();
-    }
   };
 
   const cardClasses = createMemo(() => {
@@ -258,21 +243,12 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
 
   onMount(() => {
     if (typeof window === "undefined") return null;
-
-    document.addEventListener("mouseup", handleClick);
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") unfocusCard();
-    });
   });
 
   onCleanup(() => {
     if (typeof window === "undefined") return null;
 
-    document.removeEventListener("mouseup", handleClick);
-    document.removeEventListener("pointermove", cardTilt);
     card.removeEventListener("pointermove", cardHoverTilt);
-
-    if (focus()) document.body.style.overflow = "";
 
     if (transitionTimeout) {
       clearTimeout(transitionTimeout);
@@ -309,6 +285,17 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
     card.style.setProperty("background", borderColor, "important");
   });
 
+  // handle focus changes
+  createEffect(() => {
+    if (!card || !placeholder) return;
+
+    if (props.isFocused === true && !isFocused() && !transitioning()) {
+      cardFocus();
+    } else if (props.isFocused === false && isFocused()) {
+      cardUnfocus();
+    }
+  });
+
   return (
     <>
       {/* invisible placeholder - used when card is focused to keep its position in list */}
@@ -323,10 +310,11 @@ export const Card: ParentComponent<Contributor & ComponentProps<"div">> = (
       <div
         class={cardClasses() + " rounded-2xl shadow-lg relative"}
         ref={card}
-        onClick={focus() ? null : cardFocus}
+        onClick={handleClick}
         onPointerEnter={cardHoverEnter}
         onPointerLeave={cardHoverLeave}
         style={borderStyle()}
+        data-card-name={props["data-card-name"]}
       >
         {/* glow effect when hovering */}
         <div

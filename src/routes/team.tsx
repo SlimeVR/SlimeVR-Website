@@ -1,5 +1,5 @@
 import { Link, Meta } from "@solidjs/meta";
-import { Component, createSignal, ParentProps } from "solid-js";
+import { createSignal, ParentProps, onMount, onCleanup } from "solid-js";
 import { AppTitle } from "~/components/AppTitle";
 import { Button } from "~/components/commons/Button";
 import { Container } from "~/components/commons/Container";
@@ -96,6 +96,36 @@ function getShinyContribs(contribs: Contributor[], count = 5) {
 }
 
 export default function TeamPage(props: ParentProps) {
+  const [focusedCard, setFocusedCard] = createSignal<string | null>(null);
+
+  const handleCardClick = (contributorName: string) => {
+    if (focusedCard() !== contributorName) setFocusedCard(contributorName);
+  };
+
+  const handleEscapeKey = (e: KeyboardEvent) => {
+    if (e.key === "Escape" && focusedCard()) setFocusedCard(null);
+  };
+
+  const handleClickOutside = (e: MouseEvent) => {
+    if (!focusedCard()) return;
+
+    const target = e.target as HTMLElement;
+    const clickedCard = target.closest("[data-card-name]");
+    if (!clickedCard) setFocusedCard(null);
+  };
+
+  onMount(() => {
+    if (typeof window === "undefined") return;
+    document.addEventListener("keydown", handleEscapeKey);
+    document.addEventListener("mouseup", handleClickOutside);
+  });
+
+  onCleanup(() => {
+    if (typeof window === "undefined") return;
+    document.removeEventListener("keydown", handleEscapeKey);
+    document.removeEventListener("mouseup", handleClickOutside);
+  });
+
   return (
     <MainLayout>
       <AppTitle key="contributors.title"></AppTitle>
@@ -164,6 +194,9 @@ export default function TeamPage(props: ParentProps) {
                     }`}
                     {...contrib}
                     color={isShiny ? shinyGradient : contrib.color}
+                    isFocused={focusedCard() === contrib.name}
+                    onClick={() => handleCardClick(contrib.name)}
+                    data-card-name={contrib.name}
                   />
                 );
               })}
