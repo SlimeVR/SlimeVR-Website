@@ -50,7 +50,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
   );
   const [imgClasses, setImgClasses] = createSignal(
     cachedImage?.classes ??
-      "object-contain w-[calc(100%+16px)] scale-[103%] select-none brightness-[0.01]"
+      "object-contain w-[calc(100%+16px)] scale-[103%] select-none pointer-events-none brightness-[0.01]"
   );
   // TODO: allow hover/tilting during animation without it interrupting the animation - idk how to do this without breaking other things tbh
   const [transitioning, setTransitioning] = createSignal(false); // prevent tilting while transitioning (interrupting it)
@@ -169,7 +169,8 @@ export const Card: ParentComponent<CardProps> = (props) => {
 
     // reset tilt effect to get actual position
     card.style.transition = "none";
-    card.style.transform = "perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)";
+    card.style.transform =
+      "perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)";
     glow.style.opacity = "0";
 
     card.offsetHeight;
@@ -246,15 +247,15 @@ export const Card: ParentComponent<CardProps> = (props) => {
       placeholder.style.display = "none";
       setTransitioning(false);
       transitionTimeout = null;
-      
+
       // check if mouse is still over the card after unfocusing and re-enable hover tilt
       // fixes issue where unfocusing card while mouse is over its spot will not have the tilt (because removed when unfocused)
       const mockEvent = {
         clientX: lastMousePosition.x,
         clientY: lastMousePosition.y,
-        pointerType: "mouse"
+        pointerType: "mouse",
       } as PointerEvent;
-      
+
       if (isMouseOverCard(mockEvent)) {
         document.addEventListener("pointermove", cardHoverTilt);
       }
@@ -311,7 +312,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
       setImgSrc(image.src);
       setImgClasses(
         clsx(
-          "object-contain w-[calc(100%+16px)] scale-[103%] select-none",
+          "object-contain w-[calc(100%+16px)] scale-[103%] select-none pointer-events-none",
           classes
         )
       );
@@ -365,7 +366,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
         {/* glow effect when hovering */}
         <div
           ref={glow}
-          class="absolute inset-0 rounded-2xl transition-opacity duration-200 pointer-events-none z-20"
+          class="absolute inset-0 rounded-2xl transition-opacity duration-200 pointer-events-none z-20 drag"
           onMouseEnter={() => glow && (glow.style.transitionDuration = "0.2s")}
           onMouseLeave={() => glow && (glow.style.transitionDuration = "0.45s")}
         />
