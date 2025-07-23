@@ -194,7 +194,7 @@ export const contributors: Contributor[] = [
     roles: ["community"],
     color: "#74f062",
     socials: {},
-    tags: ["#~"],
+    tags: ["#~", "#cool", "#tea", "#samurai", "#warranty"],
   },
   {
     name: "Erimel",
@@ -390,6 +390,6 @@ export const contributors: Contributor[] = [
       github: "https://github.com/Aed-1",
       discord: "https://discord.com/users/884888736855392307",
     },
-    tags: ["#rusk", "#silly", "#goat"],
+    tags: ["#rusk", "#silly", "#goated"],
   },
 ];
