@@ -132,6 +132,7 @@ const preloadImage = (name: string, classes?: string): Promise<void> => {
 };
 
 function shuffle() {
+  if (isShuffling()) return;
   setIsShuffling(true);
 
   let shuffleCount = 0;

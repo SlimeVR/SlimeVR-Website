@@ -31,6 +31,7 @@ import CircularIcon from "./CircularIcon";
 const FALLBACK_COLOR = "#d9d9d9"; // fallback color for cards without a background or border set
 const HOVER_TRANSITION_DURATION = 100;
 const FOCUS_TRANSITION_DURATION = 450;
+const CARD_TRANSITION = `transform ${FOCUS_TRANSITION_DURATION}ms cubic-bezier(0.25, 0.46, 0.45, 0.94), top ${FOCUS_TRANSITION_DURATION}ms cubic-bezier(0.25, 0.46, 0.45, 0.94), left ${FOCUS_TRANSITION_DURATION}ms cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow ${FOCUS_TRANSITION_DURATION}ms ease`;
 const CARD_TOLERANCE = 8;
 const FOCUSED_SCALE = 1.4;
 const NORMAL_SCALE = 1;
@@ -133,7 +134,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
   const cardTilt = (e: PointerEvent) => {
     if (e.pointerType === "touch") return;
     lastMousePosition = { x: e.clientX, y: e.clientY };
-    applyTilt(e, 15, 0.65);
+    applyTilt(e, 15, 0.55);
   };
 
   const cardHoverEnter = (e: PointerEvent) => {
@@ -156,7 +157,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
     lastMousePosition = { x: e.clientX, y: e.clientY };
 
     if (isMouseOverCard(e)) {
-      applyTilt(e, 15, 0.6);
+      applyTilt(e, 15, 0.45);
     } else {
       // mouse outside tolerance area
       document.removeEventListener("pointermove", cardHoverTilt);
@@ -204,7 +205,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
     card.style.left = `${rect.left}px`;
 
     card.offsetHeight;
-    card.style.transition = `transform ${FOCUS_TRANSITION_DURATION}ms cubic-bezier(0.25, 0.46, 0.45, 0.94), top ${FOCUS_TRANSITION_DURATION}ms cubic-bezier(0.25, 0.46, 0.45, 0.94), left ${FOCUS_TRANSITION_DURATION}ms cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow ${FOCUS_TRANSITION_DURATION}ms ease`;
+    card.style.transition = CARD_TRANSITION;
 
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
@@ -236,7 +237,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
     setIsFocused(false);
 
     card.style.zIndex = "5"; // lower z-index for cards unfocusing so the new one takes priority
-    card.style.transition = `transform ${FOCUS_TRANSITION_DURATION}ms cubic-bezier(0.25, 0.46, 0.45, 0.94), top ${FOCUS_TRANSITION_DURATION}ms cubic-bezier(0.25, 0.46, 0.45, 0.94), left ${FOCUS_TRANSITION_DURATION}ms cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow ${FOCUS_TRANSITION_DURATION}ms ease`;
+    card.style.transition = CARD_TRANSITION;
     card.style.boxShadow = "none";
 
     if (originalPosition) {
@@ -286,7 +287,6 @@ export const Card: ParentComponent<CardProps> = (props) => {
 
     // these apparently fix card rendering/resolution issues
     // tbh i'm not sure how these work, but it seems like they do help?
-    transform: "translateZ(0)", // force hardware acceleration consistently
     WebkitFontSmoothing: "antialiased", // improve text rendering during transforms
     MozOsxFontSmoothing: "grayscale",
     backfaceVisibility: "hidden", // prevent blur during transforms
@@ -297,11 +297,11 @@ export const Card: ParentComponent<CardProps> = (props) => {
    * Reactivity and life cycle stuff
    */
   onMount(() => {
-    if (typeof window === "undefined") return null;
+    if (typeof window === "undefined") return;
   });
 
   onCleanup(() => {
-    if (typeof window === "undefined") return null;
+    if (typeof window === "undefined") return;
 
     document.removeEventListener("pointermove", cardHoverTilt);
     document.removeEventListener("pointermove", cardTilt);
