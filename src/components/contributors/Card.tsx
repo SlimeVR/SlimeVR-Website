@@ -36,13 +36,25 @@ const FOCUSED_SCALE = 1.4;
 const NORMAL_SCALE = 1;
 
 // transform utilities
-const createTransform = (rotateX = 0, rotateY = 0, scale = NORMAL_SCALE) =>
-  `perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(${scale})`;
+const createTransform = (rotateX = 0, rotateY = 0, scale = NORMAL_SCALE) => {
+  // round values to prevent fractional pixel issues
+  const roundedX = Math.round(rotateX * 100) / 100;
+  const roundedY = Math.round(rotateY * 100) / 100;
+  const roundedScale = Math.round(scale * 1000) / 1000;
+  return `perspective(1000px) rotateY(${roundedY}deg) rotateX(${roundedX}deg) scale(${roundedScale})`;
+};
 
-const createGradient = (x: number, y: number, opacity: number) =>
-  `radial-gradient(circle at ${x}px ${y}px, #ffffff${Math.round(opacity * 100)
+const createGradient = (x: number, y: number, opacity: number) => {
+  // round coordinates to prevent subpixel rendering issues
+  const roundedX = Math.round(x);
+  const roundedY = Math.round(y);
+  const roundedOpacity = Math.round(opacity * 100) / 100;
+  return `radial-gradient(circle at ${roundedX}px ${roundedY}px, #ffffff${Math.round(
+    roundedOpacity * 255
+  )
     .toString(16)
     .padStart(2, "0")}, #0000000f)`;
+};
 
 interface CardProps extends Contributor {
   class?: string; // additional classes for the card
@@ -121,7 +133,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
   const cardTilt = (e: PointerEvent) => {
     if (e.pointerType === "touch") return;
     lastMousePosition = { x: e.clientX, y: e.clientY };
-    applyTilt(e, 15, 1.1);
+    applyTilt(e, 15, 0.65);
   };
 
   const cardHoverEnter = (e: PointerEvent) => {
@@ -144,7 +156,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
     lastMousePosition = { x: e.clientX, y: e.clientY };
 
     if (isMouseOverCard(e)) {
-      applyTilt(e, 15, 0.9);
+      applyTilt(e, 15, 0.6);
     } else {
       // mouse outside tolerance area
       document.removeEventListener("pointermove", cardHoverTilt);
@@ -271,6 +283,14 @@ export const Card: ParentComponent<CardProps> = (props) => {
 
   const borderStyle = createMemo(() => ({
     background: `${borderColor} !important`,
+
+    // these apparently fix card rendering/resolution issues
+    // tbh i'm not sure how these work, but it seems like they do help?
+    transform: "translateZ(0)", // force hardware acceleration consistently
+    WebkitFontSmoothing: "antialiased", // improve text rendering during transforms
+    MozOsxFontSmoothing: "grayscale",
+    backfaceVisibility: "hidden", // prevent blur during transforms
+    imageRendering: "-webkit-optimize-contrast, crisp-edges", // optimize for crisp edges
   }));
 
   /*
@@ -366,6 +386,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
         <div
           ref={glow}
           class="absolute inset-0 rounded-2xl transition-opacity duration-200 pointer-events-none z-20 drag"
+          style={{ "will-change": "opacity, background-image" }}
           onMouseEnter={() => glow && (glow.style.transitionDuration = "0.2s")}
           onMouseLeave={() => glow && (glow.style.transitionDuration = "0.45s")}
         />
