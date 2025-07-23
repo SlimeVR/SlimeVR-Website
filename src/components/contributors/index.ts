@@ -21,8 +21,6 @@ export interface Contributor {
   classes?: string;
 }
 
-// TODO: get transparent version for em
-
 export const contributors: Contributor[] = [
   {
     name: "Butterscotch",
@@ -259,6 +257,7 @@ export const contributors: Contributor[] = [
     color: "#e7c1da",
     socials: {},
     tags: ["#shy", "#weeb", "#justhappytobehere"],
+    classes: "ml-1",
   },
   {
     name: "Platinum",
