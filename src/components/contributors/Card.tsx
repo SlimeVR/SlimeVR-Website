@@ -64,7 +64,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
   const [imageError, setImageError] = createSignal(cachedImage?.error ?? false);
   const [imageLoading, setImageLoading] = createSignal(!cachedImage);
   const [imgSrc, setImgSrc] = createSignal(
-    cachedImage?.src ?? `images/contributors/jovannmc.png`
+    cachedImage?.src ?? `images/contributors/jovannmc.webp`
   );
   const [imgClasses, setImgClasses] = createSignal(
     cachedImage?.classes ??
@@ -306,7 +306,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
     // only load via network request if not cached
     setImageLoading(true);
     const image = new Image();
-    image.src = `images/contributors/${name.toLowerCase()}.png`;
+    image.src = `images/contributors/${name.toLowerCase()}.webp`;
     image.onload = () => {
       setImgSrc(image.src);
       setImgClasses(
@@ -422,6 +422,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
                   src={imgSrc()}
                   alt={name}
                   class={imgClasses()}
+                  loading="lazy"
                   style={{
                     // so doessn't overflow with large slimes, but we scale w/ scale property up to let it overflow a lil
                     "max-height": "148px",

@@ -112,7 +112,7 @@ const preloadImage = (name: string, classes?: string): Promise<void> => {
     }
 
     const image = new Image();
-    image.src = `images/contributors/${name.toLowerCase()}.png`;
+    image.src = `images/contributors/${name.toLowerCase()}.webp`;
     image.onload = () => {
       imageCache.set(name, {
         src: image.src,
@@ -126,7 +126,7 @@ const preloadImage = (name: string, classes?: string): Promise<void> => {
     };
     image.onerror = () => {
       imageCache.set(name, {
-        src: `images/contributors/jovannmc.png`, // fallback
+        src: `images/contributors/jovannmc.webp`, // fallback
         classes:
           "object-contain w-[calc(100%+16px)] scale-[103%] select-none brightness-[0.01]",
         error: true,
