@@ -27,7 +27,22 @@ import { YoutubeIcon } from "../commons/icons/socials/YoutubeIcon";
 import { Typography } from "../commons/Typography";
 import CircularIcon from "./CircularIcon";
 
-const fallbackColor = "#d9d9d9"; // fallback color for cards without a background or border set
+// constants
+const FALLBACK_COLOR = "#d9d9d9"; // fallback color for cards without a background or border set
+const HOVER_TRANSITION_DURATION = 100;
+const FOCUS_TRANSITION_DURATION = 450;
+const CARD_TOLERANCE = 8;
+const FOCUSED_SCALE = 1.4;
+const NORMAL_SCALE = 1;
+
+// transform utilities
+const createTransform = (rotateX = 0, rotateY = 0, scale = NORMAL_SCALE) =>
+  `perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(${scale})`;
+
+const createGradient = (x: number, y: number, opacity: number) =>
+  `radial-gradient(circle at ${x}px ${y}px, #ffffff${Math.round(opacity * 100)
+    .toString(16)
+    .padStart(2, "0")}, #0000000f)`;
 
 interface CardProps extends Contributor {
   class?: string; // additional classes for the card
@@ -37,12 +52,15 @@ interface CardProps extends Contributor {
 }
 
 export const Card: ParentComponent<CardProps> = (props) => {
-  const { name, roles, socials, tags, classes, onClick, cachedImage } = props;
+  const { name, roles, socials, tags, classes, color, onClick, cachedImage } =
+    props;
+  const borderColor = color || FALLBACK_COLOR;
 
   let card: HTMLDivElement;
   let glow: HTMLDivElement;
   let placeholder: HTMLDivElement; // placeholder for the card when focused to keep its position in list
   let innerDiv: HTMLDivElement;
+
   const [imageError, setImageError] = createSignal(cachedImage?.error ?? false);
   const [imageLoading, setImageLoading] = createSignal(!cachedImage);
   const [imgSrc, setImgSrc] = createSignal(
@@ -55,16 +73,14 @@ export const Card: ParentComponent<CardProps> = (props) => {
   // TODO: allow hover/tilting during animation without it interrupting the animation - idk how to do this without breaking other things tbh
   const [transitioning, setTransitioning] = createSignal(false); // prevent tilting while transitioning (interrupting it)
   const [isFocused, setIsFocused] = createSignal(false);
+
   let originalPosition: { top: number; left: number } | null = null;
   let transitionTimeout: ReturnType<typeof setTimeout> | null = null; // prevent multiple transitions / out of sync (from multiple clicks)
   let lastMousePosition: { x: number; y: number } = { x: 0, y: 0 };
 
-  let borderColor = props.color || fallbackColor;
-
   /*
    * Tilt effect things for card
    */
-
   const applyTilt = (e: MouseEvent, intensity: number, glowOpacity: number) => {
     if (transitioning()) return;
 
@@ -81,29 +97,24 @@ export const Card: ParentComponent<CardProps> = (props) => {
     const percentX = rawX / (1 + Math.abs(rawX) * 0.6);
     const percentY = rawY / (1 + Math.abs(rawY) * 0.6);
 
-    const scale = props.isFocused ? "1.4" : "1";
-    card.style.transform = `perspective(1000px) rotateY(${percentX * intensity}deg) rotateX(${percentY * intensity}deg) scale(${scale})`;
+    const scale = props.isFocused ? FOCUSED_SCALE : NORMAL_SCALE;
+    card.style.transform = createTransform(
+      percentY * intensity,
+      percentX * intensity,
+      scale
+    );
     glow.style.opacity = glowOpacity.toString();
-    glow.style.backgroundImage = `
-                radial-gradient(
-                    circle at 
-                    ${x}px ${y}px, 
-                    #ffffff${Math.round(glowOpacity * 100)
-                      .toString(16)
-                      .padStart(2, "0")},
-                    #0000000f
-                )
-            `;
+    glow.style.backgroundImage = createGradient(x, y, glowOpacity);
   };
 
   const isMouseOverCard = (e: PointerEvent) => {
     const rect = card.getBoundingClientRect();
-    const tolerance = 8; // extra pixels of tolerance to prevent glitching on edges
+    // allow extra pixels of tolerance to prevent glitching on edges
     return (
-      e.clientX >= rect.left - tolerance &&
-      e.clientX <= rect.right + tolerance &&
-      e.clientY >= rect.top - tolerance &&
-      e.clientY <= rect.bottom + tolerance
+      e.clientX >= rect.left - CARD_TOLERANCE &&
+      e.clientX <= rect.right + CARD_TOLERANCE &&
+      e.clientY >= rect.top - CARD_TOLERANCE &&
+      e.clientY <= rect.bottom + CARD_TOLERANCE
     );
   };
 
@@ -114,15 +125,13 @@ export const Card: ParentComponent<CardProps> = (props) => {
   };
 
   const cardHoverEnter = (e: PointerEvent) => {
-    if (props.isFocused || transitioning()) return;
-    if (e.pointerType === "touch") return;
-    card.style.transition = "transform 0.1s ease";
+    if (props.isFocused || transitioning() || e.pointerType === "touch") return;
+    card.style.transition = `transform ${HOVER_TRANSITION_DURATION}ms ease`;
     document.addEventListener("pointermove", cardHoverTilt);
   };
 
   const cardHoverLeave = (e: PointerEvent) => {
-    if (props.isFocused || transitioning()) return;
-    if (e.pointerType === "touch") return;
+    if (props.isFocused || transitioning() || e.pointerType === "touch") return;
     if (!isMouseOverCard(e)) {
       document.removeEventListener("pointermove", cardHoverTilt);
       cardReset();
@@ -130,8 +139,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
   };
 
   const cardHoverTilt = (e: PointerEvent) => {
-    if (props.isFocused || transitioning()) return;
-    if (e.pointerType === "touch") return;
+    if (props.isFocused || transitioning() || e.pointerType === "touch") return;
 
     lastMousePosition = { x: e.clientX, y: e.clientY };
 
@@ -145,15 +153,14 @@ export const Card: ParentComponent<CardProps> = (props) => {
   };
 
   const cardReset = () => {
-    card.style.transition = "transform 0.45s ease";
-    card.style.transform = "perspective(1000px) rotateY(0deg) rotateX(0deg)";
+    card.style.transition = `transform ${FOCUS_TRANSITION_DURATION}ms ease`;
+    card.style.transform = createTransform();
     glow.style.opacity = "0";
   };
 
   /*
    * General card stuff
    */
-
   const handleClick = () => {
     if (onClick) onClick();
   };
@@ -169,17 +176,13 @@ export const Card: ParentComponent<CardProps> = (props) => {
 
     // reset tilt effect to get actual position
     card.style.transition = "none";
-    card.style.transform =
-      "perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)";
+    card.style.transform = createTransform();
     glow.style.opacity = "0";
 
     card.offsetHeight;
 
     const rect = card.getBoundingClientRect();
-    originalPosition = {
-      top: rect.top,
-      left: rect.left,
-    };
+    originalPosition = { top: rect.top, left: rect.left };
 
     placeholder.style.display = "block";
 
@@ -189,8 +192,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
     card.style.left = `${rect.left}px`;
 
     card.offsetHeight;
-    card.style.transition =
-      "transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), top 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), left 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.45s ease";
+    card.style.transition = `transform ${FOCUS_TRANSITION_DURATION}ms cubic-bezier(0.25, 0.46, 0.45, 0.94), top ${FOCUS_TRANSITION_DURATION}ms cubic-bezier(0.25, 0.46, 0.45, 0.94), left ${FOCUS_TRANSITION_DURATION}ms cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow ${FOCUS_TRANSITION_DURATION}ms ease`;
 
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
@@ -198,18 +200,18 @@ export const Card: ParentComponent<CardProps> = (props) => {
     const centerX = viewportWidth / 2 - card.clientWidth / 2;
     const centerY = viewportHeight / 2 - card.clientHeight / 2;
 
-    card.style.transform =
-      "perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.4)";
+    card.style.transform = createTransform(0, 0, FOCUSED_SCALE);
     card.style.top = `${centerY}px`;
     card.style.left = `${centerX}px`;
     card.style.boxShadow = "0px 10px 20px 8px #02111db8";
+
     document.removeEventListener("pointermove", cardHoverTilt);
     document.addEventListener("pointermove", cardTilt);
 
     transitionTimeout = setTimeout(() => {
       setTransitioning(false);
       transitionTimeout = null;
-    }, 450);
+    }, FOCUS_TRANSITION_DURATION);
   };
 
   const cardUnfocus = () => {
@@ -222,16 +224,14 @@ export const Card: ParentComponent<CardProps> = (props) => {
     setIsFocused(false);
 
     card.style.zIndex = "5"; // lower z-index for cards unfocusing so the new one takes priority
-    card.style.transition =
-      "transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), top 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), left 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.45s ease";
+    card.style.transition = `transform ${FOCUS_TRANSITION_DURATION}ms cubic-bezier(0.25, 0.46, 0.45, 0.94), top ${FOCUS_TRANSITION_DURATION}ms cubic-bezier(0.25, 0.46, 0.45, 0.94), left ${FOCUS_TRANSITION_DURATION}ms cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow ${FOCUS_TRANSITION_DURATION}ms ease`;
     card.style.boxShadow = "none";
 
     if (originalPosition) {
       card.style.top = `${originalPosition.top}px`;
       card.style.left = `${originalPosition.left}px`;
     }
-    card.style.transform =
-      "perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)";
+    card.style.transform = createTransform();
 
     document.removeEventListener("pointermove", cardTilt);
     glow.style.opacity = "0";
@@ -243,7 +243,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
       card.style.top = "";
       card.style.left = "";
       card.style.zIndex = "0";
-      card.style.transform = "perspective(1000px) rotateY(0deg) rotateX(0deg)";
+      card.style.transform = createTransform();
       placeholder.style.display = "none";
       setTransitioning(false);
       transitionTimeout = null;
@@ -259,24 +259,23 @@ export const Card: ParentComponent<CardProps> = (props) => {
       if (isMouseOverCard(mockEvent)) {
         document.addEventListener("pointermove", cardHoverTilt);
       }
-    }, 450);
+    }, FOCUS_TRANSITION_DURATION);
   };
 
-  const cardClasses = createMemo(() => {
-    return clsx(
+  const cardClasses = createMemo(() =>
+    clsx(
       "max-w-[250px] max-h-[348px] w-full h-full p-2 shadow-lg flex flex-col items-center aspect-[0.72/1]",
       props.class
-    );
-  });
+    )
+  );
 
-  const borderStyle = createMemo(() => {
-    return { background: `${borderColor} !important` };
-  });
+  const borderStyle = createMemo(() => ({
+    background: `${borderColor} !important`,
+  }));
 
   /*
    * Reactivity and life cycle stuff
    */
-
   onMount(() => {
     if (typeof window === "undefined") return null;
   });

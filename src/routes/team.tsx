@@ -3,6 +3,7 @@ import Rand from "rand-seed";
 import clsx from "clsx";
 import {
   createEffect,
+  createMemo,
   createSignal,
   onCleanup,
   onMount,
@@ -24,6 +25,13 @@ import { ArtistIcon } from "~/components/commons/icons/ArtistIcon";
 import { PeopleIcon } from "~/components/commons/icons/PeopleIcon";
 import CircularIcon from "~/components/contributors/CircularIcon";
 
+// constants
+const SHINY_COUNT = 5;
+const MAX_SHUFFLES = 7;
+const SHUFFLE_INTERVAL = 100;
+const SHINY_GRADIENT =
+  "linear-gradient(292.18deg, #FA5858 -0.23%, #FFFFFF 4.63%, #FFD324 9.49%, #02FFD5 14.35%, #FFFFFF 19.22%, #A200FF 24.08%, #0077FF 28.94%, #00FFAE 33.81%, #FBFFC7 38.67%, #FA5858 43.53%, #FF7700 48.4%, #FFFFFF 53.26%, #FFF47B 58.12%, #FBFFC7 62.99%, #FFFFFF 67.85%, #CDFFC7 72.71%, #5BFAFF 77.58%, #FF82CD 82.44%, #E34B4B 87.3%, #FBFFC7 97.03%)";
+
 const socialsPriority = [
   "website",
   "discord",
@@ -40,34 +48,36 @@ const socialsPriority = [
   "kofi",
 ];
 
-const contribs = contributors
-  .slice()
-  // sort alphabetically by name
-  .sort((a, b) => a.name.localeCompare(b.name))
-  .map((contributor) => {
-    if (contributor.socials) {
-      // sort socials by priority
-      // i don't feel like sorting it in the object manually lmao, kill me if you want to -maya
-      const sortedEntries = Object.entries(contributor.socials).sort(
-        ([a], [b]) => {
-          const aIndex = socialsPriority.indexOf(a);
-          const bIndex = socialsPriority.indexOf(b);
-          if (aIndex === -1 && bIndex === -1) return 0;
-          if (aIndex === -1) return 1;
-          if (bIndex === -1) return -1;
-          return aIndex - bIndex;
-        }
-      );
-      contributor.socials = Object.fromEntries(sortedEntries);
-    }
-    return contributor;
-  });
+const sortedContribs = createMemo(() =>
+  contributors
+    .slice()
+    // sort alphabetically by name
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map((contributor) => {
+      if (contributor.socials) {
+        // sort socials by priority
+        // i don't feel like sorting it in the object manually lmao, kill me if you want to -maya
+        const sortedEntries = Object.entries(contributor.socials).sort(
+          ([a], [b]) => {
+            const aIndex = socialsPriority.indexOf(a);
+            const bIndex = socialsPriority.indexOf(b);
+            if (aIndex === -1 && bIndex === -1) return 0;
+            if (aIndex === -1) return 1;
+            if (bIndex === -1) return -1;
+            return aIndex - bIndex;
+          }
+        );
+        contributor.socials = Object.fromEntries(sortedEntries);
+      }
+      return contributor;
+    })
+);
+const shinyContribs = createMemo(() =>
+  getShinyContribs(sortedContribs(), SHINY_COUNT)
+);
 
 // random "shiny" slimes (up to 5), where it is seeded by the current date (so everyone gets the same shinies)
-const shinyGradient =
-  "linear-gradient(292.18deg, #FA5858 -0.23%, #FFFFFF 4.63%, #FFD324 9.49%, #02FFD5 14.35%, #FFFFFF 19.22%, #A200FF 24.08%, #0077FF 28.94%, #00FFAE 33.81%, #FBFFC7 38.67%, #FA5858 43.53%, #FF7700 48.4%, #FFFFFF 53.26%, #FFF47B 58.12%, #FBFFC7 62.99%, #FFFFFF 67.85%, #CDFFC7 72.71%, #5BFAFF 77.58%, #FF82CD 82.44%, #E34B4B 87.3%, #FBFFC7 97.03%)";
-const shinyContribs = getShinyContribs(contribs, 5);
-function getShinyContribs(contribs: Contributor[], count = 5) {
+function getShinyContribs(contribs: Contributor[], count = SHINY_COUNT) {
   const seed = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
   const rand = new Rand(seed);
   const slimes = contribs.slice();
@@ -85,7 +95,7 @@ function getShinyContribs(contribs: Contributor[], count = 5) {
   return finalSlimes;
 }
 
-const [finalContribs, setFinalContribs] = createSignal(contribs);
+const [finalContribs, setFinalContribs] = createSignal(sortedContribs());
 const [searchTerm, setSearchTerm] = createSignal("");
 const [isShuffling, setIsShuffling] = createSignal(false);
 
@@ -126,24 +136,29 @@ const preloadImage = (name: string, classes?: string): Promise<void> => {
   });
 };
 
-const maxShuffles = 7;
 function shuffle() {
   setIsShuffling(true);
 
   let shuffleCount = 0;
   const shuffleInterval = setInterval(() => {
-    setFinalContribs([...contribs].sort(() => Math.random() - 0.5));
+    setFinalContribs([...sortedContribs()].sort(() => Math.random() - 0.5));
     shuffleCount++;
 
-    if (shuffleCount >= maxShuffles) {
+    if (shuffleCount >= MAX_SHUFFLES) {
       clearInterval(shuffleInterval);
       setIsShuffling(false);
     }
-  }, 100);
+  }, SHUFFLE_INTERVAL);
 }
 
 export default function TeamPage(props: ParentProps) {
   const [focusedCard, setFocusedCard] = createSignal<string | null>(null);
+
+  const filteredContribs = createMemo(() =>
+    finalContribs().filter((contrib) =>
+      contrib.name.toLowerCase().includes(searchTerm().toLowerCase())
+    )
+  );
 
   const handleCardClick = (contributorName: string) => {
     if (focusedCard() !== contributorName) setFocusedCard(contributorName);
@@ -170,7 +185,7 @@ export default function TeamPage(props: ParentProps) {
     } else {
       setTimeout(() => {
         document.body.style.overflow = "";
-      }, 450);
+      }, 450); // same as transition duration in Card.tsx
     }
   });
 
@@ -180,7 +195,7 @@ export default function TeamPage(props: ParentProps) {
     document.addEventListener("mouseup", handleClickOutside);
 
     // preload all contributor images
-    contribs.forEach((contrib) => {
+    sortedContribs().forEach((contrib) => {
       preloadImage(contrib.name, contrib.classes);
     });
   });
@@ -220,12 +235,12 @@ export default function TeamPage(props: ParentProps) {
           />
 
           {/* roles legend */}
-            <div
-              class={clsx(
+          <div
+            class={clsx(
               "flex flex-col gap-4 mt-6 p-4 bg-background-70 border border-background-40 rounded-xl text-center",
               "sm:flex-row sm:text-left"
-              )}
-            >
+            )}
+          >
             <Typography tag="h3" variant="section-title">
               <Localized id="contributors.roles.title" />
             </Typography>
@@ -282,37 +297,32 @@ export default function TeamPage(props: ParentProps) {
           {/* page cards - slimevr contributors */}
           <div class="flex flex-row flex-wrap gap-4 mt-8 justify-around">
             {/* filter slimes by search term if exists */}
-            {finalContribs()
-              .filter((contrib) =>
-                contrib.name.toLowerCase().includes(searchTerm().toLowerCase())
-              )
-              .map((contrib, i) => {
-                const isShiny = shinyContribs.some(
-                  (s) => s.name === contrib.name
-                );
-                const cachedImage = imageCache.get(contrib.name);
+            {filteredContribs().map((contrib, i) => {
+              const isShiny = shinyContribs().some(
+                (s) => s.name === contrib.name
+              );
+              const cachedImage = imageCache.get(contrib.name);
 
-                return (
-                  <Card
-                    class={clsx(
-                      "transition-all duration-200",
-                      isShuffling()
-                        ? "animate-pulse scale-95 opacity-80 transform rotate-1 pointer-events-none"
-                        : "scale-100 opacity-100 transform rotate-0"
-                    )}
-                    {...contrib}
-                    color={isShiny ? shinyGradient : contrib.color}
-                    isFocused={focusedCard() === contrib.name}
-                    onClick={() => handleCardClick(contrib.name)}
-                    data-card-name={contrib.name}
-                    cachedImage={cachedImage}
-                  />
-                );
-              })}
+              return (
+                <Card
+                  class={
+                    isShuffling()
+                      ? "animate-pulse scale-95 opacity-80 transform rotate-1 pointer-events-none"
+                      : "scale-100 opacity-100 transform rotate-0"
+                  }
+                  {...contrib}
+                  color={isShiny ? SHINY_GRADIENT : contrib.color}
+                  isFocused={focusedCard() === contrib.name}
+                  onClick={() => handleCardClick(contrib.name)}
+                  data-card-name={contrib.name}
+                  cachedImage={cachedImage}
+                />
+              );
+            })}
             {/* if none found, show sad message */}
-            {finalContribs().filter((contrib) =>
-              contrib.name.toLowerCase().includes(searchTerm().toLowerCase())
-            ).length === 0 && <Localized id="contributors.none" />}
+            {filteredContribs().length === 0 && (
+              <Localized id="contributors.none" />
+            )}
           </div>
         </Container>
       </Section>
