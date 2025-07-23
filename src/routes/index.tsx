@@ -56,6 +56,13 @@ export default function HomeLayout(props: ParentProps) {
       <AppTitle key="home.title"></AppTitle>
       <Meta name="robots" content="index, follow" />
       <Link rel="canonical" href="https://slimevr.dev/" />
+      <Link
+        rel="preload"
+        fetchpriority="high"
+        as="image"
+        href="/images/Webpage_Design_Parts_first_block_bg.webp"
+        type="image/webp"
+      />
       <Section>
         <div class="flex w-full mt-5 relative">
           <div class="absolute top-0 h-full animate-floating right-0 w-full md:flex justify-end hidden">

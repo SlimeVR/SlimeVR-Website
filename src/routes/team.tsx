@@ -48,33 +48,28 @@ const socialsPriority = [
   "kofi",
 ];
 
-const sortedContribs = createMemo(() =>
-  contributors
-    .slice()
-    // sort alphabetically by name
-    .sort((a, b) => a.name.localeCompare(b.name))
-    .map((contributor) => {
-      if (contributor.socials) {
-        // sort socials by priority
-        // i don't feel like sorting it in the object manually lmao, kill me if you want to -maya
-        const sortedEntries = Object.entries(contributor.socials).sort(
-          ([a], [b]) => {
-            const aIndex = socialsPriority.indexOf(a);
-            const bIndex = socialsPriority.indexOf(b);
-            if (aIndex === -1 && bIndex === -1) return 0;
-            if (aIndex === -1) return 1;
-            if (bIndex === -1) return -1;
-            return aIndex - bIndex;
-          }
-        );
-        contributor.socials = Object.fromEntries(sortedEntries);
-      }
-      return contributor;
-    })
-);
-const shinyContribs = createMemo(() =>
-  getShinyContribs(sortedContribs(), SHINY_COUNT)
-);
+const sortedContribs = contributors
+  .slice()
+  // sort alphabetically by name
+  .sort((a, b) => a.name.localeCompare(b.name))
+  .map((contributor) => {
+    if (contributor.socials) {
+      // sort socials by priority
+      // i don't feel like sorting it in the object manually lmao, kill me if you want to -maya
+      const sortedEntries = Object.entries(contributor.socials).sort(
+        ([a], [b]) => {
+          const aIndex = socialsPriority.indexOf(a);
+          const bIndex = socialsPriority.indexOf(b);
+          if (aIndex === -1 && bIndex === -1) return 0;
+          if (aIndex === -1) return 1;
+          if (bIndex === -1) return -1;
+          return aIndex - bIndex;
+        }
+      );
+      contributor.socials = Object.fromEntries(sortedEntries);
+    }
+    return contributor;
+  });
 
 // random "shiny" slimes (up to 5), where it is seeded by the current date (so everyone gets the same shinies)
 function getShinyContribs(contribs: Contributor[], count = SHINY_COUNT) {
@@ -95,7 +90,7 @@ function getShinyContribs(contribs: Contributor[], count = SHINY_COUNT) {
   return finalSlimes;
 }
 
-const [finalContribs, setFinalContribs] = createSignal(sortedContribs());
+const [finalContribs, setFinalContribs] = createSignal(sortedContribs);
 const [searchTerm, setSearchTerm] = createSignal("");
 const [isShuffling, setIsShuffling] = createSignal(false);
 
@@ -141,7 +136,7 @@ function shuffle() {
 
   let shuffleCount = 0;
   const shuffleInterval = setInterval(() => {
-    setFinalContribs([...sortedContribs()].sort(() => Math.random() - 0.5));
+    setFinalContribs([...sortedContribs].sort(() => Math.random() - 0.5));
     shuffleCount++;
 
     if (shuffleCount >= MAX_SHUFFLES) {
@@ -153,6 +148,10 @@ function shuffle() {
 
 export default function TeamPage(props: ParentProps) {
   const [focusedCard, setFocusedCard] = createSignal<string | null>(null);
+
+  const shinyContribs = createMemo(() =>
+    getShinyContribs(sortedContribs, SHINY_COUNT)
+  );
 
   const filteredContribs = createMemo(() =>
     finalContribs().filter((contrib) =>
@@ -195,7 +194,7 @@ export default function TeamPage(props: ParentProps) {
     document.addEventListener("mouseup", handleClickOutside);
 
     // preload all contributor images
-    sortedContribs().forEach((contrib) => {
+    sortedContribs.forEach((contrib) => {
       preloadImage(contrib.name, contrib.classes);
     });
   });
@@ -211,6 +210,13 @@ export default function TeamPage(props: ParentProps) {
       <AppTitle key="contributors.title"></AppTitle>
       <Meta name="robots" content="index, follow" />
       <Link rel="canonical" href="https://slimevr.dev/" />
+      <Link
+        rel="preload"
+        fetchpriority="high"
+        as="image"
+        href="/images/contributors/jovannmc.webp"
+        type="image/webp"
+      />
       <Section>
         <Container class="mt-4">
           {/* page text */}
