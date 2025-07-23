@@ -181,8 +181,8 @@
     "roles": {
       "title": "Roles:",
       "developer": "Developer",
-      "artist": "Artist",
-      "community": "Community"
+      "artist": "Artist / Designer",
+      "community": "Community / Testing"
     }
   },
   "privacy": {

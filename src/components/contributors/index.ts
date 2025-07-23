@@ -375,4 +375,22 @@ export const contributors: Contributor[] = [
     },
     tags: ["#slimetora", "#silly", "#trans", "#programmer"],
   },
+  {
+    name: "unlogisch",
+    roles: ["dev"],
+    socials: {
+      github: "https://github.com/unlogisch04/",
+    },
+    tags: ["#programmer", "#fork", "#maintainer", "#firmware"],
+  },
+  {
+    name: "Aed",
+    roles: ["dev", "community"],
+    socials: {
+      kofi: "https://ko-fi.com/aed00",
+      github: "https://github.com/Aed-1",
+      discord: "https://discord.com/users/884888736855392307",
+    },
+    tags: ["#rusk", "#silly", "#goat"],
+  },
 ];
