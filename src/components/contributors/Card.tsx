@@ -298,6 +298,15 @@ export const Card: ParentComponent<CardProps> = (props) => {
    */
   onMount(() => {
     if (typeof window === "undefined") return;
+
+    // initialize the glow effect (without showing to user) to prevent flash on first hover
+    if (glow) {
+      const rect = card.getBoundingClientRect();
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      glow.style.backgroundImage = createGradient(centerX, centerY, 0);
+      glow.style.opacity = "0";
+    }
   });
 
   onCleanup(() => {
