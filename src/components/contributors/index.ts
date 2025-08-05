@@ -191,7 +191,10 @@ export const contributors: Contributor[] = [
     name: "Az",
     roles: ["community"],
     color: "#74f062",
-    socials: {},
+    socials: {
+      steam: "https://steamcommunity.com/profiles/76561198082379723",
+      discord: "https://discordapp.com/users/231153368817598464",
+    },
     tags: ["#~", "#cool", "#tea", "#samurai", "#warranty"],
   },
   {
