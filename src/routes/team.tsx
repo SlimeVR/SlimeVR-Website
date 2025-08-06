@@ -4,6 +4,7 @@ import clsx from "clsx";
 import {
   createEffect,
   createMemo,
+  createResource,
   createSignal,
   onCleanup,
   onMount,
@@ -17,6 +18,7 @@ import { Typography } from "~/components/commons/Typography";
 import { Contributor, contributors } from "~/components/contributors";
 import { Card } from "~/components/contributors/Card";
 import { SearchBox } from "~/components/contributors/SearchBox";
+import { Sponsor, SponsorCard } from "~/components/sponsors/SponsorCard";
 import { Section } from "~/components/Section";
 import { Localized } from "~/i18n";
 import { MainLayout } from "~/layouts/MainLayout";
@@ -24,6 +26,7 @@ import { DevIcon } from "~/components/commons/icons/DevIcon";
 import { ArtistIcon } from "~/components/commons/icons/ArtistIcon";
 import { PeopleIcon } from "~/components/commons/icons/PeopleIcon";
 import CircularIcon from "~/components/contributors/CircularIcon";
+import { useI18n } from "~/i18n";
 
 // constants
 const SHINY_COUNT = 5;
@@ -76,7 +79,73 @@ const sortedContribs = contributors
     return contributor;
   });
 
-// random "shiny" slimes (up to 5), where it is seeded by the current date (so everyone gets the same shinies)
+// fetch sponsors from GitHub GraphQL API
+async function fetchSponsors(): Promise<Sponsor[]> {
+  const authToken = import.meta.env.VITE_GITHUB_AUTH_TOKEN;
+  const org = import.meta.env.VITE_GITHUB_ORG;
+
+  if (!authToken || !org) {
+    console.error("Missing GitHub auth token or organization name");
+    return [];
+  }
+
+  try {
+    const response = await fetch(`https://api.github.com/graphql`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `token ${authToken}`,
+      },
+      body: JSON.stringify({
+        query: `query SponsorQuery {
+          organization(login: "${org}") {
+            sponsors(first: 100) {
+              edges {
+                node {
+                  ... on User {
+                    name
+                    login
+                    url
+                    avatarUrl
+                  }
+                  ... on Organization {
+                    name
+                    login
+                    url
+                    avatarUrl
+                  }
+                }
+              }
+            }
+          }
+        }`,
+      }),
+    });
+
+    if (response && response.ok) {
+      const data = await response.json();
+      if (data.errors) {
+        console.error("GraphQL errors:", data.errors);
+        return [];
+      }
+
+      return data.data.organization.sponsors.edges.map((edge: any) => ({
+        name: edge.node.name || edge.node.login,
+        url: edge.node.url,
+        avatarUrl: edge.node.avatarUrl,
+      }));
+    }
+
+    console.error("Failed to fetch sponsors:", response.status);
+    return [];
+  } catch (error) {
+    console.error("Error fetching sponsors:", error);
+    return [];
+  }
+}
+
+// random "shiny" slimes (5 per day), where it is seeded by the current date (so everyone gets the same shinies)
 function getShinyContribs(contribs: Contributor[], count = SHINY_COUNT) {
   const seed = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
   const rand = new Rand(seed);
@@ -155,12 +224,15 @@ function shuffle() {
 }
 
 export default function TeamPage(props: ParentProps) {
-  const [focusedCard, setFocusedCard] = createSignal<string | null>(null);
+  const { translator } = useI18n();
 
+  const [focusedCard, setFocusedCard] = createSignal<string | null>(null);
+  const [sponsors] = createResource(fetchSponsors);
+
+  const sponsorCount = createMemo(() => sponsors()?.length ?? 0);
   const shinyContribs = createMemo(() =>
     getShinyContribs(sortedContribs, SHINY_COUNT)
   );
-
   const filteredContribs = createMemo(() =>
     finalContribs().filter((contrib) =>
       contrib.name.toLowerCase().includes(searchTerm().toLowerCase())
@@ -225,9 +297,10 @@ export default function TeamPage(props: ParentProps) {
         href="/images/contributors/jovannmc.webp"
         type="image/webp"
       />
+      {/* contributors section */}
       <Section>
         <Container class="mt-4">
-          {/* page text */}
+          {/* section text */}
           <div class="flex flex-row justify-between items-center mb-8">
             <Typography
               tag="h2"
@@ -339,6 +412,66 @@ export default function TeamPage(props: ParentProps) {
               <Localized id="contributors.none" />
             )}
           </div>
+        </Container>
+      </Section>
+
+      {/* sponsors section */}
+      <Section>
+        <Container class="mt-4">
+          {/* section text */}
+          <div class="flex flex-row justify-between items-center mb-8">
+            <Typography
+              tag="h2"
+              variant="main-title"
+              textAlign="text-center"
+              key="sponsors.title"
+            />
+            <Button
+              variant="primary"
+              href={`https://github.com/sponsors/${import.meta.env.VITE_GITHUB_ORG}`}
+            >
+              <Localized id="sponsors.sponsor" />
+            </Button>
+          </div>
+
+          <div class="mb-6">
+            <Typography tag="p">
+              {
+                translator("sponsors.description", {
+                  count: sponsorCount(),
+                }) as string
+              }
+            </Typography>
+          </div>
+
+          {/* sponsor states & content */}
+          {sponsors.loading && (
+            <div class="text-center py-8">
+              <Typography tag="p" key="sponsors.loading" />
+            </div>
+          )}
+
+          {sponsors.error && (
+            <div class="text-center py-8">
+              <Typography tag="p" key="sponsors.error" color="text-red-400" />
+            </div>
+          )}
+
+          {sponsors() && (
+            <>
+              {sponsors()!.length > 0 ? (
+                <div class="flex flex-wrap justify-center gap-4">
+                  {sponsors()!.map((sponsor) => (
+                    <SponsorCard sponsor={sponsor} />
+                  ))}
+                </div>
+              ) : (
+                <div class="text-center py-8">
+                  <Typography tag="p" key="sponsors.none" />
+                </div>
+              )}
+            </>
+          )}
         </Container>
       </Section>
     </MainLayout>

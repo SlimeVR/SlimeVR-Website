@@ -1,5 +1,5 @@
 {
-  "title": "{{title}} - SlimeVR Official ",
+  "title": "{{title}} - SlimeVR Official",
   "navbar": {
     "documentation": "Documentation",
     "download": "Download",
@@ -184,6 +184,14 @@
       "artist": "Artist / Designer",
       "community": "Community / Testing"
     }
+  },
+  "sponsors": {
+    "title": "GitHub Sponsors",
+    "description": "Want to support the team another way? Join the {{count}} people sponsoring us on GitHub, all funds goes directly to the dev team!",
+    "sponsor": "Sponsor Us",
+    "loading": "Loading sponsors...",
+    "error": "Failed to load sponsors",
+    "none": "No current sponsors found.. maybe you can be the first?"
   },
   "privacy": {
     "title": "Privacy Policy"
