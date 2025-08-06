@@ -78,3 +78,18 @@ a.link {
     #0fc42d
   );
 }
+
+.transform-gpu {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.card-layer {
+  isolation: isolate;
+  contain: layout style paint;
+}
+
+.backface-visibility-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}

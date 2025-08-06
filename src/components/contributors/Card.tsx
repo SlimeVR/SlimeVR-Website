@@ -36,25 +36,23 @@ const CARD_TOLERANCE = 8;
 const FOCUSED_SCALE = 1.4;
 const NORMAL_SCALE = 1;
 
-// transform utilities
+// transform utilities w/ caching
+const transformCache = new Map<string, string>();
 const createTransform = (rotateX = 0, rotateY = 0, scale = NORMAL_SCALE) => {
   // round values to prevent fractional pixel issues
   const roundedX = Math.round(rotateX * 100) / 100;
   const roundedY = Math.round(rotateY * 100) / 100;
   const roundedScale = Math.round(scale * 1000) / 1000;
-  return `perspective(1000px) rotateY(${roundedY}deg) rotateX(${roundedX}deg) scale(${roundedScale})`;
-};
 
-const createGradient = (x: number, y: number, opacity: number) => {
-  // round coordinates to prevent subpixel rendering issues
-  const roundedX = Math.round(x);
-  const roundedY = Math.round(y);
-  const roundedOpacity = Math.round(opacity * 100) / 100;
-  return `radial-gradient(circle at ${roundedX}px ${roundedY}px, #ffffff${Math.round(
-    roundedOpacity * 255
-  )
-    .toString(16)
-    .padStart(2, "0")}, #0000000f)`;
+  const key = `${roundedX},${roundedY},${roundedScale}`;
+  if (transformCache.has(key)) {
+    return transformCache.get(key)!;
+  }
+
+  const transform = `perspective(1000px) rotateY(${roundedY}deg) rotateX(${roundedX}deg) scale(${roundedScale})`;
+  if (transformCache.size < 100) transformCache.set(key, transform);
+
+  return transform;
 };
 
 interface CardProps extends Contributor {
@@ -62,6 +60,7 @@ interface CardProps extends Contributor {
   onClick?: () => void;
   isFocused?: boolean;
   cachedImage?: { src: string; classes: string; error: boolean };
+  isFirefox?: boolean;
 }
 
 export const Card: ParentComponent<CardProps> = (props) => {
@@ -70,7 +69,6 @@ export const Card: ParentComponent<CardProps> = (props) => {
   const borderColor = color || FALLBACK_COLOR;
 
   let card: HTMLDivElement;
-  let glow: HTMLDivElement;
   let placeholder: HTMLDivElement; // placeholder for the card when focused to keep its position in list
   let innerDiv: HTMLDivElement;
 
@@ -86,6 +84,8 @@ export const Card: ParentComponent<CardProps> = (props) => {
   // TODO: allow hover/tilting during animation without it interrupting the animation - idk how to do this without breaking other things tbh
   const [transitioning, setTransitioning] = createSignal(false); // prevent tilting while transitioning (interrupting it)
   const [isFocused, setIsFocused] = createSignal(false);
+
+  const isFirefox = createMemo(() => props.isFirefox ?? false);
 
   let originalPosition: { top: number; left: number } | null = null;
   let transitionTimeout: ReturnType<typeof setTimeout> | null = null; // prevent multiple transitions / out of sync (from multiple clicks)
@@ -111,13 +111,16 @@ export const Card: ParentComponent<CardProps> = (props) => {
     const percentY = rawY / (1 + Math.abs(rawY) * 0.6);
 
     const scale = props.isFocused ? FOCUSED_SCALE : NORMAL_SCALE;
+
+    card.style.setProperty("--mouse-x", `${x}px`);
+    card.style.setProperty("--mouse-y", `${y}px`);
+    card.style.setProperty("--glow-opacity", glowOpacity.toString());
+
     card.style.transform = createTransform(
       percentY * intensity,
       percentX * intensity,
       scale
     );
-    glow.style.opacity = glowOpacity.toString();
-    glow.style.backgroundImage = createGradient(x, y, glowOpacity);
   };
 
   const isMouseOverCard = (e: PointerEvent) => {
@@ -168,7 +171,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
   const cardReset = () => {
     card.style.transition = `transform ${FOCUS_TRANSITION_DURATION}ms ease`;
     card.style.transform = createTransform();
-    glow.style.opacity = "0";
+    card.style.setProperty("--glow-opacity", "0");
   };
 
   /*
@@ -190,7 +193,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
     // reset tilt effect to get actual position
     card.style.transition = "none";
     card.style.transform = createTransform();
-    glow.style.opacity = "0";
+    card.style.setProperty("--glow-opacity", "0");
 
     card.offsetHeight;
 
@@ -247,7 +250,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
     card.style.transform = createTransform();
 
     document.removeEventListener("pointermove", cardTilt);
-    glow.style.opacity = "0";
+    card.style.setProperty("--glow-opacity", "0");
 
     // switch back to relative positioning, hide placeholder, and allow scrolling after transition completes
     transitionTimeout = setTimeout(() => {
@@ -278,35 +281,45 @@ export const Card: ParentComponent<CardProps> = (props) => {
   const cardClasses = createMemo(() =>
     clsx(
       "max-w-[250px] max-h-[348px] w-full h-full p-2 shadow-lg flex flex-col items-center aspect-[0.72/1]",
+      "transform-gpu will-change-transform card-layer",
+      isFirefox() && "backface-visibility-hidden",
       props.class
     )
   );
 
-  const borderStyle = createMemo(() => ({
-    background: `${borderColor} !important`,
-
-    // these apparently fix card rendering/resolution issues
-    // tbh i'm not sure how these work, but it seems like they do help?
-    WebkitFontSmoothing: "antialiased", // improve text rendering during transforms
-    MozOsxFontSmoothing: "grayscale",
-    backfaceVisibility: "hidden", // prevent blur during transforms
-    imageRendering: "-webkit-optimize-contrast, crisp-edges", // optimize for crisp edges
-  }));
+  const borderStyle = createMemo(
+    () =>
+      ({
+        // these apparently fix card rendering/resolution issues
+        // tbh i'm not sure how these work, but it seems like they do help?
+        background: `${borderColor} !important`,
+        "--mouse-x": "0px",
+        "--mouse-y": "0px",
+        "--glow-opacity": "0",
+        WebkitFontSmoothing: "antialiased",
+        MozOsxFontSmoothing: "grayscale",
+        backfaceVisibility: "hidden",
+        transform: "translateZ(0)",
+        imageRendering: "crisp-edges",
+        isolation: "isolate",
+      }) as const
+  );
 
   /*
    * Reactivity and life cycle stuff
    */
   onMount(() => {
-    if (typeof window === "undefined") return;
+    if (typeof window === "undefined" || !card) return;
 
-    // initialize the glow effect (without showing to user) to prevent flash on first hover
-    if (glow) {
-      const rect = card.getBoundingClientRect();
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      glow.style.backgroundImage = createGradient(centerX, centerY, 0);
-      glow.style.opacity = "0";
-    }
+    // Batch DOM operations for better performance
+    const setInitialStyles = () => {
+      card.style.setProperty("--mouse-x", "0px");
+      card.style.setProperty("--mouse-y", "0px");
+      card.style.setProperty("--glow-opacity", "0");
+      card.style.setProperty("background", borderColor, "important");
+    };
+
+    requestAnimationFrame(setInitialStyles);
   });
 
   onCleanup(() => {
@@ -318,6 +331,14 @@ export const Card: ParentComponent<CardProps> = (props) => {
     if (transitionTimeout) {
       clearTimeout(transitionTimeout);
       transitionTimeout = null;
+    }
+
+    if (card) {
+      card.style.position = "";
+      card.style.top = "";
+      card.style.left = "";
+      card.style.zIndex = "";
+      card.style.transform = "";
     }
   });
 
@@ -353,13 +374,6 @@ export const Card: ParentComponent<CardProps> = (props) => {
     };
   });
 
-  createEffect(() => {
-    if (!card || !innerDiv) return;
-
-    // ensure bg and border is set when re-rendered
-    card.style.setProperty("background", borderColor, "important");
-  });
-
   // handle focus changes
   createEffect(() => {
     if (!card || !placeholder) return;
@@ -391,31 +405,45 @@ export const Card: ParentComponent<CardProps> = (props) => {
         style={borderStyle()}
         data-card-name={props["data-card-name"]}
       >
-        {/* glow effect when hovering */}
+        {/* glow effect when hovering - optimized for performance */}
         <div
-          ref={glow}
-          class="absolute inset-0 rounded-2xl transition-opacity duration-200 pointer-events-none z-20 drag"
-          style={{ "will-change": "opacity, background-image" }}
-          onMouseEnter={() => glow && (glow.style.transitionDuration = "0.2s")}
-          onMouseLeave={() => glow && (glow.style.transitionDuration = "0.45s")}
+          class="absolute inset-0 rounded-2xl pointer-events-none z-20 transform-gpu"
+          style={{
+            background: `radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,var(--glow-opacity, 0)) 0%, transparent 50%)`,
+            opacity: `var(--glow-opacity, 0)`,
+            transition: "opacity 200ms ease",
+            "will-change": "opacity",
+          }}
         />
         <div
           ref={innerDiv}
-          class="aspect-[0.71/1] max-w-[237px] max-h-[336px] w-full h-full flex flex-col items-center justify-evenly rounded-xl px-2 relative overflow-hidden"
+          class="aspect-[0.71/1] max-w-[237px] max-h-[336px] w-full h-full flex flex-col items-center justify-evenly rounded-xl px-2 relative overflow-hidden transform-gpu"
         >
-          {/* blurred background image */}
-          <div
-            class="absolute inset-0 rounded-xl z-0"
-            style={{
-              "background-image": `url(${imgSrc()})`,
-              "background-size": "500%",
-              "background-position": "center",
-              filter: "blur(128px) brightness(1.5)",
-            }}
-            aria-hidden="true"
-          />
+          {/* Background image - optimized for Firefox by removing blur */}
+          {!isFirefox() ? (
+            <div
+              class="absolute inset-0 rounded-xl z-0 transform-gpu"
+              style={{
+                "background-image": `url(${imgSrc()})`,
+                "background-size": "500%",
+                "background-position": "center",
+                filter: "blur(128px) brightness(1.3)",
+                transform: "translateZ(0)",
+              }}
+              aria-hidden="true"
+            />
+          ) : (
+            <div
+              class="absolute inset-0 rounded-xl z-0 transform-gpu"
+              style={{
+                background: `linear-gradient(135deg, ${borderColor}40, ${borderColor}20, ${borderColor}60)`,
+                transform: "translateZ(0)",
+              }}
+              aria-hidden="true"
+            />
+          )}
           {/* slight blur for bg overlay */}
-          <div class="absolute inset-0 bg-black bg-opacity-20 backdrop-blur-lg rounded-xl z-0" />
+          <div class="absolute inset-0 bg-black rounded-xl bg-opacity-20 card-layer z-0 transform-gpu" />
           <div class="relative z-10 w-full h-full flex flex-col items-center justify-evenly">
             {/* card header - name, role(s), image */}
             <div class="flex flex-col flex-1">

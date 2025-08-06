@@ -32,6 +32,11 @@ const SHUFFLE_INTERVAL = 150;
 const SHINY_GRADIENT =
   "linear-gradient(292.18deg, #FA5858 -0.23%, #FFFFFF 4.63%, #FFD324 9.49%, #02FFD5 14.35%, #FFFFFF 19.22%, #A200FF 24.08%, #0077FF 28.94%, #00FFAE 33.81%, #FBFFC7 38.67%, #FA5858 43.53%, #FF7700 48.4%, #FFFFFF 53.26%, #FFF47B 58.12%, #FBFFC7 62.99%, #FFFFFF 67.85%, #CDFFC7 72.71%, #5BFAFF 77.58%, #FF82CD 82.44%, #E34B4B 87.3%, #FBFFC7 97.03%)";
 
+const isFirefox = createMemo(() => {
+  if (typeof window === "undefined") return false;
+  return navigator.userAgent.toLowerCase().includes("firefox");
+});
+
 const socialsPriority = [
   "website",
   "discord",
@@ -325,6 +330,7 @@ export default function TeamPage(props: ParentProps) {
                   onClick={() => handleCardClick(contrib.name)}
                   data-card-name={contrib.name}
                   cachedImage={cachedImage}
+                  isFirefox={isFirefox()}
                 />
               );
             })}
