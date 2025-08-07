@@ -143,6 +143,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
   const cardHoverEnter = (e: PointerEvent) => {
     if (props.isFocused || transitioning() || e.pointerType === "touch") return;
     card.style.transition = `transform ${HOVER_TRANSITION_DURATION}ms ease`;
+    card.style.willChange = "transform";
     document.addEventListener("pointermove", cardHoverTilt);
   };
 
@@ -150,6 +151,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
     if (props.isFocused || transitioning() || e.pointerType === "touch") return;
     if (!isMouseOverCard(e)) {
       document.removeEventListener("pointermove", cardHoverTilt);
+      card.style.willChange = "auto";
       cardReset();
     }
   };
@@ -164,6 +166,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
     } else {
       // mouse outside tolerance area
       document.removeEventListener("pointermove", cardHoverTilt);
+      card.style.willChange = "auto";
       cardReset();
     }
   };
@@ -189,6 +192,8 @@ export const Card: ParentComponent<CardProps> = (props) => {
 
     setTransitioning(true);
     setIsFocused(true);
+
+    card.style.willChange = "transform, top, left, box-shadow";
 
     // reset tilt effect to get actual position
     card.style.transition = "none";
@@ -260,6 +265,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
       card.style.left = "";
       card.style.zIndex = "0";
       card.style.transform = createTransform();
+      card.style.willChange = "auto";
       placeholder.style.display = "none";
       setTransitioning(false);
       transitionTimeout = null;
@@ -281,7 +287,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
   const cardClasses = createMemo(() =>
     clsx(
       "max-w-[250px] max-h-[348px] w-full h-full p-2 shadow-lg flex flex-col items-center aspect-[0.72/1]",
-      "transform-gpu will-change-transform card-layer",
+      "transform-gpu",
       isFirefox() && "backface-visibility-hidden",
       props.class
     )
@@ -407,43 +413,40 @@ export const Card: ParentComponent<CardProps> = (props) => {
       >
         {/* glow effect when hovering - optimized for performance */}
         <div
-          class="absolute inset-0 rounded-2xl pointer-events-none z-20 transform-gpu"
+          class="absolute inset-0 rounded-2xl pointer-events-none z-20"
           style={{
             background: `radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,var(--glow-opacity, 0)) 0%, transparent 50%)`,
             opacity: `var(--glow-opacity, 0)`,
             transition: "opacity 200ms ease",
-            "will-change": "opacity",
           }}
         />
         <div
           ref={innerDiv}
-          class="aspect-[0.71/1] max-w-[237px] max-h-[336px] w-full h-full flex flex-col items-center justify-evenly rounded-xl px-2 relative overflow-hidden transform-gpu"
+          class="aspect-[0.71/1] max-w-[237px] max-h-[336px] w-full h-full flex flex-col items-center justify-evenly rounded-xl px-2 relative overflow-hidden"
         >
           {/* Background image - optimized for Firefox by removing blur */}
           {!isFirefox() ? (
             <div
-              class="absolute inset-0 rounded-xl z-0 transform-gpu"
+              class="absolute inset-0 rounded-xl z-0"
               style={{
                 "background-image": `url(${imgSrc()})`,
                 "background-size": "500%",
                 "background-position": "center",
                 filter: "blur(128px) brightness(1.3)",
-                transform: "translateZ(0)",
               }}
               aria-hidden="true"
             />
           ) : (
             <div
-              class="absolute inset-0 rounded-xl z-0 transform-gpu"
+              class="absolute inset-0 rounded-xl z-0"
               style={{
                 background: `linear-gradient(135deg, ${borderColor}40, ${borderColor}20, ${borderColor}60)`,
-                transform: "translateZ(0)",
               }}
               aria-hidden="true"
             />
           )}
           {/* slight blur for bg overlay */}
-          <div class="absolute inset-0 bg-black rounded-xl bg-opacity-20 card-layer z-0 transform-gpu" />
+          <div class="absolute inset-0 bg-black rounded-xl bg-opacity-20 z-0" />
           <div class="relative z-10 w-full h-full flex flex-col items-center justify-evenly">
             {/* card header - name, role(s), image */}
             <div class="flex flex-col flex-1">

@@ -18,7 +18,7 @@ import { Typography } from "~/components/commons/Typography";
 import { Contributor, contributors } from "~/components/contributors";
 import { Card } from "~/components/contributors/Card";
 import { SearchBox } from "~/components/contributors/SearchBox";
-import { Sponsor, SponsorCard } from "~/components/sponsors/SponsorCard";
+import { Sponsor, SponsorCard, PastSponsorAvatar } from "~/components/sponsors";
 import { Section } from "~/components/Section";
 import { Localized } from "~/i18n";
 import { MainLayout } from "~/layouts/MainLayout";
@@ -34,11 +34,6 @@ const MAX_SHUFFLES = 7;
 const SHUFFLE_INTERVAL = 150;
 const SHINY_GRADIENT =
   "linear-gradient(292.18deg, #FA5858 -0.23%, #FFFFFF 4.63%, #FFD324 9.49%, #02FFD5 14.35%, #FFFFFF 19.22%, #A200FF 24.08%, #0077FF 28.94%, #00FFAE 33.81%, #FBFFC7 38.67%, #FA5858 43.53%, #FF7700 48.4%, #FFFFFF 53.26%, #FFF47B 58.12%, #FBFFC7 62.99%, #FFFFFF 67.85%, #CDFFC7 72.71%, #5BFAFF 77.58%, #FF82CD 82.44%, #E34B4B 87.3%, #FBFFC7 97.03%)";
-
-const isFirefox = createMemo(() => {
-  if (typeof window === "undefined") return false;
-  return navigator.userAgent.toLowerCase().includes("firefox");
-});
 
 const socialsPriority = [
   "website",
@@ -80,13 +75,16 @@ const sortedContribs = contributors
   });
 
 // fetch sponsors from GitHub GraphQL API
-async function fetchSponsors(): Promise<Sponsor[]> {
+async function fetchSponsors(): Promise<{
+  active: Sponsor[];
+  past: Sponsor[];
+}> {
   const authToken = import.meta.env.VITE_GITHUB_AUTH_TOKEN;
   const org = import.meta.env.VITE_GITHUB_ORG;
 
   if (!authToken || !org) {
     console.error("Missing GitHub auth token or organization name");
-    return [];
+    return { active: [], past: [] };
   }
 
   try {
@@ -100,20 +98,25 @@ async function fetchSponsors(): Promise<Sponsor[]> {
       body: JSON.stringify({
         query: `query SponsorQuery {
           organization(login: "${org}") {
-            sponsors(first: 100) {
+            sponsorshipsAsMaintainer(first: 100, includePrivate: false, activeOnly: false) {
               edges {
                 node {
-                  ... on User {
-                    name
-                    login
-                    url
-                    avatarUrl
-                  }
-                  ... on Organization {
-                    name
-                    login
-                    url
-                    avatarUrl
+                  isActive
+                  sponsor {
+                    ... on Sponsorable {
+                      ... on User {
+                        name
+                        login
+                        url
+                        avatarUrl
+                      }
+                      ... on Organization {
+                        name
+                        login
+                        url
+                        avatarUrl
+                      }
+                    }
                   }
                 }
               }
@@ -127,21 +130,36 @@ async function fetchSponsors(): Promise<Sponsor[]> {
       const data = await response.json();
       if (data.errors) {
         console.error("GraphQL errors:", data.errors);
-        return [];
+        return { active: [], past: [] };
       }
 
-      return data.data.organization.sponsors.edges.map((edge: any) => ({
-        name: edge.node.name || edge.node.login,
-        url: edge.node.url,
-        avatarUrl: edge.node.avatarUrl,
-      }));
+      const sponsorships =
+        data.data.organization.sponsorshipsAsMaintainer.edges;
+      const activeSponsors: Sponsor[] = [];
+      const pastSponsors: Sponsor[] = [];
+
+      sponsorships.forEach((edge: any) => {
+        const sponsor = {
+          name: edge.node.sponsor.name || edge.node.sponsor.login,
+          url: edge.node.sponsor.url,
+          avatarUrl: edge.node.sponsor.avatarUrl,
+        };
+
+        if (edge.node.isActive) {
+          activeSponsors.push(sponsor);
+        } else {
+          pastSponsors.push(sponsor);
+        }
+      });
+
+      return { active: activeSponsors, past: pastSponsors };
     }
 
     console.error("Failed to fetch sponsors:", response.status);
-    return [];
+    return { active: [], past: [] };
   } catch (error) {
     console.error("Error fetching sponsors:", error);
-    return [];
+    return { active: [], past: [] };
   }
 }
 
@@ -229,7 +247,15 @@ export default function TeamPage(props: ParentProps) {
   const [focusedCard, setFocusedCard] = createSignal<string | null>(null);
   const [sponsors] = createResource(fetchSponsors);
 
-  const sponsorCount = createMemo(() => sponsors()?.length ?? 0);
+  const isFirefox = createMemo(() => {
+    if (typeof window === "undefined") return false;
+    return navigator.userAgent.toLowerCase().includes("firefox");
+  });
+
+  const activeSponsors = createMemo(() => sponsors()?.active ?? []);
+  const pastSponsors = createMemo(() => sponsors()?.past ?? []);
+  const activeCount = createMemo(() => activeSponsors().length);
+  const pastCount = createMemo(() => pastSponsors().length);
   const shinyContribs = createMemo(() =>
     getShinyContribs(sortedContribs, SHINY_COUNT)
   );
@@ -438,7 +464,8 @@ export default function TeamPage(props: ParentProps) {
             <Typography tag="p">
               {
                 translator("sponsors.description", {
-                  count: sponsorCount(),
+                  activeCount: activeCount(),
+                  pastCount: pastCount(),
                 }) as string
               }
             </Typography>
@@ -459,12 +486,39 @@ export default function TeamPage(props: ParentProps) {
 
           {sponsors() && (
             <>
-              {sponsors()!.length > 0 ? (
-                <div class="flex flex-wrap justify-center gap-4">
-                  {sponsors()!.map((sponsor) => (
-                    <SponsorCard sponsor={sponsor} />
-                  ))}
-                </div>
+              {activeSponsors().length > 0 ? (
+                <>
+                  <div class="flex flex-wrap justify-center gap-4 mb-8">
+                    {activeSponsors().map((sponsor) => (
+                      <SponsorCard sponsor={sponsor} />
+                    ))}
+                  </div>
+
+                  {pastSponsors().length > 0 ? (
+                    <>
+                      <div class="border-t border-background-40 pt-6 pb-4">
+                        <div class="mb-4 text-center text-text-secondary">
+                          <Typography
+                            tag="h3"
+                            variant="section-title"
+                            textAlign="text-center"
+                          >
+                            <Localized id="sponsors.past" />
+                          </Typography>
+                        </div>
+                        <div class="flex flex-wrap justify-center gap-3">
+                          {pastSponsors().map((sponsor) => (
+                            <PastSponsorAvatar sponsor={sponsor} />
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <div class="text-center py-8">
+                      <Typography tag="p" key="sponsors.none" />
+                    </div>
+                  )}
+                </>
               ) : (
                 <div class="text-center py-8">
                   <Typography tag="p" key="sponsors.none" />

@@ -1,7 +1,6 @@
 import { Component } from "solid-js";
 
 export interface Sponsor {
-  id: string;
   name: string;
   url: string;
   avatarUrl: string;

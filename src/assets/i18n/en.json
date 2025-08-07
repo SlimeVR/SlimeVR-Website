@@ -187,11 +187,12 @@
   },
   "sponsors": {
     "title": "GitHub Sponsors",
-    "description": "Want to support the team another way? Join the {{count}} people sponsoring us on GitHub, all funds goes directly to the dev team!",
+    "description": "Want to support the team another way? Join the {{activeCount}} people actively sponsoring us (and the {{pastCount}} past sponsors) on GitHub, all funds goes directly to the dev team!",
     "sponsor": "Sponsor Us",
     "loading": "Loading sponsors...",
     "error": "Failed to load sponsors",
-    "none": "No current sponsors found.. maybe you can be the first?"
+    "none": "No sponsors found.. maybe you can be the first? (or there's an issue!)",
+    "past": "Past Sponsors"
   },
   "privacy": {
     "title": "Privacy Policy"
