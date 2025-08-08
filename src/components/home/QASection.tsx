@@ -1,16 +1,10 @@
-import {
-  Component,
-  ComponentProps,
-  createMemo,
-  createSignal,
-  For,
-} from "solid-js";
-import { Drawer, DrawerItem } from "../../components/commons/Drawer";
-import { Typography } from "../commons/Typography";
-import { SolidMarkdown } from "solid-markdown";
 import remarkGfm from "remark-gfm";
+import { Component, createMemo, createSignal, For } from "solid-js";
+import { SolidMarkdown } from "solid-markdown";
 import { useI18n } from "~/i18n";
+import { Drawer, DrawerItem } from "../../components/commons/Drawer";
 import { MarkdownLink } from "../commons/Markdown";
+import { Typography } from "../commons/Typography";
 
 const possibleImages = [
   "/images/Nighty_For_FAQ_Block_first_.webp",

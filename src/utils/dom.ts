@@ -1,8 +1,8 @@
 import { createMediaQuery } from "@solid-primitives/media";
-import tailwindConfig from "../../tailwind.config";
-import resolveConfig from "tailwindcss/resolveConfig";
 import { Accessor } from "solid-js";
 import { isServer } from "solid-js/web";
+import resolveConfig from "tailwindcss/resolveConfig";
+import tailwindConfig from "../../tailwind.config";
 
 export const getContentSize = (elem: Element) => elem.getBoundingClientRect();
 

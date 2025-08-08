@@ -1,3 +1,5 @@
+import { A, AnchorProps } from "@solidjs/router";
+import clsx from "clsx";
 import {
   children,
   Component,
@@ -6,16 +8,14 @@ import {
   ParentComponent,
   splitProps,
 } from "solid-js";
-import { Typography } from "../commons/Typography";
+import { DonwloadIcon } from "../../components/commons/icons/DownloadIcon";
 import {
   AndroidIcon,
   AppleIcon,
   LinuxIcon,
   WindowsIcon,
 } from "../../components/commons/icons/PlatformIcons";
-import { A, AnchorProps } from "@solidjs/router";
-import clsx from "clsx";
-import { DonwloadIcon } from "../../components/commons/icons/DownloadIcon";
+import { Typography } from "../commons/Typography";
 
 interface DownloadButtonProps extends AnchorProps {
   prefixIcon?: JSX.Element;

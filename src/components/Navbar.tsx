@@ -1,12 +1,11 @@
-import { Component, createSignal, Show } from "solid-js";
-import { SlimeVRIcon } from "./commons/icons/SlimeVRIcon";
-import { Typography } from "./commons/Typography";
 import { A } from "@solidjs/router";
+import clsx from "clsx";
+import { Component, createSignal, Show } from "solid-js";
+import { Localized } from "~/i18n";
 import { Button } from "./commons/Button";
 import { BarsIcon } from "./commons/icons/BarsIcon";
-import { createBreakpoint } from "../utils/dom";
-import clsx from "clsx";
-import { Localized } from "~/i18n";
+import { SlimeVRIcon } from "./commons/icons/SlimeVRIcon";
+import { Typography } from "./commons/Typography";
 
 export const NavItems: Component = () => {
   return (
@@ -35,6 +34,9 @@ export const NavItems: Component = () => {
       <a href="https://github.com/SlimeVR" target="_blank" class="link px-2">
         <Typography key="navbar.github" tag="span" />
       </a>
+      <A href="/team" class="link px-2">
+        <Typography tag="span" key="navbar.team" />
+      </A>
       <a
         href="https://shop.slimevr.dev/pages/support"
         target="_blank"

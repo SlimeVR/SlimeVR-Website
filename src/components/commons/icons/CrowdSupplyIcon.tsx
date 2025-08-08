@@ -2,7 +2,7 @@ import { Component } from "solid-js";
 
 export const CrowdSupplyIcon: Component<IconProps> = (props) => {
   return (
-    <svg width={props.size} viewBox="0 0 485 58">
+    <svg width={props.size} viewBox="0 0 485 58" class={props.class}>
       <g>
         <path
           fill="white"

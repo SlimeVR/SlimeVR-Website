@@ -1,11 +1,12 @@
 {
-  "title": "{{title}} - SlimeVR Official ",
+  "title": "{{title}} - SlimeVR Official",
   "navbar": {
     "documentation": "Documentation",
     "download": "Download",
     "discord": "Discord",
     "shop": "Shop",
     "github": "GitHub",
+    "team": "Team",
     "support": "Support",
     "order": "Order now"
   },
@@ -169,6 +170,29 @@
         "answer": "Yes. SlimeVR Trackers can only connect to 2.4Ghz Wi-Fi 4 networks. All modern 5GHz Wi-Fi routers support dual-band operation where you can have both 2.4Ghz and 5Ghz devices on the same network, so you don't need to downgrade your Wi-Fi for SlimeVR."
       }
     }
+  },
+  "contributors": {
+    "title": "SlimeVR Contributors",
+    "description": "SlimeVR is a labor of love made possible by a passionate team and an amazing community of contributors. This page celebrates all the lovely slimes who have all helped bring SlimeVR to life, and to the amazing thing it is today.\n\nBeing a contributor comes with some neat perks:\n- we pay our contributors\n- you get your own personalized slime on this page\n- each day, a few contributors become \"shiny\" and are highlighted with a fancy gradient instead of their usual one~\n\nWant to get involved and help us make open-source VR even cooler? Check out our contributing guide to learn how you can join the fun!",
+    "guide": "Contributing Guide",
+    "search": "Find a Slime",
+    "shuffle": "Shuffle Slimes",
+    "none": "No Slimes found :(",
+    "roles": {
+      "title": "Roles:",
+      "developer": "Developer",
+      "artist": "Artist / Designer",
+      "community": "Community / Testing"
+    }
+  },
+  "sponsors": {
+    "title": "GitHub Sponsors",
+    "description": "Want to support the team financially? You can join the {{activeCount}} active sponsors (and the {{pastCount}} past ones) on GitHub. Every bit of funding goes directly to the developers and community contributors behind SlimeVR.",
+    "sponsor": "Sponsor Us",
+    "loading": "Loading sponsors...",
+    "error": "Failed to load sponsors.",
+    "none": "No sponsors found... maybe you can be the first? (Or something broke!)",
+    "past": "Past Sponsors"
   },
   "privacy": {
     "title": "Privacy Policy"

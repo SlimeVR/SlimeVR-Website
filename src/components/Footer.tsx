@@ -1,7 +1,7 @@
+import { A } from "@solidjs/router";
 import { Component } from "solid-js";
 import { Typography } from "./commons/Typography";
 import { SlimeVRIcon } from "./commons/icons/SlimeVRIcon";
-import { A } from "@solidjs/router";
 
 export const Footer: Component = (props) => {
   return (

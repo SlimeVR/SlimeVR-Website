@@ -1,8 +1,8 @@
 import clsx from "clsx";
 import { Component, createMemo, JSX, mergeProps } from "solid-js";
-import { AllUnionElements } from "~/utils/union";
 import { Dynamic } from "solid-js/web";
 import { Localized } from "~/i18n";
+import { AllUnionElements } from "~/utils/union";
 
 type Variants = "primary" | "secondary";
 

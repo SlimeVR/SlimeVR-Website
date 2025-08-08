@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import {
   batch,
   Component,
@@ -7,12 +8,11 @@ import {
   onCleanup,
   onMount,
 } from "solid-js";
-import { Typography } from "../commons/Typography";
-import { PlayIcon } from "../../components/commons/icons/PlayIcon";
-import { ArrowIcon } from "../../components/commons/icons/ArrowIcon";
-import clsx from "clsx";
-import { getContentSize } from "../../utils/dom";
 import { isServer } from "solid-js/web";
+import { ArrowIcon } from "../../components/commons/icons/ArrowIcon";
+import { PlayIcon } from "../../components/commons/icons/PlayIcon";
+import { getContentSize } from "../../utils/dom";
+import { Typography } from "../commons/Typography";
 
 const videos = [
   {

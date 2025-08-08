@@ -3,8 +3,8 @@ import remarkGfm from "remark-gfm";
 import { ParentProps } from "solid-js";
 import { SolidMarkdown } from "solid-markdown";
 import { AppTitle } from "~/components/AppTitle";
+import { Container } from "~/components/commons/Container";
 import { MarkdownLink } from "~/components/commons/Markdown";
-import { Typography } from "~/components/commons/Typography";
 import { Section } from "~/components/Section";
 import { MainLayout } from "~/layouts/MainLayout";
 
@@ -16,14 +16,13 @@ export default function PrivacyPage(props: ParentProps) {
       <Meta name="robots" content="index, follow" />
 
       <Section>
-        <div class="mt-4">
-          <div class="bg-background-70 border border-background-40 rounded-2xl p-4">
-            <SolidMarkdown
-              remarkPlugins={[remarkGfm]}
-              components={{ a: MarkdownLink }}
-              class="text-sm w-full min-w-full prose-xl prose text-background-10 prose-h1:text-background-10 prose-h2:text-background-10 prose-a:text-background-20 prose-strong:text-background-10 prose-code:text-background-20"
-            >
-              {`
+        <Container class="mt-4">
+          <SolidMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{ a: MarkdownLink }}
+            class="text-sm w-full min-w-full prose-xl prose text-background-10 prose-h1:text-background-10 prose-h2:text-background-10 prose-a:text-background-20 prose-strong:text-background-10 prose-code:text-background-20"
+          >
+            {`
 # Privacy Policy
 
 
@@ -82,9 +81,8 @@ If you have any questions about this Privacy Policy, please contact us via email
 
 Last updated: 12/13/24
                 `}
-            </SolidMarkdown>
-          </div>
-        </div>
+          </SolidMarkdown>
+        </Container>
       </Section>
     </MainLayout>
   );

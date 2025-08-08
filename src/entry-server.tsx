@@ -30,13 +30,6 @@ export default createHandler(
               href="/images/Webpage_Design_Parts_header_block.webp"
               type="image/webp"
             />
-            <link
-              rel="preload"
-              fetchpriority="high"
-              as="image"
-              href="/images/Webpage_Design_Parts_first_block_bg.webp"
-              type="image/webp"
-            />
             <meta
               name="description"
               content="SlimeVR Full-Body Tracking is a set of open hardware sensors and open source software that facilitates full-body tracking (FBT) for Virtual Reality, VTubing and Motion Capture. SlimeVR FBT is designed to require no base stations, be affordable, comfortable and open."

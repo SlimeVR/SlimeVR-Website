@@ -6,8 +6,8 @@ import {
   onMount,
   ParentComponent,
 } from "solid-js";
-import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
+import { Navbar } from "../components/Navbar";
 
 const ANIMATION_TIME = 5500;
 const MIN_TIME = 6000;

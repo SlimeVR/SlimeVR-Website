@@ -2,6 +2,7 @@ import { Link, Meta } from "@solidjs/meta";
 import { Component, ParentProps } from "solid-js";
 import { AppTitle } from "~/components/AppTitle";
 import { ArrowButton } from "~/components/commons/ArrowButton";
+import { Container } from "~/components/commons/Container";
 import { CartIcon } from "~/components/commons/icons/CartIcon";
 import { CrowdSupplyIcon } from "~/components/commons/icons/CrowdSupplyIcon";
 import { DiscordIcon } from "~/components/commons/icons/DiscordIcon";
@@ -18,7 +19,7 @@ const UseCaseCard: Component<{ title: string; image: string; desc: string }> = (
   props
 ) => {
   return (
-    <div class="bg-background-70 border border-background-40 rounded-2xl p-4 gap-4 flex flex-col sm:flex-row md:flex-col">
+    <Container class="gap-4 flex flex-col sm:flex-row md:flex-col">
       <div class="sm:hidden md:block">
         <Typography
           tag="h3"
@@ -45,7 +46,7 @@ const UseCaseCard: Component<{ title: string; image: string; desc: string }> = (
         </div>
         <Typography tag="p" key={props.desc} />
       </div>
-    </div>
+    </Container>
   );
 };
 
@@ -55,6 +56,13 @@ export default function HomeLayout(props: ParentProps) {
       <AppTitle key="home.title"></AppTitle>
       <Meta name="robots" content="index, follow" />
       <Link rel="canonical" href="https://slimevr.dev/" />
+      <Link
+        rel="preload"
+        fetchpriority="high"
+        as="image"
+        href="/images/Webpage_Design_Parts_first_block_bg.webp"
+        type="image/webp"
+      />
       <Section>
         <div class="flex w-full mt-5 relative">
           <div class="absolute top-0 h-full animate-floating right-0 w-full md:flex justify-end hidden">
