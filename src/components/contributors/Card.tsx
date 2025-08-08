@@ -508,28 +508,28 @@ export const Card: ParentComponent<CardProps> = (props) => {
                   {Object.entries(socials).map(([key, value], i) => {
                     if (!value) return null;
                     return (
-                      <CircularIcon
-                        size={30}
-                        element="a"
-                        href={value}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {key === "github" && <GithubIcon size={20} />}
-                        {key === "twitter" && <TwitterIcon size={20} />}
-                        {key === "bluesky" && <BlueskyIcon size={18} />}
-                        {key === "instagram" && <InstagramIcon size={22} />}
-                        {key === "youtube" && <YoutubeIcon size={22} />}
-                        {key === "twitch" && (
-                          <TwitchIcon size={18} class="mt-[2px] mr-[2px]" />
-                        )}
-                        {key === "kofi" && <KofiIcon size={20} />}
-                        {key === "discord" && <DiscordIcon size={20} />}
-                        {key === "tiktok" && <TiktokIcon size={20} />}
-                        {key === "printables" && <PrintablesIcon size={18} />}
-                        {key === "steam" && <SteamIcon size={18} />}
-                        {key === "matrix" && <MatrixIcon size={16} />}
-                        {key === "website" && <WebsiteIcon size={20} />}
+                      <CircularIcon size={30}>
+                        <a
+                          href={value}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {key === "github" && <GithubIcon size={20} />}
+                          {key === "twitter" && <TwitterIcon size={20} />}
+                          {key === "bluesky" && <BlueskyIcon size={18} />}
+                          {key === "instagram" && <InstagramIcon size={22} />}
+                          {key === "youtube" && <YoutubeIcon size={22} />}
+                          {key === "twitch" && (
+                            <TwitchIcon size={18} class="mt-[2px] mr-[2px]" />
+                          )}
+                          {key === "kofi" && <KofiIcon size={20} />}
+                          {key === "discord" && <DiscordIcon size={20} />}
+                          {key === "tiktok" && <TiktokIcon size={20} />}
+                          {key === "printables" && <PrintablesIcon size={18} />}
+                          {key === "steam" && <SteamIcon size={18} />}
+                          {key === "matrix" && <MatrixIcon size={16} />}
+                          {key === "website" && <WebsiteIcon size={20} />}
+                        </a>
                       </CircularIcon>
                     );
                   })}
