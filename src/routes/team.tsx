@@ -27,6 +27,7 @@ import { ArtistIcon } from "~/components/commons/icons/ArtistIcon";
 import { PeopleIcon } from "~/components/commons/icons/PeopleIcon";
 import CircularIcon from "~/components/contributors/CircularIcon";
 import { useI18n } from "~/i18n";
+import { setScroll } from "~/utils/scrollbar";
 
 // constants
 const SHINY_COUNT = 5;
@@ -286,10 +287,10 @@ export default function TeamPage(props: ParentProps) {
   // ..i don't know either but it works -maya
   createEffect(() => {
     if (focusedCard()) {
-      document.body.style.overflow = "hidden";
+      setScroll(false);
     } else {
       setTimeout(() => {
-        document.body.style.overflow = "";
+        setScroll(true);
       }, 450); // same as transition duration in Card.tsx
     }
   });

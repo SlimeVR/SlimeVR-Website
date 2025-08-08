@@ -93,3 +93,12 @@ a.link {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
+
+/* OverlayScrollbars styling */
+.os-scrollbar-handle {
+  background: rgba(255, 255, 255, 0.6) !important;
+}
+
+.os-scrollbar-handle:hover {
+  background: rgba(255, 255, 255, 0.8) !important;
+}
