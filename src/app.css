@@ -39,6 +39,16 @@
   --font-name: "Poppins";
 }
 
+/* hide default scrollbars to prevent shifting (replaced by OverlayScrollbars) */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
 body {
   background-color: theme("colors.accent-background.60");
   font-variant-numeric: tabular-nums;
