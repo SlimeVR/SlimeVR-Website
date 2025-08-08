@@ -79,13 +79,16 @@ const sortedContribs = contributors
 async function fetchSponsors(): Promise<{
   active: Sponsor[];
   past: Sponsor[];
+  envMissing: boolean;
 }> {
   const authToken = import.meta.env.VITE_GITHUB_AUTH_TOKEN;
   const org = import.meta.env.VITE_GITHUB_ORG;
 
   if (!authToken || !org) {
-    console.error("Missing GitHub auth token or organization name");
-    return { active: [], past: [] };
+    console.warn(
+      "GitHub auth token or organization name not configured - hiding sponsors section"
+    );
+    return { active: [], past: [], envMissing: true };
   }
 
   try {
@@ -131,7 +134,7 @@ async function fetchSponsors(): Promise<{
       const data = await response.json();
       if (data.errors) {
         console.error("GraphQL errors:", data.errors);
-        return { active: [], past: [] };
+        return { active: [], past: [], envMissing: false };
       }
 
       const sponsorships =
@@ -153,14 +156,14 @@ async function fetchSponsors(): Promise<{
         }
       });
 
-      return { active: activeSponsors, past: pastSponsors };
+      return { active: activeSponsors, past: pastSponsors, envMissing: false };
     }
 
     console.error("Failed to fetch sponsors:", response.status);
-    return { active: [], past: [] };
+    return { active: [], past: [], envMissing: false };
   } catch (error) {
     console.error("Error fetching sponsors:", error);
-    return { active: [], past: [] };
+    return { active: [], past: [], envMissing: false };
   }
 }
 
@@ -255,6 +258,7 @@ export default function TeamPage(props: ParentProps) {
 
   const activeSponsors = createMemo(() => sponsors()?.active ?? []);
   const pastSponsors = createMemo(() => sponsors()?.past ?? []);
+  const envMissing = createMemo(() => sponsors()?.envMissing ?? false);
   const activeCount = createMemo(() => activeSponsors().length);
   const pastCount = createMemo(() => pastSponsors().length);
   const shinyContribs = createMemo(() =>
@@ -443,92 +447,94 @@ export default function TeamPage(props: ParentProps) {
       </Section>
 
       {/* sponsors section */}
-      <Section>
-        <Container class="mt-4">
-          {/* section text */}
-          <div class="flex flex-row justify-between items-center mb-8">
-            <Typography
-              tag="h2"
-              variant="main-title"
-              textAlign="text-center"
-              key="sponsors.title"
-            />
-            <Button
-              variant="primary"
-              href={`https://github.com/sponsors/${import.meta.env.VITE_GITHUB_ORG}`}
-            >
-              <Localized id="sponsors.sponsor" />
-            </Button>
-          </div>
-
-          <div class="mb-6">
-            <Typography tag="p">
-              {
-                translator("sponsors.description", {
-                  activeCount: activeCount(),
-                  pastCount: pastCount(),
-                }) as string
-              }
-            </Typography>
-          </div>
-
-          {/* sponsor states & content */}
-          {sponsors.loading && (
-            <div class="text-center py-8">
-              <Typography tag="p" key="sponsors.loading" />
+      {!envMissing() && (
+        <Section>
+          <Container class="mt-4">
+            {/* section text */}
+            <div class="flex flex-row justify-between items-center mb-8">
+              <Typography
+                tag="h2"
+                variant="main-title"
+                textAlign="text-center"
+                key="sponsors.title"
+              />
+              <Button
+                variant="primary"
+                href={`https://github.com/sponsors/${import.meta.env.VITE_GITHUB_ORG}`}
+              >
+                <Localized id="sponsors.sponsor" />
+              </Button>
             </div>
-          )}
 
-          {sponsors.error && (
-            <div class="text-center py-8">
-              <Typography tag="p" key="sponsors.error" color="text-red-400" />
+            <div class="mb-6">
+              <Typography tag="p">
+                {
+                  translator("sponsors.description", {
+                    activeCount: activeCount(),
+                    pastCount: pastCount(),
+                  }) as string
+                }
+              </Typography>
             </div>
-          )}
 
-          {sponsors() && (
-            <>
-              {activeSponsors().length > 0 ? (
-                <>
-                  <div class="flex flex-wrap justify-center gap-4 mb-8">
-                    {activeSponsors().map((sponsor) => (
-                      <SponsorCard sponsor={sponsor} />
-                    ))}
-                  </div>
+            {/* sponsor states & content */}
+            {sponsors.loading && (
+              <div class="text-center py-8">
+                <Typography tag="p" key="sponsors.loading" />
+              </div>
+            )}
 
-                  {pastSponsors().length > 0 ? (
-                    <>
-                      <div class="border-t border-background-40 pt-6 pb-4">
-                        <div class="mb-4 text-center text-text-secondary">
-                          <Typography
-                            tag="h3"
-                            variant="section-title"
-                            textAlign="text-center"
-                          >
-                            <Localized id="sponsors.past" />
-                          </Typography>
-                        </div>
-                        <div class="flex flex-wrap justify-center gap-3">
-                          {pastSponsors().map((sponsor) => (
-                            <PastSponsorAvatar sponsor={sponsor} />
-                          ))}
-                        </div>
-                      </div>
-                    </>
-                  ) : (
-                    <div class="text-center py-8">
-                      <Typography tag="p" key="sponsors.none" />
+            {sponsors.error && (
+              <div class="text-center py-8">
+                <Typography tag="p" key="sponsors.error" color="text-red-400" />
+              </div>
+            )}
+
+            {sponsors() && (
+              <>
+                {activeSponsors().length > 0 ? (
+                  <>
+                    <div class="flex flex-wrap justify-center gap-4 mb-8">
+                      {activeSponsors().map((sponsor) => (
+                        <SponsorCard sponsor={sponsor} />
+                      ))}
                     </div>
-                  )}
-                </>
-              ) : (
-                <div class="text-center py-8">
-                  <Typography tag="p" key="sponsors.none" />
-                </div>
-              )}
-            </>
-          )}
-        </Container>
-      </Section>
+
+                    {pastSponsors().length > 0 ? (
+                      <>
+                        <div class="border-t border-background-40 pt-6 pb-4">
+                          <div class="mb-4 text-center text-text-secondary">
+                            <Typography
+                              tag="h3"
+                              variant="section-title"
+                              textAlign="text-center"
+                            >
+                              <Localized id="sponsors.past" />
+                            </Typography>
+                          </div>
+                          <div class="flex flex-wrap justify-center gap-3">
+                            {pastSponsors().map((sponsor) => (
+                              <PastSponsorAvatar sponsor={sponsor} />
+                            ))}
+                          </div>
+                        </div>
+                      </>
+                    ) : (
+                      <div class="text-center py-8">
+                        <Typography tag="p" key="sponsors.none" />
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <div class="text-center py-8">
+                    <Typography tag="p" key="sponsors.none" />
+                  </div>
+                )}
+              </>
+            )}
+          </Container>
+        </Section>
+      )}
     </MainLayout>
   );
 }
