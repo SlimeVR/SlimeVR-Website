@@ -35,6 +35,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      overlayscrollbars:
+        specifier: ^2.11.5
+        version: 2.11.5
       postcss:
         specifier: ^8.4.38
         version: 8.4.49
@@ -2286,6 +2289,9 @@ packages:
     hasBin: true
     peerDependencies:
       typescript: ^5.x
+
+  overlayscrollbars@2.11.5:
+    resolution: {integrity: sha512-vTUfCtjJbTjiarrxl9qdK04ZxlQdB4ugXfiqctVZytYDXH259OM4whROMGDE6T8uCYmSYPqiOFIKZ1erVkJnFg==}
 
   package-json-from-dist@1.0.1:
     resolution: {integrity: sha512-UEZIS3/by4OC8vL3P2dTXRETpebLI2NiI5vIrjaD/5UtrkFX/tNbwjTSRAGC/+7CAo2pIcBaRgWmcBBHcsaCIw==}
@@ -5351,6 +5357,8 @@ snapshots:
       yargs-parser: 21.1.1
     transitivePeerDependencies:
       - encoding
+
+  overlayscrollbars@2.11.5: {}
 
   package-json-from-dist@1.0.1: {}
 
