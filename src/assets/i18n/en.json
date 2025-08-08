@@ -173,11 +173,11 @@
   },
   "contributors": {
     "title": "SlimeVR Contributors",
-    "description": "Welcome to the SlimeVR contributor page where you can find the list of all the lovely slimes that have worked on this project together!\n\nBeing a contributor comes with some great perks: we pay our contributors, our community is cosy and open-minded, and you get your own personalized slime on this page. Oh and every day, a few contributors become \"shiny\" and become highlighted with a fancy gradient instead of their usual one!\nInterested in joining? Check out our contributing guide to learn more!",
+    "description": "SlimeVR is a labor of love made possible by a passionate team and an amazing community of contributors. This page celebrates all the lovely slimes who have all helped bring SlimeVR to life, and to the amazing thing it is today.\n\nBeing a contributor comes with some neat perks:\n- we pay our contributors\n- you get your own personalized slime on this page\n- each day, a few contributors become \"shiny\" and are highlighted with a fancy gradient instead of their usual one~\n\nWant to get involved and help us make open-source VR even cooler? Check out our contributing guide to learn how you can join the fun!",
     "guide": "Contributing Guide",
-    "search": "Find a slime",
-    "shuffle": "Shuffle slimes",
-    "none": "No slimes found :(",
+    "search": "Find a Slime",
+    "shuffle": "Shuffle Slimes",
+    "none": "No Slimes found :(",
     "roles": {
       "title": "Roles:",
       "developer": "Developer",
@@ -187,11 +187,11 @@
   },
   "sponsors": {
     "title": "GitHub Sponsors",
-    "description": "Want to support the team another way? Join the {{activeCount}} people actively sponsoring us (and the {{pastCount}} past sponsors) on GitHub, all funds goes directly to the dev team!",
+    "description": "Want to support the team financially? You can join the {{activeCount}} active sponsors (and the {{pastCount}} past ones) on GitHub. Every bit of funding goes directly to the developers and community contributors behind SlimeVR.",
     "sponsor": "Sponsor Us",
     "loading": "Loading sponsors...",
-    "error": "Failed to load sponsors",
-    "none": "No sponsors found.. maybe you can be the first? (or there's an issue!)",
+    "error": "Failed to load sponsors.",
+    "none": "No sponsors found... maybe you can be the first? (Or something broke!)",
     "past": "Past Sponsors"
   },
   "privacy": {
