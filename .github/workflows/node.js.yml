@@ -6,6 +6,8 @@ name: Node.js CI
 on:
   push:
     branches: ["main"]
+env:
+  VITE_GITHUB_AUTH_TOKEN: ${{ secrets.VITE_GITHUB_AUTH_TOKEN }}
 
 jobs:
   build:
