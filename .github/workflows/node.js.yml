@@ -8,6 +8,7 @@ on:
     branches: ["main"]
 env:
   VITE_GITHUB_AUTH_TOKEN: ${{ secrets.VITE_GITHUB_AUTH_TOKEN }}
+  VITE_GITHUB_ORG: SlimeVR
 
 jobs:
   build:
