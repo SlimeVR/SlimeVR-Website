@@ -1,6 +1,10 @@
 name: Node.js CI
 
-on: [push]
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: "main"
 
 jobs:
   build:
@@ -27,5 +31,5 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist/ --project-name "slimevr-main-website"
+          command: pages deploy dist/ --project-name "slimevr-main-website" --branch '${{ github.ref == 'refs/heads/main' && 'main' || github.event.pull_request.number }}'
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
