@@ -1,18 +1,14 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
 name: Node.js CI
 
 on:
   push:
-    branches: ["main"]
-env:
-  VITE_GITHUB_AUTH_TOKEN: ${{ secrets.VITE_GITHUB_AUTH_TOKEN }}
-  VITE_GITHUB_ORG: SlimeVR
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
 
     steps:
       - uses: actions/checkout@v4
@@ -24,8 +20,13 @@ jobs:
           cache: "pnpm"
       - run: pnpm i
       - run: NITRO_PRESET=cloudflare_pages_static pnpm build
+        env:
+          VITE_GITHUB_AUTH_TOKEN: ${{ secrets.VITE_GITHUB_AUTH_TOKEN }}
+          VITE_GITHUB_ORG: SlimeVR
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: pages deploy dist/ --project-name "slimevr-main-website" --branch "main"
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist/ --project-name "slimevr-main-website"
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
