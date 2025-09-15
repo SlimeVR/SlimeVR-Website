@@ -246,7 +246,10 @@ export const Card: ParentComponent<CardProps> = (props) => {
 
     placeholder.style.display = "block";
 
-    card.style.zIndex = "10";
+    // move card to body to ensure it's above all other elements
+    document.body.appendChild(card);
+
+    card.style.zIndex = "999";
     card.style.position = "fixed";
     card.style.top = `${rect.top}px`;
     card.style.left = `${rect.left}px`;
@@ -283,7 +286,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
     setTransitioning(true);
     setIsFocused(false);
 
-    card.style.zIndex = "5"; // lower z-index for cards unfocusing so the new one takes priority
+    card.style.zIndex = "998";
     card.style.transition = CARD_TRANSITION;
     card.style.boxShadow = "none";
 
@@ -305,7 +308,11 @@ export const Card: ParentComponent<CardProps> = (props) => {
       card.style.zIndex = "0";
       card.style.transform = createTransform();
       card.style.willChange = "auto";
+      
+      // move card back to its original parent (placeholder's parent)
+      placeholder.parentNode?.insertBefore(card, placeholder);
       placeholder.style.display = "none";
+      
       setTransitioning(false);
       transitionTimeout = null;
 
