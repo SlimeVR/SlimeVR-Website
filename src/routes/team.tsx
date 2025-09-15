@@ -251,11 +251,6 @@ export default function TeamPage(props: ParentProps) {
   const [focusedCard, setFocusedCard] = createSignal<string | null>(null);
   const [sponsors] = createResource(fetchSponsors);
 
-  const isFirefox = createMemo(() => {
-    if (typeof window === "undefined") return false;
-    return navigator.userAgent.toLowerCase().includes("firefox");
-  });
-
   const activeSponsors = createMemo(() => sponsors()?.active ?? []);
   const pastSponsors = createMemo(() => sponsors()?.past ?? []);
   const envMissing = createMemo(() => sponsors()?.envMissing ?? false);
@@ -434,7 +429,6 @@ export default function TeamPage(props: ParentProps) {
                   onClick={() => handleCardClick(contrib.name)}
                   data-card-name={contrib.name}
                   cachedImage={cachedImage}
-                  isFirefox={isFirefox()}
                 />
               );
             })}
