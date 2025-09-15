@@ -163,6 +163,7 @@ export const contributors: Contributor[] = [
   },
   {
     name: "Snaila",
+    color: "#ecc5c1",
     roles: ["artist"],
     socials: {},
     tags: ["#snailing", "#caring", "#pink", "#maid"],
@@ -231,6 +232,7 @@ export const contributors: Contributor[] = [
   },
   {
     name: "Eiren",
+    color: "#8cb1df",
     roles: ["dev", "community"],
     socials: {
       website: "https://eiren.io",
@@ -311,11 +313,13 @@ export const contributors: Contributor[] = [
   },
   {
     name: "Shine Bright",
+    color: "#f5d1e2",
     roles: ["dev", "community"],
     socials: {
       github: "https://github.com/ShineBrightMeow",
     },
     tags: ["#cat", "#smol", "#kitty", "#meow", "#cute"],
+    classes: "-mt-1 !scale-[105%]",
   },
   {
     name: "Aoki",
@@ -338,13 +342,15 @@ export const contributors: Contributor[] = [
     classes: "-mt-1 !scale-[110%]",
   },
   {
-    name: "Jaberrocky",
+    name: "Jabberrocky",
+    color: "#ef7b58",
     roles: ["dev"],
     socials: {
       twitch: "https://www.twitch.tv/jabberrocky",
       bluesky: "https://bsky.app/profile/jabberrocky.bsky.social",
     },
     tags: ["#stayaligned", "#wolf", "#programmer", "#petsplz"],
+    classes: "-mt-1 !scale-[110%]",
   },
   {
     name: "Vyolex",
@@ -360,6 +366,7 @@ export const contributors: Contributor[] = [
   },
   {
     name: "Ashy",
+    color: "#ad91c3",
     roles: ["community"],
     socials: {
       twitch: "https://www.twitch.tv/ashyfire33",
@@ -367,6 +374,7 @@ export const contributors: Contributor[] = [
       discord: "https://discordapp.com/users/951394014240858142",
     },
     tags: ["#techsupportsoldier", "#eepy", "#unityhater"],
+    classes: "-mt-1 !scale-[110%]",
   },
   {
     name: "BracketProto",
@@ -383,9 +391,11 @@ export const contributors: Contributor[] = [
       github: "https://github.com/unlogisch04/",
     },
     tags: ["#programmer", "#fork", "#maintainer", "#firmware"],
+    classes: "-mt-1 !scale-[105%]",
   },
   {
     name: "Aed",
+    color: "#e0e1ed",
     roles: ["dev", "community"],
     socials: {
       kofi: "https://ko-fi.com/aed00",
