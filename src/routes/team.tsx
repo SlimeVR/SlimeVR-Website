@@ -251,11 +251,6 @@ export default function TeamPage(props: ParentProps) {
   const [focusedCard, setFocusedCard] = createSignal<string | null>(null);
   const [sponsors] = createResource(fetchSponsors);
 
-  const isFirefox = createMemo(() => {
-    if (typeof window === "undefined") return false;
-    return navigator.userAgent.toLowerCase().includes("firefox");
-  });
-
   const activeSponsors = createMemo(() => sponsors()?.active ?? []);
   const pastSponsors = createMemo(() => sponsors()?.past ?? []);
   const envMissing = createMemo(() => sponsors()?.envMissing ?? false);
@@ -422,20 +417,23 @@ export default function TeamPage(props: ParentProps) {
               const cachedImage = imageCache.get(contrib.name);
 
               return (
-                <Card
-                  class={
-                    isShuffling()
-                      ? "animate-pulse scale-95 opacity-80 transform rotate-1 pointer-events-none"
-                      : "scale-100 opacity-100 transform rotate-0"
-                  }
-                  {...contrib}
-                  color={isShiny ? SHINY_GRADIENT : contrib.color}
-                  isFocused={focusedCard() === contrib.name}
-                  onClick={() => handleCardClick(contrib.name)}
-                  data-card-name={contrib.name}
-                  cachedImage={cachedImage}
-                  isFirefox={isFirefox()}
-                />
+                <div
+                  class={clsx(
+                  "max-w-[250px] w-full",
+                  isShuffling()
+                    ? "animate-pulse scale-95 opacity-80 transform rotate-1 pointer-events-none duration-200"
+                    : "scale-100 opacity-100 transform rotate-0"
+                  )}
+                >
+                  <Card
+                    {...contrib}
+                    color={isShiny ? SHINY_GRADIENT : contrib.color}
+                    isFocused={focusedCard() === contrib.name}
+                    onClick={() => handleCardClick(contrib.name)}
+                    data-card-name={contrib.name}
+                    cachedImage={cachedImage}
+                  />
+                </div>
               );
             })}
             {/* if none found, show sad message */}

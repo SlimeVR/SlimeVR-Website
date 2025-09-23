@@ -60,7 +60,6 @@ interface CardProps extends Contributor {
   onClick?: () => void;
   isFocused?: boolean;
   cachedImage?: { src: string; classes: string; error: boolean };
-  isFirefox?: boolean;
 }
 
 export const Card: ParentComponent<CardProps> = (props) => {
@@ -85,21 +84,36 @@ export const Card: ParentComponent<CardProps> = (props) => {
   const [transitioning, setTransitioning] = createSignal(false); // prevent tilting while transitioning (interrupting it)
   const [isFocused, setIsFocused] = createSignal(false);
 
-  const isFirefox = createMemo(() => props.isFirefox ?? false);
-
   let originalPosition: { top: number; left: number } | null = null;
   let transitionTimeout: ReturnType<typeof setTimeout> | null = null; // prevent multiple transitions / out of sync (from multiple clicks)
   let lastMousePosition: { x: number; y: number } = { x: 0, y: 0 };
 
+  // cache rect to avoid recalculating on every frame
+  let cachedRect: DOMRect | null = null;
+  let resizeObserver: ResizeObserver | null = null;
+
   /*
    * Tilt effect things for card
    */
-  const applyTilt = (e: MouseEvent, intensity: number, glowOpacity: number) => {
+  let framePending = false;
+  let queuedTilt: {
+    x: number;
+    y: number;
+    intensity: number;
+    glow: number;
+  } | null = null;
+
+  const doTilt = (
+    clientX: number,
+    clientY: number,
+    intensity: number,
+    glowOpacity: number
+  ) => {
     if (transitioning()) return;
 
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const rect = cachedRect || card.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
 
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
@@ -123,8 +137,31 @@ export const Card: ParentComponent<CardProps> = (props) => {
     );
   };
 
+  const queueTilt = (
+    clientX: number,
+    clientY: number,
+    intensity: number,
+    glowOpacity: number
+  ) => {
+    lastMousePosition = { x: clientX, y: clientY };
+    queuedTilt = { x: clientX, y: clientY, intensity, glow: glowOpacity };
+    if (framePending) return;
+    framePending = true;
+    requestAnimationFrame(() => {
+      if (queuedTilt) {
+        doTilt(
+          queuedTilt.x,
+          queuedTilt.y,
+          queuedTilt.intensity,
+          queuedTilt.glow
+        );
+      }
+      framePending = false;
+    });
+  };
+
   const isMouseOverCard = (e: PointerEvent) => {
-    const rect = card.getBoundingClientRect();
+    const rect = cachedRect || card.getBoundingClientRect();
     // allow extra pixels of tolerance to prevent glitching on edges
     return (
       e.clientX >= rect.left - CARD_TOLERANCE &&
@@ -136,15 +173,17 @@ export const Card: ParentComponent<CardProps> = (props) => {
 
   const cardTilt = (e: PointerEvent) => {
     if (e.pointerType === "touch") return;
-    lastMousePosition = { x: e.clientX, y: e.clientY };
-    applyTilt(e, 15, 0.55);
+    queueTilt(e.clientX, e.clientY, 15, 0.55);
   };
 
   const cardHoverEnter = (e: PointerEvent) => {
     if (props.isFocused || transitioning() || e.pointerType === "touch") return;
+
+    cachedRect = card.getBoundingClientRect();
+
     card.style.transition = `transform ${HOVER_TRANSITION_DURATION}ms ease`;
     card.style.willChange = "transform";
-    document.addEventListener("pointermove", cardHoverTilt);
+    document.addEventListener("pointermove", cardHoverTilt, { passive: true });
   };
 
   const cardHoverLeave = (e: PointerEvent) => {
@@ -152,6 +191,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
     if (!isMouseOverCard(e)) {
       document.removeEventListener("pointermove", cardHoverTilt);
       card.style.willChange = "auto";
+      cachedRect = null;
       cardReset();
     }
   };
@@ -159,14 +199,13 @@ export const Card: ParentComponent<CardProps> = (props) => {
   const cardHoverTilt = (e: PointerEvent) => {
     if (props.isFocused || transitioning() || e.pointerType === "touch") return;
 
-    lastMousePosition = { x: e.clientX, y: e.clientY };
-
     if (isMouseOverCard(e)) {
-      applyTilt(e, 15, 0.45);
+      queueTilt(e.clientX, e.clientY, 15, 0.45);
     } else {
       // mouse outside tolerance area
       document.removeEventListener("pointermove", cardHoverTilt);
       card.style.willChange = "auto";
+      cachedRect = null;
       cardReset();
     }
   };
@@ -193,7 +232,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
     setTransitioning(true);
     setIsFocused(true);
 
-    card.style.willChange = "transform, top, left, box-shadow";
+    card.style.willChange = "transform";
 
     // reset tilt effect to get actual position
     card.style.transition = "none";
@@ -207,7 +246,10 @@ export const Card: ParentComponent<CardProps> = (props) => {
 
     placeholder.style.display = "block";
 
-    card.style.zIndex = "10";
+    // move card to body to ensure it's above all other elements
+    document.body.appendChild(card);
+
+    card.style.zIndex = "999";
     card.style.position = "fixed";
     card.style.top = `${rect.top}px`;
     card.style.left = `${rect.left}px`;
@@ -227,7 +269,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
     card.style.boxShadow = "0px 10px 20px 8px #02111db8";
 
     document.removeEventListener("pointermove", cardHoverTilt);
-    document.addEventListener("pointermove", cardTilt);
+    document.addEventListener("pointermove", cardTilt, { passive: true });
 
     transitionTimeout = setTimeout(() => {
       setTransitioning(false);
@@ -244,7 +286,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
     setTransitioning(true);
     setIsFocused(false);
 
-    card.style.zIndex = "5"; // lower z-index for cards unfocusing so the new one takes priority
+    card.style.zIndex = "998";
     card.style.transition = CARD_TRANSITION;
     card.style.boxShadow = "none";
 
@@ -266,7 +308,11 @@ export const Card: ParentComponent<CardProps> = (props) => {
       card.style.zIndex = "0";
       card.style.transform = createTransform();
       card.style.willChange = "auto";
+      
+      // move card back to its original parent (placeholder's parent)
+      placeholder.parentNode?.insertBefore(card, placeholder);
       placeholder.style.display = "none";
+      
       setTransitioning(false);
       transitionTimeout = null;
 
@@ -287,8 +333,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
   const cardClasses = createMemo(() =>
     clsx(
       "max-w-[250px] max-h-[348px] w-full h-full p-2 shadow-lg flex flex-col items-center aspect-[0.72/1]",
-      "transform-gpu",
-      isFirefox() && "backface-visibility-hidden",
+      "transform-gpu backface-visibility-hidden",
       props.class
     )
   );
@@ -317,13 +362,17 @@ export const Card: ParentComponent<CardProps> = (props) => {
   onMount(() => {
     if (typeof window === "undefined" || !card) return;
 
-    // Batch DOM operations for better performance
     const setInitialStyles = () => {
       card.style.setProperty("--mouse-x", "0px");
       card.style.setProperty("--mouse-y", "0px");
       card.style.setProperty("--glow-opacity", "0");
       card.style.setProperty("background", borderColor, "important");
     };
+
+    resizeObserver = new ResizeObserver(() => {
+      cachedRect = null; // invalidate rect cache on resize
+    });
+    resizeObserver.observe(card);
 
     requestAnimationFrame(setInitialStyles);
   });
@@ -333,6 +382,11 @@ export const Card: ParentComponent<CardProps> = (props) => {
 
     document.removeEventListener("pointermove", cardHoverTilt);
     document.removeEventListener("pointermove", cardTilt);
+
+    if (resizeObserver) {
+      resizeObserver.disconnect();
+      resizeObserver = null;
+    }
 
     if (transitionTimeout) {
       clearTimeout(transitionTimeout);
@@ -346,6 +400,8 @@ export const Card: ParentComponent<CardProps> = (props) => {
       card.style.zIndex = "";
       card.style.transform = "";
     }
+
+    cachedRect = null;
   });
 
   // loading image - shows the "fallback" image while loading or if it fails to load
@@ -384,9 +440,9 @@ export const Card: ParentComponent<CardProps> = (props) => {
   createEffect(() => {
     if (!card || !placeholder) return;
 
-    if (props.isFocused === true && !isFocused() && !transitioning()) {
+    if (props.isFocused && !isFocused() && !transitioning()) {
       cardFocus();
-    } else if (props.isFocused === false && isFocused()) {
+    } else if (!props.isFocused && isFocused()) {
       cardUnfocus();
     }
   });
@@ -424,27 +480,14 @@ export const Card: ParentComponent<CardProps> = (props) => {
           ref={innerDiv}
           class="aspect-[0.71/1] max-w-[237px] max-h-[336px] w-full h-full flex flex-col items-center justify-evenly rounded-xl px-2 relative overflow-hidden"
         >
-          {/* Background image - optimized for Firefox by removing blur */}
-          {!isFirefox() ? (
-            <div
-              class="absolute inset-0 rounded-xl z-0"
-              style={{
-                "background-image": `url(${imgSrc()})`,
-                "background-size": "500%",
-                "background-position": "center",
-                filter: "blur(128px) brightness(1.3)",
-              }}
-              aria-hidden="true"
-            />
-          ) : (
-            <div
-              class="absolute inset-0 rounded-xl z-0"
-              style={{
-                background: `linear-gradient(135deg, ${borderColor}40, ${borderColor}20, ${borderColor}60)`,
-              }}
-              aria-hidden="true"
-            />
-          )}
+          {/* background image */}
+          <div
+            class="absolute inset-0 rounded-xl z-0"
+            style={{
+              background: `linear-gradient(135deg, ${borderColor}40, ${borderColor}20, ${borderColor}60)`,
+            }}
+            aria-hidden="true"
+          />
           {/* slight blur for bg overlay */}
           <div class="absolute inset-0 bg-black rounded-xl bg-opacity-20 z-0" />
           <div class="relative z-10 w-full h-full flex flex-col items-center justify-evenly">
