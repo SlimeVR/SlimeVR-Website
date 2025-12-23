@@ -45,11 +45,13 @@ const socialsPriority = [
   "twitch",
   "twitter",
   "bluesky",
+  "reddit",
   "instagram",
   "tiktok",
   "steam",
   "printables",
   "kofi",
+  "patreon",
 ];
 
 const sortedContribs = contributors
