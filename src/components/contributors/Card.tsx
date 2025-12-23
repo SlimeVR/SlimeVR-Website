@@ -310,11 +310,11 @@ export const Card: ParentComponent<CardProps> = (props) => {
       card.style.zIndex = "0";
       card.style.transform = createTransform();
       card.style.willChange = "auto";
-      
+
       // move card back to its original parent (placeholder's parent)
       placeholder.parentNode?.insertBefore(card, placeholder);
       placeholder.style.display = "none";
-      
+
       setTransitioning(false);
       transitionTimeout = null;
 

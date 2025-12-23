@@ -30,7 +30,7 @@ import { useI18n } from "~/i18n";
 import { setScroll } from "~/utils/scrollbar";
 
 // constants
-const SHINY_COUNT = 5;
+const MAX_SHINY = 5;
 const MAX_SHUFFLES = 7;
 const SHUFFLE_INTERVAL = 150;
 const SHINY_GRADIENT =
@@ -169,8 +169,8 @@ async function fetchSponsors(): Promise<{
   }
 }
 
-// random "shiny" slimes (5 per day), where it is seeded by the current date (so everyone gets the same shinies)
-function getShinyContribs(contribs: Contributor[], count = SHINY_COUNT) {
+// random "shiny" slimes (up to 5/day), where it is seeded by the current date (so everyone gets the same shinies)
+function getShinyContribs(contribs: Contributor[]) {
   const seed = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
   const rand = new Rand(seed);
   const slimes = contribs.slice();
@@ -180,7 +180,8 @@ function getShinyContribs(contribs: Contributor[], count = SHINY_COUNT) {
     [slimes[i], slimes[j]] = [slimes[j], slimes[i]];
   }
 
-  const finalSlimes = slimes.slice(0, count);
+  const randomCount = Math.floor(rand.next() * MAX_SHINY) + 1; // at least 1 shiny
+  const finalSlimes = slimes.slice(0, randomCount);
   console.log(
     `Shiny slimes for ${seed}:`,
     finalSlimes.map((s) => s.name)
@@ -258,9 +259,7 @@ export default function TeamPage(props: ParentProps) {
   const envMissing = createMemo(() => sponsors()?.envMissing ?? false);
   const activeCount = createMemo(() => activeSponsors().length);
   const pastCount = createMemo(() => pastSponsors().length);
-  const shinyContribs = createMemo(() =>
-    getShinyContribs(sortedContribs, SHINY_COUNT)
-  );
+  const shinyContribs = createMemo(() => getShinyContribs(sortedContribs));
   const filteredContribs = createMemo(() =>
     finalContribs().filter((contrib) =>
       contrib.name.toLowerCase().includes(searchTerm().toLowerCase())
@@ -421,10 +420,10 @@ export default function TeamPage(props: ParentProps) {
               return (
                 <div
                   class={clsx(
-                  "max-w-[250px] w-full",
-                  isShuffling()
-                    ? "animate-pulse scale-95 opacity-80 transform rotate-1 pointer-events-none duration-200"
-                    : "scale-100 opacity-100 transform rotate-0"
+                    "max-w-[250px] w-full",
+                    isShuffling()
+                      ? "animate-pulse scale-95 opacity-80 transform rotate-1 pointer-events-none duration-200"
+                      : "scale-100 opacity-100 transform rotate-0"
                   )}
                 >
                   <Card
