@@ -25,7 +25,6 @@ export default function PrivacyPage(props: ParentProps) {
             {`
 # Privacy Policy
 
-
 ## Our Commitment to Privacy
 
 Your privacy is important to us. To better protect your privacy we provide this Privacy Policy, which explains our online information practices and the choices you can make about the way your information is collected and used. To make this Privacy Policy easy to find, we make it available on our homepage and at every point where personally identifiable data may be requested.

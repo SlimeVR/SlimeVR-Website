@@ -13,7 +13,8 @@
   "footer": {
     "column": {
       "resources": {
-        "title": "Resources"
+        "title": "Resources",
+        "tm": "Trademark"
       },
       "shop": {
         "title": "Shop",
@@ -193,6 +194,9 @@
     "error": "Failed to load sponsors.",
     "none": "No sponsors found... maybe you can be the first? (Or something broke!)",
     "past": "Past Sponsors"
+  },
+  "tm": {
+    "title": "SlimeVR Trademark Guidelines"
   },
   "privacy": {
     "title": "Privacy Policy"
