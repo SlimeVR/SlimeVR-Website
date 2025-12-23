@@ -13,6 +13,7 @@ import {
   AndroidIcon,
   AppleIcon,
   LinuxIcon,
+  SideQuestIcon,
   WindowsIcon,
 } from "../../components/commons/icons/PlatformIcons";
 import { Typography } from "../commons/Typography";
@@ -116,11 +117,20 @@ export const DownloadSection: Component = () => {
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-2">
             <DownloadButton
               prefixIcon={<AndroidIcon size={55}></AndroidIcon>}
-              href="https://github.com/SlimeVR/SlimeVR-Server/releases/latest/download/SlimeVR-android.apk"
+              href="https://play.google.com/store/apps/details?id=dev.slimevr.server.android"
               target="_blank"
             >
               <Typography variant="section-title" tag="span">
                 Android
+              </Typography>
+            </DownloadButton>
+            <DownloadButton
+              prefixIcon={<SideQuestIcon size={55}></SideQuestIcon>}
+              href="https://sidequestvr.com/app/45270/slimevr"
+              target="_blank"
+            >
+              <Typography variant="section-title" tag="span">
+                SideQuest
               </Typography>
             </DownloadButton>
             <DownloadButton
