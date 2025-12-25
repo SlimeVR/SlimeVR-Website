@@ -1,6 +1,6 @@
-import { A } from "@solidjs/router";
+import { A, useNavigate } from "@solidjs/router";
 import clsx from "clsx";
-import { Component, createSignal, Show } from "solid-js";
+import { Component, createSignal } from "solid-js";
 import { Localized } from "~/i18n";
 import { Button } from "./commons/Button";
 import { BarsIcon } from "./commons/icons/BarsIcon";
@@ -8,6 +8,7 @@ import { SlimeVRIcon } from "./commons/icons/SlimeVRIcon";
 import { Typography } from "./commons/Typography";
 
 export const NavItems: Component = () => {
+  const navigate = useNavigate();
   return (
     <>
       <a href="https://docs.slimevr.dev" target="_blank" class="link px-2">
@@ -16,10 +17,15 @@ export const NavItems: Component = () => {
       <A
         href="/#download"
         onClick={(e) => {
+          const pathname = window.location.pathname;
           e.preventDefault();
-          document
-            .getElementById("download")
-            .scrollIntoView({ behavior: "smooth", block: "center" });
+          if (pathname === "/") {
+            const el = document.getElementById("download");
+            if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+          } else {
+            // use location.state to pass scrollTo
+            navigate("/", { replace: true, state: { scrollTo: "download" } });
+          }
         }}
         class="link px-2"
       >

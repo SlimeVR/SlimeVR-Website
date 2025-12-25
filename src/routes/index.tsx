@@ -1,5 +1,6 @@
 import { Link, Meta } from "@solidjs/meta";
-import { Component, ParentProps } from "solid-js";
+import { useLocation } from "@solidjs/router";
+import { Component, ParentProps, onMount } from "solid-js";
 import { AppTitle } from "~/components/AppTitle";
 import { ArrowButton } from "~/components/commons/ArrowButton";
 import { Container } from "~/components/commons/Container";
@@ -51,6 +52,23 @@ const UseCaseCard: Component<{ title: string; image: string; desc: string }> = (
 };
 
 export default function HomeLayout(props: ParentProps) {
+  const location = useLocation();
+
+  // scroll to a section after navigation, see Navbar.tsx
+  onMount(() => {
+    const state = location.state as { scrollTo?: string } | null;
+    const scrollTo = state?.scrollTo;
+    if (scrollTo) {
+      const el = document.getElementById(scrollTo);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "center" });
+          history.replaceState({}, "");
+        }, 0); // needed to wait for DOM to be ready
+      }
+    }
+  });
+
   return (
     <MainLayout>
       <AppTitle key="home.title"></AppTitle>
