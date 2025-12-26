@@ -1,6 +1,6 @@
 import { Link, Meta } from "@solidjs/meta";
 import { useLocation } from "@solidjs/router";
-import { Component, ParentProps, onMount } from "solid-js";
+import { Component, ParentProps, createEffect } from "solid-js";
 import { AppTitle } from "~/components/AppTitle";
 import { ArrowButton } from "~/components/commons/ArrowButton";
 import { Container } from "~/components/commons/Container";
@@ -55,18 +55,17 @@ export default function HomeLayout(props: ParentProps) {
   const location = useLocation();
 
   // scroll to a section after navigation, see Navbar.tsx
-  onMount(() => {
-    const state = location.state as { scrollTo?: string } | null;
-    const scrollTo = state?.scrollTo;
-    if (scrollTo) {
+  createEffect(() => {
+    const scrollTo = (location.state as { scrollTo?: string } | undefined)
+      ?.scrollTo;
+    if (!scrollTo) return;
+
+    requestAnimationFrame(() => {
       const el = document.getElementById(scrollTo);
-      if (el) {
-        setTimeout(() => {
-          el.scrollIntoView({ behavior: "smooth", block: "center" });
-          history.replaceState({}, "");
-        }, 0); // needed to wait for DOM to be ready
-      }
-    }
+      if (!el) return;
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      history.replaceState({}, "");
+    });
   });
 
   return (

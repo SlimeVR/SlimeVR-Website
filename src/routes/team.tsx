@@ -236,7 +236,13 @@ function shuffle() {
 
   let shuffleCount = 0;
   const shuffleInterval = setInterval(() => {
-    setFinalContribs([...sortedContribs].sort(() => Math.random() - 0.5));
+    // Fisher-Yates shuffle algorithm
+    const shuffled = [...sortedContribs];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    setFinalContribs(shuffled);
     shuffleCount++;
 
     if (shuffleCount >= MAX_SHUFFLES) {
@@ -411,7 +417,7 @@ export default function TeamPage(props: ParentProps) {
           {/* page cards - slimevr contributors */}
           <div class="flex flex-row flex-wrap gap-4 mt-8 justify-around">
             {/* filter slimes by search term if exists */}
-            {filteredContribs().map((contrib, i) => {
+            {filteredContribs().map((contrib) => {
               const isShiny = shinyContribs().some(
                 (s) => s.name === contrib.name
               );
@@ -420,10 +426,10 @@ export default function TeamPage(props: ParentProps) {
               return (
                 <div
                   class={clsx(
-                    "max-w-[250px] w-full",
+                    "max-w-[250px] w-full transform",
                     isShuffling()
-                      ? "animate-pulse scale-95 opacity-80 transform rotate-1 pointer-events-none duration-200"
-                      : "scale-100 opacity-100 transform rotate-0"
+                      ? "animate-pulse scale-95 opacity-80 rotate-1 pointer-events-none duration-200"
+                      : "scale-100 opacity-100 rotate-0"
                   )}
                 >
                   <Card
@@ -499,32 +505,28 @@ export default function TeamPage(props: ParentProps) {
                       ))}
                     </div>
 
-                    {pastSponsors().length > 0 ? (
-                      <>
-                        <div class="border-t border-background-40 pt-6 pb-4">
-                          <div class="mb-4 text-center text-text-secondary">
-                            <Typography
-                              tag="h3"
-                              variant="section-title"
-                              textAlign="text-center"
-                            >
-                              <Localized id="sponsors.past" />
-                            </Typography>
-                          </div>
-                          <div class="flex flex-wrap justify-center gap-3">
-                            {pastSponsors().map((sponsor) => (
-                              <PastSponsorAvatar sponsor={sponsor} />
-                            ))}
-                          </div>
+                    {pastSponsors().length > 0 && (
+                      <div class="border-t border-background-40 pt-6 pb-4">
+                        <div class="mb-4 text-center text-text-secondary">
+                          <Typography
+                            tag="h3"
+                            variant="section-title"
+                            textAlign="text-center"
+                          >
+                            <Localized id="sponsors.past" />
+                          </Typography>
                         </div>
-                      </>
-                    ) : (
-                      <div class="text-center py-8">
-                        <Typography tag="p" key="sponsors.none" />
+                        <div class="flex flex-wrap justify-center gap-3">
+                          {pastSponsors().map((sponsor) => (
+                            <PastSponsorAvatar sponsor={sponsor} />
+                          ))}
+                        </div>
                       </div>
                     )}
                   </>
-                ) : (
+                ) : null}
+
+                {activeSponsors().length === 0 && (
                   <div class="text-center py-8">
                     <Typography tag="p" key="sponsors.none" />
                   </div>
