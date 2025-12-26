@@ -64,7 +64,6 @@ export default function HomeLayout(props: ParentProps) {
       const el = document.getElementById(scrollTo);
       if (!el) return;
       el.scrollIntoView({ behavior: "smooth", block: "center" });
-      history.replaceState({}, "");
     });
   });
 

@@ -24,7 +24,7 @@ export const NavItems: Component = () => {
             if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
           } else {
             // use location.state to pass scrollTo
-            navigate("/", { replace: true, state: { scrollTo: "download" } });
+            navigate("/", { state: { scrollTo: "download" } });
           }
         }}
         class="link px-2"

@@ -1,9 +1,10 @@
-import { A } from "@solidjs/router";
+import { A, useNavigate } from "@solidjs/router";
 import { Component } from "solid-js";
 import { Typography } from "./commons/Typography";
 import { SlimeVRIcon } from "./commons/icons/SlimeVRIcon";
 
 export const Footer: Component = (props) => {
+  const navigate = useNavigate();
   return (
     <footer class="bg-background-70 border-t border-background-50 w-full flex flex-col items-center">
       <div class="max-w-6xl 2xl:max-w-[1400px] w-full px-4 grid grid-cols-1 gap-5 sm:grid-cols-4 py-10">
@@ -40,10 +41,16 @@ export const Footer: Component = (props) => {
             <A
               href="/#download"
               onClick={(e) => {
+                const pathname = window.location.pathname;
                 e.preventDefault();
-                document
-                  .getElementById("download")
-                  .scrollIntoView({ behavior: "smooth", block: "center" });
+                if (pathname === "/") {
+                  const el = document.getElementById("download");
+                  if (el)
+                    el.scrollIntoView({ behavior: "smooth", block: "center" });
+                } else {
+                  // use location.state to pass scrollTo
+                  navigate("/", { state: { scrollTo: "download" } });
+                }
               }}
               class="link w-fit"
             >
