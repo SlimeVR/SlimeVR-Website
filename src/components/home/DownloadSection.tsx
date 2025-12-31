@@ -133,15 +133,6 @@ export const DownloadSection: Component = () => {
                 SideQuest
               </Typography>
             </DownloadButton>
-            <DownloadButton
-              prefixIcon={<AppleIcon size={40}></AppleIcon>}
-              href="https://discord.com/channels/817184208525983775/1121564912292986880"
-              target="_blank"
-            >
-              <Typography variant="section-title" tag="span">
-                IOS
-              </Typography>
-            </DownloadButton>
           </div>
         </div>
         <div class="pointer-events-none select-none w-full flex flex-col justify-center flex-grow pr-8">
