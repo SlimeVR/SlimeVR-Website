@@ -1,20 +1,28 @@
-import { A } from "@solidjs/router";
+import { A, useNavigate } from "@solidjs/router";
 import { Component } from "solid-js";
 import { Typography } from "./commons/Typography";
 import { SlimeVRIcon } from "./commons/icons/SlimeVRIcon";
 
 export const Footer: Component = (props) => {
+  const navigate = useNavigate();
   return (
     <footer class="bg-background-70 border-t border-background-50 w-full flex flex-col items-center">
       <div class="max-w-6xl 2xl:max-w-[1400px] w-full px-4 grid grid-cols-1 gap-5 sm:grid-cols-4 py-10">
         <div class="flex flex-col mobile:order-last mobile:items-center">
           <SlimeVRIcon
-            size={150}
+            size={128}
             class="stroke-accent-background-10"
           ></SlimeVRIcon>
           <Typography tag="p">
             © {new Date().getFullYear()} SlimeVR BV.
           </Typography>
+          <A
+            class="mt-2 text-center sm:text-left text-xs text-background-30 link"
+            href="/tm"
+          >
+            SlimeVR is a trademark or a registered trademark of SlimeVR B.V. in
+            Europe and world-wide.
+          </A>
         </div>
         <div class="flex flex-col gap-2">
           <Typography
@@ -33,10 +41,16 @@ export const Footer: Component = (props) => {
             <A
               href="/#download"
               onClick={(e) => {
+                const pathname = window.location.pathname;
                 e.preventDefault();
-                document
-                  .getElementById("download")
-                  .scrollIntoView({ behavior: "smooth", block: "center" });
+                if (pathname === "/") {
+                  const el = document.getElementById("download");
+                  if (el)
+                    el.scrollIntoView({ behavior: "smooth", block: "center" });
+                } else {
+                  // use location.state to pass scrollTo
+                  navigate("/", { state: { scrollTo: "download" } });
+                }
               }}
               class="link w-fit"
             >
@@ -56,6 +70,9 @@ export const Footer: Component = (props) => {
             >
               <Typography key="navbar.github" tag="span" />
             </a>
+            <A href="/tm" class="link w-fit">
+              <Typography tag="span" key="footer.column.resources.tm" />
+            </A>
             <a
               href="https://shop.slimevr.dev/pages/support"
               target="_blank"

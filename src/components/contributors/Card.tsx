@@ -24,8 +24,10 @@ import { TwitchIcon } from "../commons/icons/socials/TwitchIcon";
 import { TwitterIcon } from "../commons/icons/socials/TwitterIcon";
 import { WebsiteIcon } from "../commons/icons/socials/WebsiteIcon";
 import { YoutubeIcon } from "../commons/icons/socials/YoutubeIcon";
+import { RedditIcon } from "../commons/icons/socials/RedditIcon";
 import { Typography } from "../commons/Typography";
 import CircularIcon from "./CircularIcon";
+import { PatreonIcon } from "../commons/icons/socials/PatreonIcon";
 
 // constants
 const FALLBACK_COLOR = "#d9d9d9"; // fallback color for cards without a background or border set
@@ -308,11 +310,11 @@ export const Card: ParentComponent<CardProps> = (props) => {
       card.style.zIndex = "0";
       card.style.transform = createTransform();
       card.style.willChange = "auto";
-      
+
       // move card back to its original parent (placeholder's parent)
       placeholder.parentNode?.insertBefore(card, placeholder);
       placeholder.style.display = "none";
-      
+
       setTransitioning(false);
       transitionTimeout = null;
 
@@ -566,13 +568,15 @@ export const Card: ParentComponent<CardProps> = (props) => {
                         {key === "twitch" && (
                           <TwitchIcon size={18} class="mt-[2px] mr-[2px]" />
                         )}
-                        {key === "kofi" && <KofiIcon size={20} />}
+                        {key === "kofi" && <KofiIcon size={22} />}
                         {key === "discord" && <DiscordIcon size={20} />}
                         {key === "tiktok" && <TiktokIcon size={20} />}
                         {key === "printables" && <PrintablesIcon size={18} />}
                         {key === "steam" && <SteamIcon size={18} />}
                         {key === "matrix" && <MatrixIcon size={16} />}
                         {key === "website" && <WebsiteIcon size={20} />}
+                        {key === "reddit" && <RedditIcon size={20} />}
+                        {key === "patreon" && <PatreonIcon size={16} />}
                       </CircularIcon>
                     );
                   })}

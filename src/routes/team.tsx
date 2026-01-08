@@ -30,7 +30,7 @@ import { useI18n } from "~/i18n";
 import { setScroll } from "~/utils/scrollbar";
 
 // constants
-const SHINY_COUNT = 5;
+const MAX_SHINY = 5;
 const MAX_SHUFFLES = 7;
 const SHUFFLE_INTERVAL = 150;
 const SHINY_GRADIENT =
@@ -45,11 +45,13 @@ const socialsPriority = [
   "twitch",
   "twitter",
   "bluesky",
+  "reddit",
   "instagram",
   "tiktok",
   "steam",
   "printables",
   "kofi",
+  "patreon",
 ];
 
 const sortedContribs = contributors
@@ -167,8 +169,8 @@ async function fetchSponsors(): Promise<{
   }
 }
 
-// random "shiny" slimes (5 per day), where it is seeded by the current date (so everyone gets the same shinies)
-function getShinyContribs(contribs: Contributor[], count = SHINY_COUNT) {
+// random "shiny" slimes (up to 5/day), where it is seeded by the current date (so everyone gets the same shinies)
+function getShinyContribs(contribs: Contributor[]) {
   const seed = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
   const rand = new Rand(seed);
   const slimes = contribs.slice();
@@ -178,7 +180,8 @@ function getShinyContribs(contribs: Contributor[], count = SHINY_COUNT) {
     [slimes[i], slimes[j]] = [slimes[j], slimes[i]];
   }
 
-  const finalSlimes = slimes.slice(0, count);
+  const randomCount = Math.floor(rand.next() * MAX_SHINY) + 1; // at least 1 shiny
+  const finalSlimes = slimes.slice(0, randomCount);
   console.log(
     `Shiny slimes for ${seed}:`,
     finalSlimes.map((s) => s.name)
@@ -233,7 +236,13 @@ function shuffle() {
 
   let shuffleCount = 0;
   const shuffleInterval = setInterval(() => {
-    setFinalContribs([...sortedContribs].sort(() => Math.random() - 0.5));
+    // Fisher-Yates shuffle algorithm
+    const shuffled = [...sortedContribs];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    setFinalContribs(shuffled);
     shuffleCount++;
 
     if (shuffleCount >= MAX_SHUFFLES) {
@@ -256,9 +265,7 @@ export default function TeamPage(props: ParentProps) {
   const envMissing = createMemo(() => sponsors()?.envMissing ?? false);
   const activeCount = createMemo(() => activeSponsors().length);
   const pastCount = createMemo(() => pastSponsors().length);
-  const shinyContribs = createMemo(() =>
-    getShinyContribs(sortedContribs, SHINY_COUNT)
-  );
+  const shinyContribs = createMemo(() => getShinyContribs(sortedContribs));
   const filteredContribs = createMemo(() =>
     finalContribs().filter((contrib) =>
       contrib.name.toLowerCase().includes(searchTerm().toLowerCase())
@@ -410,7 +417,7 @@ export default function TeamPage(props: ParentProps) {
           {/* page cards - slimevr contributors */}
           <div class="flex flex-row flex-wrap gap-4 mt-8 justify-around">
             {/* filter slimes by search term if exists */}
-            {filteredContribs().map((contrib, i) => {
+            {filteredContribs().map((contrib) => {
               const isShiny = shinyContribs().some(
                 (s) => s.name === contrib.name
               );
@@ -419,10 +426,10 @@ export default function TeamPage(props: ParentProps) {
               return (
                 <div
                   class={clsx(
-                  "max-w-[250px] w-full",
-                  isShuffling()
-                    ? "animate-pulse scale-95 opacity-80 transform rotate-1 pointer-events-none duration-200"
-                    : "scale-100 opacity-100 transform rotate-0"
+                    "max-w-[250px] w-full transform",
+                    isShuffling()
+                      ? "animate-pulse scale-95 opacity-80 rotate-1 pointer-events-none duration-200"
+                      : "scale-100 opacity-100 rotate-0"
                   )}
                 >
                   <Card
@@ -498,32 +505,28 @@ export default function TeamPage(props: ParentProps) {
                       ))}
                     </div>
 
-                    {pastSponsors().length > 0 ? (
-                      <>
-                        <div class="border-t border-background-40 pt-6 pb-4">
-                          <div class="mb-4 text-center text-text-secondary">
-                            <Typography
-                              tag="h3"
-                              variant="section-title"
-                              textAlign="text-center"
-                            >
-                              <Localized id="sponsors.past" />
-                            </Typography>
-                          </div>
-                          <div class="flex flex-wrap justify-center gap-3">
-                            {pastSponsors().map((sponsor) => (
-                              <PastSponsorAvatar sponsor={sponsor} />
-                            ))}
-                          </div>
+                    {pastSponsors().length > 0 && (
+                      <div class="border-t border-background-40 pt-6 pb-4">
+                        <div class="mb-4 text-center text-text-secondary">
+                          <Typography
+                            tag="h3"
+                            variant="section-title"
+                            textAlign="text-center"
+                          >
+                            <Localized id="sponsors.past" />
+                          </Typography>
                         </div>
-                      </>
-                    ) : (
-                      <div class="text-center py-8">
-                        <Typography tag="p" key="sponsors.none" />
+                        <div class="flex flex-wrap justify-center gap-3">
+                          {pastSponsors().map((sponsor) => (
+                            <PastSponsorAvatar sponsor={sponsor} />
+                          ))}
+                        </div>
                       </div>
                     )}
                   </>
-                ) : (
+                ) : null}
+
+                {activeSponsors().length === 0 && (
                   <div class="text-center py-8">
                     <Typography tag="p" key="sponsors.none" />
                   </div>

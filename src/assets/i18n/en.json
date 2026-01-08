@@ -13,7 +13,8 @@
   "footer": {
     "column": {
       "resources": {
-        "title": "Resources"
+        "title": "Resources",
+        "tm": "Trademark"
       },
       "shop": {
         "title": "Shop",
@@ -119,7 +120,7 @@
       },
       "question-15": {
         "question": "Which Operating Systems Does SlimeVR Work On?",
-        "answer": "SlimeVR is compatible with Windows 8, 8.1, 10, 11, Linux, macOS, Android, and iOS."
+        "answer": "SlimeVR is compatible with Windows 8, 8.1, 10, 11, Linux, macOS, and Android (including headsets)."
       },
       "question-16": {
         "question": "Can SlimeVR Be Used With Quest 2/3 Standalone?",
@@ -193,6 +194,9 @@
     "error": "Failed to load sponsors.",
     "none": "No sponsors found... maybe you can be the first? (Or something broke!)",
     "past": "Past Sponsors"
+  },
+  "tm": {
+    "title": "SlimeVR Trademark Guidelines"
   },
   "privacy": {
     "title": "Privacy Policy"
