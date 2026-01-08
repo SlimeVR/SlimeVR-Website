@@ -16,6 +16,8 @@ export interface Contributor {
     printables?: string;
     steam?: string;
     matrix?: string;
+    reddit?: string;
+    patreon?: string;
   };
   tags: string[];
   classes?: string;
@@ -403,5 +405,46 @@ export const contributors: Contributor[] = [
       discord: "https://discord.com/users/884888736855392307",
     },
     tags: ["#rusk", "#silly", "#goated"],
+  },
+  {
+    name: "Sebby",
+    color: "#e0e1ed",
+    roles: ["dev", "community"],
+    socials: {
+      bluesky: "https://bsky.app/profile/sebrinarena.bsky.social",
+    },
+    tags: ["#programmer", "#madscientist", "#punny"],
+  },
+  {
+    name: "Sky",
+    color: "#e0e1ed",
+    roles: ["community"],
+    socials: {
+      kofi: "https://ko-fi.com/skyborne01",
+      discord: "https://discord.com/users/673798346397188111",
+    },
+    tags: ["#daydream", "#rock", "#☁️"],
+  },
+  {
+    name: "BakaSoniji",
+    color: "#e0e1ed",
+    roles: ["community"],
+    socials: {
+      github: "https://github.com/BakaSoniji",
+    },
+    tags: ["#baka", "#cat", "#meow", "#food"],
+  },
+  {
+    name: "Rexa",
+    color: "#7f7cae",
+    roles: ["community", "artist"],
+    socials: {
+      bluesky: "https://bsky.app/profile/did:plc:jw5h23y2xxu3jznx5taro64r",
+      reddit: "https://www.reddit.com/u/RexaOnReddit",
+      steam: "https://steamcommunity.com/profiles/76561198143791219",
+      kofi: "https://ko-fi.com/troniquellc",
+      patreon: "https://patreon.com/tronique_llc",
+    },
+    tags: ["#foxy", "#silly", "#cute", "#engineer", "#gamer"],
   },
 ];
