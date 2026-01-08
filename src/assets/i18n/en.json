@@ -34,13 +34,14 @@
       "description": "An affordable, comfortable, wireless, 360° solution for full-body tracking in virtual reality",
       "price": "From $219",
       "order-btn": "Order on",
+      "join-btn": "Join campaign at",
       "download-server": {
         "title": "Download the server",
         "desc": "Available on all platforms!"
       },
       "join-discord": {
         "title": "Join our Discord",
-        "desc": "With 50.000 members"
+        "desc": "With 70.000 members"
       }
     },
     "video-section": "Reviews and Demos",

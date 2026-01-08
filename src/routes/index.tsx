@@ -65,11 +65,28 @@ export default function HomeLayout(props: ParentProps) {
       />
       <Section>
         <div class="flex w-full mt-5 relative">
-          <div class="absolute top-0 h-full animate-floating right-0 w-full md:flex justify-end hidden">
+          <div class="absolute bottom-0 h-full animate-floating left-[-180px] w-full md:flex justify-end hidden">
             <img
-              src="/images/floating_nighty.webp"
+              src="/images/butterfly_nighty.png"
               loading="lazy"
-              class="h-full object-contain"
+              class="h-full object-contain scale-125"
+            ></img>
+          </div>
+          <div class="absolute bottom-0 animate-floating left-[-165px] w-full md:flex hidden">
+            <img src="/images/butterfly1.png" loading="lazy" class=""></img>
+          </div>
+          <div class="absolute bottom-[-150px] animate-floating right-[-80px] w-full md:flex justify-end hidden">
+            <img
+              src="/images/butterfly3.png"
+              loading="lazy"
+              class="rotate-45"
+            ></img>
+          </div>
+          <div class="absolute bottom-[-10px] animate-floating right-[-150px] w-full md:flex justify-end hidden">
+            <img
+              src="/images/butterfly4.png"
+              loading="lazy"
+              class="rotate-45"
             ></img>
           </div>
           <div class="w-full grid grid-cols-1 md:grid-cols-2 sm:gap-4 md:h-[750px]">
@@ -149,12 +166,12 @@ export default function HomeLayout(props: ParentProps) {
       </Section>
 
       <div class="flex flex-col pt-10 md:pt-20 gap-10 md:gap-20 w-full items-center">
-        <Section gizmo="/images/Webpage_Design_Parts_first_block_bg.webp">
-          <VideoSection></VideoSection>
-        </Section>
-
         <Section>
           <DownloadSection></DownloadSection>
+        </Section>
+
+        <Section gizmo="/images/Webpage_Design_Parts_first_block_bg.webp">
+          <VideoSection></VideoSection>
         </Section>
 
         <Section>
