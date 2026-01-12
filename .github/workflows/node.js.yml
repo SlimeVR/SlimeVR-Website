@@ -34,5 +34,5 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist/ --project-name "slimevr-main-website" --branch '${{ github.ref == 'refs/heads/main' && 'main' || github.event.pull_request.number }}'
+          command: pages deploy dist/ --project-name "slimevr-main-website" --branch "${{ github.ref == 'refs/heads/main' && 'main' || github.event.pull_request.number }}"
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
