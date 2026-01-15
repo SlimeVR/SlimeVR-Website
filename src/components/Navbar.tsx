@@ -10,9 +10,6 @@ import { Typography } from "./commons/Typography";
 export const NavItems: Component = () => {
   const navigate = useNavigate();
   const location = useLocation();
-
-  console.log(location.pathname);
-
   return (
     <>
       {location.pathname !== "/" && (
