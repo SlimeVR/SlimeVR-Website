@@ -98,10 +98,7 @@ export default function HomeLayout(props: ParentProps) {
           <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-4 md:h-[850px]">
             <div class="z-10 flex flex-col gap-5 h-full justify-between relative py-5 px-0 sm:px-5">
               <div class="absolute bottom-0 animate-floating left-[-165px] w-full md:flex hidden">
-                <img
-                  src="/images/butterfly1.webp"
-                  loading="lazy"
-                ></img>
+                <img src="/images/butterfly1.webp" loading="lazy"></img>
               </div>
 
               <Typography
