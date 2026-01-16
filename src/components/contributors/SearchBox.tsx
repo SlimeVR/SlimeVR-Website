@@ -23,7 +23,7 @@ export const SearchBox: ParentComponent<SearchProps> = (initialProps) => {
 
   const classes = createMemo(() => {
     return clsx(
-      "w-full bg-transparent outline-none border-none text-background-10 placeholder-background-40 text-lg",
+      "w-full bg-transparent outline-hidden border-none text-background-10 placeholder-background-40 text-lg",
       props.class
     );
   });
@@ -49,7 +49,7 @@ export const SearchBox: ParentComponent<SearchProps> = (initialProps) => {
           onInput={(e) => props.onChange && props.onChange(e)}
         />
         <span
-          class="absolute left-0 right-0 bottom-0 h-[1px] bg-background-10"
+          class="absolute left-0 right-0 bottom-0 h-px bg-background-10"
           style={{ width: "100%" }}
         />
       </span>

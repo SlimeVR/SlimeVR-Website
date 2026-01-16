@@ -8,6 +8,7 @@ import {
 } from "solid-js";
 import { Footer } from "../components/Footer";
 import { Navbar } from "../components/Navbar";
+import clsx from "clsx";
 
 const ANIMATION_TIME = 5500;
 const MIN_TIME = 6000;
@@ -62,15 +63,19 @@ const ExplosionDot: Component = () => {
 
   return (
     <div class="absolute -z-10" style={explodeStyle()}>
-      <div class="linear-gradient size-[300px] rounded-full animate-explode"></div>
+      <div class="linear-gradient size-75 rounded-full animate-explode"></div>
     </div>
   );
 };
 
-export const MainLayout: ParentComponent = (props) => {
+interface MainLaoutProps {
+  variant?: 'default' | 'butterfly' | 'og-slime';
+}
+
+export const MainLayout: ParentComponent<MainLaoutProps> = (props) => {
   return (
-    <div class="flex flex-col min-h-screen pattern">
-      <div class="relative overflow-clip flex-grow">
+    <div class={clsx("flex flex-col min-h-screen pattern", props.variant)}>
+      <div class="relative overflow-clip grow">
         <ExplosionDot></ExplosionDot>
         <ExplosionDot></ExplosionDot>
         <ExplosionDot></ExplosionDot>
@@ -80,7 +85,7 @@ export const MainLayout: ParentComponent = (props) => {
             class="absolute w-full top-0"
             src="/images/Webpage_Design_Parts_header_block.webp"
           ></img>
-          <div class="max-w-6xl 2xl:max-w-[1400px] w-full top-5 z-20 px-4">
+          <div class="max-w-6xl 2xl:max-w-350 w-full top-5 z-20 px-4">
             <Navbar></Navbar>
           </div>
           {props.children}

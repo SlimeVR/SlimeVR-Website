@@ -29,7 +29,7 @@ export const ArrowIcon: Component<ArrowIconProps> = (initialProps) => {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 448 512"
       width={props.size}
-      class={clsx(props.class, "transition-rotation")}
+      class={clsx(props.class, "transition-[rotation] duration-200")}
       style={{
         rotate: rotations(),
       }}
@@ -41,7 +41,7 @@ export const ArrowIcon: Component<ArrowIconProps> = (initialProps) => {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 320 512"
       width={props.size}
-      class={clsx(props.class, "transition-rotation")}
+      class={clsx(props.class, "transition-[rotation]")}
       style={{
         rotate: rotations(),
       }}

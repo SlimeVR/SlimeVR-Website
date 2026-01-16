@@ -1,4 +1,4 @@
-import { A, useNavigate } from "@solidjs/router";
+import { A, useLocation, useNavigate } from "@solidjs/router";
 import clsx from "clsx";
 import { Component, createSignal } from "solid-js";
 import { Localized } from "~/i18n";
@@ -9,8 +9,14 @@ import { Typography } from "./commons/Typography";
 
 export const NavItems: Component = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   return (
     <>
+      {location.pathname !== "/" && (
+        <A href="/" class="link px-2">
+          <Typography tag="span">Home</Typography>
+        </A>
+      )}
       <a href="https://docs.slimevr.dev" target="_blank" class="link px-2">
         <Typography key="navbar.documentation" tag="span" />
       </a>
@@ -90,7 +96,7 @@ export const Navbar: Component = (props) => {
             </button>
           </div>
         </div>
-        <div class="divide-x-[1px] divide-background-20 justify-center items-center hidden md:flex">
+        <div class="divide-x divide-background-20 justify-center items-center hidden md:flex">
           <NavItems></NavItems>
         </div>
       </div>

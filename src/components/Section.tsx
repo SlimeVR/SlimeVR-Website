@@ -14,14 +14,14 @@ export const Section: ParentComponent<SectionProps> = (props) => {
             <img
               class={clsx(
                 "w-full object-contain scale-[110%]",
-                "rotate-[12deg]"
+                "rotate-12"
               )}
               src={gizmo()}
             ></img>
           </div>
         )}
       </Show>
-      <div class="max-w-6xl 2xl:max-w-[1400px] w-full z-10 px-4">
+      <div class="max-w-6xl 2xl:max-w-350 w-full z-10 px-4">
         {props.children}
       </div>
     </div>

@@ -7,8 +7,8 @@ export const Footer: Component = (props) => {
   const navigate = useNavigate();
   return (
     <footer class="bg-background-70 border-t border-background-50 w-full flex flex-col items-center">
-      <div class="max-w-6xl 2xl:max-w-[1400px] w-full px-4 grid grid-cols-1 gap-5 sm:grid-cols-4 py-10">
-        <div class="flex flex-col mobile:order-last mobile:items-center">
+      <div class="max-w-6xl 2xl:max-w-350 w-full px-4 grid grid-cols-1 gap-5 sm:grid-cols-4 py-10">
+        <div class="flex flex-col order-last items-center sm:order-first sm:items-start">
           <SlimeVRIcon
             size={128}
             class="stroke-accent-background-10"
@@ -144,7 +144,7 @@ export const Footer: Component = (props) => {
         </div>
       </div>
       <div class="bg-background-80 w-full py-4">
-        <div class=" flex justify-center divide-x-[1px] divide-background-20">
+        <div class=" flex justify-center divide-x divide-background-20">
           {/* <A class="link px-2" href="/terms">
             <Typography tag="span" key="footer.terms" />
           </A> */}

@@ -90,7 +90,7 @@ export const QASection: Component = () => {
                   }
                   open={index() === 0}
                 >
-                  <div class="text-inherit w-full min-w-full prose-md prose text-background-10 prose-h1:text-background-10 prose-h2:text-background-10 prose-a:text-background-20 prose-strong:text-background-10 prose-code:text-background-20">
+                  <div class="w-full min-w-full prose-md prose text-background-10 prose-h1:text-background-10 prose-h2:text-background-10 prose-a:text-background-20 prose-strong:text-background-10 prose-code:text-background-20">
                     <SolidMarkdown
                       remarkPlugins={[remarkGfm]}
                       components={{ a: MarkdownLink }}
