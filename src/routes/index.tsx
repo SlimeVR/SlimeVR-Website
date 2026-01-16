@@ -69,7 +69,7 @@ export default function HomePage(props: ParentProps) {
   });
 
   return (
-    <MainLayout variant="og-slime">
+    <MainLayout>
       <AppTitle key="home.title"></AppTitle>
       <Meta name="robots" content="index, follow" />
       <Link rel="canonical" href="https://slimevr.dev/" />

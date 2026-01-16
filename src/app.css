@@ -95,7 +95,7 @@
 }
 
 .butterfly {
-   --color-background-10: rgb(255, 0, 255);
+  --color-background-10: rgb(255, 0, 255);
   --color-background-20: rgb(120, 164, 198);
   --color-background-30: rgb(96, 138, 171);
   --color-background-40: rgb(61, 99, 129);
@@ -117,7 +117,6 @@
   --color-status-critical: rgb(223, 109, 140);
   --color-status-special: rgb(164, 79, 237);
 }
-
 
 .og-slime {
   --color-background-10: rgb(0, 255, 255);
