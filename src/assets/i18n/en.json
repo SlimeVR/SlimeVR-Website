@@ -201,5 +201,11 @@
   },
   "privacy": {
     "title": "Privacy Policy"
+  },
+  "butterfly": {
+    "title": "Butterfly Trackers"
+  },
+  "ogslime": {
+    "title": "SlimeVR V1.2 Trackers"
   }
 }

@@ -96,7 +96,7 @@ export const Navbar: Component = (props) => {
             </button>
           </div>
         </div>
-        <div class="divide-x-[1px] divide-background-20 justify-center items-center hidden md:flex">
+        <div class="divide-x divide-background-20 justify-center items-center hidden md:flex">
           <NavItems></NavItems>
         </div>
       </div>

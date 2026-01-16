@@ -31,8 +31,8 @@ export default function OGSlimePage(props: ParentProps) {
   });
 
   return (
-    <MainLayout>
-      <AppTitle key="home.title"></AppTitle>
+    <MainLayout variant="og-slime">
+      <AppTitle key="ogslime.title"></AppTitle>
       <Meta name="robots" content="index, follow" />
       <Link rel="canonical" href="https://slimevr.dev/og-slime" />
       <Link
@@ -58,9 +58,9 @@ export default function OGSlimePage(props: ParentProps) {
       />
       <Section>
         <div class="flex w-full mt-5 relative">
-          <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-4 md:h-[850px]">
+          <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-4 md:h-212.5">
             <div class="z-10 flex flex-col gap-5 h-full justify-between relative py-5 px-0 sm:px-5">
-              <div class="absolute bottom-0 animate-floating left-[-165px] w-full md:flex hidden">
+              <div class="absolute bottom-0 animate-floating -left-41.25 w-full md:flex hidden">
                 <img src="/images/butterfly1.webp" loading="lazy"></img>
               </div>
 
@@ -69,7 +69,7 @@ export default function OGSlimePage(props: ParentProps) {
                 tag="h1"
                 key="home.hero.description"
               />
-              <div class="px-12 pointer-events-none select-none max-h-[400px] h-full">
+              <div class="px-12 pointer-events-none select-none max-h-100 h-full">
                 <img
                   src="/images/slimevr_1_2_tracker.webp"
                   loading="lazy"
@@ -110,14 +110,14 @@ export default function OGSlimePage(props: ParentProps) {
                   class="h-full object-contain scale-[140%]"
                 ></img>
               </div>
-              <div class="absolute bottom-[-150px] animate-floating right-[-80px] w-full md:flex justify-end hidden">
+              <div class="absolute -bottom-37.5 animate-floating -right-20 w-full md:flex justify-end hidden">
                 <img
                   src="/images/butterfly3.webp"
                   loading="lazy"
                   class="rotate-45"
                 ></img>
               </div>
-              <div class="absolute bottom-[-10px] animate-floating right-[-150px] w-full md:flex justify-end hidden">
+              <div class="absolute -bottom-2.5 animate-floating -right-37.5 w-full md:flex justify-end hidden">
                 <img
                   src="/images/butterfly4.webp"
                   loading="lazy"

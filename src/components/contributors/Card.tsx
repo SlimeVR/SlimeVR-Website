@@ -454,7 +454,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
       {/* invisible placeholder - used when card is focused to keep its position in list */}
       <div
         ref={placeholder}
-        class={cardClasses() + " !bg-transparent !p-0"}
+        class={cardClasses() + " bg-transparent! p-0!"}
         style={{ display: "none" }}
         aria-hidden="true"
       />
@@ -480,7 +480,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
         />
         <div
           ref={innerDiv}
-          class="aspect-[0.71/1] max-w-[237px] max-h-[336px] w-full h-full flex flex-col items-center justify-evenly rounded-xl px-2 relative overflow-hidden"
+          class="aspect-[0.71/1] max-w-59.25 max-h-84 w-full h-full flex flex-col items-center justify-evenly rounded-xl px-2 relative overflow-hidden"
         >
           {/* background image */}
           <div
@@ -523,7 +523,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
                 </div>
               </div>
               {/* card image - bg and slime photo */}
-              <div class="w-[218px] h-[141px] overflow-visible rounded-2xl rounded-tr-[70px] pattern !bg-[size:80%] !bg-[#1E2442] mt-[-2px] relative">
+              <div class="w-54.5 h-35.25 overflow-visible rounded-2xl rounded-tr-[70px] pattern bg-size-[80%]! bg-[#1E2442]! -mt-0.5 relative">
                 <img
                   src={imgSrc()}
                   alt={name}
@@ -549,7 +549,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
             <div class="flex flex-col items-center gap-4 flex-1 mt-4">
               {/* socials */}
               {Object.keys(socials).length > 0 && (
-                <div class="flex flex-row flex-wrap gap-2 justify-center min-h-[32px]">
+                <div class="flex flex-row flex-wrap gap-2 justify-center min-h-8">
                   {Object.entries(socials).map(([key, value], i) => {
                     if (!value) return null;
                     return (
@@ -566,7 +566,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
                         {key === "instagram" && <InstagramIcon size={22} />}
                         {key === "youtube" && <YoutubeIcon size={22} />}
                         {key === "twitch" && (
-                          <TwitchIcon size={18} class="mt-[2px] mr-[2px]" />
+                          <TwitchIcon size={18} class="mt-0.5 mr-0.5" />
                         )}
                         {key === "kofi" && <KofiIcon size={22} />}
                         {key === "discord" && <DiscordIcon size={20} />}

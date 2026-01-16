@@ -57,8 +57,8 @@ export const DownloadButton: ParentComponent<DownloadButtonProps> = (
       >
         {prefixIcon()}
       </div>
-      <div class="flex flex-col flex-grow">{props.children}</div>
-      <div class="flex w-9 group-hover:translate-y-1 transition-transform duration-2">
+      <div class="flex flex-col grow">{props.children}</div>
+      <div class="flex w-9 group-hover:translate-y-1 transition-transform duration-200">
         <DonwloadIcon size={30} class="fill-background-10"></DonwloadIcon>
       </div>
     </A>
@@ -72,11 +72,11 @@ export const DownloadSection: Component = () => {
         Download SlimeVR Server
       </Typography>
       <div class="flex gap-4 md:gap-8 flex-col md:flex-row w-full">
-        <div class="flex flex-col gap-2 md:w-[500px]">
+        <div class="flex flex-col gap-2 md:w-125">
           <Typography tag="h3" textAlign="text-center" variant="section-title">
             Desktop
           </Typography>
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-2 ">
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-2">
             <DownloadButton
               prefixIcon={<WindowsIcon size={45}></WindowsIcon>}
               href="https://github.com/SlimeVR/SlimeVR-Installer/releases/latest/download/slimevr_web_installer.exe"
@@ -135,7 +135,7 @@ export const DownloadSection: Component = () => {
             </DownloadButton>
           </div>
         </div>
-        <div class="pointer-events-none select-none w-full flex flex-col justify-center flex-grow pr-8">
+        <div class="pointer-events-none select-none w-full flex flex-col justify-center grow pr-8">
           <div class="w-full relative aspect-video mt-4">
             <div class="bg-background-70 rounded-lg border border-background-40 absolute w-full top-0 left-0">
               <img
