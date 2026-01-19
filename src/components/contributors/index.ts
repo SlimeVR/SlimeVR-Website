@@ -435,13 +435,13 @@ export const contributors: Contributor[] = [
     tags: ["#baka", "#cat", "#meow", "#food"],
   },
   {
-    name: "Rexa",
+    name: "Amber",
     color: "#7f7cae",
-    roles: ["community", "artist"],
+    roles: ["dev", "community"],
     socials: {
       bluesky: "https://bsky.app/profile/did:plc:jw5h23y2xxu3jznx5taro64r",
       reddit: "https://www.reddit.com/u/RexaOnReddit",
-      steam: "https://steamcommunity.com/profiles/76561198143791219",
+      github: "https://github.com/AmberStormbright",
       kofi: "https://ko-fi.com/troniquellc",
       patreon: "https://patreon.com/tronique_llc",
     },
