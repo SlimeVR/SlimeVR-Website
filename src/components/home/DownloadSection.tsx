@@ -67,10 +67,15 @@ export const DownloadButton: ParentComponent<DownloadButtonProps> = (
 
 export const DownloadSection: Component = () => {
   return (
-    <div class="flex flex-col gap-4 w-full items-center" id="download">
-      <Typography tag="h2" variant="main-title" textAlign="text-center">
-        Download SlimeVR Server
-      </Typography>
+    <div class="flex flex-col gap-4 w-full items-center relative" id="download">
+      <div class="relative">
+        <Typography tag="h2" variant="main-title" textAlign="text-center">
+          Download SlimeVR Server
+        </Typography>
+        <div class="absolute -top-24 -left-44 scale-40 -z-10">
+          <img src="/images/butterfly1.webp" loading="lazy"></img>
+        </div>
+      </div>
       <div class="flex gap-4 md:gap-8 flex-col md:flex-row w-full">
         <div class="flex flex-col gap-2 md:w-125">
           <Typography tag="h3" textAlign="text-center" variant="section-title">

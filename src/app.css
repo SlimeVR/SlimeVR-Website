@@ -28,6 +28,7 @@
   --color-accent-background-40: rgb(98, 59, 131);
   --color-accent-background-50: rgb(46, 33, 69);
   --color-accent-background-60: rgb(30, 35, 60);
+  --color-accent-background-25: rgb(234, 0, 255, 0.4);
 
   --color-status-success: rgb(80, 232, 151);
   --color-status-warning: rgb(216, 205, 55);
@@ -39,7 +40,7 @@
   --breakpoint-sm: 640px;
   --breakpoint-md: 932px;
   --breakpoint-lg: 1024px;
-  --breakpoint-xl: 932px;
+  --breakpoint-mid: 1180px;
   --breakpoint-2xl: 1836px;
 
   --animate-explode: explode 6s ease-out;
@@ -72,10 +73,59 @@
       transform: translateY(0%);
     }
   }
+
+  --animate-rotated: rotated 6s ease-in-out infinite;
+  @keyframes rotated {
+    0% {
+      rotate: 0deg;
+    }
+    50% {
+      rotate: 3deg;
+    }
+    100% {
+      rotate: 0deg;
+    }
+  }
+
+  --animate-nighty: nighty 12s cubic-bezier(0.64, 0.57, 0.67, 1.53) infinite;
+  @keyframes nighty {
+    0% {
+      rotate: 1.5deg;
+      transform: translateY(0%);
+    }
+    50% {
+      rotate: 0deg;
+      transform: translateY(3%);
+    }
+    100% {
+      rotate: 1.5deg;
+      transform: translateY(0%);
+    }
+  }
+
+  --animate-stars: stars 2s ease-in-out infinite;
+  @keyframes stars {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+     opacity: 0.5;
+    }
+  }
+
+  --animate-stars2: stars2 2s ease-in-out infinite;
+  @keyframes stars2 {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+     opacity: 1;
+    }
+  }
 }
 
 @utility text-main-title {
-  font-size: 2rem;
+  font-size: 2.7rem;
   font-weight: 700;
 }
 
@@ -92,54 +142,6 @@
 @utility text-standard-bold {
   font-size: 1rem;
   font-weight: 700;
-}
-
-.butterfly {
-  --color-background-10: rgb(255, 0, 255);
-  --color-background-20: rgb(120, 164, 198);
-  --color-background-30: rgb(96, 138, 171);
-  --color-background-40: rgb(61, 99, 129);
-  --color-background-50: rgb(26, 61, 89);
-  --color-background-60: rgb(17, 45, 67);
-  --color-background-70: rgb(8, 30, 48);
-  --color-background-80: rgb(0, 16, 28);
-  --color-background-90: rgb(0, 5, 9);
-
-  --color-accent-background-10: rgb(187, 138, 229);
-  --color-accent-background-20: rgb(157, 92, 212);
-  --color-accent-background-30: rgb(101, 69, 154);
-  --color-accent-background-40: rgb(98, 59, 131);
-  --color-accent-background-50: rgb(46, 33, 69);
-  --color-accent-background-60: rgb(30, 35, 60);
-
-  --color-status-success: rgb(80, 232, 151);
-  --color-status-warning: rgb(216, 205, 55);
-  --color-status-critical: rgb(223, 109, 140);
-  --color-status-special: rgb(164, 79, 237);
-}
-
-.og-slime {
-  --color-background-10: rgb(0, 255, 255);
-  --color-background-20: rgb(120, 164, 198);
-  --color-background-30: rgb(96, 138, 171);
-  --color-background-40: rgb(61, 99, 129);
-  --color-background-50: rgb(26, 61, 89);
-  --color-background-60: rgb(17, 45, 67);
-  --color-background-70: rgb(8, 30, 48);
-  --color-background-80: rgb(0, 16, 28);
-  --color-background-90: rgb(0, 5, 9);
-
-  --color-accent-background-10: rgb(187, 138, 229);
-  --color-accent-background-20: rgb(157, 92, 212);
-  --color-accent-background-30: rgb(101, 69, 154);
-  --color-accent-background-40: rgb(98, 59, 131);
-  --color-accent-background-50: rgb(46, 33, 69);
-  --color-accent-background-60: rgb(30, 35, 60);
-
-  --color-status-success: rgb(80, 232, 151);
-  --color-status-warning: rgb(216, 205, 55);
-  --color-status-critical: rgb(223, 109, 140);
-  --color-status-special: rgb(164, 79, 237);
 }
 
 /* hide default scrollbars to prevent shifting (replaced by OverlayScrollbars) */

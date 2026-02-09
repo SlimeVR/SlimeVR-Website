@@ -491,7 +491,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
             aria-hidden="true"
           />
           {/* slight blur for bg overlay */}
-          <div class="absolute inset-0 bg-black rounded-xl bg-opacity-20 z-0" />
+          <div class="absolute inset-0 bg-black/20 rounded-xl z-0" />
           <div class="relative z-10 w-full h-full flex flex-col items-center justify-evenly">
             {/* card header - name, role(s), image */}
             <div class="flex flex-col flex-1">
