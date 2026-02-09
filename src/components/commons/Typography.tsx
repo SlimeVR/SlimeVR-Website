@@ -28,6 +28,7 @@ interface TypographyProps {
     | "text-end";
   tag: "h1" | "h2" | "h3" | "h4" | "p" | "span";
   key?: string;
+  class?: string;
   children?: JSX.Element;
 }
 
@@ -61,6 +62,7 @@ export const Typography: Component<TypographyProps> = (initialProps) => {
       props.textAlign,
       props.italic && "italic",
       props.truncate && "leading-3 text-ellipsis line-clamp-2",
+      props.class
     ])
   );
 

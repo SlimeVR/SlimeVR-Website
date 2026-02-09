@@ -41,7 +41,7 @@ const VideoThumbnail: Component<{
   return (
     <button
       class={clsx(
-        "rounded-lg overflow-clip aspect-video h-[90px] sm:h-[126px] relative border-2",
+        "rounded-lg overflow-clip aspect-video h-22.5 sm:h-31.5 relative border-2",
         props.active ? "border-accent-background-10" : "border-transparent"
       )}
       onClick={props.onClick}
@@ -186,7 +186,7 @@ export const VideoSection: Component = () => {
         key="home.video-section"
       />
       <div class="flex">
-        <div class="flex flex-grow flex-col gap-2 sm:gap-4 w-full">
+        <div class="flex grow flex-col gap-2 sm:gap-4 w-full">
           <div class="flex gap-4 flex-col justify-center">
             <div class="w-full flex aspect-video bg-background-60 rounded-lg  md:rounded-3xl p-2 md:p-4  border border-background-40">
               <iframe

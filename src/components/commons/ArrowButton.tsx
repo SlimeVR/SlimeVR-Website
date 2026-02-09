@@ -36,7 +36,7 @@ export const ArrowButton: ParentComponent<ArrowButtonProps> = (
     <A
       {...anchorProps}
       class={clsx(
-        "flex items-center sm:gap-5 gap-2 bg-background-60 rounded-2xl p-3 sm:pl-5 sm:pr-10 px-5 hover:cursor-pointer group hover:bg-background-50 opacity-95 transition-colors border",
+        "flex items-center sm:gap-5 gap-2 bg-background-60/80 rounded-2xl p-3 sm:pl-5 sm:pr-10 px-5 hover:cursor-pointer group hover:bg-background-50 backdrop-blur-[9px] transition-colors border",
         props.variant === "primary"
           ? "border-status-success"
           : "border-background-30"
@@ -51,7 +51,7 @@ export const ArrowButton: ParentComponent<ArrowButtonProps> = (
           {prefixIcon()}
         </div>
       </Show>
-      <div class="flex flex-col flex-grow">{props.children}</div>
+      <div class="flex flex-col grow">{props.children}</div>
       <div class="flex w-9 group-hover:translate-x-5 transition-transform duration-200">
         <ArrowIcon
           class="fill-background-10"

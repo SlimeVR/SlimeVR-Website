@@ -404,7 +404,7 @@ export default function TeamPage(props: ParentProps) {
             </SearchBox>
             <Button
               variant="quaternary"
-              class="border border-background-40 !rounded-full !p-2.5 sm:!px-5 sm:!py-2.5"
+              class="border border-background-40 rounded-full! p-2.5! sm:px-5! sm:py-2.5!"
               onClick={shuffle}
             >
               <span class="hidden sm:inline">
@@ -426,7 +426,7 @@ export default function TeamPage(props: ParentProps) {
               return (
                 <div
                   class={clsx(
-                    "max-w-[250px] w-full transform",
+                    "max-w-62.5 w-full transform",
                     isShuffling()
                       ? "animate-pulse scale-95 opacity-80 rotate-1 pointer-events-none duration-200"
                       : "scale-100 opacity-100 rotate-0"

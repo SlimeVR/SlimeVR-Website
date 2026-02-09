@@ -1,4 +1,4 @@
-import { A, useNavigate } from "@solidjs/router";
+import { A, useLocation, useNavigate } from "@solidjs/router";
 import clsx from "clsx";
 import { Component, createSignal } from "solid-js";
 import { Localized } from "~/i18n";
@@ -9,8 +9,14 @@ import { Typography } from "./commons/Typography";
 
 export const NavItems: Component = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   return (
     <>
+      {location.pathname !== "/" && (
+        <A href="/" class="link px-2">
+          <Typography tag="span">Home</Typography>
+        </A>
+      )}
       <a href="https://docs.slimevr.dev" target="_blank" class="link px-2">
         <Typography key="navbar.documentation" tag="span" />
       </a>
@@ -60,7 +66,7 @@ export const Navbar: Component = (props) => {
   return (
     <div class="flex w-full flex-col gap-4 relative">
       <div class="flex gap-2 h-18 w-full justify-between rounded-xl pl-1 pr-4 bg-background-70 border border-background-40">
-        <div class="flex gap-2 p-2 w-full justify-between md:w-auto">
+        <div class="flex gap-2 p-2 w-full justify-between mid:w-auto">
           <A
             class="flex gap-2 justify-center items-center hover:bg-background-60 pl-2 pr-4 rounded-xl"
             href="/"
@@ -73,30 +79,32 @@ export const Navbar: Component = (props) => {
               SlimeVR
             </Typography>
           </A>
-          <div class="items-center hidden md:flex">
-            <Button
-              variant="primary"
-              href="https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker"
-            >
-              <Localized id="navbar.order" />
-            </Button>
-          </div>
-          <div class="flex md:hidden justify-end">
-            <button
-              class="hover:bg-background-60 px-4 rounded-lg"
-              onClick={() => setOpen((open) => !open)}
-            >
-              <BarsIcon size={20} class="fill-background-10"></BarsIcon>
-            </button>
+          <div class="flex">
+            <div class="items-center sm:flex hidden">
+              <Button
+                variant="primary"
+                href="https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker"
+              >
+                <Localized id="navbar.order" />
+              </Button>
+            </div>
+            <div class="flex mid:hidden justify-end">
+              <button
+                class="hover:bg-background-60 px-4 rounded-lg"
+                onClick={() => setOpen((open) => !open)}
+              >
+                <BarsIcon size={20} class="fill-background-10"></BarsIcon>
+              </button>
+            </div>
           </div>
         </div>
-        <div class="divide-x-[1px] divide-background-20 justify-center items-center hidden md:flex">
+        <div class="divide-x divide-background-20 justify-center items-center hidden mid:flex">
           <NavItems></NavItems>
         </div>
       </div>
       <div
         class={clsx(
-          "flex flex-col divide-background-20 gap-2 absolute top-full mt-2 bg-background-70 overflow-clip z-10 md:hidden",
+          "flex flex-col divide-background-20 gap-2 absolute top-full mt-2 bg-background-70 overflow-clip z-10 mid:hidden",
           isOpen()
             ? "h-fit p-4 border border-background-40 w-full rounded-lg "
             : "h-0"

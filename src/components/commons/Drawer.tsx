@@ -124,7 +124,7 @@ export const DrawerItem: ParentComponent<DrawerItemProps> = (props) => {
           </div>
         </div>
         <div
-          class="overflow-clip transition-height bg-background-50 rounded-lg"
+          class="overflow-clip transition-[height] bg-background-50 rounded-lg"
           style={style()}
         >
           <div ref={itemContentRef} class="p-4 rounded-lg">
