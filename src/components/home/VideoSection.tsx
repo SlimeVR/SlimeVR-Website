@@ -16,6 +16,30 @@ import { Typography } from "../commons/Typography";
 
 const videos = [
   {
+    src: "https://www.youtube.com/embed/2JqAj1_KYXU",
+    thumbnail: "https://i.ytimg.com/vi/2JqAj1_KYXU/hqdefault.jpg",
+  },
+  {
+    src: "https://www.youtube.com/embed/JHSXlTkXKbc",
+    thumbnail: "https://i.ytimg.com/vi/JHSXlTkXKbc/hqdefault.jpg",
+  },
+  {
+    src: "https://www.youtube.com/embed/0NMxdY1G0kY",
+    thumbnail: "https://i.ytimg.com/vi/0NMxdY1G0kY/hqdefault.jpg",
+  },
+  {
+    src: "https://www.youtube.com/embed/_a124Y8y9UM",
+    thumbnail: "https://i.ytimg.com/vi/_a124Y8y9UM/hqdefault.jpg",
+  },
+  {
+    src: "https://www.youtube.com/embed/Pbm2pK8iEAA",
+    thumbnail: "https://i.ytimg.com/vi/Pbm2pK8iEAA/hqdefault.jpg",
+  },
+  {
+    src: "https://www.youtube.com/embed/G0du9c7doqs",
+    thumbnail: "https://i.ytimg.com/vi/G0du9c7doqs/hqdefault.jpg",
+  },
+  {
     src: "https://www.youtube.com/embed/0fQlpzWBbXk?si=q_As-iKh4Lv_8l6P",
     thumbnail: "https://i.ytimg.com/vi/0fQlpzWBbXk/hqdefault.jpg",
   },
