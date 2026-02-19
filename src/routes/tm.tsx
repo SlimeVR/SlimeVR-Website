@@ -23,7 +23,7 @@ export default function TmPage(props: ParentProps) {
             class="text-sm w-full min-w-full prose-xl prose text-background-10 prose-h1:text-background-10 prose-h2:text-background-10 prose-a:text-background-20 prose-strong:text-background-10 prose-code:text-background-20"
           >
             {`
-## SlimeVR is a trademark or a registered trademark of SlimeVR B.V.
+## SlimeVR and Butterfly Trackers are a trademark or a registered trademark of SlimeVR B.V.
 
 ---
 
@@ -64,7 +64,7 @@ This applies to all sellers or derivative products, we do not make exceptions.
 
 ---
 
-If you have any questions about SlimeVR trademark or copyrighted materials, you can reach out to us at *tm[at]slimevr.dev*.
+If you have any questions about SlimeVR's trademarks or copyrighted materials, you can reach out to us at *tm[at]slimevr.dev*.
                 `}
           </SolidMarkdown>
         </Container>

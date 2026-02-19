@@ -20,8 +20,7 @@ export const Footer: Component = (props) => {
             class="mt-2 text-center sm:text-left text-xs text-background-30 link"
             href="/tm"
           >
-            SlimeVR is a trademark or a registered trademark of SlimeVR B.V. in
-            Europe and world-wide.
+            SlimeVR and Butterfly Trackers are a trademark or a registered trademark of SlimeVR B.V. world-wide.
           </A>
         </div>
         <div class="flex flex-col gap-2">
