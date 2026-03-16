@@ -276,7 +276,7 @@ export default function HomePage(props: ParentProps) {
                       variant="section-title"
                       tag="span"
                       whitespace="whitespace-nowrap"
-                      key="home.hero.preorder-btn"
+                      key="home.hero.order-btn"
                     />
                     <CrowdSupplyIcon size={180}></CrowdSupplyIcon>
                   </div>
