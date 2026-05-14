@@ -14,8 +14,8 @@ const ANIMATION_TIME = 5500;
 const MIN_TIME = 6000;
 const RANDOM_TIME = 5000;
 const ExplosionDot: Component = () => {
-  let animationId;
-  let animationResetId;
+  let animationId: NodeJS.Timeout;
+  let animationResetId: NodeJS.Timeout;
 
   const [explodePos, setExplodePos] = createSignal<{
     x: number;
