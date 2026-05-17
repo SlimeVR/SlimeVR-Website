@@ -22,22 +22,22 @@ export const TrackersSection = () => {
               <img
                 src="/images/purple_glow.webp"
                 loading="lazy"
-                class="absolute object-contain h-full scale-200 blur-2xl pointer-events-none"
+                class="absolute object-contain h-full scale-200 blur-2xl no-interact"
               ></img>
               <img
                 src="/images/tracker_card_border.webp"
                 loading="lazy"
-                class="absolute object-contain h-full -top-5 scale-[90%] group-hover:rotate-1 transition-transform duration-500 pointer-events-none"
+                class="absolute object-contain h-full -top-5 scale-[90%] group-hover:rotate-1 transition-transform duration-500 no-interact"
               ></img>
               <img
                 src="/images/butterfly_dock.webp"
                 loading="lazy"
-                class="absolute object-contain h-full blur-[3px] group-hover:-rotate-3 transition-transform pointer-events-none"
+                class="absolute object-contain h-full blur-[3px] group-hover:-rotate-3 transition-transform no-interact"
               ></img>
               <img
                 src="/images/butterfly_dock.webp"
                 loading="lazy"
-                class="absolute object-contain h-full group-hover:-rotate-3 transition-transform pointer-events-none"
+                class="absolute object-contain h-full group-hover:-rotate-3 transition-transform no-interact"
               ></img>
             </div>
             <Typography
@@ -79,22 +79,22 @@ export const TrackersSection = () => {
               <img
                 src="/images/purple_glow.webp"
                 loading="lazy"
-                class="absolute object-contain h-full scale-200 blur-2xl pointer-events-none"
+                class="absolute object-contain h-full scale-200 blur-2xl no-interact"
               ></img>
               <img
                 src="/images/tracker_card_border.webp"
                 loading="lazy"
-                class="absolute object-contain h-full -top-5 scale-[90%] group-hover:rotate-1 transition-transform duration-500 pointer-events-none"
+                class="absolute object-contain h-full -top-5 scale-[90%] group-hover:rotate-1 transition-transform duration-500 no-interact"
               ></img>
               <img
                 src="/images/og_slime.webp"
                 loading="lazy"
-                class="absolute object-contain h-full blur-[3px] group-hover:-rotate-3 transition-transform pointer-events-none"
+                class="absolute object-contain h-full blur-[3px] group-hover:-rotate-3 transition-transform no-interact"
               ></img>
               <img
                 src="/images/og_slime.webp"
                 loading="lazy"
-                class="absolute object-contain h-full group-hover:-rotate-3 transition-transform pointer-events-none"
+                class="absolute object-contain h-full group-hover:-rotate-3 transition-transform no-interact"
               ></img>
             </div>
             <Typography

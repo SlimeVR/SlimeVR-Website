@@ -80,7 +80,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
   );
   const [imgClasses, setImgClasses] = createSignal(
     cachedImage?.classes ??
-      "object-contain w-[calc(100%+16px)] scale-[103%] select-none pointer-events-none brightness-[0.01]"
+      "object-contain w-[calc(100%+16px)] scale-[103%] no-interact brightness-[0.01]"
   );
   // TODO: allow hover/tilting during animation without it interrupting the animation - idk how to do this without breaking other things tbh
   const [transitioning, setTransitioning] = createSignal(false); // prevent tilting while transitioning (interrupting it)
@@ -425,7 +425,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
       setImgSrc(image.src);
       setImgClasses(
         clsx(
-          "object-contain w-[calc(100%+16px)] scale-[103%] select-none pointer-events-none",
+          "object-contain w-[calc(100%+16px)] scale-[103%] no-interact",
           classes
         )
       );
@@ -469,9 +469,9 @@ export const Card: ParentComponent<CardProps> = (props) => {
         style={borderStyle()}
         data-card-name={props["data-card-name"]}
       >
-        {/* glow effect when hovering - optimized for performance */}
+        {/* glow effect when hovering */}
         <div
-          class="absolute inset-0 rounded-2xl pointer-events-none z-20"
+          class="absolute inset-0 rounded-2xl no-interact z-20"
           style={{
             background: `radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,var(--glow-opacity, 0)) 0%, transparent 50%)`,
             opacity: `var(--glow-opacity, 0)`,
@@ -536,8 +536,8 @@ export const Card: ParentComponent<CardProps> = (props) => {
                   }}
                 />
                 {(imageLoading() || imageError()) && (
-                  <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <span class="text-6xl font-bold text-white select-none">
+                  <div class="absolute inset-0 flex items-center justify-center no-interact">
+                    <span class="text-6xl font-bold text-white">
                       ?
                     </span>
                   </div>

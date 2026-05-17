@@ -1,12 +1,6 @@
 import { Link, Meta } from "@solidjs/meta";
 import { A, useLocation } from "@solidjs/router";
-import {
-  Component,
-  ParentProps,
-  Show,
-  createEffect,
-  createSignal,
-} from "solid-js";
+import { Component, ParentProps, createEffect, createSignal } from "solid-js";
 import { AppTitle } from "~/components/AppTitle";
 import { ArrowButton } from "~/components/commons/ArrowButton";
 import { Container } from "~/components/commons/Container";
@@ -17,7 +11,6 @@ import { DonwloadIcon } from "~/components/commons/icons/DownloadIcon";
 import { Typography } from "~/components/commons/Typography";
 import { DownloadSection } from "~/components/home/DownloadSection";
 import { QASection } from "~/components/home/QASection";
-import { TrackersSection } from "~/components/home/TrackersSection";
 import { VideoSection } from "~/components/home/VideoSection";
 import { Section } from "~/components/Section";
 import { MainLayout } from "~/layouts/MainLayout";
@@ -35,7 +28,7 @@ const UseCaseCard: Component<{ title: string; image: string; desc: string }> = (
           key={props.title}
         />
       </div>
-      <div class="flex justify-center items-center sm:justify-start h-52 md:h-auto select-none pointer-events-none sm:w-fit">
+      <div class="flex justify-center items-center sm:justify-start h-52 md:h-auto no-interact sm:w-fit">
         <img
           src={props.image}
           loading="lazy"
@@ -121,22 +114,22 @@ export default function HomePage(props: ParentProps) {
                   <img
                     src="/images/purple_glow.webp"
                     loading="lazy"
-                    class="absolute object-contain h-full scale-200 blur-2xl pointer-events-none"
+                    class="absolute object-contain h-full scale-200 blur-2xl no-interact"
                   ></img>
                   <img
                     src="/images/tracker_card_border.webp"
                     loading="lazy"
-                    class="absolute object-contain h-full -top-5 scale-[90%] group-hover:rotate-1 transition-transform duration-500 pointer-events-none"
+                    class="absolute object-contain h-full -top-5 scale-[90%] group-hover:rotate-1 transition-transform duration-500 no-interact"
                   ></img>
                   <img
                     src="/images/butterfly_dock.webp"
                     loading="lazy"
-                    class="absolute object-contain h-full blur-[3px] group-hover:-rotate-3 transition-transform pointer-events-none"
+                    class="absolute object-contain h-full blur-[3px] group-hover:-rotate-3 transition-transform no-interact"
                   ></img>
                   <img
                     src="/images/butterfly_dock.webp"
                     loading="lazy"
-                    class="absolute object-contain h-full group-hover:-rotate-3 transition-transform pointer-events-none"
+                    class="absolute object-contain h-full group-hover:-rotate-3 transition-transform no-interact"
                   ></img>
                 </div>
                 <Typography
@@ -184,22 +177,22 @@ export default function HomePage(props: ParentProps) {
                   <img
                     src="/images/purple_glow.webp"
                     loading="lazy"
-                    class="absolute object-contain h-full scale-200 blur-2xl pointer-events-none"
+                    class="absolute object-contain h-full scale-200 blur-2xl no-interact"
                   ></img>
                   <img
                     src="/images/tracker_card_border.webp"
                     loading="lazy"
-                    class="absolute object-contain h-full -top-5 scale-[90%] group-hover:rotate-1 transition-transform duration-500 pointer-events-none"
+                    class="absolute object-contain h-full -top-5 scale-[90%] group-hover:rotate-1 transition-transform duration-500 no-interact"
                   ></img>
                   <img
                     src="/images/og_slime.webp"
                     loading="lazy"
-                    class="absolute object-contain h-full blur-[3px] group-hover:-rotate-3 transition-transform pointer-events-none"
+                    class="absolute object-contain h-full blur-[3px] group-hover:-rotate-3 transition-transform no-interact"
                   ></img>
                   <img
                     src="/images/og_slime.webp"
                     loading="lazy"
-                    class="absolute object-contain h-full group-hover:-rotate-3 transition-transform pointer-events-none"
+                    class="absolute object-contain h-full group-hover:-rotate-3 transition-transform no-interact"
                   ></img>
                 </div>
                 <Typography
@@ -228,7 +221,7 @@ export default function HomePage(props: ParentProps) {
             </div>
           </div>
 
-          <div class="flex flex-col justify-between items-center pointer-events-none">
+          <div class="flex flex-col justify-between items-center no-interact">
             {/* nighty */}
             <div class="absolute w-full h-full top-0 left-0">
               <img
@@ -249,11 +242,11 @@ export default function HomePage(props: ParentProps) {
             </div>
 
             {/* tracker */}
-            <div class="absolute mid:top-18 sm:top-32 top-12 w-100 sm:w-120 2xl:w-140">
+            <div class="absolute mid:top-18 sm:top-32 top-12 w-100 sm:w-120 2xl:w-140 no-interact">
               <img
                 src="/images/purple_glow.webp"
                 loading="lazy"
-                class="w-full scale-120 absolute top-0 -z-10 "
+                class="w-full scale-120 absolute top-0 -z-10"
               ></img>
               <img
                 src="/images/butterfly_tracker.webp"

@@ -211,7 +211,7 @@ const preloadImage = (name: string, classes?: string): Promise<void> => {
       imageCache.set(name, {
         src: image.src,
         classes: clsx(
-          "object-contain w-[calc(100%+16px)] scale-[103%] select-none",
+          "object-contain w-[calc(100%+16px)] scale-[103%] no-interact",
           classes
         ),
         error: false,
@@ -222,7 +222,7 @@ const preloadImage = (name: string, classes?: string): Promise<void> => {
       imageCache.set(name, {
         src: `/images/contributors/jovannmc.webp`, // fallback
         classes:
-          "object-contain w-[calc(100%+16px)] scale-[103%] select-none brightness-[0.01]",
+          "object-contain w-[calc(100%+16px)] scale-[103%] no-interact brightness-[0.01]",
         error: true,
       });
       resolve();
@@ -428,7 +428,7 @@ export default function TeamPage(props: ParentProps) {
                   class={clsx(
                     "max-w-62.5 w-full transform",
                     isShuffling()
-                      ? "animate-pulse scale-95 opacity-80 rotate-1 pointer-events-none duration-200"
+                      ? "animate-pulse scale-95 opacity-80 rotate-1 no-interact duration-200"
                       : "scale-100 opacity-100 rotate-0"
                   )}
                 >

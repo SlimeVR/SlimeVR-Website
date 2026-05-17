@@ -206,6 +206,12 @@ a.link {
   -webkit-backface-visibility: hidden;
 }
 
+.no-interact {
+  -webkit-user-drag: none;
+  user-drag: none;
+  user-select: none;
+}
+
 /* OverlayScrollbars styling */
 .os-scrollbar-handle {
   background: rgba(255, 255, 255, 0.6) !important;

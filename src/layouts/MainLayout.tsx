@@ -82,7 +82,7 @@ export const MainLayout: ParentComponent<MainLaoutProps> = (props) => {
         <ExplosionDot></ExplosionDot>
         <div class="flex flex-col w-full items-center relative overflow-y-clip py-4">
           <img
-            class="absolute w-full top-0"
+            class="absolute w-full top-0 no-interact"
             src="/images/Webpage_Design_Parts_header_block.webp"
           ></img>
           <div class="max-w-6xl 2xl:max-w-350 w-full top-5 z-20 px-4">

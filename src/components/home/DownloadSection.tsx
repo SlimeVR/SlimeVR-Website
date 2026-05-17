@@ -140,7 +140,7 @@ export const DownloadSection: Component = () => {
             </DownloadButton>
           </div>
         </div>
-        <div class="pointer-events-none select-none w-full flex flex-col justify-center grow pr-8">
+        <div class="no-interact w-full flex flex-col justify-center grow pr-8">
           <div class="w-full relative aspect-video mt-4">
             <div class="bg-background-70 rounded-lg border border-background-40 absolute w-full top-0 left-0">
               <img
