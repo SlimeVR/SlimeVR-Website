@@ -32,12 +32,12 @@ export const TrackersSection = () => {
               <img
                 src="/images/butterfly_dock.webp"
                 loading="lazy"
-                class="absolute object-contain h-full blur-[3px] scale-[140%] group-hover:-rotate-3 transition-transform pointer-events-none"
+                class="absolute object-contain h-full blur-[3px] group-hover:-rotate-3 transition-transform pointer-events-none"
               ></img>
               <img
                 src="/images/butterfly_dock.webp"
                 loading="lazy"
-                class="absolute object-contain h-full scale-[140%] group-hover:-rotate-3 transition-transform pointer-events-none"
+                class="absolute object-contain h-full group-hover:-rotate-3 transition-transform pointer-events-none"
               ></img>
             </div>
             <Typography
@@ -89,12 +89,12 @@ export const TrackersSection = () => {
               <img
                 src="/images/og_slime.webp"
                 loading="lazy"
-                class="absolute object-contain h-full blur-[3px] sm:scale-[100%] group-hover:-rotate-3 transition-transform pointer-events-none"
+                class="absolute object-contain h-full blur-[3px] group-hover:-rotate-3 transition-transform pointer-events-none"
               ></img>
               <img
                 src="/images/og_slime.webp"
                 loading="lazy"
-                class="absolute object-contain h-full scale-[100%] group-hover:-rotate-3 transition-transform pointer-events-none"
+                class="absolute object-contain h-full group-hover:-rotate-3 transition-transform pointer-events-none"
               ></img>
             </div>
             <Typography

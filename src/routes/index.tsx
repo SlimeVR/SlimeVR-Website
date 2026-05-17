@@ -17,6 +17,7 @@ import { DonwloadIcon } from "~/components/commons/icons/DownloadIcon";
 import { Typography } from "~/components/commons/Typography";
 import { DownloadSection } from "~/components/home/DownloadSection";
 import { QASection } from "~/components/home/QASection";
+import { TrackersSection } from "~/components/home/TrackersSection";
 import { VideoSection } from "~/components/home/VideoSection";
 import { Section } from "~/components/Section";
 import { MainLayout } from "~/layouts/MainLayout";
@@ -102,88 +103,132 @@ export default function HomePage(props: ParentProps) {
       />
       <Section>
         <div class="flex flex-col h-150 sm:h-220 justify-between items-center my-8 relative">
-          <Typography
-            variant="main-title"
-            tag="h1"
-            key="home.hero.description"
-            textAlign="text-center"
-            class="2xl:max-w-[90%]"
-          />
-
-          {/* <Section>
-            <TrackersSection></TrackersSection>
-          </Section> */}
-
-          <div class="flex flex-col justify-between items-center">
-            {/* sidebar */}
-            <div class="hidden sm:flex flex-col gap-4 absolute left-6 top-1/2 -translate-y-1/2 z-20">
-              <div
-                role="button"
-                tabIndex={0}
-                class="flex flex-col items-center gap-2 cursor-pointer select-none p-4 bg-background-60/80 border border-background-30 rounded-lg hover:scale-105 transition-transform"
-                onClick={() => {
-                  setTracker("og");
-                }}
+          {/* grids-col-3 instead */}
+          {/* <div class="flex flex-row justify-between items-center w-full gap-4 "> */}
+          <div class="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
+            <div class="group rounded-2xl flex flex-col overflow-clip items-center gap-2 sm:gap-4 justify-between bg-background-60/40 border backdrop-blur-[9px] border-background-30/80">
+              <A
+                class="px-12 pt-8 flex flex-col items-center w-full"
+                href="https://www.crowdsupply.com/slimevr/slimevr-butterfly-trackers"
               >
-                <img
-                  src="/images/og_slime.webp"
-                  loading="lazy"
-                  class="w-24 h-24 object-contain"
-                  alt="OG Slime"
-                />
-                <Typography key="home.hero.og-slime" tag="p"></Typography>
-                <Typography key="home.hero.price" tag="p"></Typography>
-              </div>
-
-              <div
-                role="button"
-                tabIndex={0}
-                class="flex flex-col items-center gap-2 cursor-pointer select-none p-4 bg-background-60/80 border border-background-30 rounded-lg hover:scale-105 transition-transform"
-                onClick={() => {
-                  setTracker("butterfly");
-                }}
-              >
-                <img
-                  src="/images/butterfly_dock.webp"
-                  loading="lazy"
-                  class="w-24 h-24 object-contain"
-                  alt="Butterfly Tracker"
-                />
                 <Typography
+                  tag="h1"
+                  textAlign="text-center"
                   key="home.hero.butterfly-slime"
-                  tag="p"
+                  class="text-[2.25rem] font-bold"
                 ></Typography>
+                <div class="relative h-30 md:h-40 w-full flex justify-center">
+                  <img
+                    src="/images/purple_glow.webp"
+                    loading="lazy"
+                    class="absolute object-contain h-full scale-200 blur-2xl pointer-events-none"
+                  ></img>
+                  <img
+                    src="/images/tracker_card_border.webp"
+                    loading="lazy"
+                    class="absolute object-contain h-full -top-5 scale-[90%] group-hover:rotate-1 transition-transform duration-500 pointer-events-none"
+                  ></img>
+                  <img
+                    src="/images/butterfly_dock.webp"
+                    loading="lazy"
+                    class="absolute object-contain h-full blur-[3px] group-hover:-rotate-3 transition-transform pointer-events-none"
+                  ></img>
+                  <img
+                    src="/images/butterfly_dock.webp"
+                    loading="lazy"
+                    class="absolute object-contain h-full group-hover:-rotate-3 transition-transform pointer-events-none"
+                  ></img>
+                </div>
                 <Typography
                   key="home.hero.price-butterfly"
                   tag="p"
+                  class="text-[2rem] font-bold"
                 ></Typography>
+              </A>
+              <div class="w-full px-8 pb-8">
+                <ArrowButton
+                  variant="primary"
+                  prefixIcon={<CartIcon size={40}></CartIcon>}
+                  href="https://www.crowdsupply.com/slimevr/slimevr-butterfly-trackers"
+                >
+                  <div class="flex flex-col flex-wrap relative justify-center pb-2">
+                    <Typography
+                      variant="section-title"
+                      tag="span"
+                      whitespace="whitespace-nowrap"
+                      key="home.hero.preorder-btn"
+                    />
+                    <CrowdSupplyIcon size={180}></CrowdSupplyIcon>
+                  </div>
+                </ArrowButton>
               </div>
             </div>
-
-            <div class="flex sm:hidden flex-row gap-4 w-full justify-center items-center">
-              <div class="flex flex-col items-center gap-2 p-2">
-                <img
-                  src="/images/og_slime.webp"
-                  loading="lazy"
-                  class="w-20 h-20 object-contain"
-                  alt="OG Slime"
-                />
-                <Typography key="home.hero.price" tag="p"></Typography>
-              </div>
-              <div class="flex flex-col items-center gap-2 p-2">
-                <img
-                  src="/images/butterfly_dock.webp"
-                  loading="lazy"
-                  class="w-20 h-20 object-contain"
-                  alt="Butterfly Tracker"
-                />
+            <Typography
+              tag="h1"
+              key="home.hero.description"
+              textAlign="text-center"
+              class="text-[2.5rem] font-bold self-start"
+            />
+            <div class="group rounded-2xl flex flex-col overflow-clip items-center gap-2 sm:gap-4 justify-between bg-background-60/40 border backdrop-blur-[9px] border-background-30/80">
+              <A
+                class="px-8 pt-8 flex flex-col items-center w-full"
+                href="https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker"
+              >
                 <Typography
-                  key="home.hero.price-butterfly"
-                  tag="p"
+                  tag="h1"
+                  textAlign="text-center"
+                  key="home.hero.og-slime"
+                  class="text-[2.25rem] font-bold"
                 ></Typography>
+                <div class="relative h-30 md:h-40 w-full flex justify-center">
+                  <img
+                    src="/images/purple_glow.webp"
+                    loading="lazy"
+                    class="absolute object-contain h-full scale-200 blur-2xl pointer-events-none"
+                  ></img>
+                  <img
+                    src="/images/tracker_card_border.webp"
+                    loading="lazy"
+                    class="absolute object-contain h-full -top-5 scale-[90%] group-hover:rotate-1 transition-transform duration-500 pointer-events-none"
+                  ></img>
+                  <img
+                    src="/images/og_slime.webp"
+                    loading="lazy"
+                    class="absolute object-contain h-full blur-[3px] group-hover:-rotate-3 transition-transform pointer-events-none"
+                  ></img>
+                  <img
+                    src="/images/og_slime.webp"
+                    loading="lazy"
+                    class="absolute object-contain h-full group-hover:-rotate-3 transition-transform pointer-events-none"
+                  ></img>
+                </div>
+                <Typography
+                  key="home.hero.price"
+                  tag="h1"
+                  class="text-[2rem] font-bold"
+                ></Typography>
+              </A>
+              <div class="w-full px-8 pb-8">
+                <ArrowButton
+                  variant="primary"
+                  prefixIcon={<CartIcon size={40}></CartIcon>}
+                  href="https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker"
+                >
+                  <div class="flex flex-col flex-wrap relative justify-center pb-2">
+                    <Typography
+                      variant="section-title"
+                      tag="span"
+                      whitespace="whitespace-nowrap"
+                      key="home.hero.order-btn"
+                    />
+                    <CrowdSupplyIcon size={180}></CrowdSupplyIcon>
+                  </div>
+                </ArrowButton>
               </div>
             </div>
+          </div>
 
+          <div class="flex flex-col justify-between items-center pointer-events-none">
             {/* nighty */}
             <div class="absolute w-full h-full top-0 left-0">
               <img
@@ -204,37 +249,18 @@ export default function HomePage(props: ParentProps) {
             </div>
 
             {/* tracker */}
-            <div class="absolute mid:top-32 sm:top-48 top-36 sm:translate-x-10 w-96 sm:w-120 2xl:w-140 h-72 md:h-96 flex justify-center">
+            <div class="absolute mid:top-18 sm:top-32 top-12 w-100 sm:w-120 2xl:w-140">
               <img
                 src="/images/purple_glow.webp"
                 loading="lazy"
-                class="absolute object-contain h-full scale-200 blur-2xl pointer-events-none"
+                class="w-full scale-120 absolute top-0 -z-10 "
               ></img>
-              <Show when={tracker() === "og"}>
-                <img
-                  src="/images/og_slime.webp"
-                  loading="lazy"
-                  class="absolute object-contain h-full blur-[3px] animate-rotated pointer-events-none"
-                ></img>
-                <img
-                  src="/images/og_slime.webp"
-                  loading="lazy"
-                  class="absolute object-contain h-full animate-rotated"
-                ></img>
-              </Show>
-              <Show when={tracker() === "butterfly"}>
-                <img
-                  src="/images/butterfly_dock.webp"
-                  loading="lazy"
-                  class="absolute object-contain h-full blur-[3px] animate-rotated pointer-events-none"
-                ></img>
-                <img
-                  src="/images/butterfly_dock.webp"
-                  loading="lazy"
-                  class="absolute object-contain h-full animate-rotated"
-                ></img>
-              </Show>
-              <div class="absolute w-full h-full top-20 left-0 brightness-90 animate-stars2">
+              <img
+                src="/images/butterfly_tracker.webp"
+                loading="lazy"
+                class="w-full animate-rotated"
+              ></img>
+              <div class="absolute w-full h-full top-20 left-0 brightness-90 animate-stars2 -z-10">
                 <img
                   src="/images/stars.webp"
                   loading="lazy"
@@ -245,35 +271,6 @@ export default function HomePage(props: ParentProps) {
           </div>
 
           <div class="w-full flex flex-col gap-4 items-center">
-            <div class="w-full flex justify-center">
-              <div class="w-full md:w-1/2">
-                <ArrowButton
-                  variant="primary"
-                  prefixIcon={<CartIcon size={40}></CartIcon>}
-                  href="https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker"
-                >
-                  <div class="flex flex-col flex-wrap relative justify-center pb-2">
-                    {tracker() === "og" ? (
-                      <Typography
-                        variant="section-title"
-                        tag="span"
-                        whitespace="whitespace-nowrap"
-                        key="home.hero.buy-slime.order"
-                      />
-                    ) : (
-                      <Typography
-                        variant="section-title"
-                        tag="span"
-                        whitespace="whitespace-nowrap"
-                        key="home.hero.buy-slime.preorder"
-                      />
-                    )}
-                    <CrowdSupplyIcon size={180}></CrowdSupplyIcon>
-                  </div>
-                </ArrowButton>
-              </div>
-            </div>
-
             <div class="grid md:grid-cols-2 grid-cols-1 w-full md:gap-10 gap-4">
               <div>
                 <ArrowButton

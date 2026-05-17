@@ -32,9 +32,11 @@
   "home": {
     "title": "SlimeVR Full-Body Trackers",
     "hero": {
-      "description": "An affordable, comfortable, wireless, 360° solution for full-body tracking in virtual reality",
+      "description": "The affordable VR full-body tracking solution.",
       "price": "From $219",
       "price-butterfly": "From $279",
+      "order-btn": "Order on",
+      "preorder-btn": "Pre-order on",
       "join-btn": "Join campaign at",
       "butterfly-slime": "Butterfly Trackers",
       "og-slime": "SlimeVR V1.2",
