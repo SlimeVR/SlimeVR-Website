@@ -1,0 +1,257 @@
+import { A } from "@solidjs/router";
+import { Component } from "solid-js";
+import { ArrowButton } from "../commons/ArrowButton";
+import { CartIcon } from "../commons/icons/CartIcon";
+import { CrowdSupplyIcon } from "../commons/icons/CrowdSupplyIcon";
+import { DiscordIcon } from "../commons/icons/DiscordIcon";
+import { DonwloadIcon } from "../commons/icons/DownloadIcon";
+import { Typography } from "../commons/Typography";
+
+export const HeroSection: Component = () => {
+  return (
+    <div class="flex flex-col h-150 sm:h-220 justify-between items-center my-8 relative">
+      <div class="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
+        <div class="group rounded-2xl flex flex-col overflow-clip items-center gap-2 sm:gap-4 justify-between bg-background-60/40 border backdrop-blur-[9px] border-background-30/80">
+          <A
+            class="px-12 pt-8 flex flex-col items-center w-full"
+            href="https://www.crowdsupply.com/slimevr/slimevr-butterfly-trackers"
+          >
+            <Typography
+              tag="h1"
+              textAlign="text-center"
+              key="home.hero.butterfly-slime"
+              class="text-[2.25rem] font-bold"
+            ></Typography>
+            <div class="relative h-30 md:h-40 w-full flex justify-center">
+              <img
+                src="/images/purple_glow.webp"
+                loading="lazy"
+                class="absolute object-contain h-full scale-200 blur-2xl no-interact"
+              ></img>
+              <img
+                src="/images/tracker_card_border.webp"
+                loading="lazy"
+                class="absolute object-contain h-full -top-5 scale-[90%] group-hover:rotate-1 transition-transform duration-500 no-interact"
+              ></img>
+              <img
+                src="/images/butterfly_dock.webp"
+                loading="lazy"
+                class="absolute object-contain h-full blur-[3px] group-hover:-rotate-3 transition-transform no-interact"
+              ></img>
+              <img
+                src="/images/butterfly_dock.webp"
+                loading="lazy"
+                class="absolute object-contain h-full group-hover:-rotate-3 transition-transform no-interact"
+              ></img>
+            </div>
+            <Typography
+              key="home.hero.price-butterfly"
+              tag="p"
+              class="text-[2rem] font-bold"
+            ></Typography>
+          </A>
+
+          {/* regular version of order button */}
+          <div class="w-full px-8 pb-8 hidden 2xl:block">
+            <ArrowButton
+              variant="primary"
+              prefixIcon={<CartIcon size={40}></CartIcon>}
+              href="https://www.crowdsupply.com/slimevr/slimevr-butterfly-trackers"
+            >
+              <div class="flex flex-col flex-wrap relative justify-center pb-2">
+                <Typography
+                  variant="section-title"
+                  tag="span"
+                  whitespace="whitespace-nowrap"
+                  key="home.hero.preorder-btn"
+                />
+                <CrowdSupplyIcon size={180}></CrowdSupplyIcon>
+              </div>
+            </ArrowButton>
+          </div>
+
+          {/* smaller version for anything smaller than 1080p </3 */}
+          <div class="w-full px-8 pb-8 block 2xl:hidden">
+            <ArrowButton
+              variant="primary"
+              prefixIcon={<CartIcon size={30}></CartIcon>}
+              href="https://www.crowdsupply.com/slimevr/slimevr-butterfly-trackers"
+            >
+              <div class="flex flex-col flex-wrap relative justify-center pb-2">
+                <Typography
+                  tag="span"
+                  whitespace="whitespace-nowrap"
+                  key="home.hero.preorder-btn"
+                  class="text-[1.2rem] font-bold"
+                />
+                <CrowdSupplyIcon size={144}></CrowdSupplyIcon>
+              </div>
+            </ArrowButton>
+          </div>
+        </div>
+        <Typography
+          tag="h1"
+          key="home.hero.description"
+          textAlign="text-center"
+          class="text-[2.5rem] font-bold self-start"
+        />
+        <div class="group rounded-2xl flex flex-col overflow-clip items-center gap-2 sm:gap-4 justify-between bg-background-60/40 border backdrop-blur-[9px] border-background-30/80">
+          <A
+            class="px-8 pt-8 flex flex-col items-center w-full"
+            href="https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker"
+          >
+            <Typography
+              tag="h1"
+              textAlign="text-center"
+              key="home.hero.og-slime"
+              class="text-[2.25rem] font-bold"
+            ></Typography>
+            <div class="relative h-30 md:h-40 w-full flex justify-center">
+              <img
+                src="/images/purple_glow.webp"
+                loading="lazy"
+                class="absolute object-contain h-full scale-200 blur-2xl no-interact"
+              ></img>
+              <img
+                src="/images/tracker_card_border.webp"
+                loading="lazy"
+                class="absolute object-contain h-full -top-5 scale-[90%] group-hover:rotate-1 transition-transform duration-500 no-interact"
+              ></img>
+              <img
+                src="/images/og_slime.webp"
+                loading="lazy"
+                class="absolute object-contain h-full blur-[3px] group-hover:-rotate-3 transition-transform no-interact"
+              ></img>
+              <img
+                src="/images/og_slime.webp"
+                loading="lazy"
+                class="absolute object-contain h-full group-hover:-rotate-3 transition-transform no-interact"
+              ></img>
+            </div>
+            <Typography
+              key="home.hero.price"
+              tag="h1"
+              class="text-[2rem] font-bold"
+            ></Typography>
+          </A>
+
+          {/* regular version of order button */}
+          <div class="w-full px-8 pb-8 hidden 2xl:block">
+            <ArrowButton
+              variant="primary"
+              prefixIcon={<CartIcon size={40}></CartIcon>}
+              href="https://www.crowdsupply.com/slimevr/slimevr-butterfly-trackers"
+            >
+              <div class="flex flex-col flex-wrap relative justify-center pb-2">
+                <Typography
+                  variant="section-title"
+                  tag="span"
+                  whitespace="whitespace-nowrap"
+                  key="home.hero.order-btn"
+                />
+                <CrowdSupplyIcon size={180}></CrowdSupplyIcon>
+              </div>
+            </ArrowButton>
+          </div>
+
+          {/* smaller version for anything smaller than 1080p </3 */}
+          <div class="w-full px-8 pb-8 block 2xl:hidden">
+            <ArrowButton
+              variant="primary"
+              prefixIcon={<CartIcon size={30}></CartIcon>}
+              href="https://www.crowdsupply.com/slimevr/slimevr-butterfly-trackers"
+            >
+              <div class="flex flex-col flex-wrap relative justify-center pb-2">
+                <Typography
+                  tag="span"
+                  whitespace="whitespace-nowrap"
+                  key="home.hero.order-btn"
+                  class="text-[1.2rem] font-bold"
+                />
+                <CrowdSupplyIcon size={144}></CrowdSupplyIcon>
+              </div>
+            </ArrowButton>
+          </div>
+        </div>
+      </div>
+
+      {/* nighty showing trackers bg */}
+      <div class="flex flex-col justify-between items-center no-interact">
+        {/* nighty */}
+        <div class="absolute w-full h-full top-0 left-0">
+          <img
+            src="/images/nighty_floating.webp"
+            loading="lazy"
+            class="absolute -z-10 scale-[135%] sm:mt-80 mt-40 sm:animate-floating blur-lg min-w-280 left-1/2 -translate-x-[55%] sm:-translate-x-1/2"
+          ></img>
+          <img
+            src="/images/nighty_floating.webp"
+            loading="lazy"
+            class="absolute -z-10 scale-[135%] sm:mt-80 mt-40 sm:animate-floating min-w-280 left-1/2 -translate-x-[55%] sm:-translate-x-1/2 brightness-75 sm:brightness-100"
+          ></img>
+          <img
+            src="/images/stars.webp"
+            loading="lazy"
+            class="absolute -z-10 scale-[135%] sm:mt-80 mt-40 sm:animate-stars"
+          ></img>
+        </div>
+
+        {/* tracker */}
+        <div class="absolute mid:top-18 sm:top-32 top-12 w-100 sm:w-120 2xl:w-140 no-interact hidden sm:block">
+          <img
+            src="/images/purple_glow.webp"
+            loading="lazy"
+            class="w-full scale-120 absolute top-0 -z-10"
+          ></img>
+          <img
+            src="/images/butterfly_tracker.webp"
+            loading="lazy"
+            class="w-full animate-rotated"
+          ></img>
+          <div class="absolute w-full h-full top-20 left-0 brightness-90 animate-stars2 -z-10">
+            <img src="/images/stars.webp" loading="lazy" class="w-full"></img>
+          </div>
+        </div>
+      </div>
+
+      {/* CTA stuff */}
+      <div class="w-full flex flex-col gap-4 items-center">
+        <div class="grid md:grid-cols-2 grid-cols-1 w-full md:gap-10 gap-4">
+          <div>
+            <ArrowButton
+              prefixIcon={<DonwloadIcon size={35}></DonwloadIcon>}
+              href="#download"
+              onClick={(e) => {
+                e.preventDefault();
+                document
+                  .getElementById("download")
+                  ?.scrollIntoView({ behavior: "smooth", block: "center" });
+              }}
+            >
+              <Typography
+                variant="section-title"
+                tag="span"
+                key="home.hero.download-server.title"
+              />
+              <Typography tag="p" key="home.hero.download-server.desc" />
+            </ArrowButton>
+          </div>
+
+          <div>
+            <ArrowButton
+              prefixIcon={<DiscordIcon size={40}></DiscordIcon>}
+              href="https://discord.gg/SlimeVR"
+            >
+              <Typography
+                variant="section-title"
+                tag="span"
+                key="home.hero.join-discord.title"
+              />
+              <Typography tag="p" key="home.hero.join-discord.desc" />
+            </ArrowButton>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
