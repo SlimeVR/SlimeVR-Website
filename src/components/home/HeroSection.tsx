@@ -95,8 +95,10 @@ const TrackerCard: Component<{
 
 export const HeroSection: Component = () => {
   return (
-    <div class="flex flex-col h-150 sm:h-220 justify-between items-center my-8 relative">
-      <div class="grid md:grid-cols-3 grid-cols-1 w-full gap-4">
+    // <div class="flex flex-col h-150 sm:h-220 justify-between items-center my-8 relative">
+    <div class="flex flex-col h-full sm:h-220 justify-between items-center my-8 relative">
+      {/* desktop hero */}
+      <div class="md:grid-cols-3 grid-cols-1 w-full gap-4 hidden sm:grid">
         <TrackerCard
           titleKey="home.hero.butterfly-slime"
           mainImage="/images/butterfly_dock.webp"
@@ -119,8 +121,32 @@ export const HeroSection: Component = () => {
         />
       </div>
 
+      {/* mobile hero */}
+      <div class="grid md:grid-cols-3 grid-cols-1 w-full gap-4 sm:hidden ">
+        <Typography
+          tag="h1"
+          key="home.hero.description"
+          textAlign="text-center"
+          class="text-[2.5rem] font-bold self-start"
+        />
+        <TrackerCard
+          titleKey="home.hero.butterfly-slime"
+          mainImage="/images/butterfly_dock.webp"
+          priceKey="home.hero.price-butterfly"
+          orderKey="home.hero.preorder-btn"
+          href="https://www.crowdsupply.com/slimevr/slimevr-butterfly-trackers"
+        />
+        <TrackerCard
+          titleKey="home.hero.og-slime"
+          mainImage="/images/og_slime.webp"
+          priceKey="home.hero.price"
+          orderKey="home.hero.order-btn"
+          href="https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker"
+        />
+      </div>
+
       {/* nighty showing trackers bg */}
-      <div class="flex flex-col justify-between items-center no-interact">
+      <div class="hidden flex-col justify-between items-center no-interact sm:flex">
         {/* nighty */}
         <div class="absolute w-full h-full top-0 left-0">
           <img
