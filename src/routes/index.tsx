@@ -1,13 +1,8 @@
 import { Link, Meta } from "@solidjs/meta";
 import { A, useLocation } from "@solidjs/router";
-import { Component, ParentProps, createEffect, createSignal } from "solid-js";
+import { Component, ParentProps, createEffect } from "solid-js";
 import { AppTitle } from "~/components/AppTitle";
-import { ArrowButton } from "~/components/commons/ArrowButton";
 import { Container } from "~/components/commons/Container";
-import { CartIcon } from "~/components/commons/icons/CartIcon";
-import { CrowdSupplyIcon } from "~/components/commons/icons/CrowdSupplyIcon";
-import { DiscordIcon } from "~/components/commons/icons/DiscordIcon";
-import { DonwloadIcon } from "~/components/commons/icons/DownloadIcon";
 import { Typography } from "~/components/commons/Typography";
 import { DownloadSection } from "~/components/home/DownloadSection";
 import { HeroSection } from "~/components/home/HeroSection";

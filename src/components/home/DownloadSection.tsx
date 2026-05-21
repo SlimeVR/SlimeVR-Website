@@ -3,12 +3,13 @@ import clsx from "clsx";
 import {
   children,
   Component,
+  For,
   JSX,
   mergeProps,
   ParentComponent,
   splitProps,
 } from "solid-js";
-import { DonwloadIcon } from "../../components/commons/icons/DownloadIcon";
+import { DownloadIcon } from "../../components/commons/icons/DownloadIcon";
 import {
   AndroidIcon,
   AppleIcon,
@@ -23,6 +24,44 @@ interface DownloadButtonProps extends AnchorProps {
   prefixIcon?: JSX.Element;
   variant?: "primary" | "default";
 }
+
+const DownloadLinks = {
+  desktop: [
+    {
+      name: "Steam",
+      href: "https://store.steampowered.com/app/3245490/SlimeVR/",
+      icon: <SteamIcon size={50}></SteamIcon>,
+    },
+    {
+      name: "Windows",
+      href: "https://github.com/SlimeVR/SlimeVR-Installer/releases/latest/download/slimevr_web_installer.exe",
+      icon: <WindowsIcon size={40}></WindowsIcon>,
+    },
+    {
+      name: "Linux",
+      href: "https://flathub.org/apps/dev.slimevr.SlimeVR",
+      icon: <LinuxIcon size={40}></LinuxIcon>,
+    },
+    {
+      name: "MacOS",
+      href: "https://github.com/SlimeVR/SlimeVR-Installer/releases/latest/download/slimevr_web_installer.dmg",
+      icon: <AppleIcon size={35}></AppleIcon>,
+    },
+  ],
+  mobile: [
+    {
+      name: "Android",
+      href: "https://play.google.com/store/apps/details?id=dev.slimevr.server.android",
+      icon: <AndroidIcon size={50}></AndroidIcon>,
+    },
+    {
+      name: "SideQuest",
+      href: "https://sidequestvr.com/app/45270/slimevr",
+      icon: <SideQuestIcon size={50}></SideQuestIcon>,
+    },
+    // and iOS would be here.. if it ever gets better
+  ],
+};
 
 export const DownloadButton: ParentComponent<DownloadButtonProps> = (
   initialProps
@@ -45,7 +84,7 @@ export const DownloadButton: ParentComponent<DownloadButtonProps> = (
     <A
       {...anchorProps}
       class={clsx(
-        "flex items-center sm:gap-5 gap-2 bg-background-60 rounded-2xl p-3 sm:pl-5 sm:pr-5 px-5 hover:cursor-pointer group hover:bg-background-50 opacity-95 transition-colors border",
+        "flex items-center sm:gap-5 gap-2 bg-background-60 rounded-2xl p-3 sm:pl-5 sm:pr-5 px-5 hover:cursor-pointer group hover:bg-background-50 opacity-95 transition-colors border min-h-19",
         props.variant === "primary"
           ? "border-status-success"
           : "border-background-30"
@@ -62,7 +101,7 @@ export const DownloadButton: ParentComponent<DownloadButtonProps> = (
       </div>
       <div class="flex flex-col grow">{props.children}</div>
       <div class="flex w-9 group-hover:translate-y-1 transition-transform duration-200">
-        <DonwloadIcon size={30} class="fill-background-10"></DonwloadIcon>
+        <DownloadIcon size={30} class="fill-background-10"></DownloadIcon>
       </div>
     </A>
   );
@@ -85,67 +124,37 @@ export const DownloadSection: Component = () => {
             Desktop
           </Typography>
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-2">
-            <DownloadButton
-              prefixIcon={<SteamIcon size={50}></SteamIcon>}
-              href="https://store.steampowered.com/app/3245490/SlimeVR/"
-            >
-              <Typography variant="section-title" tag="span">
-                Steam
-              </Typography>
-            </DownloadButton>
-            <DownloadButton
-              prefixIcon={<WindowsIcon size={45}></WindowsIcon>}
-              href="https://github.com/SlimeVR/SlimeVR-Installer/releases/latest/download/slimevr_web_installer.exe"
-            >
-              <Typography variant="section-title" tag="span">
-                Windows
-              </Typography>
-            </DownloadButton>
-            <DownloadButton
-              prefixIcon={<LinuxIcon size={45}></LinuxIcon>}
-              href="https://flathub.org/apps/dev.slimevr.SlimeVR"
-            >
-              <Typography variant="section-title" tag="span">
-                Linux
-              </Typography>
-            </DownloadButton>
-            <DownloadButton
-              prefixIcon={<AppleIcon size={40}></AppleIcon>}
-              href="https://github.com/SlimeVR/SlimeVR-Server/releases/latest/download/SlimeVR-mac.dmg"
-            >
-              <Typography variant="section-title" tag="span">
-                MacOS
-              </Typography>
-            </DownloadButton>
+            <For each={DownloadLinks.desktop}>
+              {(link) => (
+                <DownloadButton prefixIcon={link.icon} href={link.href}>
+                  <Typography variant="section-title" tag="span">
+                    {link.name}
+                  </Typography>
+                </DownloadButton>
+              )}
+            </For>
           </div>
-          <div class="pt-4">
-            <Typography
-              tag="h3"
-              textAlign="text-center"
-              variant="section-title"
-            >
-              Mobile
-            </Typography>
-          </div>
+          <Typography
+            tag="h3"
+            textAlign="text-center"
+            variant="section-title"
+            class="pt-4"
+          >
+            Mobile
+          </Typography>
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-2">
-            <DownloadButton
-              prefixIcon={<AndroidIcon size={55}></AndroidIcon>}
-              href="https://play.google.com/store/apps/details?id=dev.slimevr.server.android"
-            >
-              <Typography variant="section-title" tag="span">
-                Android
-              </Typography>
-            </DownloadButton>
-            <DownloadButton
-              prefixIcon={<SideQuestIcon size={55}></SideQuestIcon>}
-              href="https://sidequestvr.com/app/45270/slimevr"
-            >
-              <Typography variant="section-title" tag="span">
-                SideQuest
-              </Typography>
-            </DownloadButton>
+            <For each={DownloadLinks.mobile}>
+              {(link) => (
+                <DownloadButton prefixIcon={link.icon} href={link.href}>
+                  <Typography variant="section-title" tag="span">
+                    {link.name}
+                  </Typography>
+                </DownloadButton>
+              )}
+            </For>
           </div>
         </div>
+
         <div class="no-interact w-full flex flex-col justify-center grow pr-8">
           <div class="w-full relative aspect-video mt-4">
             <div class="bg-background-70 rounded-lg border border-background-40 absolute w-full top-0 left-0">

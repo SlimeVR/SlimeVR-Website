@@ -4,7 +4,7 @@ import { ArrowButton } from "../commons/ArrowButton";
 import { CartIcon } from "../commons/icons/CartIcon";
 import { CrowdSupplyIcon } from "../commons/icons/CrowdSupplyIcon";
 import { DiscordIcon } from "../commons/icons/DiscordIcon";
-import { DonwloadIcon } from "../commons/icons/DownloadIcon";
+import { DownloadIcon } from "../commons/icons/DownloadIcon";
 import { Typography } from "../commons/Typography";
 
 const TrackerCard: Component<{
@@ -188,7 +188,7 @@ export const HeroSection: Component = () => {
         <div class="grid md:grid-cols-2 grid-cols-1 w-full md:gap-10 gap-4">
           <div>
             <ArrowButton
-              prefixIcon={<DonwloadIcon size={35}></DonwloadIcon>}
+              prefixIcon={<DownloadIcon size={35}></DownloadIcon>}
               href="#download"
               onClick={(e) => {
                 e.preventDefault();
