@@ -2,6 +2,7 @@ import { A, useNavigate } from "@solidjs/router";
 import { Component } from "solid-js";
 import { Typography } from "./commons/Typography";
 import { SlimeVRIcon } from "./commons/icons/SlimeVRIcon";
+import { scrollToSection } from "~/utils/dom";
 
 export const Footer: Component = (props) => {
   const navigate = useNavigate();
@@ -42,16 +43,8 @@ export const Footer: Component = (props) => {
             <A
               href="/#download"
               onClick={(e) => {
-                const pathname = window.location.pathname;
                 e.preventDefault();
-                if (pathname === "/") {
-                  const el = document.getElementById("download");
-                  if (el)
-                    el.scrollIntoView({ behavior: "smooth", block: "center" });
-                } else {
-                  // use location.state to pass scrollTo
-                  navigate("/", { state: { scrollTo: "download" } });
-                }
+                scrollToSection("download", window.location.pathname, navigate);
               }}
               class="link w-fit"
             >
