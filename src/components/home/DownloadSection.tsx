@@ -114,7 +114,7 @@ export const DownloadSection: Component = () => {
         <Typography tag="h2" variant="main-title" textAlign="text-center">
           Download SlimeVR Server
         </Typography>
-        <div class="absolute -top-24 -left-44 scale-40 -z-10">
+        <div class="absolute -top-24 -left-44 scale-40 -z-10 no-interact">
           <img src="/images/butterfly1.webp" loading="lazy"></img>
         </div>
       </div>

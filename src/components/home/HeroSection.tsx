@@ -97,7 +97,7 @@ export const HeroSection: Component = () => {
   return (
     <div class="flex flex-col h-full sm:h-220 justify-between items-center my-8 relative">
       {/* desktop hero */}
-      <div class="md:grid-cols-3 grid-cols-1 w-full gap-4 hidden sm:grid">
+      <div class="md:grid-cols-3 grid-cols-1 w-full gap-4 hidden md:grid">
         <TrackerCard
           titleKey="home.hero.butterfly-slime"
           mainImage="/images/butterfly_dock.webp"
@@ -121,7 +121,7 @@ export const HeroSection: Component = () => {
       </div>
 
       {/* mobile hero */}
-      <div class="grid md:grid-cols-3 grid-cols-1 w-full gap-4 sm:hidden">
+      <div class="grid grid-cols-1 w-full gap-4 md:hidden">
         <Typography
           tag="h1"
           key="home.hero.description"
@@ -145,28 +145,28 @@ export const HeroSection: Component = () => {
       </div>
 
       {/* nighty showing trackers bg */}
-      <div class="hidden flex-col justify-between items-center no-interact sm:flex">
+      <div class="hidden flex-col justify-between items-center no-interact md:flex">
         {/* nighty */}
         <div class="absolute w-full h-full top-0 left-0">
           <img
             src="/images/nighty_floating.webp"
             loading="lazy"
-            class="absolute -z-10 scale-[135%] sm:mt-80 mt-40 sm:animate-floating blur-lg min-w-280 left-1/2 -translate-x-[55%] sm:-translate-x-1/2"
+            class="absolute -z-10 scale-[135%] md:mt-80 mt-40 md:animate-floating blur-lg min-w-280 left-1/2 -translate-x-[55%] md:-translate-x-1/2"
           ></img>
           <img
             src="/images/nighty_floating.webp"
             loading="lazy"
-            class="absolute -z-10 scale-[135%] sm:mt-80 mt-40 sm:animate-floating min-w-280 left-1/2 -translate-x-[55%] sm:-translate-x-1/2 brightness-75 sm:brightness-100"
+            class="absolute -z-10 scale-[135%] md:mt-80 mt-40 md:animate-floating min-w-280 left-1/2 -translate-x-[55%] md:-translate-x-1/2 brightness-75 md:brightness-100"
           ></img>
           <img
             src="/images/stars.webp"
             loading="lazy"
-            class="absolute -z-10 scale-[135%] sm:mt-80 mt-40 sm:animate-stars"
+            class="absolute -z-10 scale-[135%] md:mt-80 mt-40 md:animate-stars"
           ></img>
         </div>
 
         {/* tracker */}
-        <div class="absolute mid:top-18 sm:top-32 top-12 w-100 sm:w-120 2xl:w-140 no-interact hidden sm:block">
+        <div class="absolute mid:top-18 md:top-32 top-12 w-100 md:w-120 2xl:w-140 no-interact hidden md:block">
           <img
             src="/images/purple_glow.webp"
             loading="lazy"

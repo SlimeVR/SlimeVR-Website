@@ -93,7 +93,7 @@ export default function HomePage(props: ParentProps) {
         <HeroSection></HeroSection>
       </Section>
 
-      <div class="flex flex-col pt-16 sm:pt-5 gap-20 w-full items-center">
+      <div class="flex flex-col pt-20 sm:pt-64 md:pt-16 gap-20 w-full items-center">
         <Section>
           <DownloadSection></DownloadSection>
         </Section>
