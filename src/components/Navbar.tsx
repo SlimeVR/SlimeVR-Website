@@ -17,7 +17,12 @@ export const NavItems: Component = () => {
           <Typography tag="span">Home</Typography>
         </A>
       )}
-      <a href="https://docs.slimevr.dev" target="_blank" class="link px-2">
+      <a
+        href="https://docs.slimevr.dev"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="link px-2"
+      >
         <Typography key="navbar.documentation" tag="span" />
       </a>
       <A
@@ -37,13 +42,23 @@ export const NavItems: Component = () => {
       >
         <Typography tag="span" key="navbar.download" />
       </A>
-      <a href="https://discord.gg/SlimeVR" target="_blank" class="link px-2">
+      <a
+        href="https://discord.gg/SlimeVR"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="link px-2"
+      >
         <Typography key="navbar.discord" tag="span" />
       </a>
       <a href="https://shop.slimevr.dev/" class="link px-2">
         <Typography key="navbar.shop" tag="span" />
       </a>
-      <a href="https://github.com/SlimeVR" target="_blank" class="link px-2">
+      <a
+        href="https://github.com/SlimeVR"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="link px-2"
+      >
         <Typography key="navbar.github" tag="span" />
       </a>
       <A href="/team" class="link px-2">
@@ -52,6 +67,7 @@ export const NavItems: Component = () => {
       <a
         href="https://shop.slimevr.dev/pages/support"
         target="_blank"
+        rel="noopener noreferrer"
         class="link px-2"
       >
         <Typography tag="span" key="navbar.support" />

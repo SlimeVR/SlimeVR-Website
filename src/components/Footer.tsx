@@ -20,7 +20,8 @@ export const Footer: Component = (props) => {
             class="mt-2 text-center sm:text-left text-xs text-background-30 link"
             href="/tm"
           >
-            SlimeVR and Butterfly Trackers are a trademark or a registered trademark of SlimeVR B.V. world-wide.
+            SlimeVR and Butterfly Trackers are a trademark or a registered
+            trademark of SlimeVR B.V. world-wide.
           </A>
         </div>
         <div class="flex flex-col gap-2">
@@ -33,6 +34,7 @@ export const Footer: Component = (props) => {
             <a
               href="https://docs.slimevr.dev"
               target="_blank"
+              rel="noopener noreferrer"
               class="link w-fit"
             >
               <Typography key="navbar.documentation" tag="span" />
@@ -58,6 +60,7 @@ export const Footer: Component = (props) => {
             <a
               href="https://discord.gg/SlimeVR"
               target="_blank"
+              rel="noopener noreferrer"
               class="link w-fit"
             >
               <Typography key="navbar.discord" tag="span" />
@@ -65,6 +68,7 @@ export const Footer: Component = (props) => {
             <a
               href="https://github.com/SlimeVR"
               target="_blank"
+              rel="noopener noreferrer"
               class="link w-fit"
             >
               <Typography key="navbar.github" tag="span" />
@@ -75,6 +79,7 @@ export const Footer: Component = (props) => {
             <a
               href="https://shop.slimevr.dev/pages/support"
               target="_blank"
+              rel="noopener noreferrer"
               class="link w-fit"
             >
               <Typography tag="span" key="navbar.support" />
@@ -91,6 +96,7 @@ export const Footer: Component = (props) => {
             <a
               href="https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker"
               target="_blank"
+              rel="noopener noreferrer"
               class="link w-fit"
             >
               <Typography tag="span" key="footer.column.shop.official" />
@@ -98,6 +104,7 @@ export const Footer: Component = (props) => {
             <a
               href="https://shop.slimevr.dev"
               target="_blank"
+              rel="noopener noreferrer"
               class="link w-fit"
             >
               <Typography tag="span" key="footer.column.shop.spare-parts" />
@@ -114,6 +121,7 @@ export const Footer: Component = (props) => {
             <a
               href="https://bsky.app/profile/slimevr.dev"
               target="_blank"
+              rel="noopener noreferrer"
               class="link w-fit"
             >
               <Typography tag="span">Bluesky</Typography>
@@ -121,6 +129,7 @@ export const Footer: Component = (props) => {
             <a
               href="https://www.youtube.com/@SlimeVR"
               target="_blank"
+              rel="noopener noreferrer"
               class="link w-fit"
             >
               <Typography tag="span">YouTube</Typography>
@@ -128,6 +137,7 @@ export const Footer: Component = (props) => {
             <a
               href="https://www.tiktok.com/@officialslimevr"
               target="_blank"
+              rel="noopener noreferrer"
               class="link w-fit"
             >
               <Typography tag="span">TikTok</Typography>
@@ -135,6 +145,7 @@ export const Footer: Component = (props) => {
             <a
               href="https://www.reddit.com/r/SlimeVR/"
               target="_blank"
+              rel="noopener noreferrer"
               class="link w-fit"
             >
               <Typography tag="span">Reddit</Typography>

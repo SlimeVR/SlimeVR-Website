@@ -86,6 +86,7 @@ export const DownloadSection: Component = () => {
               prefixIcon={<WindowsIcon size={45}></WindowsIcon>}
               href="https://github.com/SlimeVR/SlimeVR-Installer/releases/latest/download/slimevr_web_installer.exe"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <Typography variant="section-title" tag="span">
                 Windows
@@ -95,6 +96,7 @@ export const DownloadSection: Component = () => {
               prefixIcon={<LinuxIcon size={45}></LinuxIcon>}
               href="https://flathub.org/apps/dev.slimevr.SlimeVR"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <Typography variant="section-title" tag="span">
                 Linux
@@ -104,6 +106,7 @@ export const DownloadSection: Component = () => {
               prefixIcon={<AppleIcon size={40}></AppleIcon>}
               href="https://github.com/SlimeVR/SlimeVR-Server/releases/latest/download/SlimeVR-mac.dmg"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <Typography variant="section-title" tag="span">
                 MacOS
@@ -124,6 +127,7 @@ export const DownloadSection: Component = () => {
               prefixIcon={<AndroidIcon size={55}></AndroidIcon>}
               href="https://play.google.com/store/apps/details?id=dev.slimevr.server.android"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <Typography variant="section-title" tag="span">
                 Android
@@ -133,6 +137,7 @@ export const DownloadSection: Component = () => {
               prefixIcon={<SideQuestIcon size={55}></SideQuestIcon>}
               href="https://sidequestvr.com/app/45270/slimevr"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <Typography variant="section-title" tag="span">
                 SideQuest
