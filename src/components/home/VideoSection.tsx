@@ -20,6 +20,18 @@ const videos = [
     thumbnail: "https://i.ytimg.com/vi/2JqAj1_KYXU/hqdefault.jpg",
   },
   {
+    src: "https://www.youtube.com/embed/0fQlpzWBbXk",
+    thumbnail: "https://i.ytimg.com/vi/0fQlpzWBbXk/hqdefault.jpg",
+  },
+  {
+    src: "https://www.youtube.com/embed/vBZreCeOmio",
+    thumbnail: "https://i.ytimg.com/vi/vBZreCeOmio/hqdefault.jpg",
+  },
+  {
+    src: "https://www.youtube.com/embed/RC6hxWJvv9Q",
+    thumbnail: "https://i.ytimg.com/vi/RC6hxWJvv9Q/hqdefault.jpg",
+  },
+  {
     src: "https://www.youtube.com/embed/JHSXlTkXKbc",
     thumbnail: "https://i.ytimg.com/vi/JHSXlTkXKbc/hqdefault.jpg",
   },
@@ -40,19 +52,15 @@ const videos = [
     thumbnail: "https://i.ytimg.com/vi/G0du9c7doqs/hqdefault.jpg",
   },
   {
-    src: "https://www.youtube.com/embed/0fQlpzWBbXk?si=q_As-iKh4Lv_8l6P",
-    thumbnail: "https://i.ytimg.com/vi/0fQlpzWBbXk/hqdefault.jpg",
-  },
-  {
     src: "https://www.youtube.com/embed/s2zRppG0izI",
     thumbnail: "https://i.ytimg.com/vi/s2zRppG0izI/hqdefault.jpg",
   },
   {
-    src: "https://www.youtube.com/embed/CzZhXpOiFh0?si=K7TJleoDlhsTxnR9",
+    src: "https://www.youtube.com/embed/CzZhXpOiFh0",
     thumbnail: "https://i.ytimg.com/vi/CzZhXpOiFh0/hqdefault.jpg",
   },
   {
-    src: "https://www.youtube.com/embed/2sIk4kmNwTQ?si=2tnHYa4oWbzAkvWA",
+    src: "https://www.youtube.com/embed/2sIk4kmNwTQ",
     thumbnail: "https://i.ytimg.com/vi/2sIk4kmNwTQ/hqdefault.jpg",
   },
 ];

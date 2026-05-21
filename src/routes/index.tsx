@@ -93,6 +93,7 @@ export default function HomePage(props: ParentProps) {
         href="/images/butterfly_tracker.webp"
         type="image/webp"
       />
+
       <Section>
         <HeroSection></HeroSection>
       </Section>

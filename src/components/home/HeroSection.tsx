@@ -95,7 +95,6 @@ const TrackerCard: Component<{
 
 export const HeroSection: Component = () => {
   return (
-    // <div class="flex flex-col h-150 sm:h-220 justify-between items-center my-8 relative">
     <div class="flex flex-col h-full sm:h-220 justify-between items-center my-8 relative">
       {/* desktop hero */}
       <div class="md:grid-cols-3 grid-cols-1 w-full gap-4 hidden sm:grid">
@@ -122,7 +121,7 @@ export const HeroSection: Component = () => {
       </div>
 
       {/* mobile hero */}
-      <div class="grid md:grid-cols-3 grid-cols-1 w-full gap-4 sm:hidden ">
+      <div class="grid md:grid-cols-3 grid-cols-1 w-full gap-4 sm:hidden">
         <Typography
           tag="h1"
           key="home.hero.description"
