@@ -14,6 +14,7 @@ export const Section: ParentComponent<SectionProps> = (props) => {
             <img
               class={clsx("w-full object-contain scale-[110%]", "rotate-12")}
               src={gizmo()}
+              alt=""
             ></img>
           </div>
         )}

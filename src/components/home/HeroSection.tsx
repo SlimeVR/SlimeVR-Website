@@ -30,25 +30,21 @@ const TrackerCard: Component<{
         <div class="relative h-30 md:h-40 w-full flex justify-center">
           <img
             src="/images/purple_glow.webp"
-            loading="lazy"
             class="absolute object-contain h-full scale-200 blur-2xl no-interact"
             alt=""
           />
           <img
             src="/images/tracker_card_border.webp"
-            loading="lazy"
             class="absolute object-contain h-full -top-5 scale-[90%] group-hover:rotate-1 transition-transform duration-500 no-interact"
             alt=""
           />
           <img
             src={props.mainImage}
-            loading="lazy"
             class="absolute object-contain h-full blur-[3px] group-hover:-rotate-3 transition-transform no-interact"
             alt=""
           />
           <img
             src={props.mainImage}
-            loading="lazy"
             class="absolute object-contain h-full group-hover:-rotate-3 transition-transform no-interact"
             alt="SlimeVR tracker image"
           />
@@ -158,19 +154,16 @@ export const HeroSection: Component = () => {
         <div class="absolute w-full h-full top-0 left-0">
           <img
             src="/images/nighty_floating.webp"
-            loading="lazy"
             class="absolute -z-10 scale-[150%] md:mt-90 mt-40 md:animate-floating blur-lg min-w-280 left-1/2 -translate-x-[55%] md:-translate-x-1/2"
             alt="Nightly floating in the background"
           ></img>
           <img
             src="/images/nighty_floating.webp"
-            loading="lazy"
             class="absolute -z-10 scale-[150%] md:mt-90 mt-40 md:animate-floating min-w-280 left-1/2 -translate-x-[55%] md:-translate-x-1/2 brightness-75 md:brightness-100"
             alt=""
           ></img>
           <img
             src="/images/stars.webp"
-            loading="lazy"
             class="absolute -z-10 scale-[135%] md:mt-80 mt-40 md:animate-stars"
             alt=""
           ></img>
@@ -180,23 +173,16 @@ export const HeroSection: Component = () => {
         <div class="absolute mid:top-18 md:top-32 top-12 w-100 md:w-120 2xl:w-140 no-interact hidden md:block">
           <img
             src="/images/purple_glow.webp"
-            loading="lazy"
             class="w-full scale-120 absolute top-0 -z-10"
             alt=""
           ></img>
           <img
             src="/images/butterfly_tracker.webp"
-            loading="lazy"
             class="w-full animate-rotated"
             alt="SlimeVR Butterfly Tracker floating in the background"
           ></img>
           <div class="absolute w-full h-full top-20 left-0 brightness-90 animate-stars2 -z-10">
-            <img
-              src="/images/stars.webp"
-              loading="lazy"
-              class="w-full"
-              alt=""
-            ></img>
+            <img src="/images/stars.webp" class="w-full" alt=""></img>
           </div>
         </div>
       </div>
