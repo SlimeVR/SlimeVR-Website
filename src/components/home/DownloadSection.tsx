@@ -114,8 +114,8 @@ export const DownloadSection: Component = () => {
         <Typography tag="h2" variant="main-title" textAlign="text-center">
           Download SlimeVR Server
         </Typography>
-        <div class="absolute -top-24 -left-44 scale-40 -z-10 no-interact">
-          <img src="/images/butterfly1.webp" loading="lazy"></img>
+        <div class="absolute -top-10 -left-21 scale-90 -z-10 no-interact">
+          <img src="/images/butterfly1.webp" alt="" loading="lazy"></img>
         </div>
       </div>
       <div class="flex gap-4 md:gap-8 flex-col md:flex-row w-full">
@@ -162,6 +162,7 @@ export const DownloadSection: Component = () => {
                 src="/images/slimevr_desktop.webp"
                 class="w-full aspect-video p-2 rounded-2xl"
                 loading="lazy"
+                alt="SlimeVR Server running on a PC"
               ></img>
             </div>
 
@@ -170,6 +171,7 @@ export const DownloadSection: Component = () => {
                 class="w-full rounded-lg"
                 loading="lazy"
                 src="/images/slimevr_mobile.webp"
+                alt="SlimeVR Server running on a phone"
               ></img>
             </div>
           </div>

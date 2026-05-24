@@ -94,6 +94,7 @@ export const Navbar: Component = (props) => {
               <Button
                 variant="primary"
                 href="https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker"
+                aria-label="Order SlimeVR 1.2 trackers"
               >
                 <Localized id="navbar.order" />
               </Button>
@@ -102,6 +103,7 @@ export const Navbar: Component = (props) => {
               <button
                 class="hover:bg-background-60 px-4 rounded-lg"
                 onClick={() => setOpen((open) => !open)}
+                aria-label="Toggle navigation menu"
               >
                 <BarsIcon size={20} class="fill-background-10"></BarsIcon>
               </button>

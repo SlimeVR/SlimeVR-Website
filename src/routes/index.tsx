@@ -30,6 +30,7 @@ const UseCaseCard: Component<{ title: string; image: string; desc: string }> = (
           src={props.image}
           loading="lazy"
           class="h-full sm:w-full sm:h-auto sm:p-8 md:p-0"
+          alt={props.title}
         />
       </div>
       <div class="flex flex-col sm:gap-4 sm:justify-center sm:w-full">

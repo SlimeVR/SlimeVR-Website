@@ -15,7 +15,7 @@ export default function NotFound() {
             Page not found
           </Typography>
           <div class="flex justify-center">
-            <img src="/images/sad-slime.gif"></img>
+            <img src="/images/sad-slime.gif" alt="Sad slime"></img>
           </div>
           <ArrowButton href="/">Go back to the home page</ArrowButton>
         </Container>
