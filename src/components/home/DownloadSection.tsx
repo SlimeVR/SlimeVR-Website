@@ -30,7 +30,7 @@ const DownloadLinks = {
     {
       name: "Steam",
       href: "https://store.steampowered.com/app/3245490/SlimeVR/",
-      icon: <SteamIcon size={50}></SteamIcon>,
+      icon: <SteamIcon variant="download" size={50}></SteamIcon>,
     },
     {
       name: "Windows",
