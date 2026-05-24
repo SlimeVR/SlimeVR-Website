@@ -10,6 +10,7 @@ import { QASection } from "~/components/home/QASection";
 import { VideoSection } from "~/components/home/VideoSection";
 import { Section } from "~/components/Section";
 import { MainLayout } from "~/layouts/MainLayout";
+import { scrollToSection } from "~/utils/dom";
 
 const UseCaseCard: Component<{ title: string; image: string; desc: string }> = (
   props
@@ -49,16 +50,14 @@ const UseCaseCard: Component<{ title: string; image: string; desc: string }> = (
 export default function HomePage(props: ParentProps) {
   const location = useLocation();
 
-  // scroll to a section after navigation, see Navbar.tsx#NavItems
+  // scroll to a section after navigation (for dom.ts#scrollToSection)
   createEffect(() => {
     const scrollTo = (location.state as { scrollTo?: string } | undefined)
       ?.scrollTo;
     if (!scrollTo) return;
 
     requestAnimationFrame(() => {
-      const el = document.getElementById(scrollTo);
-      if (!el) return;
-      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      scrollToSection(scrollTo, location.pathname, () => {});
     });
   });
 

@@ -1,9 +1,11 @@
+import { Navigator } from "@solidjs/router";
+
 export const getContentSize = (elem: Element) => elem.getBoundingClientRect();
 
 export const scrollToSection = (
   sectionId: string,
   pathname: string,
-  navigate: any
+  navigate: Navigator
 ) => {
   if (pathname === "/") {
     const el = document.getElementById(sectionId);
