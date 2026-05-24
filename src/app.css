@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
 :root {
@@ -105,21 +105,23 @@
 
   --animate-stars: stars 2s ease-in-out infinite;
   @keyframes stars {
-    0%, 100% {
+    0%,
+    100% {
       opacity: 1;
     }
     50% {
-     opacity: 0.5;
+      opacity: 0.5;
     }
   }
 
   --animate-stars2: stars2 2s ease-in-out infinite;
   @keyframes stars2 {
-    0%, 100% {
+    0%,
+    100% {
       opacity: 0.5;
     }
     50% {
-     opacity: 1;
+      opacity: 1;
     }
   }
 }

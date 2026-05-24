@@ -9,7 +9,7 @@ export const PrintablesIcon: Component<IconProps> = (props) => {
       viewBox="0 0 25 35"
       xmlns="http://www.w3.org/2000/svg"
     >
-        <path d="m0 35 12.172-7L0 21ZM12.172 0 0 7l12.172 7v14l12.172-7V7Z"></path>
+      <path d="m0 35 12.172-7L0 21ZM12.172 0 0 7l12.172 7v14l12.172-7V7Z"></path>
     </svg>
   );
 };
