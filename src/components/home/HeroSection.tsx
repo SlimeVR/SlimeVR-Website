@@ -151,12 +151,12 @@ export const HeroSection: Component = () => {
           <img
             src="/images/nighty_floating.webp"
             loading="lazy"
-            class="absolute -z-10 scale-[135%] md:mt-80 mt-40 md:animate-floating blur-lg min-w-280 left-1/2 -translate-x-[55%] md:-translate-x-1/2"
+            class="absolute -z-10 scale-[150%] md:mt-90 mt-40 md:animate-floating blur-lg min-w-280 left-1/2 -translate-x-[55%] md:-translate-x-1/2"
           ></img>
           <img
             src="/images/nighty_floating.webp"
             loading="lazy"
-            class="absolute -z-10 scale-[135%] md:mt-80 mt-40 md:animate-floating min-w-280 left-1/2 -translate-x-[55%] md:-translate-x-1/2 brightness-75 md:brightness-100"
+            class="absolute -z-10 scale-[150%] md:mt-90 mt-40 md:animate-floating min-w-280 left-1/2 -translate-x-[55%] md:-translate-x-1/2 brightness-75 md:brightness-100"
           ></img>
           <img
             src="/images/stars.webp"
