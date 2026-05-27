@@ -1,6 +1,6 @@
 import { Component } from "solid-js";
 
-export const DonwloadIcon: Component<IconProps> = (props) => {
+export const DownloadIcon: Component<IconProps> = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

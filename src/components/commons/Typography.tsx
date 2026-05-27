@@ -62,7 +62,7 @@ export const Typography: Component<TypographyProps> = (initialProps) => {
       props.textAlign,
       props.italic && "italic",
       props.truncate && "leading-3 text-ellipsis line-clamp-2",
-      props.class
+      props.class,
     ])
   );
 

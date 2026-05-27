@@ -16,43 +16,51 @@ import { Typography } from "../commons/Typography";
 
 const videos = [
   {
-    src: "https://www.youtube.com/embed/2JqAj1_KYXU",
+    src: "https://www.youtube-nocookie.com/embed/2JqAj1_KYXU",
     thumbnail: "https://i.ytimg.com/vi/2JqAj1_KYXU/hqdefault.jpg",
   },
   {
-    src: "https://www.youtube.com/embed/JHSXlTkXKbc",
-    thumbnail: "https://i.ytimg.com/vi/JHSXlTkXKbc/hqdefault.jpg",
-  },
-  {
-    src: "https://www.youtube.com/embed/0NMxdY1G0kY",
-    thumbnail: "https://i.ytimg.com/vi/0NMxdY1G0kY/hqdefault.jpg",
-  },
-  {
-    src: "https://www.youtube.com/embed/_a124Y8y9UM",
-    thumbnail: "https://i.ytimg.com/vi/_a124Y8y9UM/hqdefault.jpg",
-  },
-  {
-    src: "https://www.youtube.com/embed/Pbm2pK8iEAA",
-    thumbnail: "https://i.ytimg.com/vi/Pbm2pK8iEAA/hqdefault.jpg",
-  },
-  {
-    src: "https://www.youtube.com/embed/G0du9c7doqs",
-    thumbnail: "https://i.ytimg.com/vi/G0du9c7doqs/hqdefault.jpg",
-  },
-  {
-    src: "https://www.youtube.com/embed/0fQlpzWBbXk?si=q_As-iKh4Lv_8l6P",
+    src: "https://www.youtube-nocookie.com/embed/0fQlpzWBbXk",
     thumbnail: "https://i.ytimg.com/vi/0fQlpzWBbXk/hqdefault.jpg",
   },
   {
-    src: "https://www.youtube.com/embed/s2zRppG0izI",
+    src: "https://www.youtube-nocookie.com/embed/vBZreCeOmio",
+    thumbnail: "https://i.ytimg.com/vi/vBZreCeOmio/hqdefault.jpg",
+  },
+  {
+    src: "https://www.youtube-nocookie.com/embed/RC6hxWJvv9Q",
+    thumbnail: "https://i.ytimg.com/vi/RC6hxWJvv9Q/hqdefault.jpg",
+  },
+  {
+    src: "https://www.youtube-nocookie.com/embed/JHSXlTkXKbc",
+    thumbnail: "https://i.ytimg.com/vi/JHSXlTkXKbc/hqdefault.jpg",
+  },
+  {
+    src: "https://www.youtube-nocookie.com/embed/0NMxdY1G0kY",
+    thumbnail: "https://i.ytimg.com/vi/0NMxdY1G0kY/hqdefault.jpg",
+  },
+  {
+    src: "https://www.youtube-nocookie.com/embed/_a124Y8y9UM",
+    thumbnail: "https://i.ytimg.com/vi/_a124Y8y9UM/hqdefault.jpg",
+  },
+  {
+    src: "https://www.youtube-nocookie.com/embed/Pbm2pK8iEAA",
+    thumbnail: "https://i.ytimg.com/vi/Pbm2pK8iEAA/hqdefault.jpg",
+  },
+  {
+    src: "https://www.youtube-nocookie.com/embed/G0du9c7doqs",
+    thumbnail: "https://i.ytimg.com/vi/G0du9c7doqs/hqdefault.jpg",
+  },
+  {
+    src: "https://www.youtube-nocookie.com/embed/s2zRppG0izI",
     thumbnail: "https://i.ytimg.com/vi/s2zRppG0izI/hqdefault.jpg",
   },
   {
-    src: "https://www.youtube.com/embed/CzZhXpOiFh0?si=K7TJleoDlhsTxnR9",
+    src: "https://www.youtube-nocookie.com/embed/CzZhXpOiFh0",
     thumbnail: "https://i.ytimg.com/vi/CzZhXpOiFh0/hqdefault.jpg",
   },
   {
-    src: "https://www.youtube.com/embed/2sIk4kmNwTQ?si=2tnHYa4oWbzAkvWA",
+    src: "https://www.youtube-nocookie.com/embed/2sIk4kmNwTQ",
     thumbnail: "https://i.ytimg.com/vi/2sIk4kmNwTQ/hqdefault.jpg",
   },
 ];
@@ -65,10 +73,11 @@ const VideoThumbnail: Component<{
   return (
     <button
       class={clsx(
-        "rounded-lg overflow-clip aspect-video h-22.5 sm:h-31.5 relative border-2",
+        "rounded-lg overflow-clip aspect-video h-22.5 sm:h-31.5 relative border-2 cursor-pointer",
         props.active ? "border-accent-background-10" : "border-transparent"
       )}
       onClick={props.onClick}
+      aria-label="Play video"
     >
       <div
         class={clsx(
@@ -81,6 +90,7 @@ const VideoThumbnail: Component<{
         src={props.thumbnail}
         class="w-full h-full object-cover absolute top-0"
         loading="lazy"
+        alt="Video thumbnail"
       ></img>
 
       <div
@@ -114,6 +124,7 @@ const VideoControl: Component<{
         )}
         disabled={!props.active}
         onClick={props.onClick}
+        aria-label={props.next ? "Next video" : "Previous video"}
       >
         <ArrowIcon
           direction={props.next ? "right" : "left"}
@@ -212,17 +223,39 @@ export const VideoSection: Component = () => {
       <div class="flex">
         <div class="flex grow flex-col gap-2 sm:gap-4 w-full">
           <div class="flex gap-4 flex-col justify-center">
-            <div class="w-full flex aspect-video bg-background-60 rounded-lg  md:rounded-3xl p-2 md:p-4  border border-background-40">
-              <iframe
-                width="100%"
-                class="rounded-lg"
-                src={
-                  currentVideo().src + `?&autoplay=${autoplay() ? "1" : "0"}`
-                }
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-              ></iframe>
+            <div class="w-full flex aspect-video bg-background-60 rounded-lg md:rounded-3xl p-2 md:p-4 border border-background-40">
+              {autoplay() ? (
+                <iframe
+                  title="YouTube video player"
+                  width="100%"
+                  class="rounded-lg"
+                  src={currentVideo().src + `?&autoplay=1`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+              ) : (
+                <button
+                  class="w-full h-full relative flex items-center justify-center rounded-lg overflow-hidden cursor-pointer"
+                  aria-label="Play video"
+                  onClick={() => setAutoplay(true)}
+                >
+                  <img
+                    src={currentVideo().thumbnail.replace(
+                      "hqdefault",
+                      "maxresdefault"
+                    )}
+                    class="w-full h-full object-cover absolute top-0"
+                    loading="lazy"
+                    alt="Video thumbnail"
+                  ></img>
+                  <div class="relative z-10 bg-transparent border-0 p-0">
+                    <div class="bg-accent-background-10 w-16 h-16 rounded-full p-3 flex justify-center">
+                      <PlayIcon size={26} class="fill-background-10"></PlayIcon>
+                    </div>
+                  </div>
+                </button>
+              )}
             </div>
             <div class="flex gap-2 md:gap-4 justify-center items-center">
               <VideoControl
@@ -230,7 +263,7 @@ export const VideoSection: Component = () => {
                 active={shouldShowPrev()}
               ></VideoControl>
               <div
-                class="flex overflow-x-auto no-scrollbar scroll-smooth bg-background-60 rounded-lg  md:rounded-3xl p-2 md:p-4 border border-background-40"
+                class="flex overflow-x-auto no-scrollbar scroll-smooth bg-background-60 rounded-lg md:rounded-3xl p-2 md:p-4 border border-background-40"
                 ref={videosScrollRef}
               >
                 <div class="flex gap-2 md:gap-4" ref={videosContainerRef}>

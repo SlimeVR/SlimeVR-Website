@@ -65,7 +65,11 @@ export const QASection: Component = () => {
     <div class="flex md:gap-12 relative md:pl-12">
       <div class="sticky top-0 left-0 h-full sm:flex hidden">
         <div class="md:flex w-72 items-center justify-center pt-12 hidden">
-          <img src={currentImage()} class="object-contain object-center"></img>
+          <img
+            src={currentImage()}
+            class="object-contain object-center no-interact"
+            alt=""
+          ></img>
         </div>
       </div>
       <div class="flex flex-col gap-3 w-full">

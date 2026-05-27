@@ -10,13 +10,11 @@ export const Section: ParentComponent<SectionProps> = (props) => {
     <div class="w-full relative flex justify-center">
       <Show when={props.gizmo}>
         {(gizmo) => (
-          <div class="flex absolute top-0 h-fit justify-center w-full overflow-x-clip select-none pointer-events-none">
+          <div class="flex absolute top-0 h-fit justify-center w-full overflow-x-clip no-interact">
             <img
-              class={clsx(
-                "w-full object-contain scale-[110%]",
-                "rotate-12"
-              )}
+              class={clsx("w-full object-contain scale-[110%]", "rotate-12")}
               src={gizmo()}
+              alt=""
             ></img>
           </div>
         )}

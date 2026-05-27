@@ -38,30 +38,43 @@ const CARD_TOLERANCE = 8;
 const FOCUSED_SCALE = 1.4;
 const NORMAL_SCALE = 1;
 
-// transform utilities w/ caching
-const transformCache = new Map<string, string>();
-const createTransform = (rotateX = 0, rotateY = 0, scale = NORMAL_SCALE) => {
-  // round values to prevent fractional pixel issues
-  const roundedX = Math.round(rotateX * 100) / 100;
-  const roundedY = Math.round(rotateY * 100) / 100;
-  const roundedScale = Math.round(scale * 1000) / 1000;
-
-  const key = `${roundedX},${roundedY},${roundedScale}`;
-  if (transformCache.has(key)) {
-    return transformCache.get(key)!;
-  }
-
-  const transform = `perspective(1000px) rotateY(${roundedY}deg) rotateX(${roundedX}deg) scale(${roundedScale})`;
-  if (transformCache.size < 100) transformCache.set(key, transform);
-
-  return transform;
+const SOCIAL_ICONS: Record<
+  string,
+  { icon: any; size: number; class?: string }
+> = {
+  github: { icon: GithubIcon, size: 20 },
+  twitter: { icon: TwitterIcon, size: 20 },
+  bluesky: { icon: BlueskyIcon, size: 18 },
+  instagram: { icon: InstagramIcon, size: 22 },
+  youtube: { icon: YoutubeIcon, size: 22 },
+  twitch: { icon: TwitchIcon, size: 18, class: "mt-0.5 mr-0.5" },
+  kofi: { icon: KofiIcon, size: 22 },
+  discord: { icon: DiscordIcon, size: 20 },
+  tiktok: { icon: TiktokIcon, size: 20 },
+  printables: { icon: PrintablesIcon, size: 18 },
+  steam: { icon: SteamIcon, size: 18 },
+  matrix: { icon: MatrixIcon, size: 16 },
+  website: { icon: WebsiteIcon, size: 20 },
+  reddit: { icon: RedditIcon, size: 20 },
+  patreon: { icon: PatreonIcon, size: 16 },
 };
+
+const ROLE_ICONS: Record<string, { icon: any; size: number }> = {
+  dev: { icon: DevIcon, size: 22 },
+  artist: { icon: ArtistIcon, size: 22 },
+  community: { icon: PeopleIcon, size: 26 },
+};
+
+// transform utilities
+const createTransform = (rotateX = 0, rotateY = 0, scale = NORMAL_SCALE) =>
+  `perspective(1000px) rotateY(${rotateY.toFixed(2)}deg) rotateX(${rotateX.toFixed(2)}deg) scale(${scale.toFixed(3)})`;
 
 interface CardProps extends Contributor {
   class?: string; // additional classes for the card
   onClick?: () => void;
   isFocused?: boolean;
   cachedImage?: { src: string; classes: string; error: boolean };
+  "data-card-name"?: string;
 }
 
 export const Card: ParentComponent<CardProps> = (props) => {
@@ -69,9 +82,9 @@ export const Card: ParentComponent<CardProps> = (props) => {
     props;
   const borderColor = color || FALLBACK_COLOR;
 
-  let card: HTMLDivElement;
-  let placeholder: HTMLDivElement; // placeholder for the card when focused to keep its position in list
-  let innerDiv: HTMLDivElement;
+  let card: HTMLDivElement = null as any;
+  let placeholder: HTMLDivElement = null as any; // placeholder for the card when focused to keep its position in list
+  let innerDiv: HTMLDivElement = null as any;
 
   const [imageError, setImageError] = createSignal(cachedImage?.error ?? false);
   const [imageLoading, setImageLoading] = createSignal(!cachedImage);
@@ -80,7 +93,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
   );
   const [imgClasses, setImgClasses] = createSignal(
     cachedImage?.classes ??
-      "object-contain w-[calc(100%+16px)] scale-[103%] select-none pointer-events-none brightness-[0.01]"
+      "object-contain w-[calc(100%+16px)] scale-[103%] no-interact brightness-[0.01]"
   );
   // TODO: allow hover/tilting during animation without it interrupting the animation - idk how to do this without breaking other things tbh
   const [transitioning, setTransitioning] = createSignal(false); // prevent tilting while transitioning (interrupting it)
@@ -88,22 +101,26 @@ export const Card: ParentComponent<CardProps> = (props) => {
 
   let originalPosition: { top: number; left: number } | null = null;
   let transitionTimeout: ReturnType<typeof setTimeout> | null = null; // prevent multiple transitions / out of sync (from multiple clicks)
-  let lastMousePosition: { x: number; y: number } = { x: 0, y: 0 };
-
-  // cache rect to avoid recalculating on every frame
-  let cachedRect: DOMRect | null = null;
-  let resizeObserver: ResizeObserver | null = null;
+  let lastMousePosition = { x: 0, y: 0 };
 
   /*
    * Tilt effect things for card
    */
-  let framePending = false;
+  // cache rect to avoid recalculating on every frame
+  let cachedRect: DOMRect | null = null;
+  let rafId: number | null = null;
   let queuedTilt: {
     x: number;
     y: number;
     intensity: number;
-    glow: number;
+    glowOpacity: number;
   } | null = null;
+
+  const setCardVars = (mouseX = "0px", mouseY = "0px", glowOpacity = "0") => {
+    card.style.setProperty("--mouse-x", mouseX);
+    card.style.setProperty("--mouse-y", mouseY);
+    card.style.setProperty("--glow-opacity", glowOpacity);
+  };
 
   const doTilt = (
     clientX: number,
@@ -116,7 +133,6 @@ export const Card: ParentComponent<CardProps> = (props) => {
     const rect = cachedRect || card.getBoundingClientRect();
     const x = clientX - rect.left;
     const y = clientY - rect.top;
-
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
 
@@ -128,10 +144,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
 
     const scale = props.isFocused ? FOCUSED_SCALE : NORMAL_SCALE;
 
-    card.style.setProperty("--mouse-x", `${x}px`);
-    card.style.setProperty("--mouse-y", `${y}px`);
-    card.style.setProperty("--glow-opacity", glowOpacity.toString());
-
+    setCardVars(`${x / scale}px`, `${y / scale}px`, glowOpacity.toString());
     card.style.transform = createTransform(
       percentY * intensity,
       percentX * intensity,
@@ -146,19 +159,19 @@ export const Card: ParentComponent<CardProps> = (props) => {
     glowOpacity: number
   ) => {
     lastMousePosition = { x: clientX, y: clientY };
-    queuedTilt = { x: clientX, y: clientY, intensity, glow: glowOpacity };
-    if (framePending) return;
-    framePending = true;
-    requestAnimationFrame(() => {
+    queuedTilt = { x: clientX, y: clientY, intensity, glowOpacity };
+    if (rafId) return;
+    rafId = requestAnimationFrame(() => {
       if (queuedTilt) {
         doTilt(
           queuedTilt.x,
           queuedTilt.y,
           queuedTilt.intensity,
-          queuedTilt.glow
+          queuedTilt.glowOpacity
         );
+        queuedTilt = null;
       }
-      framePending = false;
+      rafId = null;
     });
   };
 
@@ -180,9 +193,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
 
   const cardHoverEnter = (e: PointerEvent) => {
     if (props.isFocused || transitioning() || e.pointerType === "touch") return;
-
     cachedRect = card.getBoundingClientRect();
-
     card.style.transition = `transform ${HOVER_TRANSITION_DURATION}ms ease`;
     card.style.willChange = "transform";
     document.addEventListener("pointermove", cardHoverTilt, { passive: true });
@@ -200,7 +211,6 @@ export const Card: ParentComponent<CardProps> = (props) => {
 
   const cardHoverTilt = (e: PointerEvent) => {
     if (props.isFocused || transitioning() || e.pointerType === "touch") return;
-
     if (isMouseOverCard(e)) {
       queueTilt(e.clientX, e.clientY, 15, 0.45);
     } else {
@@ -215,7 +225,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
   const cardReset = () => {
     card.style.transition = `transform ${FOCUS_TRANSITION_DURATION}ms ease`;
     card.style.transform = createTransform();
-    card.style.setProperty("--glow-opacity", "0");
+    setCardVars();
   };
 
   /*
@@ -226,26 +236,19 @@ export const Card: ParentComponent<CardProps> = (props) => {
   };
 
   const cardFocus = () => {
-    if (transitionTimeout) {
-      clearTimeout(transitionTimeout);
-      transitionTimeout = null;
-    }
-
+    if (transitionTimeout) clearTimeout(transitionTimeout);
     setTransitioning(true);
     setIsFocused(true);
 
-    card.style.willChange = "transform";
-
     // reset tilt effect to get actual position
+    card.style.willChange = "transform";
     card.style.transition = "none";
     card.style.transform = createTransform();
-    card.style.setProperty("--glow-opacity", "0");
-
-    card.offsetHeight;
+    setCardVars();
+    card.offsetHeight; // force reflow
 
     const rect = card.getBoundingClientRect();
     originalPosition = { top: rect.top, left: rect.left };
-
     placeholder.style.display = "block";
 
     // move card to body to ensure it's above all other elements
@@ -256,18 +259,13 @@ export const Card: ParentComponent<CardProps> = (props) => {
     card.style.top = `${rect.top}px`;
     card.style.left = `${rect.left}px`;
 
-    card.offsetHeight;
+    card.offsetHeight; // force reflow
+
     card.style.transition = CARD_TRANSITION;
-
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
     card.style.transformOrigin = "center center";
-    const centerX = viewportWidth / 2 - card.clientWidth / 2;
-    const centerY = viewportHeight / 2 - card.clientHeight / 2;
-
+    card.style.top = `${(window.innerHeight - card.clientHeight) / 2}px`;
+    card.style.left = `${(window.innerWidth - card.clientWidth) / 2}px`;
     card.style.transform = createTransform(0, 0, FOCUSED_SCALE);
-    card.style.top = `${centerY}px`;
-    card.style.left = `${centerX}px`;
     card.style.boxShadow = "0px 10px 20px 8px #02111db8";
 
     document.removeEventListener("pointermove", cardHoverTilt);
@@ -280,41 +278,33 @@ export const Card: ParentComponent<CardProps> = (props) => {
   };
 
   const cardUnfocus = () => {
-    if (transitionTimeout) {
-      clearTimeout(transitionTimeout);
-      transitionTimeout = null;
-    }
-
+    if (transitionTimeout) clearTimeout(transitionTimeout);
     setTransitioning(true);
     setIsFocused(false);
 
     card.style.zIndex = "998";
     card.style.transition = CARD_TRANSITION;
     card.style.boxShadow = "none";
-
+    card.style.transform = createTransform();
+    setCardVars();
     if (originalPosition) {
       card.style.top = `${originalPosition.top}px`;
       card.style.left = `${originalPosition.left}px`;
     }
-    card.style.transform = createTransform();
 
     document.removeEventListener("pointermove", cardTilt);
-    card.style.setProperty("--glow-opacity", "0");
 
-    // switch back to relative positioning, hide placeholder, and allow scrolling after transition completes
     transitionTimeout = setTimeout(() => {
       card.style.transition = "none";
       card.style.position = "relative";
       card.style.top = "";
       card.style.left = "";
       card.style.zIndex = "0";
-      card.style.transform = createTransform();
       card.style.willChange = "auto";
 
       // move card back to its original parent (placeholder's parent)
       placeholder.parentNode?.insertBefore(card, placeholder);
       placeholder.style.display = "none";
-
       setTransitioning(false);
       transitionTimeout = null;
 
@@ -325,10 +315,8 @@ export const Card: ParentComponent<CardProps> = (props) => {
         clientY: lastMousePosition.y,
         pointerType: "mouse",
       } as PointerEvent;
-
-      if (isMouseOverCard(mockEvent)) {
+      if (isMouseOverCard(mockEvent))
         document.addEventListener("pointermove", cardHoverTilt);
-      }
     }, FOCUS_TRANSITION_DURATION);
   };
 
@@ -361,6 +349,8 @@ export const Card: ParentComponent<CardProps> = (props) => {
   /*
    * Reactivity and life cycle stuff
    */
+  let resizeObserver: ResizeObserver | null = null;
+
   onMount(() => {
     if (typeof window === "undefined" || !card) return;
 
@@ -385,14 +375,11 @@ export const Card: ParentComponent<CardProps> = (props) => {
     document.removeEventListener("pointermove", cardHoverTilt);
     document.removeEventListener("pointermove", cardTilt);
 
+    if (transitionTimeout) clearTimeout(transitionTimeout);
+    if (rafId) cancelAnimationFrame(rafId);
     if (resizeObserver) {
       resizeObserver.disconnect();
       resizeObserver = null;
-    }
-
-    if (transitionTimeout) {
-      clearTimeout(transitionTimeout);
-      transitionTimeout = null;
     }
 
     if (card) {
@@ -425,7 +412,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
       setImgSrc(image.src);
       setImgClasses(
         clsx(
-          "object-contain w-[calc(100%+16px)] scale-[103%] select-none pointer-events-none",
+          "object-contain w-[calc(100%+16px)] scale-[103%] no-interact",
           classes
         )
       );
@@ -469,9 +456,9 @@ export const Card: ParentComponent<CardProps> = (props) => {
         style={borderStyle()}
         data-card-name={props["data-card-name"]}
       >
-        {/* glow effect when hovering - optimized for performance */}
+        {/* glow effect when hovering */}
         <div
-          class="absolute inset-0 rounded-2xl pointer-events-none z-20"
+          class="absolute inset-0 rounded-2xl no-interact z-20"
           style={{
             background: `radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,var(--glow-opacity, 0)) 0%, transparent 50%)`,
             opacity: `var(--glow-opacity, 0)`,
@@ -505,21 +492,16 @@ export const Card: ParentComponent<CardProps> = (props) => {
                 </Typography>
                 {/* roles */}
                 <div class="flex flex-row -space-x-2.5 mt-1">
-                  {roles.includes("dev") && (
-                    <CircularIcon size={32} class="z-1">
-                      <DevIcon size={22} />
-                    </CircularIcon>
-                  )}
-                  {roles.includes("artist") && (
-                    <CircularIcon size={32} class="z-2">
-                      <ArtistIcon size={22} />
-                    </CircularIcon>
-                  )}
-                  {roles.includes("community") && (
-                    <CircularIcon size={32} class="z-3">
-                      <PeopleIcon size={26} />
-                    </CircularIcon>
-                  )}
+                  {roles.map((role, i) => {
+                    const RoleConfig = ROLE_ICONS[role];
+                    if (!RoleConfig) return null;
+                    const { icon: IconComponent, size } = RoleConfig;
+                    return (
+                      <CircularIcon size={32} class={`z-${i + 1}`}>
+                        <IconComponent size={size} />
+                      </CircularIcon>
+                    );
+                  })}
                 </div>
               </div>
               {/* card image - bg and slime photo */}
@@ -536,10 +518,8 @@ export const Card: ParentComponent<CardProps> = (props) => {
                   }}
                 />
                 {(imageLoading() || imageError()) && (
-                  <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <span class="text-6xl font-bold text-white select-none">
-                      ?
-                    </span>
+                  <div class="absolute inset-0 flex items-center justify-center no-interact">
+                    <span class="text-6xl font-bold text-white">?</span>
                   </div>
                 )}
               </div>
@@ -550,8 +530,13 @@ export const Card: ParentComponent<CardProps> = (props) => {
               {/* socials */}
               {Object.keys(socials).length > 0 && (
                 <div class="flex flex-row flex-wrap gap-2 justify-center min-h-8">
-                  {Object.entries(socials).map(([key, value], i) => {
-                    if (!value) return null;
+                  {Object.entries(socials).map(([key, value]) => {
+                    if (!value || !SOCIAL_ICONS[key]) return null;
+                    const {
+                      icon: IconComponent,
+                      size,
+                      class: className,
+                    } = SOCIAL_ICONS[key];
                     return (
                       <CircularIcon
                         size={30}
@@ -560,23 +545,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        {key === "github" && <GithubIcon size={20} />}
-                        {key === "twitter" && <TwitterIcon size={20} />}
-                        {key === "bluesky" && <BlueskyIcon size={18} />}
-                        {key === "instagram" && <InstagramIcon size={22} />}
-                        {key === "youtube" && <YoutubeIcon size={22} />}
-                        {key === "twitch" && (
-                          <TwitchIcon size={18} class="mt-0.5 mr-0.5" />
-                        )}
-                        {key === "kofi" && <KofiIcon size={22} />}
-                        {key === "discord" && <DiscordIcon size={20} />}
-                        {key === "tiktok" && <TiktokIcon size={20} />}
-                        {key === "printables" && <PrintablesIcon size={18} />}
-                        {key === "steam" && <SteamIcon size={18} />}
-                        {key === "matrix" && <MatrixIcon size={16} />}
-                        {key === "website" && <WebsiteIcon size={20} />}
-                        {key === "reddit" && <RedditIcon size={20} />}
-                        {key === "patreon" && <PatreonIcon size={16} />}
+                        <IconComponent size={size} class={className} />
                       </CircularIcon>
                     );
                   })}

@@ -1,5 +1,4 @@
 import { Component } from "solid-js";
-import { LoaderIcon } from "../components/commons/icons/LoaderIcon";
 
 export const LoadingLayout: Component = () => {
   return (

@@ -1,4 +1,4 @@
-import { createRenderEffect, createSignal, on } from "solid-js";
+import { createSignal } from "solid-js";
 
 export const createStoredSignal = <T>(
   defaultValue: T,
@@ -18,7 +18,7 @@ export const createStoredSignal = <T>(
   // };
 
   const signal = createSignal<T>(
-    (options.onBeforeSave ?? ((v) => v))(defaultValue)
+    (options?.onBeforeSave ?? ((v) => v))(defaultValue)
   );
 
   // createRenderEffect(

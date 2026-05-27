@@ -12,6 +12,7 @@ export function getInstance(): OverlayScrollbars | null {
 
 export function setScroll(enabled: boolean) {
   if (!overlayScrollbar) return;
-  if (enabled) overlayScrollbar.options({ overflow: { x: "hidden", y: "scroll" } });
+  if (enabled)
+    overlayScrollbar.options({ overflow: { x: "hidden", y: "scroll" } });
   else overlayScrollbar.options({ overflow: { x: "hidden", y: "hidden" } });
 }

@@ -32,7 +32,7 @@
   "home": {
     "title": "SlimeVR Full-Body Trackers",
     "hero": {
-      "description": "An affordable, comfortable, wireless, 360° solution for full-body tracking in virtual reality",
+      "description": "The affordable VR full-body tracking solution.",
       "price": "From $219",
       "price-butterfly": "From $279",
       "order-btn": "Order on",
@@ -40,6 +40,10 @@
       "join-btn": "Join campaign at",
       "butterfly-slime": "Butterfly Trackers",
       "og-slime": "SlimeVR V1.2",
+      "buy-slime": {
+        "order": "Order SlimeVR 1.2 on",
+        "preorder": "Pre-order Butterfly Trackers on"
+      },
       "download-server": {
         "title": "Download the server",
         "desc": "Available on all platforms!"
@@ -51,7 +55,7 @@
     },
     "video-section": "Reviews and Demos",
     "use-cases": {
-      "title": " Use Cases",
+      "title": "Use Cases",
       "vr": {
         "title": "VR Games",
         "desc": "SlimeVR Trackers are compatible with any SteamVR or standalone games that support full-body tracking. That includes social games like VRChat."

@@ -14,8 +14,8 @@ const ANIMATION_TIME = 5500;
 const MIN_TIME = 6000;
 const RANDOM_TIME = 5000;
 const ExplosionDot: Component = () => {
-  let animationId;
-  let animationResetId;
+  let animationId: NodeJS.Timeout;
+  let animationResetId: NodeJS.Timeout;
 
   const [explodePos, setExplodePos] = createSignal<{
     x: number;
@@ -69,12 +69,12 @@ const ExplosionDot: Component = () => {
 };
 
 interface MainLaoutProps {
-  variant?: 'default' | 'butterfly' | 'og-slime';
+  variant?: "default" | "butterfly" | "og-slime";
 }
 
 export const MainLayout: ParentComponent<MainLaoutProps> = (props) => {
   return (
-    <div class={clsx("flex flex-col min-h-screen pattern", props.variant)}>
+    <main class={clsx("flex flex-col min-h-screen pattern", props.variant)}>
       <div class="relative overflow-clip grow">
         <ExplosionDot></ExplosionDot>
         <ExplosionDot></ExplosionDot>
@@ -82,8 +82,9 @@ export const MainLayout: ParentComponent<MainLaoutProps> = (props) => {
         <ExplosionDot></ExplosionDot>
         <div class="flex flex-col w-full items-center relative overflow-y-clip py-4">
           <img
-            class="absolute w-full top-0"
+            class="absolute w-full top-0 no-interact"
             src="/images/Webpage_Design_Parts_header_block.webp"
+            alt=""
           ></img>
           <div class="max-w-6xl 2xl:max-w-350 w-full top-5 z-20 px-4">
             <Navbar></Navbar>
@@ -92,6 +93,6 @@ export const MainLayout: ParentComponent<MainLaoutProps> = (props) => {
         </div>
       </div>
       <Footer></Footer>
-    </div>
+    </main>
   );
 };
