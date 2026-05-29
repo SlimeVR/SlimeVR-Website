@@ -44,7 +44,7 @@ const DownloadLinks = {
     },
     {
       name: "MacOS",
-      href: "https://github.com/SlimeVR/SlimeVR-Installer/releases/latest/download/slimevr_web_installer.dmg",
+      href: "https://github.com/SlimeVR/SlimeVR-Server/releases/latest/download/SlimeVR-mac.dmg",
       icon: <AppleIcon size={35}></AppleIcon>,
     },
   ],
