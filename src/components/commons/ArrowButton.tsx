@@ -9,7 +9,7 @@ import {
   splitProps,
 } from "solid-js";
 import { ArrowIcon } from "./icons/ArrowIcon";
-
+import { createSignal, onMount, onCleanup } from "solid-js";
 interface ArrowButtonProps extends AnchorProps {
   prefixIcon?: JSX.Element;
   variant?: "primary" | "default";
@@ -31,10 +31,36 @@ export const ArrowButton: ParentComponent<ArrowButtonProps> = (
   ]);
 
   const prefixIcon = children(() => props.prefixIcon);
+  const [showArrow, setShowArrow] = createSignal(true);
+
+  let containerRef!: HTMLAnchorElement;
+  let arrowRef!: HTMLDivElement;
+
+  const checkOverflow = () => {
+    const margin = 21;
+    const container = containerRef.getBoundingClientRect();
+    const arrow = arrowRef.getBoundingClientRect();
+    setShowArrow(arrow.right <= container.right - margin);
+  };
+
+  onMount(() => {
+    checkOverflow();
+
+    window.addEventListener("resize", checkOverflow);
+
+    const observer = new ResizeObserver(checkOverflow);
+    observer.observe(containerRef);
+
+    onCleanup(() => {
+      window.removeEventListener("resize", checkOverflow);
+      observer.disconnect();
+    });
+  });
 
   return (
     <A
       {...anchorProps}
+      ref={containerRef}
       class={clsx(
         "flex items-center sm:gap-5 gap-2 bg-background-60/80 rounded-2xl p-3 sm:pl-5 sm:pr-10 px-5 hover:cursor-pointer group hover:bg-background-50 backdrop-blur-[9px] transition-colors border",
         props.variant === "primary"
@@ -52,12 +78,15 @@ export const ArrowButton: ParentComponent<ArrowButtonProps> = (
         </div>
       </Show>
       <div class="flex flex-col grow">{props.children}</div>
-      <div class="flex w-9 group-hover:translate-x-5 transition-transform duration-200">
-        <ArrowIcon
-          class="fill-background-10"
-          size={30}
-          direction="right"
-        ></ArrowIcon>
+
+      <div
+        ref={arrowRef}
+        class={clsx(
+          "flex w-9 group-hover:translate-x-5 transition-transform duration-200",
+          !showArrow() && "invisible"
+        )}
+      >
+        <ArrowIcon class="fill-background-10" size={30} direction="right" />
       </div>
     </A>
   );

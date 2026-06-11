@@ -14,7 +14,12 @@ import { PlayIcon } from "../../components/commons/icons/PlayIcon";
 import { getContentSize } from "../../utils/dom";
 import { Typography } from "../commons/Typography";
 
-const videos = [
+interface Video {
+  src: string;
+  thumbnail: string;
+}
+
+const videos: Video[] = [
   {
     src: "https://www.youtube-nocookie.com/embed/2JqAj1_KYXU",
     thumbnail: "https://i.ytimg.com/vi/2JqAj1_KYXU/hqdefault.jpg",
@@ -140,13 +145,12 @@ const VideoControl: Component<{
 export const VideoSection: Component = () => {
   const [currentVideo, setCurrentVideo] = createSignal(videos[0]);
   const [autoplay, setAutoplay] = createSignal(false);
-  const [videosContainerSize, setVideosContainerSize] =
-    createSignal<DOMRect>(null);
-  const [videosScrollSize, setVideosScrollSize] = createSignal<DOMRect>(null);
+  const [videosContainerSize, setVideosContainerSize] = createSignal<DOMRect>();
+  const [videosScrollSize, setVideosScrollSize] = createSignal<DOMRect>();
   const [videosScroll, setVideosScroll] = createSignal<number>(0);
-  let videosContainerRef: HTMLDivElement;
-  let videosScrollRef: HTMLDivElement;
-  let resizeObserver;
+  let videosContainerRef!: HTMLDivElement;
+  let videosScrollRef!: HTMLDivElement;
+  let resizeObserver: ResizeObserver;
 
   const shouldShowNext = createMemo(() => {
     const containerSize = videosContainerSize();
@@ -167,13 +171,13 @@ export const VideoSection: Component = () => {
 
   const scrollNext = () => {
     videosScrollRef.scrollBy({
-      left: videosContainerSize().width / videos.length,
+      left: videosContainerSize()!.width / videos.length,
     });
   };
 
   const scrollPrev = () => {
     videosScrollRef.scrollBy({
-      left: -videosContainerSize().width / videos.length,
+      left: -videosContainerSize()!.width / videos.length,
     });
   };
 
@@ -205,7 +209,7 @@ export const VideoSection: Component = () => {
     }
   });
 
-  const openVideo = (video) => {
+  const openVideo = (video: Video) => {
     batch(() => {
       setAutoplay(true);
       setCurrentVideo(video);
