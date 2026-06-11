@@ -1,5 +1,5 @@
 import { Link, Meta } from "@solidjs/meta";
-import { A, useLocation } from "@solidjs/router";
+import { useLocation } from "@solidjs/router";
 import { Component, ParentProps, createEffect } from "solid-js";
 import { AppTitle } from "~/components/AppTitle";
 import { Container } from "~/components/commons/Container";
@@ -94,12 +94,12 @@ export default function HomePage(props: ParentProps) {
       </Section>
 
       <div class="flex flex-col pt-20 sm:pt-64 md:pt-16 gap-20 w-full items-center">
-        <Section>
-          <DownloadSection></DownloadSection>
-        </Section>
-
         <Section gizmo="/images/Webpage_Design_Parts_first_block_bg.webp">
           <VideoSection></VideoSection>
+        </Section>
+
+        <Section>
+          <DownloadSection></DownloadSection>
         </Section>
 
         <Section>
