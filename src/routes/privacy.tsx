@@ -1,6 +1,5 @@
 import { Link, Meta } from "@solidjs/meta";
 import remarkGfm from "remark-gfm";
-import { ParentProps } from "solid-js";
 import { SolidMarkdown } from "solid-markdown";
 import { AppTitle } from "~/components/AppTitle";
 import { Container } from "~/components/commons/Container";
@@ -8,7 +7,7 @@ import { MarkdownLink } from "~/components/commons/Markdown";
 import { Section } from "~/components/Section";
 import { MainLayout } from "~/layouts/MainLayout";
 
-export default function PrivacyPage(props: ParentProps) {
+export default function PrivacyPage() {
   return (
     <MainLayout>
       <AppTitle key="privacy.title"></AppTitle>

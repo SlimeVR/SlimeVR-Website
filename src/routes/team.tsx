@@ -254,7 +254,7 @@ function shuffle() {
   }, SHUFFLE_INTERVAL);
 }
 
-export default function TeamPage(props: ParentProps) {
+export default function TeamPage() {
   const { translator } = useI18n();
 
   const [focusedCard, setFocusedCard] = createSignal<string | null>(null);
