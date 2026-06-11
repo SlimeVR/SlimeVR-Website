@@ -28,6 +28,8 @@ import { RedditIcon } from "../commons/icons/socials/RedditIcon";
 import { Typography } from "../commons/Typography";
 import CircularIcon from "./CircularIcon";
 import { PatreonIcon } from "../commons/icons/socials/PatreonIcon";
+import { VGenIcon } from "../commons/icons/socials/VGenIcon";
+import { BoothIcon } from "../commons/icons/socials/BoothIcon";
 
 // constants
 const FALLBACK_COLOR = "#d9d9d9"; // fallback color for cards without a background or border set
@@ -52,6 +54,8 @@ const SOCIAL_ICONS: Record<
   discord: { icon: DiscordIcon, size: 20 },
   tiktok: { icon: TiktokIcon, size: 20 },
   printables: { icon: PrintablesIcon, size: 18 },
+  vgen: { icon: VGenIcon, size: 20 },
+  booth: { icon: BoothIcon, size: 22 },
   steam: { icon: SteamIcon, size: 18 },
   matrix: { icon: MatrixIcon, size: 16 },
   website: { icon: WebsiteIcon, size: 20 },
@@ -446,7 +450,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
         aria-hidden="true"
       />
 
-      {/* the actual card*/}
+      {/* the actual card */}
       <div
         class={cardClasses() + " rounded-2xl shadow-lg relative"}
         ref={card}

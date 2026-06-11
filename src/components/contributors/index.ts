@@ -14,6 +14,9 @@ export interface Contributor {
     discord?: string;
     tiktok?: string;
     printables?: string;
+    vgen?: string;
+    booth?: string;
+    soundcloud?: string;
     steam?: string;
     matrix?: string;
     reddit?: string;
@@ -37,12 +40,12 @@ export const contributors: Contributor[] = [
   {
     name: "loucass003",
     roles: ["dev"],
-    color: "#ffe276",
+    color: "#fae2c1",
     socials: {
       github: "https://github.com/loucass003",
     },
     tags: ["#programmer", "#french"],
-    classes: "-mt-5 scale-[115%]!",
+    classes: "scale-[105%]!",
   },
   {
     name: "Summer",
@@ -149,7 +152,7 @@ export const contributors: Contributor[] = [
   {
     name: "nataly",
     roles: ["community"],
-    color: "#ffe8a9",
+    color: "#eec792",
     socials: {},
     tags: ["#coffee_addict", "#fashionista", "#foodporn", "#blogging", "#☺️"],
   },
@@ -161,7 +164,7 @@ export const contributors: Contributor[] = [
       website: "https://linktr.ee/yex0",
     },
     tags: ["#silly", "#yes", "#DIYtheWorld"],
-    classes: "-mt-5 ml-2 scale-[120%]!",
+    classes: "-mt-3 ml-2 scale-[115%]!",
   },
   {
     name: "Snaila",
@@ -169,6 +172,7 @@ export const contributors: Contributor[] = [
     roles: ["artist"],
     socials: {},
     tags: ["#snailing", "#caring", "#pink", "#maid"],
+    classes: "-mt-1",
   },
   {
     name: "Eve",
@@ -230,11 +234,11 @@ export const contributors: Contributor[] = [
       website: "https://imurx.github.io",
     },
     tags: ["#eevee", "#silly", "#:3", "#funky", "#rust"],
-    classes: "scale-[105%]",
+    classes: "scale-[105%]!",
   },
   {
     name: "Eiren",
-    color: "#8cb1df",
+    color: "#e68a26",
     roles: ["dev", "community"],
     socials: {
       website: "https://eiren.io",
@@ -243,12 +247,12 @@ export const contributors: Contributor[] = [
       youtube: "https://www.youtube.com/@eirenrain",
     },
     tags: ["#robit", "#friend", "#eldritch", "#tinkerer"],
-    classes: "-mt-1 scale-[105%]!",
+    classes: "mt-1 scale-[105%]!",
   },
   {
     name: "JovannMC",
     roles: ["dev", "community"],
-    color: "#b59ec8",
+    color: "#c0c0c0",
     socials: {
       website: "https://jovann.me",
       youtube: "https://www.youtube.com/@JovannMC",
@@ -264,19 +268,22 @@ export const contributors: Contributor[] = [
     color: "#e7c1da",
     socials: {},
     tags: ["#shy", "#weeb", "#justhappytobehere"],
-    classes: "ml-1",
+    classes: "",
   },
   {
     name: "Platinum",
     roles: ["dev", "community"],
+    color: "#d0a067",
     socials: {
       github: "https://github.com/PlatinumVsReality",
     },
     tags: ["#eepy", "#skittle", "shaped", "#friend"],
+    classes: "mt-1 scale-[110%]!",
   },
   {
     name: "Elle",
     roles: ["dev", "community"],
+    color: "#af87ad",
     socials: {
       github: "https://github.com/lmore377",
       twitter: "https://twitter.com/lmore377",
@@ -297,6 +304,7 @@ export const contributors: Contributor[] = [
   {
     name: "Fate",
     roles: ["dev"],
+    color: "#e8e0d4",
     socials: {
       bluesky: "https://bsky.app/profile/threadsoffate.bsky.social",
       github: "https://github.com/ThreadOfFate",
@@ -314,7 +322,7 @@ export const contributors: Contributor[] = [
     classes: "-mt-1 scale-[105%]!",
   },
   {
-    name: "Shine Bright",
+    name: "Shine",
     color: "#f5d1e2",
     roles: ["dev", "community"],
     socials: {
@@ -338,10 +346,10 @@ export const contributors: Contributor[] = [
   {
     name: "Polymoria",
     roles: ["artist", "community"],
-    color: "#93cdb2",
+    color: "#e4867a",
     socials: { bluesky: "https://bsky.app/profile/polymoria.bsky.social" },
     tags: ["#silly", "#friend", "#uwu", "#owo", "#ryr"],
-    classes: "-mt-1 scale-[110%]!",
+    classes: "scale-[110%]!",
   },
   {
     name: "Jabberrocky",
@@ -393,7 +401,7 @@ export const contributors: Contributor[] = [
       github: "https://github.com/unlogisch04/",
     },
     tags: ["#programmer", "#fork", "#maintainer", "#firmware"],
-    classes: "-mt-1 scale-[105%]!",
+    classes: "",
   },
   {
     name: "Aed",
@@ -408,7 +416,7 @@ export const contributors: Contributor[] = [
   },
   {
     name: "Sebby",
-    color: "#e0e1ed",
+    color: "#e0cdb8",
     roles: ["dev", "community"],
     socials: {
       bluesky: "https://bsky.app/profile/sebrinarena.bsky.social",
@@ -435,8 +443,8 @@ export const contributors: Contributor[] = [
     tags: ["#baka", "#cat", "#meow", "#food"],
   },
   {
-    name: "Amber",
-    color: "#7f7cae",
+    name: "Rexa",
+    color: "#aeadcf",
     roles: ["dev", "community"],
     socials: {
       bluesky: "https://bsky.app/profile/did:plc:jw5h23y2xxu3jznx5taro64r",
@@ -446,5 +454,117 @@ export const contributors: Contributor[] = [
       patreon: "https://patreon.com/tronique_llc",
     },
     tags: ["#foxy", "#silly", "#cute", "#engineer", "#gamer"],
+  },
+  {
+    name: "Sapphire",
+    roles: ["dev"],
+    socials: {
+      github: "https://github.com/ImSapphire",
+      discord: "https://discord.com/users/615014335525289984",
+    },
+    tags: ["#derg", "#linux", "#goober"],
+  },
+  {
+    name: "CalliePepper",
+    roles: ["dev"],
+    socials: {
+      website: "https://callie.zone/",
+    },
+    tags: ["#robot"],
+  },
+  {
+    name: "Bagel",
+    roles: ["dev", "community"],
+    socials: {
+      github: "https://github.com/lordbagel42",
+      website: "https://sylviethedev.com",
+    },
+    tags: ["#silly", "#goober", "#meow", "#colonthree"],
+  },
+  {
+    name: "Kamilake",
+    roles: ["dev", "community"],
+    socials: {
+      github: "https://github.com/kamilake",
+    },
+    tags: ["#programmer", "#kami", "#silly"],
+  },
+  {
+    name: "Mercymainer",
+    roles: ["dev"],
+    socials: {
+      github: "https://github.com/rastorguevia",
+    },
+    tags: ["#contributor", "#programmer", "#lazy"],
+  },
+  {
+    name: "Pixel_Lily",
+    roles: ["community"],
+    socials: {
+      soundcloud: "https://soundcloud.com/pixelily",
+      website: "https://pixelily.net",
+    },
+    tags: ["#djixel", "#purple", "#cute"],
+  },
+  {
+    name: "SickHekker",
+    roles: ["community"], // ? - logistics / supply
+    socials: {
+      bluesky: "https://bsky.app/profile/sickhekker.bsky.social",
+      twitter: "https://twitter.com/sickhekker",
+    },
+    tags: ["#dog", "#logistics", "#metal", "#barkbarkbark"],
+  },
+  {
+    name: "Emi",
+    roles: ["artist"],
+    socials: {},
+    tags: ["#have-a-pleasant-10000-years", "#drawer", "#nerd🤓", "#shy"],
+  },
+  {
+    name: "GizmoQC",
+    roles: ["dev"],
+    socials: {
+      twitch: "https://www.twitch.tv/gizmoqcvr",
+      github: "https://github.com/Guizmo12",
+    },
+    tags: ["#bunny", "#twitch", "#handtraking"],
+  },
+  {
+    name: "Depact",
+    roles: ["community"],
+    socials: {
+      github: "https://github.com/Depact",
+    },
+    tags: ["#diy", "#smols", "#docs", "#tracker-straps"],
+  },
+  {
+    name: "NWB",
+    roles: ["community"],
+    socials: {},
+    tags: ["#quietly_lurking", "#homelabber", "#programmer", "#DIYer"],
+  },
+  {
+    name: "Chiimera",
+    color: "#c0c2cf",
+    roles: ["artist"],
+    socials: {
+      bluesky: "https://bsky.app/profile/chimericcurios.bsky.social",
+      youtube: "https://www.youtube.com/@chimericcurios",
+      vgen: "https://vgen.co/chimericcurios",
+      booth: "https://chimericcurios.booth.pm/",
+    },
+    tags: ["#unity", "#blender", "#deletethedefaultcube"],
+    classes: "-mt-1 scale-[105%]!",
+  },
+  {
+    name: "HannahPadd",
+    color: "#f3c554",
+    roles: ["dev"],
+    socials: {
+      github: "https://github.com/hannahpadd",
+    },
+    tags: ["#programmer", "#metal", "#silly", "#terraria"],
+    classes: "mt-3",
   },
 ];
