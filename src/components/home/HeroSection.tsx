@@ -31,11 +31,13 @@ const TrackerCard: Component<{
           <img
             src="/images/purple_glow.webp"
             class="absolute object-contain h-full scale-200 blur-2xl no-interact"
+            fetchpriority="high"
             alt=""
           />
           <img
             src="/images/tracker_card_border.webp"
             class="absolute object-contain h-full -top-5 scale-[90%] group-hover:rotate-1 transition-transform duration-500 no-interact"
+            fetchpriority="high"
             alt=""
           />
           <img
@@ -46,6 +48,7 @@ const TrackerCard: Component<{
           <img
             src={props.mainImage}
             class="absolute object-contain h-full group-hover:-rotate-3 transition-transform no-interact"
+            fetchpriority="high"
             alt="SlimeVR tracker image"
           />
         </div>
@@ -100,30 +103,32 @@ const TrackerCard: Component<{
 export const HeroSection: Component = () => {
   return (
     <div class="flex flex-col h-full sm:h-220 justify-between items-center my-8 relative">
-      {/* desktop hero */}
-      <div class="md:grid-cols-3 grid-cols-1 w-full gap-4 hidden md:grid">
-        <TrackerCard
-          titleKey="home.hero.butterfly-slime"
-          mainImage="/images/butterfly_dock.webp"
-          priceKey="home.hero.price-butterfly"
-          orderKey="home.hero.preorder-btn"
-          href="https://www.crowdsupply.com/slimevr/slimevr-butterfly-trackers"
-        />
+      <div class="hidden md:flex flex-col gap-8 items-center">
         <Typography
           tag="h1"
           key="home.hero.description"
           textAlign="text-center"
-          class="text-[2.5rem] font-bold self-start"
+          class="text-[2.5rem] font-bold"
         />
-        <TrackerCard
-          titleKey="home.hero.og-slime"
-          mainImage="/images/og_slime.webp"
-          priceKey="home.hero.price"
-          orderKey="home.hero.order-btn"
-          href="https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker"
-        />
+        {/* desktop hero */}
+        <div class="grid-cols-3 w-full gap-4 hidden md:grid">
+          <TrackerCard
+            titleKey="home.hero.butterfly-slime"
+            mainImage="/images/butterfly_dock.webp"
+            priceKey="home.hero.price-butterfly"
+            orderKey="home.hero.preorder-btn"
+            href="https://www.crowdsupply.com/slimevr/slimevr-butterfly-trackers"
+          />
+          <div></div>
+          <TrackerCard
+            titleKey="home.hero.og-slime"
+            mainImage="/images/og_slime.webp"
+            priceKey="home.hero.price"
+            orderKey="home.hero.order-btn"
+            href="https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker"
+          />
+        </div>
       </div>
-
       {/* mobile hero */}
       <div class="grid grid-cols-1 w-full gap-4 md:hidden">
         <Typography
@@ -170,7 +175,7 @@ export const HeroSection: Component = () => {
         </div>
 
         {/* tracker */}
-        <div class="absolute mid:top-18 md:top-32 top-12 w-100 md:w-120 2xl:w-140 no-interact hidden md:block">
+        <div class="absolute mid:top-14 md:top-30 top-12 w-100 md:w-120 2xl:w-140 no-interact hidden md:block">
           <img
             src="/images/purple_glow.webp"
             class="w-full scale-120 absolute top-0 -z-10"
