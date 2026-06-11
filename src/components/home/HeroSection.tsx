@@ -17,7 +17,7 @@ const TrackerCard: Component<{
   return (
     <div class="group rounded-2xl flex flex-col overflow-clip items-center gap-2 sm:gap-4 justify-between bg-background-60/40 border backdrop-blur-[9px] border-background-30/80">
       <A
-        class="px-12 pt-8 flex flex-col items-center w-full"
+        class="px-6 pt-6 flex flex-col gap-2 sm:gap-4 items-center justify-between w-full"
         href={props.href}
         aria-label="Card linking to SlimeVR tracker order page"
       >
@@ -25,9 +25,9 @@ const TrackerCard: Component<{
           tag="h1"
           textAlign="text-center"
           key={props.titleKey}
-          class="text-[2.25rem] font-bold"
+          class="text-[24px] lg:text-[28px] xl:text-[32px] font-bold"
         />
-        <div class="relative h-30 md:h-40 w-full flex justify-center">
+        <div class="relative h-30 md:h-40 w-full flex justify-center items-center">
           <img
             src="/images/purple_glow.webp"
             class="absolute object-contain h-full scale-200 blur-2xl no-interact"
@@ -36,18 +36,18 @@ const TrackerCard: Component<{
           />
           <img
             src="/images/tracker_card_border.webp"
-            class="absolute object-contain h-full -top-5 scale-[90%] group-hover:rotate-1 transition-transform duration-500 no-interact"
+            class="absolute object-contain h-full scale-[90%] group-hover:rotate-1 transition-transform duration-500 no-interact"
             fetchpriority="high"
             alt=""
           />
           <img
             src={props.mainImage}
-            class="absolute object-contain h-full blur-[3px] group-hover:-rotate-3 transition-transform no-interact"
+            class="absolute object-contain h-full top-2 blur-[3px] group-hover:-rotate-3 transition-transform no-interact"
             alt=""
           />
           <img
             src={props.mainImage}
-            class="absolute object-contain h-full group-hover:-rotate-3 transition-transform no-interact"
+            class="absolute object-contain h-full top-2 group-hover:-rotate-3 transition-transform no-interact"
             fetchpriority="high"
             alt="SlimeVR tracker image"
           />
@@ -55,15 +55,15 @@ const TrackerCard: Component<{
         <Typography
           key={props.priceKey}
           tag="p"
-          class="text-[2rem] font-bold"
+          class="text-[20px] lg:text-[24px] xl:text-[28px] font-bold"
         />
       </A>
 
       {/* regular version of order button */}
-      <div class="w-full px-8 pb-8 hidden 2xl:block">
+      <div class="w-full px-6 pb-6 hidden 2xl:block">
         <ArrowButton
           variant="primary"
-          prefixIcon={<CartIcon size={40}></CartIcon>}
+          prefixIcon={<CartIcon size={36}></CartIcon>}
           href={props.href}
         >
           <div class="flex flex-col flex-wrap relative justify-center pb-2">
@@ -73,13 +73,13 @@ const TrackerCard: Component<{
               whitespace="whitespace-nowrap"
               key={props.orderKey ?? "home.hero.preorder-btn"}
             />
-            <CrowdSupplyIcon size={180}></CrowdSupplyIcon>
+            <CrowdSupplyIcon size={162}></CrowdSupplyIcon>
           </div>
         </ArrowButton>
       </div>
 
       {/* smaller version for anything smaller than 1080p </3 */}
-      <div class="w-full px-8 pb-8 block 2xl:hidden">
+      <div class="w-full md:px-6 md:pb-6 px-4 pb-4 block 2xl:hidden">
         <ArrowButton
           variant="primary"
           prefixIcon={<CartIcon size={30}></CartIcon>}
@@ -103,15 +103,15 @@ const TrackerCard: Component<{
 export const HeroSection: Component = () => {
   return (
     <div class="flex flex-col h-full sm:h-220 justify-between items-center my-8 relative">
-      <div class="hidden md:flex flex-col gap-8 items-center">
+      <div class="hidden w-full md:flex flex-col gap-8 items-center">
         <Typography
           tag="h1"
           key="home.hero.description"
           textAlign="text-center"
-          class="text-[2.5rem] font-bold"
+          class="text-[40px] font-bold"
         />
         {/* desktop hero */}
-        <div class="grid-cols-3 w-full gap-4 hidden md:grid">
+        <div class="grid-cols-3 w-full gap-4 md:gap-8 lg:gap-12 hidden md:grid">
           <TrackerCard
             titleKey="home.hero.butterfly-slime"
             mainImage="/images/butterfly_dock.webp"
@@ -135,7 +135,7 @@ export const HeroSection: Component = () => {
           tag="h1"
           key="home.hero.description"
           textAlign="text-center"
-          class="text-[2.5rem] font-bold self-start"
+          class="text-[1.75rem] -mt-4 font-bold"
         />
         <TrackerCard
           titleKey="home.hero.butterfly-slime"
@@ -175,7 +175,7 @@ export const HeroSection: Component = () => {
         </div>
 
         {/* tracker */}
-        <div class="absolute mid:top-14 md:top-30 top-12 w-100 md:w-120 2xl:w-140 no-interact hidden md:block">
+        <div class="absolute mid:top-14 md:top-40 lg:top-30 top-12 w-100 lg:w-110 2xl:w-130 no-interact hidden md:block">
           <img
             src="/images/purple_glow.webp"
             class="w-full scale-120 absolute top-0 -z-10"
