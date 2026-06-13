@@ -10,6 +10,7 @@ import {
 } from "solid-js";
 import { ArrowIcon } from "./icons/ArrowIcon";
 import { createSignal, onMount, onCleanup } from "solid-js";
+import { getContentSize } from "~/utils/dom";
 interface ArrowButtonProps extends AnchorProps {
   prefixIcon?: JSX.Element;
   variant?: "primary" | "default";
@@ -38,8 +39,8 @@ export const ArrowButton: ParentComponent<ArrowButtonProps> = (
 
   const checkOverflow = () => {
     const margin = 21;
-    const container = containerRef.getBoundingClientRect();
-    const arrow = arrowRef.getBoundingClientRect();
+    const container = getContentSize(containerRef);
+    const arrow = getContentSize(arrowRef);
     setShowArrow(arrow.right <= container.right - margin);
   };
 

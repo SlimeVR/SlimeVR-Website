@@ -30,6 +30,7 @@ import CircularIcon from "./CircularIcon";
 import { PatreonIcon } from "../commons/icons/socials/PatreonIcon";
 import { VGenIcon } from "../commons/icons/socials/VGenIcon";
 import { BoothIcon } from "../commons/icons/socials/BoothIcon";
+import { getContentSize } from "~/utils/dom";
 
 // constants
 const FALLBACK_COLOR = "#d9d9d9"; // fallback color for cards without a background or border set
@@ -134,7 +135,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
   ) => {
     if (transitioning()) return;
 
-    const rect = cachedRect || card.getBoundingClientRect();
+    const rect = cachedRect || getContentSize(card);
     const x = clientX - rect.left;
     const y = clientY - rect.top;
     const centerX = rect.width / 2;
@@ -180,7 +181,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
   };
 
   const isMouseOverCard = (e: PointerEvent) => {
-    const rect = cachedRect || card.getBoundingClientRect();
+    const rect = cachedRect || getContentSize(card);
     // allow extra pixels of tolerance to prevent glitching on edges
     return (
       e.clientX >= rect.left - CARD_TOLERANCE &&
@@ -197,7 +198,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
 
   const cardHoverEnter = (e: PointerEvent) => {
     if (props.isFocused || transitioning() || e.pointerType === "touch") return;
-    cachedRect = card.getBoundingClientRect();
+    cachedRect = getContentSize(card);
     card.style.transition = `transform ${HOVER_TRANSITION_DURATION}ms ease`;
     card.style.willChange = "transform";
     document.addEventListener("pointermove", cardHoverTilt, { passive: true });
@@ -251,7 +252,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
     setCardVars();
     card.offsetHeight; // force reflow
 
-    const rect = card.getBoundingClientRect();
+    const rect = getContentSize(card);
     originalPosition = { top: rect.top, left: rect.left };
     placeholder.style.display = "block";
 
