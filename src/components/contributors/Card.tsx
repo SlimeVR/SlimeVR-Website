@@ -30,7 +30,7 @@ import CircularIcon from "./CircularIcon";
 import { PatreonIcon } from "../commons/icons/socials/PatreonIcon";
 import { VGenIcon } from "../commons/icons/socials/VGenIcon";
 import { BoothIcon } from "../commons/icons/socials/BoothIcon";
-import { getContentSize } from "~/utils/dom";
+import { getCardIndex, getCardName, getContentSize } from "~/utils/dom";
 
 // constants
 const FALLBACK_COLOR = "#d9d9d9"; // fallback color for cards without a background or border set
@@ -83,9 +83,18 @@ interface CardProps extends Contributor {
 }
 
 export const Card: ParentComponent<CardProps> = (props) => {
-  const { name, roles, socials, tags, classes, color, onClick, cachedImage } =
-    props;
+  const {
+    display,
+    roles,
+    socials,
+    tags,
+    classes,
+    color,
+    onClick,
+    cachedImage,
+  } = props;
   const borderColor = color || FALLBACK_COLOR;
+  const name = getCardName(display);
 
   let card: HTMLDivElement = null as any;
   let placeholder: HTMLDivElement = null as any; // placeholder for the card when focused to keep its position in list
@@ -94,7 +103,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
   const [imageError, setImageError] = createSignal(cachedImage?.error ?? false);
   const [imageLoading, setImageLoading] = createSignal(!cachedImage);
   const [imgSrc, setImgSrc] = createSignal(
-    cachedImage?.src ?? `/images/contributors/jovannmc.webp`
+    cachedImage?.src ?? `/images/contributors/jovannmc-1.webp`
   );
   const [imgClasses, setImgClasses] = createSignal(
     cachedImage?.classes ??
@@ -412,7 +421,14 @@ export const Card: ParentComponent<CardProps> = (props) => {
     // only load via network request if not cached
     setImageLoading(true);
     const image = new Image();
-    image.src = `/images/contributors/${name.toLowerCase()}.webp`;
+
+    if (display.length > 1) {
+      const i = getCardIndex(display.length) - 1;
+      image.src = display[i].src;
+    } else {
+      image.src = display[0].src;
+    }
+
     image.onload = () => {
       setImgSrc(image.src);
       setImgClasses(

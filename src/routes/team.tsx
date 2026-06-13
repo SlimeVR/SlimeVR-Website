@@ -8,14 +8,17 @@ import {
   createSignal,
   onCleanup,
   onMount,
-  ParentProps,
 } from "solid-js";
 import { AppTitle } from "~/components/AppTitle";
 import { Button } from "~/components/commons/Button";
 import { Container } from "~/components/commons/Container";
 import { ShuffleIcon } from "~/components/commons/icons/ShuffleIcon";
 import { Typography } from "~/components/commons/Typography";
-import { Contributor, contributors } from "~/components/contributors";
+import {
+  Contributor,
+  ContributorDisplay,
+  contributors,
+} from "~/components/contributors";
 import { Card } from "~/components/contributors/Card";
 import { SearchBox } from "~/components/contributors/SearchBox";
 import { Sponsor, SponsorCard, PastSponsorAvatar } from "~/components/sponsors";
@@ -28,6 +31,7 @@ import { PeopleIcon } from "~/components/commons/icons/PeopleIcon";
 import CircularIcon from "~/components/contributors/CircularIcon";
 import { useI18n } from "~/i18n";
 import { setScroll } from "~/utils/scrollbar";
+import { getCardIndex, getCardName } from "~/utils/dom";
 
 // constants
 const MAX_SHINY = 5;
@@ -57,7 +61,11 @@ const socialsPriority = [
 const sortedContribs = contributors
   .slice()
   // sort alphabetically by name
-  .sort((a, b) => a.name.localeCompare(b.name))
+  .sort((a, b) => {
+    const nameA = getCardName(a.display).toLowerCase();
+    const nameB = getCardName(b.display).toLowerCase();
+    return nameA.localeCompare(nameB);
+  })
   .map((contributor) => {
     if (contributor.socials) {
       // sort socials by priority
@@ -198,7 +206,11 @@ const imageCache = new Map<
   string,
   { src: string; classes: string; error: boolean }
 >();
-const preloadImage = (name: string, classes?: string): Promise<void> => {
+const preloadImage = (
+  name: string,
+  display: ContributorDisplay[],
+  classes?: string
+): Promise<void> => {
   return new Promise((resolve) => {
     if (imageCache.has(name)) {
       resolve();
@@ -206,7 +218,15 @@ const preloadImage = (name: string, classes?: string): Promise<void> => {
     }
 
     const image = new Image();
-    image.src = `/images/contributors/${name.toLowerCase()}.webp`;
+
+    // TODO: reduce repeated code (Card.tsx)
+    if (display.length > 1) {
+      const i = getCardIndex(display.length) - 1;
+      image.src = display[i].src;
+    } else {
+      image.src = display[0].src;
+    }
+
     image.onload = () => {
       imageCache.set(name, {
         src: image.src,
@@ -220,7 +240,7 @@ const preloadImage = (name: string, classes?: string): Promise<void> => {
     };
     image.onerror = () => {
       imageCache.set(name, {
-        src: `/images/contributors/jovannmc.webp`, // fallback
+        src: `/images/contributors/jovannmc-1.webp`, // fallback
         classes:
           "object-contain w-[calc(100%+16px)] scale-[103%] no-interact brightness-[0.01]",
         error: true,
@@ -267,9 +287,11 @@ export default function TeamPage() {
   const pastCount = createMemo(() => pastSponsors().length);
   const shinyContribs = createMemo(() => getShinyContribs(sortedContribs));
   const filteredContribs = createMemo(() =>
-    finalContribs().filter((contrib) =>
-      contrib.name.toLowerCase().includes(searchTerm().toLowerCase())
-    )
+    finalContribs().filter((contrib) => {
+      const search = searchTerm().toLowerCase();
+      const name = getCardName(contrib.display).toLowerCase();
+      return name.toLowerCase().includes(search);
+    })
   );
 
   const handleCardClick = (contributorName: string) => {
@@ -308,7 +330,7 @@ export default function TeamPage() {
 
     // preload all contributor images
     sortedContribs.forEach((contrib) => {
-      preloadImage(contrib.name, contrib.classes);
+      preloadImage(contrib.name, contrib.display, contrib.classes);
     });
   });
 
@@ -327,7 +349,7 @@ export default function TeamPage() {
         rel="preload"
         fetchpriority="high"
         as="image"
-        href="/images/contributors/jovannmc.webp"
+        href="/images/contributors/jovannmc-1.webp"
         type="image/webp"
       />
       {/* contributors section */}
@@ -422,7 +444,6 @@ export default function TeamPage() {
                 (s) => s.name === contrib.name
               );
               const cachedImage = imageCache.get(contrib.name);
-
               return (
                 <div
                   class={clsx(

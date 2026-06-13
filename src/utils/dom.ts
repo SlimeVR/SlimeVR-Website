@@ -16,3 +16,15 @@ export const scrollToSection = (
   // use location.state to pass scrollTo
   navigate("/", { state: { scrollTo: sectionId } });
 };
+
+export const getCardIndex = (index: number) => {
+  const periodDays = 3; // change image every 3 days
+  const period = Math.floor(Date.now() / (1000 * 60 * 60 * 24 * periodDays));
+  const i = (period % index) + 1;
+  return i;
+};
+
+export const getCardName = (display: { name: string }[]) => {
+  const i = getCardIndex(display.length) - 1;
+  return i >= 0 ? display[i].name : display[0].name;
+}
