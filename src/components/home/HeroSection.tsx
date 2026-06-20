@@ -117,7 +117,7 @@ export const HeroSection: Component = () => {
             mainImage="/images/butterfly_dock.webp"
             priceKey="home.hero.price-butterfly"
             orderKey="home.hero.preorder-btn"
-            href="https://www.crowdsupply.com/slimevr/slimevr-butterfly-trackers"
+            href="https://slime.gay/site-cs-bf"
           />
           <div></div>
           <TrackerCard
@@ -125,7 +125,7 @@ export const HeroSection: Component = () => {
             mainImage="/images/og_slime.webp"
             priceKey="home.hero.price"
             orderKey="home.hero.order-btn"
-            href="https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker"
+            href="https://slime.gay/site-cs-og"
           />
         </div>
       </div>
