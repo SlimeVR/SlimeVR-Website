@@ -93,7 +93,7 @@ export const Navbar: Component = (props) => {
             <div class="items-center sm:flex hidden">
               <Button
                 variant="primary"
-                href="https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker"
+                href="https://slime.gay/site-cs-bf"
                 aria-label="Order SlimeVR 1.2 trackers"
               >
                 <Localized id="navbar.order" />

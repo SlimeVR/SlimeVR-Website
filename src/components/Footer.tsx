@@ -87,12 +87,20 @@ export const Footer: Component = (props) => {
           />
           <div class="flex sm:flex-col sm:gap-0.5 gap-3 flex-wrap">
             <a
-              href="https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker"
+              href="https://slime.gay/site-cs-og"
               target="_blank"
               rel="noopener noreferrer"
               class="link w-fit"
             >
-              <Typography tag="span" key="footer.column.shop.official" />
+              <Typography tag="span" key="footer.column.shop.og" />
+            </a>
+            <a
+              href="https://slime.gay/site-cs-bf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="link w-fit"
+            >
+              <Typography tag="span" key="footer.column.shop.butterfly" />
             </a>
             <a
               href="https://shop.slimevr.dev"

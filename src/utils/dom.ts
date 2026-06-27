@@ -27,4 +27,4 @@ export const getCardIndex = (index: number) => {
 export const getCardName = (display: { name: string }[]) => {
   const i = getCardIndex(display.length) - 1;
   return i >= 0 ? display[i].name : display[0].name;
-}
+};

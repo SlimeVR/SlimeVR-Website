@@ -219,7 +219,6 @@ const preloadImage = (
 
     const image = new Image();
 
-    // TODO: reduce repeated code (Card.tsx)
     if (display.length > 1) {
       const i = getCardIndex(display.length) - 1;
       image.src = display[i].src;
