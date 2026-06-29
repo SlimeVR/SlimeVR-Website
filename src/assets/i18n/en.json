@@ -18,7 +18,8 @@
       },
       "shop": {
         "title": "Shop",
-        "official": "Official ",
+        "og": "SlimeVR Trackers",
+        "butterfly": "Butterfly Trackers",
         "spare-parts": "Spare parts"
       },
       "social": {

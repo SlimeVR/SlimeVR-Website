@@ -27,7 +27,7 @@ interface DrawerProps {
 }
 
 export const Drawer: ParentComponent<DrawerProps> = (props) => {
-  let drawerContainerRef: HTMLDivElement;
+  let drawerContainerRef!: HTMLDivElement;
 
   let context: DrawerContextData = {
     events: new TypedEventTarget(),
@@ -61,14 +61,14 @@ interface DrawerItemProps {
 
 export const DrawerItem: ParentComponent<DrawerItemProps> = (props) => {
   const context = useContext(DrawerContext);
-  let itemRef: HTMLDivElement;
-  let itemContentRef: HTMLDivElement;
+  let itemRef!: HTMLDivElement;
+  let itemContentRef!: HTMLDivElement;
   let itemIndex: number;
-  let contentSizeObserver;
+  let contentSizeObserver!: ResizeObserver;
 
   if (!context) throw new Error("no context for the drawer found!");
 
-  const [contentSize, setContentSize] = createSignal<DOMRect | null>(null);
+  const [contentSize, setContentSize] = createSignal<DOMRect>();
   const [isOpen, setOpen] = createSignal(props.open);
 
   const onResize = () => {
@@ -104,7 +104,7 @@ export const DrawerItem: ParentComponent<DrawerItemProps> = (props) => {
     if (isServer) return { height: "inherit" };
     if (!contentSize() || !isOpen()) return { height: `0px` };
 
-    return { height: `${contentSize().height}px` };
+    return { height: `${contentSize()?.height}px` };
   });
 
   return (

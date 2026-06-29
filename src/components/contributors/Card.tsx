@@ -28,6 +28,9 @@ import { RedditIcon } from "../commons/icons/socials/RedditIcon";
 import { Typography } from "../commons/Typography";
 import CircularIcon from "./CircularIcon";
 import { PatreonIcon } from "../commons/icons/socials/PatreonIcon";
+import { VGenIcon } from "../commons/icons/socials/VGenIcon";
+import { BoothIcon } from "../commons/icons/socials/BoothIcon";
+import { getCardIndex, getCardName, getContentSize } from "~/utils/dom";
 
 // constants
 const FALLBACK_COLOR = "#d9d9d9"; // fallback color for cards without a background or border set
@@ -52,6 +55,8 @@ const SOCIAL_ICONS: Record<
   discord: { icon: DiscordIcon, size: 20 },
   tiktok: { icon: TiktokIcon, size: 20 },
   printables: { icon: PrintablesIcon, size: 18 },
+  vgen: { icon: VGenIcon, size: 20 },
+  booth: { icon: BoothIcon, size: 22 },
   steam: { icon: SteamIcon, size: 18 },
   matrix: { icon: MatrixIcon, size: 16 },
   website: { icon: WebsiteIcon, size: 20 },
@@ -78,9 +83,18 @@ interface CardProps extends Contributor {
 }
 
 export const Card: ParentComponent<CardProps> = (props) => {
-  const { name, roles, socials, tags, classes, color, onClick, cachedImage } =
-    props;
+  const {
+    display,
+    roles,
+    socials,
+    tags,
+    classes,
+    color,
+    onClick,
+    cachedImage,
+  } = props;
   const borderColor = color || FALLBACK_COLOR;
+  const name = getCardName(display);
 
   let card: HTMLDivElement = null as any;
   let placeholder: HTMLDivElement = null as any; // placeholder for the card when focused to keep its position in list
@@ -89,7 +103,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
   const [imageError, setImageError] = createSignal(cachedImage?.error ?? false);
   const [imageLoading, setImageLoading] = createSignal(!cachedImage);
   const [imgSrc, setImgSrc] = createSignal(
-    cachedImage?.src ?? `/images/contributors/jovannmc.webp`
+    cachedImage?.src ?? `/images/contributors/jovannmc-1.webp`
   );
   const [imgClasses, setImgClasses] = createSignal(
     cachedImage?.classes ??
@@ -130,7 +144,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
   ) => {
     if (transitioning()) return;
 
-    const rect = cachedRect || card.getBoundingClientRect();
+    const rect = cachedRect || getContentSize(card);
     const x = clientX - rect.left;
     const y = clientY - rect.top;
     const centerX = rect.width / 2;
@@ -176,7 +190,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
   };
 
   const isMouseOverCard = (e: PointerEvent) => {
-    const rect = cachedRect || card.getBoundingClientRect();
+    const rect = cachedRect || getContentSize(card);
     // allow extra pixels of tolerance to prevent glitching on edges
     return (
       e.clientX >= rect.left - CARD_TOLERANCE &&
@@ -193,7 +207,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
 
   const cardHoverEnter = (e: PointerEvent) => {
     if (props.isFocused || transitioning() || e.pointerType === "touch") return;
-    cachedRect = card.getBoundingClientRect();
+    cachedRect = getContentSize(card);
     card.style.transition = `transform ${HOVER_TRANSITION_DURATION}ms ease`;
     card.style.willChange = "transform";
     document.addEventListener("pointermove", cardHoverTilt, { passive: true });
@@ -247,7 +261,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
     setCardVars();
     card.offsetHeight; // force reflow
 
-    const rect = card.getBoundingClientRect();
+    const rect = getContentSize(card);
     originalPosition = { top: rect.top, left: rect.left };
     placeholder.style.display = "block";
 
@@ -407,7 +421,14 @@ export const Card: ParentComponent<CardProps> = (props) => {
     // only load via network request if not cached
     setImageLoading(true);
     const image = new Image();
-    image.src = `/images/contributors/${name.toLowerCase()}.webp`;
+
+    if (display.length > 1) {
+      const i = getCardIndex(display.length) - 1;
+      image.src = display[i].src;
+    } else {
+      image.src = display[0].src;
+    }
+
     image.onload = () => {
       setImgSrc(image.src);
       setImgClasses(
@@ -446,7 +467,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
         aria-hidden="true"
       />
 
-      {/* the actual card*/}
+      {/* the actual card */}
       <div
         class={cardClasses() + " rounded-2xl shadow-lg relative"}
         ref={card}
