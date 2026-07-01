@@ -60,10 +60,11 @@ const socialsPriority = [
 
 const sortedContribs = contributors
   .slice()
-  // sort alphabetically by name
+  // sort alphabetically by the stable top-level name.
+  // NOTE: must NOT sort by getCardName(display), cuz that's date-dependent (crashes in SSR)
   .sort((a, b) => {
-    const nameA = getCardName(a.display).toLowerCase();
-    const nameB = getCardName(b.display).toLowerCase();
+    const nameA = a.name.toLowerCase();
+    const nameB = b.name.toLowerCase();
     return nameA.localeCompare(nameB);
   })
   .map((contributor) => {
@@ -277,6 +278,9 @@ export default function TeamPage() {
   const { translator } = useI18n();
 
   const [focusedCard, setFocusedCard] = createSignal<string | null>(null);
+  // only compute date-dependent state (shiny slimes) after mount, so the server
+  // render and the first client render match and hydration doesn't mismatch
+  const [mounted, setMounted] = createSignal(false);
   const [sponsors] = createResource(fetchSponsors);
 
   const activeSponsors = createMemo(() => sponsors()?.active ?? []);
@@ -284,7 +288,9 @@ export default function TeamPage() {
   const envMissing = createMemo(() => sponsors()?.envMissing ?? false);
   const activeCount = createMemo(() => activeSponsors().length);
   const pastCount = createMemo(() => pastSponsors().length);
-  const shinyContribs = createMemo(() => getShinyContribs(sortedContribs));
+  const shinyContribs = createMemo(() =>
+    mounted() ? getShinyContribs(sortedContribs) : []
+  );
   const filteredContribs = createMemo(() =>
     finalContribs().filter((contrib) => {
       const search = searchTerm().toLowerCase();
@@ -324,6 +330,7 @@ export default function TeamPage() {
 
   onMount(() => {
     if (typeof window === "undefined") return;
+    setMounted(true);
     document.addEventListener("keydown", handleEscapeKey);
     document.addEventListener("mouseup", handleClickOutside);
 

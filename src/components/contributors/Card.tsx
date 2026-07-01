@@ -94,7 +94,12 @@ export const Card: ParentComponent<CardProps> = (props) => {
     cachedImage,
   } = props;
   const borderColor = color || FALLBACK_COLOR;
-  const name = getCardName(display);
+  // getCardName(display) is date-dependent; flag for detecting if on server/client
+  // and dynamically triggering shiny selectiong
+  const [mounted, setMounted] = createSignal(false);
+  const name = createMemo(() =>
+    mounted() ? getCardName(display) : display[0].name
+  );
 
   let card: HTMLDivElement = null as any;
   let placeholder: HTMLDivElement = null as any; // placeholder for the card when focused to keep its position in list
@@ -366,6 +371,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
   let resizeObserver: ResizeObserver | null = null;
 
   onMount(() => {
+    setMounted(true);
     if (typeof window === "undefined" || !card) return;
 
     const setInitialStyles = () => {
@@ -509,7 +515,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
                   variant="section-title"
                   color="text-background-90"
                 >
-                  {name}
+                  {name()}
                 </Typography>
                 {/* roles */}
                 <div class="flex flex-row -space-x-2.5 mt-1">
@@ -529,7 +535,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
               <div class="w-54.5 h-35.25 overflow-visible rounded-2xl rounded-tr-[70px] pattern bg-size-[80%]! bg-[#1E2442]! -mt-0.5 relative">
                 <img
                   src={imgSrc()}
-                  alt={name}
+                  alt={name()}
                   class={imgClasses()}
                   loading="lazy"
                   style={{
