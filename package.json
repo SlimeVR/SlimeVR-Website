@@ -26,7 +26,8 @@
     "tailwindcss": "4.1.18",
     "tailwindcss-animated": "^1.1.2",
     "typescript-event-target": "^1.1.1",
-    "vinxi": "^0.4.3"
+    "vinxi": "^0.4.3",
+    "vite-plugin-markdown": "^2.2.0"
   },
   "engines": {
     "node": ">=18"

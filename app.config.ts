@@ -1,8 +1,13 @@
 import { defineConfig } from "@solidjs/start/config";
+import { plugin as mdPlugin, Mode } from 'vite-plugin-markdown';
 
 export default defineConfig({
   vite: {
-    plugins: [],
+    plugins: [
+      mdPlugin({
+        mode: [Mode.HTML, Mode.MARKDOWN],
+      }),
+    ],
   },
   ssr: true,
   server: {
