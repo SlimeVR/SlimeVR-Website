@@ -160,7 +160,7 @@ export const HeroSection: Component = () => {
           <img
             src="/images/nighty_floating.webp"
             class="absolute -z-10 scale-[150%] md:mt-90 mt-40 md:animate-floating blur-lg min-w-280 left-1/2 -translate-x-[55%] md:-translate-x-1/2"
-            alt="Nightly floating in the background"
+            alt="Nighty floating in the background"
           ></img>
           <img
             src="/images/nighty_floating.webp"

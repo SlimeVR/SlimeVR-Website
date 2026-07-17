@@ -2,6 +2,7 @@
 export interface Post {
   slug: string;
   metadata: PostMetadata;
+  html?: string;
 }
 
 export interface PostMetadata {
@@ -43,10 +44,11 @@ export async function getPost(slug: string): Promise<Post | null> {
   const importer = postModules[`/src/posts/${slug}.md`];
   if (!importer) return null;
 
-  const { attributes } = (await importer()) as PostModule;
+  const { attributes, html } = (await importer()) as PostModule;
 
   return {
     slug,
     metadata: attributes,
+    html,
   };
 }

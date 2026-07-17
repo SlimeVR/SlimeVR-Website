@@ -24,7 +24,7 @@ you can do stuff idk, make things **bold**, _italic_, ~~struck through~~, or lin
 2. give you
 3. up
 
-reference images like this `![example](/images/blogs/[slug]/[image])`: ![example](/images/nightly_floating.webp)
+reference images like this `![example](/images/blogs/[slug]/[image])`: ![example](/images/nighty_floating.webp)
 
 inline code `bun run dev` then some code blocks:
 

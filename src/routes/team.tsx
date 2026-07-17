@@ -350,7 +350,7 @@ export default function TeamPage() {
     <MainLayout>
       <AppTitle key="contributors.title"></AppTitle>
       <Meta name="robots" content="index, follow" />
-      <Link rel="canonical" href="https://slimevr.dev/" />
+      <Link rel="canonical" href="https://slimevr.dev/team" />
       <Link
         rel="preload"
         fetchpriority="high"
@@ -358,6 +358,7 @@ export default function TeamPage() {
         href="/images/contributors/jovannmc-1.webp"
         type="image/webp"
       />
+
       {/* contributors section */}
       <Section>
         <Container class="mt-4">
@@ -366,7 +367,6 @@ export default function TeamPage() {
             <Typography
               tag="h2"
               variant="main-title"
-              textAlign="text-center"
               key="contributors.title"
             />
             <Button

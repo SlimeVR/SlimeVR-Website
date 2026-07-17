@@ -208,6 +208,11 @@
   "tm": {
     "title": "SlimeVR Trademark Guidelines"
   },
+  "news": {
+    "title": "Latest news",
+    "none": "No news posts yet.",
+    "later": "Check back later!"
+  },
   "privacy": {
     "title": "Privacy Policy"
   },
