@@ -19,13 +19,6 @@ export default function NewsPage() {
       <AppTitle key="news.title"></AppTitle>
       <Meta name="robots" content="index, follow" />
       <Link rel="canonical" href="https://slimevr.dev/news" />
-      <Link
-        rel="preload"
-        fetchpriority="high"
-        as="image"
-        href="/images/Webpage_Design_Parts_first_block_bg.webp"
-        type="image/webp"
-      />
 
       <Section>
         <Container class="mt-4">
