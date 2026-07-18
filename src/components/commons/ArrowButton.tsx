@@ -36,12 +36,19 @@ export const ArrowButton: ParentComponent<ArrowButtonProps> = (
 
   let containerRef!: HTMLAnchorElement;
   let arrowRef!: HTMLDivElement;
+  let rafId: number;
 
   const checkOverflow = () => {
-    const margin = 21;
-    const container = getContentSize(containerRef);
-    const arrow = getContentSize(arrowRef);
-    setShowArrow(arrow.right <= container.right - margin);
+    cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(() => {
+      if (!containerRef || !arrowRef) return;
+      const container = getContentSize(containerRef);
+      const arrow = getContentSize(arrowRef);
+      const margin = 21;
+      setShowArrow(
+        Math.round(arrow.right) <= Math.round(container.right) - margin
+      );
+    });
   };
 
   onMount(() => {
@@ -53,6 +60,7 @@ export const ArrowButton: ParentComponent<ArrowButtonProps> = (
     observer.observe(containerRef);
 
     onCleanup(() => {
+      cancelAnimationFrame(rafId);
       window.removeEventListener("resize", checkOverflow);
       observer.disconnect();
     });
@@ -78,7 +86,9 @@ export const ArrowButton: ParentComponent<ArrowButtonProps> = (
           {prefixIcon()}
         </div>
       </Show>
-      <div class="flex flex-col grow">{props.children}</div>
+      <div class={clsx("flex flex-col grow min-w-0", !showArrow() && "items-center")}>
+        {props.children}
+      </div>
 
       <div
         ref={arrowRef}

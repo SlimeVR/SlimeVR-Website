@@ -40,37 +40,23 @@ const FeedbackCard: Component<{
             key={props.title}
           />
         </div>
-        <Typography tag="p" key={props.desc} />
+        <Typography tag="p" textAlign="text-center" key={props.desc} />
       </div>
-      <ArrowButton variant="primary" href={props.link} target="_blank">
+      <div class="flex justify-center items-center sm:justify-end md:justify-center">
+        <ArrowButton variant="primary" href={props.link} target="_blank">
           <Typography
             variant="section-title"
             tag="span"
             whitespace="whitespace-nowrap"
           >
-            Visit
+            Leave feedback
           </Typography>
-      </ArrowButton>
+        </ArrowButton>
+      </div>
     </Container>
   );
 };
 
-// we need to make a page on website with feedback for, and with explanation where to report what issues, and what to expect
-
-// Github issues for testing/engendering/software feedback:
-// https://github.com/SlimeVR/SlimeVR-Server/issues
-
-// Dongle:
-// https://github.com/SlimeVR/SlimeVR-Tracker-nRF-Receiver
-
-// Smol/Butterflies:
-// https://github.com/SlimeVR/SlimeVR-Tracker-nRF
-
-// Beeeggg Tracker:
-// https://github.com/SlimeVR/SlimeVR-Tracker-ESP
-
-// And for steam specific issues:
-// https://github.com/SlimeVR/SlimeVR-Steam
 export default function FeedbackPage() {
   return (
     <MainLayout>
@@ -123,7 +109,7 @@ export default function FeedbackPage() {
             ></FeedbackCard>
           </div>
 
-          {/* generic form placeholder */}
+          {/* form placeholder */}
           <div class="mt-8 flex flex-col gap-2">
             <Typography
               tag="h2"
