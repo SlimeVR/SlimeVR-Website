@@ -205,6 +205,34 @@
     "none": "No sponsors found... maybe you can be the first? (Or something broke!)",
     "past": "Past Sponsors"
   },
+  "feedback": {
+    "title": "Feedback",
+    "description": "SlimeVR could not exist without the input from our amazing community. If you have a bug, feature request, or general feedback about SlimeVR, please use one of the following channels to let us know!",
+    "form": {
+      "title": "Feedback Form",
+      "description": "Have general feedback or questions not related to the above? Please fill out this form and we'll get back to you as soon as possible!"
+    },
+    "software": {
+      "title": "Software Releases",
+      "description": "SlimeVR-Server"
+    },
+    "steam": {
+      "title": "Steam Releases",
+      "description": "SlimeVR-Steam"
+    },
+    "dongle": {
+      "title": "Dongle",
+      "description": "SlimeVR-Tracker-nRF-Receiver"
+    },
+    "nrf": {
+      "title": "Smol / Butterfly Trackers",
+      "description": "SlimeVR-Tracker-nRF"
+    },
+    "esp": {
+      "title": "OG / ESP Trackers",
+      "description": "SlimeVR-Tracker-ESP"
+    }
+  },
   "tm": {
     "title": "SlimeVR Trademark Guidelines"
   },
