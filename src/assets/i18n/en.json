@@ -205,6 +205,19 @@
     "none": "No sponsors found... maybe you can be the first? (Or something broke!)",
     "past": "Past Sponsors"
   },
+  "events": {
+    "title": "SlimeVR Events",
+    "description": "SlimeVR hosts stuff something meow meow",
+    "discord": {
+      "button": "Discord Server",
+      "title": "Discord Events",
+      "description": "We host weekly events for our Discord community, ranging from tech support sessions to relaxing yoga sessions. Check out the events we have available and see when the next one is happening!"
+    },
+    "other": {
+      "title": "Other Events",
+      "description": "SlimeVR participates in other events as well, such as XX and YY. something something"
+    }
+  },
   "tm": {
     "title": "SlimeVR Trademark Guidelines"
   },
