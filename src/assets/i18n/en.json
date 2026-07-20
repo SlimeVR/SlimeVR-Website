@@ -208,15 +208,11 @@
   "events": {
     "title": "SlimeVR Events",
     "description": "SlimeVR hosts stuff something meow meow",
-    "discord": {
-      "button": "Discord Server",
-      "title": "Discord Events",
-      "description": "We host weekly events for our Discord community, ranging from tech support sessions to relaxing yoga sessions. Check out the events we have available and see when the next one is happening!"
-    },
-    "other": {
-      "title": "Other Events",
-      "description": "SlimeVR participates in other events as well, such as XX and YY. something something"
-    }
+    "discord": "Discord Server",
+    "vrchat": "VRChat Group",
+    "faq": "FAQ",
+    "virtual": "Virtual Events",
+    "other": "Other Events"
   },
   "tm": {
     "title": "SlimeVR Trademark Guidelines"

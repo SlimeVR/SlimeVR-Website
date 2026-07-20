@@ -397,7 +397,7 @@ export default function TeamPage() {
                 <CircularIcon size={28}>
                   <DevIcon size={20} />
                 </CircularIcon>
-                <Typography tag="span" variant="standard">
+                <Typography tag="span">
                   <Localized id="contributors.roles.developer" />
                 </Typography>
               </div>
@@ -405,7 +405,7 @@ export default function TeamPage() {
                 <CircularIcon size={28}>
                   <PeopleIcon size={22} />
                 </CircularIcon>
-                <Typography tag="span" variant="standard">
+                <Typography tag="span">
                   <Localized id="contributors.roles.community" />
                 </Typography>
               </div>
@@ -413,7 +413,7 @@ export default function TeamPage() {
                 <CircularIcon size={28}>
                   <ArtistIcon size={18} />
                 </CircularIcon>
-                <Typography tag="span" variant="standard">
+                <Typography tag="span">
                   <Localized id="contributors.roles.artist" />
                 </Typography>
               </div>
