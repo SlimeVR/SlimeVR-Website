@@ -1,4 +1,30 @@
-import { DiscordEvent } from "~/utils/server";
+import testData from "./events.json";
+
+export interface DiscordEvent {
+  id: string;
+  guild_id: string;
+  username: string;
+  name: string;
+  description: string;
+  startDate: string;
+  endDate: string | null;
+  recurrenceRule: {
+    start: string;
+    end: string | null;
+    frequency: number;
+    interval: number;
+    by_weekday: number[] | null;
+    by_n_weekday: any | null;
+    by_month: any | null;
+    by_month_day: any | null;
+    by_year_day: any | null;
+    count: any | null;
+  } | null;
+  image: string | null;
+  entity_metadata: {
+    location: string;
+  };
+}
 
 export const FREQUENCY = {
   YEARLY: 0,
@@ -114,4 +140,29 @@ export const getTimezone = (date: Date | string) => {
       .find((part) => part.type === "timeZoneName")
       ?.value.replace("GMT", "UTC") ?? ""
   );
+};
+
+/*
+ * cloudflare functions stuff
+ */
+
+export const formatEvent = (event: any): DiscordEvent => ({
+  id: event.id,
+  guild_id: event.guild_id,
+  username: event.creator?.username ?? "",
+  name: event.name,
+  description: event.description ?? "",
+  startDate: event.scheduled_start_time ?? event.startDate ?? "",
+  endDate: event.scheduled_end_time ?? event.endDate ?? null,
+  recurrenceRule: event.recurrence_rule ?? null,
+  image: event.image ?? null,
+  entity_metadata: event.entity_metadata ?? { location: "" },
+});
+
+export const getFallbackEvents = (): DiscordEvent[] => {
+  if (!Array.isArray(testData)) {
+    return [];
+  }
+
+  return testData.map(formatEvent);
 };

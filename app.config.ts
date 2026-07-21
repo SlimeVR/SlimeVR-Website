@@ -7,6 +7,7 @@ export default defineConfig({
   ssr: true,
   server: {
     static: true,
+    preset: "cloudflare-pages",
     prerender: {
       routes: ["/404.html"],
       crawlLinks: true,

@@ -1,16 +1,15 @@
 import { Link, Meta } from "@solidjs/meta";
-import { useAction } from "@solidjs/router";
 import { createMemo, createResource, For } from "solid-js";
 import { AppTitle } from "~/components/AppTitle";
 import { Container } from "~/components/commons/Container";
 import { Typography } from "~/components/commons/Typography";
 import { Section } from "~/components/Section";
 import { MainLayout } from "~/layouts/MainLayout";
-import { getEventsAction } from "~/utils/server";
-import { sortByNextDate } from "~/utils/events-helpers";
+import { sortByNextDate } from "~/utils/events";
 import EventsHeader from "~/components/events/EventsHeader";
 import EventCard from "~/components/events/EventCard";
 import { FAQSection } from "~/components/commons/FAQSection";
+import { getFallbackEvents, type DiscordEvent } from "~/utils/events";
 
 const QUESTIONS_COUNT = 5;
 
@@ -23,9 +22,19 @@ const questions = createMemo(() =>
 
 export default function EventsPage() {
   const [events] = createResource(async () => {
-    const action = useAction(getEventsAction());
-    const result = await action();
-    return sortByNextDate(result);
+    try {
+      const response = await fetch("/api/events");
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch events: ${response.status}`);
+      }
+
+      const result = (await response.json()) as DiscordEvent[];
+      return sortByNextDate(result);
+    } catch (error) {
+      console.error("Falling back to local events data", error);
+      return sortByNextDate(getFallbackEvents());
+    }
   });
 
   const eventList = () => events() ?? [];

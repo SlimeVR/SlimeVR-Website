@@ -6,7 +6,6 @@ import { Button } from "~/components/commons/Button";
 import { Container } from "~/components/commons/Container";
 import { Typography } from "~/components/commons/Typography";
 import { useI18n } from "~/i18n";
-import { DiscordEvent } from "~/utils/server";
 import {
   formatDate,
   formatTimeShort,
@@ -14,7 +13,8 @@ import {
   getTimezone,
   getDayName,
   getDates,
-} from "~/utils/events-helpers";
+} from "~/utils/events";
+import { DiscordEvent } from "~/utils/events";
 
 const EventCardHeader: Component<{
   name: string;

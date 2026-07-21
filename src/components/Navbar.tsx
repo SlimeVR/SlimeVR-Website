@@ -58,6 +58,9 @@ export const NavItems: Component = () => {
       <A href="/team" class="link px-2">
         <Typography tag="span" key="navbar.team" />
       </A>
+      <A href="/events" class="link px-2">
+        <Typography tag="span" key="navbar.events" />
+      </A>
       <a
         href="https://shop.slimevr.dev/pages/support"
         target="_blank"
