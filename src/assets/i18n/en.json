@@ -212,7 +212,8 @@
     "vrchat": "VRChat Group",
     "faq": "FAQ",
     "virtual": "Virtual Events",
-    "other": "Other Events"
+    "other": "Other Events",
+    "recurring": "Every {{day}}"
   },
   "tm": {
     "title": "SlimeVR Trademark Guidelines"
