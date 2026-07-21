@@ -22,7 +22,7 @@ const EventCardHeader: Component<{
   const isLive = props.endDate ? now >= new Date(props.startDate) && now <= new Date(props.endDate) : false;
   return (
     <div class="flex flex-col gap-2">
-      <Typography tag="h2" textAlign="text-left" variant="section-title" key={props.name} />
+      <Typography tag="h2" textAlign="text-left" variant="section-title">{props.name}</Typography>
       <div class="flex flex-row justify-between">
         <div class="flex flex-col gap-1">
           {isLive ? (
