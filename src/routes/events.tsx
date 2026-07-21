@@ -1,6 +1,6 @@
 import { Link, Meta } from "@solidjs/meta";
 import { useAction } from "@solidjs/router";
-import { createResource, For } from "solid-js";
+import { createMemo, createResource, For } from "solid-js";
 import { AppTitle } from "~/components/AppTitle";
 import { Container } from "~/components/commons/Container";
 import { Typography } from "~/components/commons/Typography";
@@ -10,6 +10,16 @@ import { getEventsAction } from "~/utils/server";
 import { sortByNextDate } from "~/utils/events-helpers";
 import EventsHeader from "~/components/events/EventsHeader";
 import EventCard from "~/components/events/EventCard";
+import { FAQSection } from "~/components/commons/FAQSection";
+
+const QUESTIONS_COUNT = 5;
+
+const questions = createMemo(() =>
+  Array.from({ length: QUESTIONS_COUNT }).map((_, index) => ({
+    question: `events.faq.questions.question-${index + 1}.question`,
+    answer: `events.faq.questions.question-${index + 1}.answer`,
+  }))
+);
 
 export default function EventsPage() {
   const [events] = createResource(async () => {
@@ -29,6 +39,7 @@ export default function EventsPage() {
       <Section>
         <Container class="mt-4">
           <EventsHeader />
+
           <Typography
             tag="p"
             key="events.description"
@@ -53,12 +64,26 @@ export default function EventsPage() {
           <div class="flex flex-col mt-8 gap-4">
             <Typography tag="h2" variant="section-title" key="events.other" />
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <For each={eventList()}>
-                {(event) => <EventCard event={event} />}
-              </For>
+              {/* {eventList().length === 0 ? (
+                <Typography tag="p" key="events.no-events" />
+              ) : (
+                <For each={eventList()}>
+                  {(event) => <EventCard event={event} />}
+                </For>
+              )} */}
+              <Typography tag="p" key="events.no-events" />
             </div>
           </div>
         </Container>
+
+        {/* FAQ */}
+        <div class="mt-4">
+          <FAQSection
+            id="faq"
+            titleKey="events.faq.title"
+            items={questions()}
+          />
+        </div>
       </Section>
     </MainLayout>
   );

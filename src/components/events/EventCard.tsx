@@ -30,11 +30,11 @@ const EventCardHeader: Component<{
     ? now >= new Date(props.startDate) && now <= new Date(props.endDate)
     : false;
   return (
-    <div class="flex flex-col gap-2">
+    <div class="grid gap-2">
       <Typography tag="h2" textAlign="text-left" variant="section-title">
         {props.name}
       </Typography>
-      <div class="flex flex-row justify-between">
+      <div class="grid grid-cols-[minmax(0,1fr)_auto] gap-3 items-start">
         <div class="flex flex-col gap-1">
           {isLive ? (
             <EventLiveBadge
@@ -54,9 +54,9 @@ const EventCardHeader: Component<{
             <EventRecurringInfo startDate={props.startDate} day={props.day} />
           )}
         </div>
-        <div class="flex items-center gap-1.5">
+        <div class="flex items-center justify-end gap-1.5 text-right">
           <LocationIcon class="size-4 text-accent-background-20" />
-          <Typography tag="p" color="secondary" class="text-sm">
+          <Typography tag="p" color="secondary" class="text-sm wrap-break-word">
             {props.location}
           </Typography>
         </div>
@@ -66,15 +66,10 @@ const EventCardHeader: Component<{
 };
 
 const EventCardDescription: Component<{ text: string }> = (props) => {
-  const maxLen = 180;
-  const truncated =
-    props.text.length > maxLen
-      ? props.text.slice(0, maxLen) + "..."
-      : props.text;
   return (
-    <div class="flex min-h-18 flex-1 justify-center">
-      <Typography tag="p" textAlign="text-left">
-        {truncated}
+    <div class="h-24">
+      <Typography tag="p" textAlign="text-left" class="line-clamp-4">
+        {props.text}
       </Typography>
     </div>
   );
@@ -83,7 +78,7 @@ const EventCardDescription: Component<{ text: string }> = (props) => {
 const EventCardUpcomingDates: Component<{
   dates: Date[];
 }> = (props) => (
-  <div class="flex flex-col gap-1">
+  <div class="grid h-full content-start gap-1">
     <Typography
       tag="p"
       textAlign="text-left"
@@ -194,14 +189,14 @@ const EventCardBottomRow: Component<{
   username: string;
 }> = (props) => {
   return (
-    <div class="flex items-center justify-between gap-4">
-      <div class="flex items-center gap-1.5">
+    <div class="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4">
+      <div class="flex min-w-0 items-center gap-1.5">
         <UserIcon class="size-4 text-background-30" />
         <Typography
           tag="p"
           textAlign="text-center"
           color="secondary"
-          class="text-sm"
+          class="text-sm truncate"
         >
           @{props.username}
         </Typography>
@@ -241,9 +236,9 @@ const EventCard: Component<{
   const link = `https://discord.com/events/${e.guild_id}/${e.id}`;
 
   return (
-    <Container class="flex h-full flex-col gap-4 overflow-hidden">
+    <Container class="grid h-full grid-rows-[auto_auto_auto_auto_auto_1fr] gap-4 overflow-hidden">
       <EventCardImage src={image} alt={e.name} />
-      <div class="flex flex-col gap-4 flex-1">
+      <div class="grid gap-4">
         <EventCardHeader
           name={e.name}
           location={e.entity_metadata.location}

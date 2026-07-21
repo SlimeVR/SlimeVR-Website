@@ -15,7 +15,7 @@ const TrackerCard: Component<{
   href: string;
 }> = (props) => {
   return (
-    <div class="group rounded-2xl flex flex-col overflow-clip items-center gap-2 sm:gap-4 justify-between bg-background-60/40 border backdrop-blur-[9px] border-background-30/80">
+    <div class="group rounded-2xl flex flex-col overflow-clip items-center gap-2 sm:gap-4 justify-between bg-background-60/40 border backdrop-blur-[9px] border-background-40">
       <A
         class="px-6 pt-6 flex flex-col gap-2 sm:gap-4 items-center justify-between w-full"
         href={props.href}

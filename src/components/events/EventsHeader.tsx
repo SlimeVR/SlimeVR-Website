@@ -27,7 +27,7 @@ const EventsHeader: Component = () => (
         <Localized id="events.discord" />
       </Button>
       <Button variant="primary" href="#faq" class="w-full sm:w-auto">
-        <Localized id="events.faq" />
+        <Localized id="events.faq.title" />
       </Button>
     </div>
   </div>

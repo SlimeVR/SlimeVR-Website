@@ -210,7 +210,31 @@
     "description": "SlimeVR hosts stuff something meow meow",
     "discord": "Discord Server",
     "vrchat": "VRChat Group",
-    "faq": "FAQ",
+    "faq": {
+      "title": "FAQ",
+      "questions": {
+        "question-1": {
+          "question": "How do I join an event?",
+          "answer": "Join the SlimeVR VRChat group and then join the event through the 'group instances' tab within VRChat once the event has started."
+        },
+        "question-2": {
+          "question": "Is my avatar OK for the event?",
+          "answer": "Try to use an avatar that would be acceptable for a public instance. If you have to get clarification, its likely not a good idea. Furries get a pass with being tastefully naked, as long as nothing explicit is shown."
+        },
+        "question-3": {
+          "question": "Can I come if I don't have slimes?",
+          "answer": "Of course! Our events are open house. We love seeing everyone in all different types of FBT, or even no FBT if you just want to chat or hang out with our awesome community members <3."
+        },
+        "question-4": {
+          "question": "I only have standalone VRchat, can I still come?",
+          "answer": "Some of our events may be held in PC only worlds, so if you use standalone VRChat, be sure to check the event in our discord before hand to avoid disappointment."
+        },
+        "question-5": {
+          "question": "Will I be recorded during the event?",
+          "answer": "Some events are recorded for sharing on YouTube or social media. This may mean your voice or avatar are shared by event staff without your direct consent. If you are concerned about being recorded, talk to the event organiser."
+        }
+      }
+    },
     "virtual": "Virtual Events",
     "other": "Other Events",
     "recurring": "Every {{day}} @ {{time}}",

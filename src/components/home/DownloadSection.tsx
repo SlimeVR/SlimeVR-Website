@@ -87,7 +87,7 @@ export const DownloadButton: ParentComponent<DownloadButtonProps> = (
         "flex items-center sm:gap-5 gap-2 bg-background-60 rounded-2xl p-3 sm:pl-5 sm:pr-5 px-5 hover:cursor-pointer group hover:bg-background-50 opacity-95 transition-colors border min-h-19",
         props.variant === "primary"
           ? "border-status-success"
-          : "border-background-30"
+          : "border-background-40"
       )}
       target="_blank"
       rel="noopener noreferrer"
