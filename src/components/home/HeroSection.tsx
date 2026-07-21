@@ -6,6 +6,7 @@ import { CrowdSupplyIcon } from "../commons/icons/CrowdSupplyIcon";
 import { DiscordIcon } from "../commons/icons/DiscordIcon";
 import { DownloadIcon } from "../commons/icons/DownloadIcon";
 import { Typography } from "../commons/Typography";
+import { scrollToSection } from "~/utils/dom";
 
 const TrackerCard: Component<{
   titleKey: string;
@@ -201,9 +202,7 @@ export const HeroSection: Component = () => {
               href="#download"
               onClick={(e) => {
                 e.preventDefault();
-                document
-                  .getElementById("download")
-                  ?.scrollIntoView({ behavior: "smooth", block: "center" });
+                scrollToSection("download", location.pathname);
               }}
             >
               <Typography

@@ -2,6 +2,7 @@ import { Component } from "solid-js";
 import { Button } from "~/components/commons/Button";
 import { Typography } from "~/components/commons/Typography";
 import { Localized } from "~/i18n";
+import { scrollToSection } from "~/utils/dom";
 
 const EventsHeader: Component = () => (
   <div class="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
@@ -26,7 +27,14 @@ const EventsHeader: Component = () => (
       >
         <Localized id="events.discord" />
       </Button>
-      <Button variant="primary" href="#faq" class="w-full sm:w-auto">
+      <Button
+        variant="primary"
+        class="w-full sm:w-auto"
+        onClick={(e) => {
+          e.preventDefault();
+          scrollToSection("faq", location.pathname);
+        }}
+      >
         <Localized id="events.faq.title" />
       </Button>
     </div>

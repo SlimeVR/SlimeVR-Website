@@ -30,7 +30,7 @@ export const NavItems: Component = () => {
         href="/#download"
         onClick={(e) => {
           e.preventDefault();
-          scrollToSection("download", window.location.pathname, navigate);
+          scrollToSection("download", "/", navigate);
         }}
         class="link px-2"
       >
@@ -70,7 +70,7 @@ export const NavItems: Component = () => {
   );
 };
 
-export const Navbar: Component = (props) => {
+export const Navbar: Component = () => {
   const [isOpen, setOpen] = createSignal(false);
 
   return (
