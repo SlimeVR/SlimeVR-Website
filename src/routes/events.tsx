@@ -1,6 +1,6 @@
 import { Link, Meta } from "@solidjs/meta";
 import { useAction } from "@solidjs/router";
-import { createResource } from "solid-js";
+import { createResource, For } from "solid-js";
 import { AppTitle } from "~/components/AppTitle";
 import { Container } from "~/components/commons/Container";
 import { Typography } from "~/components/commons/Typography";
@@ -9,7 +9,7 @@ import { MainLayout } from "~/layouts/MainLayout";
 import { getEventsAction } from "~/utils/server";
 import { sortByNextDate } from "~/utils/events-helpers";
 import EventsHeader from "~/components/events/EventsHeader";
-import EventSection from "~/components/events/EventSection";
+import EventCard from "~/components/events/EventCard";
 
 export default function EventsPage() {
   const [events] = createResource(async () => {
@@ -29,9 +29,31 @@ export default function EventsPage() {
       <Section>
         <Container class="mt-4">
           <EventsHeader />
-          <Typography tag="p" key="events.description" whitespace="whitespace-pre-line" />
-          <EventSection titleKey="events.virtual" events={eventList()} />
-          <EventSection titleKey="events.other" events={eventList()} />
+          <Typography
+            tag="p"
+            key="events.description"
+            whitespace="whitespace-pre-line"
+          />
+
+          {/* virtual events */}
+          <div class="flex flex-col mt-8 gap-4">
+            <Typography tag="h2" variant="section-title" key="events.virtual" />
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <For each={eventList()}>
+                {(event) => <EventCard event={event} />}
+              </For>
+            </div>
+          </div>
+
+          {/* other events */}
+          <div class="flex flex-col mt-8 gap-4">
+            <Typography tag="h2" variant="section-title" key="events.other" />
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <For each={eventList()}>
+                {(event) => <EventCard event={event} />}
+              </For>
+            </div>
+          </div>
         </Container>
       </Section>
     </MainLayout>

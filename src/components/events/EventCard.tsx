@@ -7,7 +7,14 @@ import { Container } from "~/components/commons/Container";
 import { Typography } from "~/components/commons/Typography";
 import { useI18n } from "~/i18n";
 import { DiscordEvent } from "~/utils/server";
-import { formatDate, formatTimeShort, formatTimeLocal, getTimezone, getDayName, getDates } from "~/utils/events-helpers";
+import {
+  formatDate,
+  formatTimeShort,
+  formatTimeLocal,
+  getTimezone,
+  getDayName,
+  getDates,
+} from "~/utils/events-helpers";
 
 const EventCardHeader: Component<{
   name: string;
@@ -19,16 +26,29 @@ const EventCardHeader: Component<{
   recurrenceRule: DiscordEvent["recurrenceRule"] | null;
 }> = (props) => {
   const now = new Date();
-  const isLive = props.endDate ? now >= new Date(props.startDate) && now <= new Date(props.endDate) : false;
+  const isLive = props.endDate
+    ? now >= new Date(props.startDate) && now <= new Date(props.endDate)
+    : false;
   return (
     <div class="flex flex-col gap-2">
-      <Typography tag="h2" textAlign="text-left" variant="section-title">{props.name}</Typography>
+      <Typography tag="h2" textAlign="text-left" variant="section-title">
+        {props.name}
+      </Typography>
       <div class="flex flex-row justify-between">
         <div class="flex flex-col gap-1">
           {isLive ? (
-            <EventLiveBadge startDate={props.startDate} nextDate={props.nextDate} day={props.day} />
-          ) : props.nextDate && (
-            <EventNextDate startDate={props.startDate} nextDate={props.nextDate} />
+            <EventLiveBadge
+              startDate={props.startDate}
+              nextDate={props.nextDate}
+              day={props.day}
+            />
+          ) : (
+            props.nextDate && (
+              <EventNextDate
+                startDate={props.startDate}
+                nextDate={props.nextDate}
+              />
+            )
           )}
           {props.day && props.recurrenceRule && (
             <EventRecurringInfo startDate={props.startDate} day={props.day} />
@@ -47,7 +67,10 @@ const EventCardHeader: Component<{
 
 const EventCardDescription: Component<{ text: string }> = (props) => {
   const maxLen = 180;
-  const truncated = props.text.length > maxLen ? props.text.slice(0, maxLen) + "..." : props.text;
+  const truncated =
+    props.text.length > maxLen
+      ? props.text.slice(0, maxLen) + "..."
+      : props.text;
   return (
     <div class="flex min-h-18 flex-1 justify-center">
       <Typography tag="p" textAlign="text-left">
@@ -61,12 +84,17 @@ const EventCardUpcomingDates: Component<{
   dates: Date[];
 }> = (props) => (
   <div class="flex flex-col gap-1">
-    <Typography tag="p" textAlign="text-left" color="secondary" class="text-xs uppercase tracking-widest">Upcoming dates</Typography>
+    <Typography
+      tag="p"
+      textAlign="text-left"
+      color="secondary"
+      key="events.upcoming"
+    />
     <For each={props.dates}>
       {(date) => (
         <div class="flex items-center gap-2 text-background-10">
           <CalendarIcon class="size-4" />
-          <Typography tag="span" textAlign="text-left" color="primary" class="text-sm">
+          <Typography tag="span" textAlign="text-left" color="primary">
             {formatDate(date)} &bull; {formatTimeShort(date)}
           </Typography>
         </div>
@@ -83,21 +111,37 @@ const EventLiveBadge: Component<{
   const { translator } = useI18n();
   return (
     <div class="flex flex-col gap-1">
-      <div class="flex items-center gap-2" title={
-        props.nextDate
-          ? `${formatDate(props.nextDate)} \u2022 ${formatTimeShort(props.nextDate)}\n${props.day ? `Every ${props.day} ${formatTimeLocal(props.startDate)}` : ""}`
-          : undefined
-      }>
+      <div
+        class="flex items-center gap-2"
+        title={
+          props.nextDate
+            ? `${formatDate(props.nextDate)} \u2022 ${formatTimeShort(props.nextDate)}`
+            : undefined
+        }
+      >
         <span class="size-2 rounded-full bg-status-success" />
-        <Typography tag="span" textAlign="text-left" color="primary" class="text-sm font-medium">
-          Live now
-        </Typography>
+        <Typography
+          tag="span"
+          textAlign="text-left"
+          color="primary"
+          class="text-sm font-medium"
+          key="events.live"
+        />
       </div>
       {props.day && (
-        <Typography tag="p" textAlign="text-left" color="secondary" class="text-xs">
-          <span title={`${formatTimeLocal(props.startDate)} ${getTimezone(props.startDate)}`}>
-            {translator("events.recurring", { day: props.day })}{" "}
-            {formatTimeLocal(props.startDate)}
+        <Typography
+          tag="p"
+          textAlign="text-left"
+          color="secondary"
+          class="text-xs"
+        >
+          <span
+            title={`${formatTimeLocal(props.startDate)} ${getTimezone(props.startDate)}`}
+          >
+            {translator("events.recurring", {
+              day: props.day,
+              time: formatTimeLocal(props.startDate),
+            })}
           </span>
         </Typography>
       )}
@@ -111,8 +155,15 @@ const EventNextDate: Component<{
 }> = (props) => (
   <div class="flex items-center gap-2 text-background-10">
     <CalendarIcon class="size-4" />
-    <span title={`${formatTimeLocal(props.nextDate)} ${getTimezone(props.startDate)}`}>
-      <Typography tag="span" textAlign="text-left" color="primary" class="text-sm">
+    <span
+      title={`${formatTimeLocal(props.nextDate)} ${getTimezone(props.startDate)}`}
+    >
+      <Typography
+        tag="span"
+        textAlign="text-left"
+        color="primary"
+        class="text-sm"
+      >
         {formatDate(props.nextDate)} &bull; {formatTimeShort(props.nextDate)}
       </Typography>
     </span>
@@ -126,9 +177,13 @@ const EventRecurringInfo: Component<{
   const { translator } = useI18n();
   return (
     <Typography tag="p" textAlign="text-left" color="secondary" class="text-xs">
-      <span title={`${formatTimeLocal(props.startDate)} ${getTimezone(props.startDate)}`}>
-        {translator("events.recurring", { day: props.day })}{" "}
-        {formatTimeLocal(props.startDate)}
+      <span
+        title={`${formatTimeLocal(props.startDate)} ${getTimezone(props.startDate)}`}
+      >
+        {translator("events.recurring", {
+          day: props.day,
+          time: formatTimeLocal(props.startDate),
+        })}
       </span>
     </Typography>
   );
@@ -142,12 +197,21 @@ const EventCardBottomRow: Component<{
     <div class="flex items-center justify-between gap-4">
       <div class="flex items-center gap-1.5">
         <UserIcon class="size-4 text-background-30" />
-        <Typography tag="p" textAlign="text-center" color="secondary" class="text-sm">
+        <Typography
+          tag="p"
+          textAlign="text-center"
+          color="secondary"
+          class="text-sm"
+        >
           @{props.username}
         </Typography>
       </div>
-      <Button variant="secondary" href={props.eventLink} class="min-h-10 px-4 py-2 text-sm rounded-lg">
-        Event Info
+      <Button
+        variant="secondary"
+        href={props.eventLink}
+        class="min-h-10 px-4 py-2 text-sm rounded-lg"
+      >
+        <Typography tag="span" key="events.info" />
       </Button>
     </div>
   );
@@ -159,7 +223,7 @@ const EventCardImage: Component<{ src: string; alt: string }> = (props) => (
       src={props.src}
       loading="lazy"
       alt={props.alt}
-      class="h-full w-full object-cover aspect-[2/1]"
+      class="h-full w-full object-cover aspect-2/1"
     />
   </div>
 );
@@ -172,7 +236,7 @@ const EventCard: Component<{
   const day = dates.length > 0 ? getDayName(dates[0].getDay()) : "";
 
   const image = e.image
-    ? `https://cdn.discordapp.com/guild-events/${e.id}/${e.image}.png?size=1024`
+    ? `https://cdn.discordapp.com/guild-events/${e.id}/${e.image}.webp?size=512`
     : "/images/nighty_floating.webp";
   const link = `https://discord.com/events/${e.guild_id}/${e.id}`;
 
@@ -180,15 +244,20 @@ const EventCard: Component<{
     <Container class="flex h-full flex-col gap-4 overflow-hidden">
       <EventCardImage src={image} alt={e.name} />
       <div class="flex flex-col gap-4 flex-1">
-        <EventCardHeader name={e.name} location={e.entity_metadata.location} nextDate={dates[0]} startDate={e.startDate} endDate={e.endDate} day={day} recurrenceRule={e.recurrenceRule} />
+        <EventCardHeader
+          name={e.name}
+          location={e.entity_metadata.location}
+          nextDate={dates[0]}
+          startDate={e.startDate}
+          endDate={e.endDate}
+          day={day}
+          recurrenceRule={e.recurrenceRule}
+        />
         <div class="w-full h-px bg-background-40" />
         <EventCardDescription text={e.description} />
       </div>
       <div class="w-full h-px bg-background-40" />
-      <EventCardBottomRow
-        eventLink={link}
-        username={e.username}
-      />
+      <EventCardBottomRow eventLink={link} username={e.username} />
       <div class="w-full h-px bg-background-40" />
       <EventCardUpcomingDates dates={dates} />
     </Container>

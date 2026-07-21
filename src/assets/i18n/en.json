@@ -213,7 +213,10 @@
     "faq": "FAQ",
     "virtual": "Virtual Events",
     "other": "Other Events",
-    "recurring": "Every {{day}}"
+    "recurring": "Every {{day}} @ {{time}}",
+    "upcoming": "UPCOMING DATES",
+    "info": "Event Info",
+    "live": "Live now"
   },
   "tm": {
     "title": "SlimeVR Trademark Guidelines"

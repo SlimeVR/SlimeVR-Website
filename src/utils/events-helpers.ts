@@ -7,7 +7,11 @@ export const FREQUENCY = {
   DAILY: 3,
 } as const;
 
-export const advanceDate = (date: Date, frequency: number, interval: number) => {
+export const advanceDate = (
+  date: Date | string,
+  frequency: number,
+  interval: number
+) => {
   const next = new Date(date);
   switch (frequency) {
     case FREQUENCY.DAILY:
@@ -75,18 +79,22 @@ export const getDayName = (day: number): string => {
   return date.toLocaleDateString("en", { weekday: "long" });
 };
 
-export const formatDate = (date: Date) => {
+export const formatDate = (date: Date | string) => {
   const localDate = new Date(date);
   return localDate.toLocaleString("en", { dateStyle: "long" });
 };
 
-export const formatTimeShort = (date: Date) =>
-  date.toLocaleTimeString("en", {
+// 24h time
+export const formatTimeShort = (date: Date | string) => {
+  const localDate = new Date(date);
+  return localDate.toLocaleTimeString("en", {
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
   });
+};
 
+// time dependant on user locale (12h or 24h)
 export const formatTimeLocal = (date: Date | string) => {
   const localDate = new Date(date);
   return localDate.toLocaleTimeString("en", {
@@ -97,6 +105,13 @@ export const formatTimeLocal = (date: Date | string) => {
 
 export const getTimezone = (date: Date | string) => {
   const localDate = new Date(date);
-  const tz = localDate.toLocaleTimeString("en", { timeZoneName: "short" });
-  return tz.replace(/^[\d\D]*?\s/, "").replace("GMT", "UTC");
+
+  return (
+    new Intl.DateTimeFormat("en", {
+      timeZoneName: "short",
+    })
+      .formatToParts(localDate)
+      .find((part) => part.type === "timeZoneName")
+      ?.value.replace("GMT", "UTC") ?? ""
+  );
 };

@@ -90,7 +90,7 @@ export const QASection: Component = () => {
                       tag="h4"
                       variant="section-title"
                       key={question.question}
-                    ></Typography>
+                    />
                   }
                   open={index() === 0}
                 >
