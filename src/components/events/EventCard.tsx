@@ -50,7 +50,9 @@ const EventCardDescription: Component<{ text: string }> = (props) => {
   const truncated = props.text.length > maxLen ? props.text.slice(0, maxLen) + "..." : props.text;
   return (
     <div class="flex min-h-18 flex-1 justify-center">
-      <Typography tag="p" textAlign="text-left" key={truncated} />
+      <Typography tag="p" textAlign="text-left">
+        {truncated}
+      </Typography>
     </div>
   );
 };
