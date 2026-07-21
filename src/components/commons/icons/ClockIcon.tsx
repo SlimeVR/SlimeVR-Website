@@ -1,5 +1,4 @@
 import { Component } from "solid-js";
-import { IconProps } from "~/components/commons/icons/Icon";
 
 export const ClockIcon: Component<IconProps> = (props) => {
   return (

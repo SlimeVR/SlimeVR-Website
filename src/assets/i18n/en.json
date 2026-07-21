@@ -216,7 +216,8 @@
     "recurring": "Every {{day}} @ {{time}}",
     "upcoming": "UPCOMING DATES",
     "info": "Event Info",
-    "live": "Live now"
+    "live": "Live now",
+    "no-events": "No events found. Check back later!"
   },
   "tm": {
     "title": "SlimeVR Trademark Guidelines"

@@ -1,5 +1,4 @@
 import { Component } from "solid-js";
-import { IconProps } from "../Icon";
 
 interface Props extends IconProps {
   variant?: "default" | "download";

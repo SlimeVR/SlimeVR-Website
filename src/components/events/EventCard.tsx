@@ -55,7 +55,7 @@ const EventCardHeader: Component<{
           )}
         </div>
         <div class="flex items-center gap-1.5">
-          <LocationIcon class="size-4 text-background-30" />
+          <LocationIcon class="size-4 text-accent-background-20" />
           <Typography tag="p" color="secondary" class="text-sm">
             {props.location}
           </Typography>
@@ -93,7 +93,7 @@ const EventCardUpcomingDates: Component<{
     <For each={props.dates}>
       {(date) => (
         <div class="flex items-center gap-2 text-background-10">
-          <CalendarIcon class="size-4" />
+          <CalendarIcon class="size-4 text-background-30" />
           <Typography tag="span" textAlign="text-left" color="primary">
             {formatDate(date)} &bull; {formatTimeShort(date)}
           </Typography>
@@ -154,7 +154,7 @@ const EventNextDate: Component<{
   nextDate: Date;
 }> = (props) => (
   <div class="flex items-center gap-2 text-background-10">
-    <CalendarIcon class="size-4" />
+    <CalendarIcon class="size-4 text-accent-background-20" />
     <span
       title={`${formatTimeLocal(props.nextDate)} ${getTimezone(props.startDate)}`}
     >
@@ -207,7 +207,7 @@ const EventCardBottomRow: Component<{
         </Typography>
       </div>
       <Button
-        variant="secondary"
+        variant="primary"
         href={props.eventLink}
         class="min-h-10 px-4 py-2 text-sm rounded-lg"
       >
