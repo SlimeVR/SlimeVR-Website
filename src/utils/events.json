@@ -1,5 +1,44 @@
 [
   {
+    "id": "9999999999999999999",
+    "guild_id": "1039186635402793010",
+    "name": "TEST (always live)",
+    "description": "Who lives in a pineapple under the sea?\nSpongeBob SquarePants\nAbsorbent and yellow and porous is he\nSpongeBob SquarePants\nIf nautical nonsense be something you wish\nSpongeBob SquarePants\nThen drop on the deck and flop like a fish\nSpongeBob SquarePants (Ready?)\nSpongeBob SquarePants\nSpongeBob SquarePants\nSpongeBob SquarePants\nSpongeBob SquarePants ",
+    "channel_id": null,
+    "creator_id": "319116998384680960",
+    "creator": {
+      "id": "319116998384680960",
+      "username": "jovannmc",
+      "avatar": "7654223167c644b8ba49664d2ea5d999",
+      "discriminator": "0",
+      "public_flags": 64,
+      "flags": 64,
+      "banner": null,
+      "accent_color": 8245178,
+      "global_name": "maya",
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "banner_color": "#7dcfba",
+      "clan": null,
+      "primary_guild": null
+    },
+    "image": null,
+    "scheduled_start_time": "2026-01-01T00:00:00+00:00",
+    "scheduled_end_time": "2030-12-31T23:59:59+00:00",
+    "status": 1,
+    "entity_type": 3,
+    "entity_id": null,
+    "recurrence_rule": null,
+    "user_count": 1,
+    "privacy_level": 2,
+    "sku_ids": [],
+    "guild_scheduled_event_exceptions": [],
+    "entity_metadata": {
+      "location": "testing"
+    }
+  },
+  {
     "id": "1528370070311669770",
     "guild_id": "1039186635402793010",
     "name": "TEST (ignore)",

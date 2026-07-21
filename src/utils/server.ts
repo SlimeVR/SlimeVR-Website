@@ -48,7 +48,7 @@ export interface DiscordEvent {
     by_month_day: any | null;
     by_year_day: any | null;
     count: any | null;
-  };
+  } | null;
   image: string | null;
   entity_metadata: {
     location: string;
