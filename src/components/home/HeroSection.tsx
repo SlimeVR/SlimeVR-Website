@@ -157,7 +157,7 @@ export const HeroSection: Component = () => {
       {/* nighty showing trackers bg */}
       <div class="hidden flex-col justify-between items-center no-interact md:flex">
         {/* nighty */}
-        <div class="absolute w-full h-full top-0 left-0">
+        <div class="absolute w-full h-full top-0 left-0 pointer-events-none">
           <img
             src="/images/nighty_floating.webp"
             class="absolute -z-10 scale-[150%] md:mt-90 mt-40 md:animate-floating blur-lg min-w-280 left-1/2 -translate-x-[55%] md:-translate-x-1/2"
