@@ -30,34 +30,34 @@ const DownloadLinks = {
     {
       name: "Steam",
       href: "https://store.steampowered.com/app/3245490/SlimeVR/",
-      icon: <SteamIcon variant="download" size={50}></SteamIcon>,
+      icon: () => <SteamIcon variant="download" size={50}></SteamIcon>,
     },
     {
       name: "Windows",
       href: "https://github.com/SlimeVR/SlimeVR-Installer/releases/latest/download/slimevr_web_installer.exe",
-      icon: <WindowsIcon size={40}></WindowsIcon>,
+      icon: () => <WindowsIcon size={40}></WindowsIcon>,
     },
     {
       name: "Linux",
       href: "https://flathub.org/apps/dev.slimevr.SlimeVR",
-      icon: <LinuxIcon size={40}></LinuxIcon>,
+      icon: () => <LinuxIcon size={40}></LinuxIcon>,
     },
     {
       name: "MacOS",
       href: "https://github.com/SlimeVR/SlimeVR-Server/releases/latest/download/SlimeVR-mac.dmg",
-      icon: <AppleIcon size={35}></AppleIcon>,
+      icon: () => <AppleIcon size={35}></AppleIcon>,
     },
   ],
   mobile: [
     {
       name: "Android",
       href: "https://play.google.com/store/apps/details?id=dev.slimevr.server.android",
-      icon: <AndroidIcon size={50}></AndroidIcon>,
+      icon: () => <AndroidIcon size={50}></AndroidIcon>,
     },
     {
       name: "SideQuest",
       href: "https://sidequestvr.com/app/45270/slimevr",
-      icon: <SideQuestIcon size={50}></SideQuestIcon>,
+      icon: () => <SideQuestIcon size={50}></SideQuestIcon>,
     },
     // and iOS would be here.. if it ever gets better
   ],
@@ -126,7 +126,7 @@ export const DownloadSection: Component = () => {
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-2">
             <For each={DownloadLinks.desktop}>
               {(link) => (
-                <DownloadButton prefixIcon={link.icon} href={link.href}>
+                <DownloadButton prefixIcon={link.icon()} href={link.href}>
                   <Typography variant="section-title" tag="span">
                     {link.name}
                   </Typography>
@@ -145,7 +145,7 @@ export const DownloadSection: Component = () => {
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-2">
             <For each={DownloadLinks.mobile}>
               {(link) => (
-                <DownloadButton prefixIcon={link.icon} href={link.href}>
+                <DownloadButton prefixIcon={link.icon()} href={link.href}>
                   <Typography variant="section-title" tag="span">
                     {link.name}
                   </Typography>

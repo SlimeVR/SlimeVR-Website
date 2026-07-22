@@ -1,5 +1,5 @@
 import { Link, Meta } from "@solidjs/meta";
-import { createMemo, createResource, For } from "solid-js";
+import { createResource, For } from "solid-js";
 import { AppTitle } from "~/components/AppTitle";
 import { Container } from "~/components/commons/Container";
 import { Typography } from "~/components/commons/Typography";
@@ -12,13 +12,6 @@ import { FAQSection } from "~/components/commons/FAQSection";
 import { getFallbackEvents, type DiscordEvent } from "~/utils/events";
 
 const QUESTIONS_COUNT = 5;
-
-const questions = createMemo(() =>
-  Array.from({ length: QUESTIONS_COUNT }).map((_, index) => ({
-    question: `events.faq.questions.question-${index + 1}.question`,
-    answer: `events.faq.questions.question-${index + 1}.answer`,
-  }))
-);
 
 export default function EventsPage() {
   const [events] = createResource(async () => {
@@ -39,6 +32,11 @@ export default function EventsPage() {
   });
 
   const eventList = () => sortByNextDate(events() ?? []);
+
+  const questions = Array.from({ length: QUESTIONS_COUNT }).map((_, index) => ({
+    question: `events.faq.questions.question-${index + 1}.question`,
+    answer: `events.faq.questions.question-${index + 1}.answer`,
+  }));
 
   return (
     <MainLayout>
@@ -91,7 +89,7 @@ export default function EventsPage() {
           <FAQSection
             id="faq"
             titleKey="events.faq.title"
-            items={questions()}
+            items={questions}
           />
         </div>
       </Section>
