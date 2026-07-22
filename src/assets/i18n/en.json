@@ -240,6 +240,7 @@
     "virtual": "Virtual Events",
     "other": "Other Events",
     "recurring": "Every {{day}} @ {{time}}",
+    "one-time": "One-time event",
     "upcoming": "UPCOMING DATES",
     "info": "Event Info",
     "live": "Live now",

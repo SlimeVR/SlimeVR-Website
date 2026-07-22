@@ -1,81 +1,69 @@
-import testData from "./events.json";
+import testData from "./local-events.json";
 
-export interface DiscordEvent {
+export type Frequency = "daily" | "weekly" | "monthly" | "yearly";
+
+export type Recurrence = {
+  frequency: Frequency;
+  interval?: number; // space between occurrences - e.g for weekly: 1 for every week, 2 for every 2 weeks, etc.
+} | null;
+
+export interface EventData {
   id: string;
-  guild_id: string;
-  username: string;
   name: string;
   description: string;
+  location: string;
   startDate: string;
-  endDate: string | null;
-  recurrenceRule: {
-    start: string;
-    end: string | null;
-    frequency: number;
-    interval: number;
-    by_weekday: number[] | null;
-    by_n_weekday: any | null;
-    by_month: any | null;
-    by_month_day: any | null;
-    by_year_day: any | null;
-    count: any | null;
-  } | null;
-  image: string | null;
-  entity_metadata: {
-    location: string;
-  };
+  endDate?: string | null;
+  image?: string | null;
+  link?: string | null;
+  host?: string;
+  recurrence?: Recurrence;
 }
 
-export const FREQUENCY = {
-  YEARLY: 0,
-  MONTHLY: 1,
-  WEEKLY: 2,
-  DAILY: 3,
-} as const;
+const DISCORD_FREQUENCY: Record<number, Frequency> = {
+  0: "yearly",
+  1: "monthly",
+  2: "weekly",
+  3: "daily",
+};
 
 export const advanceDate = (
   date: Date | string,
-  frequency: number,
+  frequency: Frequency,
   interval: number
 ) => {
   const next = new Date(date);
   switch (frequency) {
-    case FREQUENCY.DAILY:
+    case "daily":
       next.setDate(next.getDate() + interval);
       break;
-    case FREQUENCY.WEEKLY:
+    case "weekly":
       next.setDate(next.getDate() + interval * 7);
       break;
-    case FREQUENCY.MONTHLY:
+    case "monthly":
       next.setMonth(next.getMonth() + interval);
       break;
-    case FREQUENCY.YEARLY:
+    case "yearly":
       next.setFullYear(next.getFullYear() + interval);
       break;
   }
   return next;
 };
 
-export const getDates = (
-  startDate: string,
-  rule: DiscordEvent["recurrenceRule"] | null,
-  count = 4
-): Date[] => {
-  if (!rule) return [new Date(startDate)];
+export const getDates = (event: EventData, count = 4): Date[] => {
+  const { startDate, recurrence } = event;
+  if (!recurrence) return [new Date(startDate)];
 
-  const interval = Math.max(rule.interval ?? 1, 1);
-  const frequency = rule.frequency ?? FREQUENCY.WEEKLY;
-  const limit = Math.min(count, rule.count ?? count);
+  const interval = Math.max(recurrence.interval ?? 1, 1);
+  const frequency = recurrence.frequency ?? "weekly";
 
   const dates: Date[] = [];
   let current = new Date(startDate);
   const now = new Date();
 
-  while (current < now) {
-    current = advanceDate(current, frequency, interval);
-  }
+  while (current < now) current = advanceDate(current, frequency, interval);
 
-  for (let i = 0; i < limit; i++) {
+  for (let i = 0; i < count; i++) {
     dates.push(new Date(current));
     current = advanceDate(current, frequency, interval);
   }
@@ -83,19 +71,25 @@ export const getDates = (
   return dates;
 };
 
-export const getNextEventDate = (event: DiscordEvent): Date => {
-  if (event.recurrenceRule) {
-    const dates = getDates(event.startDate, event.recurrenceRule, 1);
-    return dates[0];
-  }
+export const getNextDate = (event: EventData): Date => {
+  if (event.recurrence) return getDates(event, 1)[0];
   return new Date(event.startDate);
 };
 
-export const sortByNextDate = (events: DiscordEvent[]): DiscordEvent[] => {
-  return [...events].sort((a, b) => {
-    const dateA = getNextEventDate(a).getTime();
-    const dateB = getNextEventDate(b).getTime();
-    return dateA - dateB;
+export const sortByNextDate = (events: EventData[]): EventData[] => {
+  return [...events].sort(
+    (a, b) => getNextDate(a).getTime() - getNextDate(b).getTime()
+  );
+};
+
+export const filterUpcoming = (events: EventData[]): EventData[] => {
+  const now = Date.now();
+  return events.filter((event) => {
+    if (event.recurrence) return true;
+    const end = event.endDate
+      ? new Date(event.endDate).getTime()
+      : new Date(event.startDate).getTime();
+    return end >= now;
   });
 };
 
@@ -129,40 +123,49 @@ export const formatTimeLocal = (date: Date | string) => {
   });
 };
 
+let cachedTimezone: string | null = null;
 export const getTimezone = (date: Date | string) => {
+  if (cachedTimezone) return cachedTimezone;
   const localDate = new Date(date);
-
-  return (
-    new Intl.DateTimeFormat("en", {
-      timeZoneName: "short",
-    })
+  cachedTimezone =
+    new Intl.DateTimeFormat("en", { timeZoneName: "short" })
       .formatToParts(localDate)
       .find((part) => part.type === "timeZoneName")
-      ?.value.replace("GMT", "UTC") ?? ""
-  );
+      ?.value.replace("GMT", "UTC") ?? "";
+  return cachedTimezone;
 };
 
-/*
- * cloudflare functions stuff
- */
+export const fromDiscord = (raw: any): EventData => {
+  const id = raw.id;
+  const hash = raw.image ?? null;
+  const rule = raw.recurrence_rule ?? null;
+  const host = raw.creator?.username ? `@${raw.creator.username}` : "";
 
-export const formatEvent = (event: any): DiscordEvent => ({
-  id: event.id,
-  guild_id: event.guild_id,
-  username: event.creator?.username ?? "",
-  name: event.name,
-  description: event.description ?? "",
-  startDate: event.scheduled_start_time ?? event.startDate ?? "",
-  endDate: event.scheduled_end_time ?? event.endDate ?? null,
-  recurrenceRule: event.recurrence_rule ?? null,
-  image: event.image ?? null,
-  entity_metadata: event.entity_metadata ?? { location: "" },
-});
+  return {
+    id,
+    name: raw.name,
+    description: raw.description ?? "",
+    location: raw.entity_metadata?.location ?? "",
+    startDate: raw.scheduled_start_time ?? "",
+    endDate: raw.scheduled_end_time ?? null,
+    image: hash
+      ? `https://cdn.discordapp.com/guild-events/${id}/${hash}.webp?size=512`
+      : null,
+    link:
+      raw.guild_id != null
+        ? `https://discord.com/events/${raw.guild_id}/${id}`
+        : null,
+    host,
+    recurrence: rule
+      ? {
+          frequency: DISCORD_FREQUENCY[rule.frequency] ?? "weekly",
+          interval: rule.interval ?? 1,
+        }
+      : null,
+  };
+};
 
-export const getFallbackEvents = (): DiscordEvent[] => {
-  if (!Array.isArray(testData)) {
-    return [];
-  }
-
-  return testData.map(formatEvent);
+export const getFallbackEvents = (): EventData[] => {
+  if (!Array.isArray(testData)) return [];
+  return testData.map(fromDiscord);
 };

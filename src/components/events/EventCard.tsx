@@ -1,4 +1,4 @@
-import { Component, For } from "solid-js";
+import { Component, For, Show } from "solid-js";
 import { CalendarIcon } from "~/components/commons/icons/CalendarIcon";
 import { LocationIcon } from "~/components/commons/icons/LocationIcon";
 import { UserIcon } from "~/components/commons/icons/UserIcon";
@@ -13,51 +13,62 @@ import {
   getTimezone,
   getDayName,
   getDates,
+  type EventData,
 } from "~/utils/events";
-import { DiscordEvent } from "~/utils/events";
 
 const EventCardHeader: Component<{
-  name: string;
-  location: string;
+  event: EventData;
   nextDate: Date | undefined;
-  startDate: string;
-  endDate: string | null;
   day: string;
-  recurrenceRule: DiscordEvent["recurrenceRule"] | null;
 }> = (props) => {
+  const event = props.event;
   const now = new Date();
-  const isLive = props.endDate
-    ? now >= new Date(props.startDate) && now <= new Date(props.endDate)
+  const isLive = event.endDate
+    ? now >= new Date(event.startDate) && now <= new Date(event.endDate)
     : false;
+  const isRecurring = !!event.recurrence;
+
   return (
     <div class="grid gap-2">
       <Typography tag="h2" textAlign="text-left" variant="section-title">
-        {props.name}
+        {event.name}
       </Typography>
-      <div class="grid grid-cols-[minmax(0,1fr)_auto] gap-3 items-start">
-        <div class="flex flex-col gap-1">
+      <div class="flex items-start justify-between gap-3">
+        <div class="flex min-w-0 flex-1 flex-col gap-1">
           {isLive ? (
             <EventLiveBadge
-              startDate={props.startDate}
+              startDate={event.startDate}
               nextDate={props.nextDate}
               day={props.day}
+              isRecurring={isRecurring}
             />
           ) : (
-            props.nextDate && (
-              <EventNextDate
-                startDate={props.startDate}
-                nextDate={props.nextDate}
-              />
-            )
-          )}
-          {props.day && props.recurrenceRule && (
-            <EventRecurringInfo startDate={props.startDate} day={props.day} />
+            <>
+              {props.nextDate && (
+                <EventNextDate
+                  startDate={event.startDate}
+                  nextDate={props.nextDate}
+                />
+              )}
+              {isRecurring && props.day ? (
+                <EventRecurringInfo
+                  startDate={event.startDate}
+                  day={props.day}
+                />
+              ) : (
+                <EventOneTimeInfo />
+              )}
+            </>
           )}
         </div>
-        <div class="flex items-center justify-end gap-1.5 text-right">
-          <LocationIcon class="size-4 text-accent-background-20" />
-          <Typography tag="p" color="secondary" class="text-sm wrap-break-word">
-            {props.location}
+        <div class="flex h-5 shrink-0 items-center gap-1.5 self-start">
+          <LocationIcon class="size-4 shrink-0 text-accent-background-20" />
+          <Typography
+            tag="span"
+            color="secondary"
+            class="text-sm wrap-break-word"
+          >
+            {event.location}
           </Typography>
         </div>
       </div>
@@ -65,19 +76,15 @@ const EventCardHeader: Component<{
   );
 };
 
-const EventCardDescription: Component<{ text: string }> = (props) => {
-  return (
-    <div class="h-24">
-      <Typography tag="p" textAlign="text-left" class="line-clamp-4">
-        {props.text}
-      </Typography>
-    </div>
-  );
-};
+const EventCardDescription: Component<{ text: string }> = (props) => (
+  <div class="h-24">
+    <Typography tag="p" textAlign="text-left" class="line-clamp-4">
+      {props.text}
+    </Typography>
+  </div>
+);
 
-const EventCardUpcomingDates: Component<{
-  dates: Date[];
-}> = (props) => (
+const EventCardUpcomingDates: Component<{ dates: Date[] }> = (props) => (
   <div class="grid h-full content-start gap-1">
     <Typography
       tag="p"
@@ -102,19 +109,20 @@ const EventLiveBadge: Component<{
   startDate: string;
   nextDate: Date | undefined;
   day: string;
+  isRecurring: boolean;
 }> = (props) => {
   const { translator } = useI18n();
   return (
     <div class="flex flex-col gap-1">
       <div
-        class="flex items-center gap-2"
+        class="flex h-5 items-center gap-2"
         title={
           props.nextDate
             ? `${formatDate(props.nextDate)} \u2022 ${formatTimeShort(props.nextDate)}`
             : undefined
         }
       >
-        <span class="size-2 rounded-full bg-status-success" />
+        <span class="size-2 shrink-0 rounded-full bg-status-success" />
         <Typography
           tag="span"
           textAlign="text-left"
@@ -123,7 +131,7 @@ const EventLiveBadge: Component<{
           key="events.live"
         />
       </div>
-      {props.day && (
+      {props.isRecurring && props.day ? (
         <Typography
           tag="p"
           textAlign="text-left"
@@ -139,6 +147,8 @@ const EventLiveBadge: Component<{
             })}
           </span>
         </Typography>
+      ) : (
+        <EventOneTimeInfo />
       )}
     </div>
   );
@@ -148,8 +158,8 @@ const EventNextDate: Component<{
   startDate: string;
   nextDate: Date;
 }> = (props) => (
-  <div class="flex items-center gap-2 text-background-10">
-    <CalendarIcon class="size-4 text-accent-background-20" />
+  <div class="flex h-5 items-center gap-2 text-background-10">
+    <CalendarIcon class="size-4 shrink-0 text-accent-background-20" />
     <span
       title={`${formatTimeLocal(props.nextDate)} ${getTimezone(props.startDate)}`}
     >
@@ -184,26 +194,35 @@ const EventRecurringInfo: Component<{
   );
 };
 
+const EventOneTimeInfo: Component = () => (
+  <Typography tag="p" color="secondary" class="text-xs" key="events.one-time" />
+);
+
 const EventCardBottomRow: Component<{
-  eventLink: string;
-  username: string;
+  link?: string | null;
+  host?: string;
 }> = (props) => {
+  const hasLink = !!props.link;
+
   return (
     <div class="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4">
       <div class="flex min-w-0 items-center gap-1.5">
-        <UserIcon class="size-4 text-background-30" />
-        <Typography
-          tag="p"
-          textAlign="text-center"
-          color="secondary"
-          class="text-sm truncate"
-        >
-          @{props.username}
-        </Typography>
+        <Show when={props.host}>
+          <UserIcon class="size-4 text-background-30" />
+          <Typography
+            tag="p"
+            textAlign="text-center"
+            color="secondary"
+            class="text-sm truncate"
+          >
+            {props.host}
+          </Typography>
+        </Show>
       </div>
       <Button
         variant="primary"
-        href={props.eventLink}
+        href={hasLink ? props.link! : undefined}
+        disabled={!hasLink}
         class="min-h-10 px-4 py-2 text-sm rounded-lg"
       >
         <Typography tag="span" key="events.info" />
@@ -223,36 +242,22 @@ const EventCardImage: Component<{ src: string; alt: string }> = (props) => (
   </div>
 );
 
-const EventCard: Component<{
-  event: DiscordEvent;
-}> = (props) => {
-  const e = props.event;
-  const dates = getDates(e.startDate, e.recurrenceRule, 2);
+const EventCard: Component<{ event: EventData }> = (props) => {
+  const event = props.event;
+  const dates = getDates(event, 2);
   const day = dates.length > 0 ? getDayName(dates[0].getDay()) : "";
-
-  const image = e.image
-    ? `https://cdn.discordapp.com/guild-events/${e.id}/${e.image}.webp?size=512`
-    : "/images/nighty_floating.webp";
-  const link = `https://discord.com/events/${e.guild_id}/${e.id}`;
+  const image = event.image ?? "/images/nighty_floating.webp";
 
   return (
     <Container class="grid h-full grid-rows-[auto_auto_auto_auto_auto_1fr] gap-4 overflow-hidden">
-      <EventCardImage src={image} alt={e.name} />
+      <EventCardImage src={image} alt={event.name} />
       <div class="grid gap-4">
-        <EventCardHeader
-          name={e.name}
-          location={e.entity_metadata.location}
-          nextDate={dates[0]}
-          startDate={e.startDate}
-          endDate={e.endDate}
-          day={day}
-          recurrenceRule={e.recurrenceRule}
-        />
+        <EventCardHeader event={event} nextDate={dates[0]} day={day} />
         <div class="w-full h-px bg-background-40" />
-        <EventCardDescription text={e.description} />
+        <EventCardDescription text={event.description} />
       </div>
       <div class="w-full h-px bg-background-40" />
-      <EventCardBottomRow eventLink={link} username={e.username} />
+      <EventCardBottomRow link={event.link} host={event.host} />
       <div class="w-full h-px bg-background-40" />
       <EventCardUpcomingDates dates={dates} />
     </Container>
