@@ -70,6 +70,7 @@ export const DrawerItem: ParentComponent<DrawerItemProps> = (props) => {
 
   const [contentSize, setContentSize] = createSignal<DOMRect>();
   const [isOpen, setOpen] = createSignal(props.open);
+  let resizeRafId = 0;
 
   const onResize = () => {
     setContentSize(getContentSize(itemContentRef));
@@ -87,7 +88,10 @@ export const DrawerItem: ParentComponent<DrawerItemProps> = (props) => {
 
   if (!isServer) {
     onMount(() => {
-      contentSizeObserver = new ResizeObserver(() => onResize());
+      contentSizeObserver = new ResizeObserver(() => {
+        cancelAnimationFrame(resizeRafId);
+        resizeRafId = requestAnimationFrame(onResize);
+      });
       contentSizeObserver.observe(itemContentRef);
       context.events.addEventListener("open", onOpen);
       setContentSize(getContentSize(itemContentRef));
@@ -95,6 +99,7 @@ export const DrawerItem: ParentComponent<DrawerItemProps> = (props) => {
     });
 
     onCleanup(() => {
+      cancelAnimationFrame(resizeRafId);
       if (contentSizeObserver) contentSizeObserver.unobserve(itemContentRef);
       context.events.removeEventListener("open", onOpen);
     });
