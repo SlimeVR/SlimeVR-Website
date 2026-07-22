@@ -29,7 +29,6 @@ jobs:
         env:
           VITE_GITHUB_AUTH_TOKEN: ${{ secrets.VITE_GITHUB_AUTH_TOKEN }}
           VITE_GITHUB_ORG: SlimeVR
-          VITE_DISCORD_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:

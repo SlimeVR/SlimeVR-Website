@@ -30,14 +30,15 @@ export default function EventsPage() {
       }
 
       const result = (await response.json()) as DiscordEvent[];
-      return sortByNextDate(result);
+      return result;
     } catch (error) {
-      console.error("Falling back to local events data", error);
-      return sortByNextDate(getFallbackEvents());
+      const msg = (error as Error).message;
+      console.error(`Falling back to local events data: ${msg}`);
+      return getFallbackEvents();
     }
   });
 
-  const eventList = () => events() ?? [];
+  const eventList = () => sortByNextDate(events() ?? []);
 
   return (
     <MainLayout>
