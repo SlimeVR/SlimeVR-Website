@@ -16,6 +16,8 @@ const EventsHeader: Component = () => (
       <Button
         variant="primary"
         href="https://vrchat.com/home/group/grp_091d568c-bad2-4d16-b694-c7782957bf06"
+        rel="noopener noreferrer"
+        target="_blank"
         class="w-full sm:w-auto"
       >
         <Localized id="events.vrchat" />
@@ -23,6 +25,8 @@ const EventsHeader: Component = () => (
       <Button
         variant="primary"
         href="https://discord.gg/slimevr"
+        rel="noopener noreferrer"
+        target="_blank"
         class="w-full sm:w-auto"
       >
         <Localized id="events.discord" />
