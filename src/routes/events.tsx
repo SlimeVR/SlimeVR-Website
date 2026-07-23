@@ -20,23 +20,27 @@ const QUESTIONS_COUNT = 5;
 
 export default function EventsPage() {
   const [events] = createResource(async () => {
+    if (import.meta.env.DEV) {
+      console.log(`Development environment, using fallback events`);
+      return getFallbackEvents();
+    }
+
     try {
       const response = await fetch("/api/events");
 
+      const status = response.status;
+      if (status === 404) console.warn("no events returned");
+      if (status === 500) console.error("server error fetching events");
       if (!response.ok)
         throw new Error(`Failed to fetch events: ${response.status}`);
 
       const result = (await response.json()) as unknown[];
 
-      const status = response.status;
-      if (status === 404) console.warn("no events returned");
-      if (status === 500) console.error("server error fetching events");
-
       return result.map(toEventData);
     } catch (error) {
       const msg = (error as Error).message;
-      console.error(`Falling back to local events data: ${msg}`);
-      return getFallbackEvents();
+      console.error(`Failed to fetch events: ${msg}`);
+      return [];
     }
   });
 

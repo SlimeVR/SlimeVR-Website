@@ -96,7 +96,7 @@ export const getEventSchedule = (
   while (date.getTime() + durationMs < nowMs)
     date = advanceDate(date, frequency, interval);
 
-  //
+  // if the event is currently live, use the current occurrence as the date
   const isLive =
     durationMs > 0 &&
     nowMs >= date.getTime() &&
