@@ -5,13 +5,16 @@ export const getContentSize = (elem: Element) => elem.getBoundingClientRect();
 export const scrollToSection = (
   sectionId: string,
   pathname: string,
-  navigate: Navigator
+  navigate?: Navigator
 ) => {
-  if (pathname === "/") {
+  const isSamePage = document.location.pathname === pathname;
+  if (isSamePage) {
     const el = document.getElementById(sectionId);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
     return;
   }
+
+  if (!navigate) return;
 
   // use location.state to pass scrollTo
   navigate("/", { state: { scrollTo: sectionId } });

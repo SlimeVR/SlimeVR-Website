@@ -4,7 +4,7 @@ import { Typography } from "./commons/Typography";
 import { SlimeVRIcon } from "./commons/icons/SlimeVRIcon";
 import { scrollToSection } from "~/utils/dom";
 
-export const Footer: Component = (props) => {
+export const Footer: Component = () => {
   const navigate = useNavigate();
   return (
     <footer class="bg-background-70 border-t border-background-50 w-full flex flex-col items-center">
@@ -44,7 +44,7 @@ export const Footer: Component = (props) => {
               href="/#download"
               onClick={(e) => {
                 e.preventDefault();
-                scrollToSection("download", window.location.pathname, navigate);
+                scrollToSection("download", "/", navigate);
               }}
               class="link w-fit"
             >

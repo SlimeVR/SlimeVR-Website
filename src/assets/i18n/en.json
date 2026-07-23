@@ -7,8 +7,10 @@
     "shop": "Shop",
     "github": "GitHub",
     "team": "Team",
+    "events": "Events",
     "support": "Support",
-    "order": "Order now"
+    "order": "Order now",
+    "resources": "Resources"
   },
   "footer": {
     "column": {
@@ -204,6 +206,46 @@
     "error": "Failed to load sponsors.",
     "none": "No sponsors found... maybe you can be the first? (Or something broke!)",
     "past": "Past Sponsors"
+  },
+  "events": {
+    "title": "SlimeVR Events",
+    "description": "SlimeVR participates in and hosts many events for the community, from tech support to chill hangouts. Check out the events we host virtually, or see the other events we occasionally participate in - virtually or in-person!",
+    "discord": "Discord Server",
+    "vrchat": "VRChat Group",
+    "faq": {
+      "title": "FAQ",
+      "questions": {
+        "question-1": {
+          "question": "How do I join an event?",
+          "answer": "We host many events in VRChat which requires you to join the SlimeVR VRChat group. After joining, navigate to the 'group instances' tab within VRChat once the event has started.\n\nFor events hosted elsewhere, check the event's description or click the 'Event Info' button for more information."
+        },
+        "question-2": {
+          "question": "Is my avatar OK for the event?",
+          "answer": "Try to use an avatar that would be acceptable for a public instance. If you have to get clarification, it's likely not a good idea. Furries get a pass with being tastefully naked, as long as nothing explicit is shown."
+        },
+        "question-3": {
+          "question": "Can I come if I don't have slimes?",
+          "answer": "Of course - our events are open house! We love seeing everyone in all different types of FBT, or even no FBT if you just want to chat or hang out with our awesome community members <3."
+        },
+        "question-4": {
+          "question": "I only have standalone/mobile VRchat, can I still come?",
+          "answer": "Some of our events may be held in PC-only worlds, so if you use standalone or mobile VRChat, be sure to check the event in our discord beforehand to avoid disappointment."
+        },
+        "question-5": {
+          "question": "Will I be recorded during the event?",
+          "answer": "For events we host, some events are recorded for sharing on YouTube or other social media. This may mean your voice or avatar are shared by event staff without your direct consent. If you are concerned about being recorded, talk to the event organiser."
+        }
+      }
+    },
+    "virtual": "Virtual Events",
+    "other": "Other Events",
+    "recurring": "Every {{day}} @ {{time}}",
+    "one-time": "One-time event",
+    "upcoming": "UPCOMING DATES",
+    "no-dates": "No upcoming dates",
+    "info": "Event Info",
+    "live": "Live now",
+    "no-events": "No events found. Check back later!"
   },
   "tm": {
     "title": "SlimeVR Trademark Guidelines"

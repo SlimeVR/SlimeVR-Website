@@ -21,7 +21,7 @@ export default function HomePage() {
     if (!scrollTo) return;
 
     requestAnimationFrame(() => {
-      scrollToSection(scrollTo, location.pathname, () => {});
+      scrollToSection(scrollTo, location.pathname);
     });
   });
 

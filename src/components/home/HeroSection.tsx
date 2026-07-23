@@ -6,6 +6,7 @@ import { CrowdSupplyIcon } from "../commons/icons/CrowdSupplyIcon";
 import { DiscordIcon } from "../commons/icons/DiscordIcon";
 import { DownloadIcon } from "../commons/icons/DownloadIcon";
 import { Typography } from "../commons/Typography";
+import { scrollToSection } from "~/utils/dom";
 
 const TrackerCard: Component<{
   titleKey: string;
@@ -15,7 +16,7 @@ const TrackerCard: Component<{
   href: string;
 }> = (props) => {
   return (
-    <div class="group rounded-2xl flex flex-col overflow-clip items-center gap-2 sm:gap-4 justify-between bg-background-60/40 border backdrop-blur-[9px] border-background-30/80">
+    <div class="group rounded-2xl flex flex-col overflow-clip items-center gap-2 sm:gap-4 justify-between bg-background-60/40 border backdrop-blur-[9px] border-background-40">
       <A
         class="px-6 pt-6 flex flex-col gap-2 sm:gap-4 items-center justify-between w-full"
         href={props.href}
@@ -156,7 +157,7 @@ export const HeroSection: Component = () => {
       {/* nighty showing trackers bg */}
       <div class="hidden flex-col justify-between items-center no-interact md:flex">
         {/* nighty */}
-        <div class="absolute w-full h-full top-0 left-0">
+        <div class="absolute w-full h-full top-0 left-0 pointer-events-none">
           <img
             src="/images/nighty_floating.webp"
             class="absolute -z-10 scale-[150%] md:mt-90 mt-40 md:animate-floating blur-lg min-w-280 left-1/2 -translate-x-[55%] md:-translate-x-1/2"
@@ -201,9 +202,7 @@ export const HeroSection: Component = () => {
               href="#download"
               onClick={(e) => {
                 e.preventDefault();
-                document
-                  .getElementById("download")
-                  ?.scrollIntoView({ behavior: "smooth", block: "center" });
+                scrollToSection("download", location.pathname);
               }}
             >
               <Typography

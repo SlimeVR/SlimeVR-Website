@@ -485,7 +485,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
       >
         {/* glow effect when hovering */}
         <div
-          class="absolute inset-0 rounded-2xl no-interact z-20"
+          class="absolute inset-0 rounded-2xl no-interact pointer-events-none z-20"
           style={{
             background: `radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,var(--glow-opacity, 0)) 0%, transparent 50%)`,
             opacity: `var(--glow-opacity, 0)`,
