@@ -31,25 +31,25 @@ export const Button: ParentComponent<ButtonProps> = (initialProps) => {
       primary: clsx({
         "bg-accent-background-30 hover:bg-accent-background-20 text-background-10":
           !props.disabled,
-        "bg-accent-background-40 hover:bg-accent-background-40 cursor-not-allowed text-accent-background-10":
+        "bg-accent-background-30 brightness-75 cursor-not-allowed text-background-10":
           props.disabled,
       }),
       secondary: clsx({
         "bg-background-60 hover:bg-background-50 text-background-10":
           !props.disabled,
-        "bg-background-60 hover:bg-background-60 cursor-not-allowed text-background-40":
+        "bg-background-60 brightness-75 cursor-not-allowed text-background-40":
           props.disabled,
       }),
       tertiary: clsx({
         "bg-background-50 hover:bg-background-40 text-background-10":
           !props.disabled,
-        "bg-background-50 hover:bg-background-50 cursor-not-allowed text-background-40":
+        "bg-background-50 brightness-75 cursor-not-allowed text-background-40":
           props.disabled,
       }),
       quaternary: clsx({
         "bg-background-70 hover:bg-background-60 text-background-10":
           !props.disabled,
-        "bg-background-70 hover:bg-background-70 cursor-not-allowed text-background-40":
+        "bg-background-70 brightness-75 cursor-not-allowed text-background-40":
           props.disabled,
       }),
     };

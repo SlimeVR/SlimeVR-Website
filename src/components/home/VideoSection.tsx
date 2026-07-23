@@ -78,7 +78,7 @@ const VideoThumbnail: Component<{
   return (
     <button
       class={clsx(
-        "rounded-lg overflow-clip aspect-video h-22.5 sm:h-31.5 relative border-2 cursor-pointer",
+        "rounded-lg overflow-clip aspect-video h-22.5 sm:h-31.5 relative border-2 cursor-pointer group",
         props.active ? "border-accent-background-10" : "border-transparent"
       )}
       onClick={props.onClick}
@@ -105,7 +105,7 @@ const VideoThumbnail: Component<{
         )}
       ></div>
       <div class="absolute top-0 h-full w-full flex justify-center items-center">
-        <div class="bg-accent-background-10 w-12 h-12 rounded-full p-3 flex justify-center">
+        <div class="bg-accent-background-10 w-12 h-12 rounded-full p-3 flex justify-center transition-colors group-hover:bg-accent-background-30">
           <PlayIcon size={20} class="fill-background-10"></PlayIcon>
         </div>
       </div>
@@ -227,7 +227,7 @@ export const VideoSection: Component = () => {
       <div class="flex">
         <div class="flex grow flex-col gap-2 sm:gap-4 w-full">
           <div class="flex gap-4 flex-col justify-center">
-            <div class="w-full flex aspect-video bg-background-60 rounded-lg md:rounded-3xl p-2 md:p-4 border border-background-40">
+            <div class="w-full flex aspect-video bg-background-60 rounded-lg md:rounded-3xl p-2 md:p-4 border border-background-40 group">
               {autoplay() ? (
                 <iframe
                   title="YouTube video player"
@@ -254,7 +254,7 @@ export const VideoSection: Component = () => {
                     alt="Video thumbnail"
                   ></img>
                   <div class="relative z-10 bg-transparent border-0 p-0">
-                    <div class="bg-accent-background-10 w-16 h-16 rounded-full p-3 flex justify-center">
+                    <div class="bg-accent-background-10 group-hover:bg-accent-background-30 w-16 h-16 rounded-full p-3 flex justify-center transition-colors">
                       <PlayIcon size={26} class="fill-background-10"></PlayIcon>
                     </div>
                   </div>
