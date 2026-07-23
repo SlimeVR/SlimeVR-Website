@@ -50,35 +50,78 @@ export const advanceDate = (
   return next;
 };
 
-export const getDates = (event: EventData, count = 4): Date[] => {
-  const { startDate, recurrence } = event;
-  if (!recurrence) return [new Date(startDate)];
-
-  const interval = Math.max(recurrence.interval ?? 1, 1);
-  const frequency = recurrence.frequency ?? "weekly";
-
-  const dates: Date[] = [];
-  let current = new Date(startDate);
-  const now = new Date();
-
-  while (current < now) current = advanceDate(current, frequency, interval);
-
-  for (let i = 0; i < count; i++) {
-    dates.push(new Date(current));
-    current = advanceDate(current, frequency, interval);
-  }
-
-  return dates;
+export type EventSchedule = {
+  date: Date;
+  isLive: boolean;
+  upcoming: Date[];
 };
 
-export const getNextDate = (event: EventData): Date => {
-  if (event.recurrence) return getDates(event, 1)[0];
-  return new Date(event.startDate);
+// duration of event
+const getDurationMs = (event: EventData): number => {
+  if (!event.endDate || !event.startDate) return 0;
+  const duration =
+    new Date(event.endDate).getTime() - new Date(event.startDate).getTime();
+  return duration > 0 ? duration : 0;
+};
+
+export const getEventSchedule = (
+  event: EventData,
+  upcomingCount = 2,
+  now: Date = new Date()
+): EventSchedule => {
+  const nowMs = now.getTime();
+  const durationMs = getDurationMs(event);
+  const start = new Date(event.startDate);
+
+  // one-time event
+  if (!event.recurrence) {
+    const isLive =
+      durationMs > 0 &&
+      nowMs >= start.getTime() &&
+      nowMs <= start.getTime() + durationMs;
+
+    return {
+      date: start,
+      isLive,
+      // only include upcoming if the event hasn't ended yet
+      upcoming: nowMs < start.getTime() ? [start] : [],
+    };
+  }
+
+  // recurring event
+  const interval = Math.max(event.recurrence.interval ?? 1, 1);
+  const frequency = event.recurrence.frequency ?? "weekly";
+
+  let date = new Date(start);
+  while (date.getTime() + durationMs < nowMs)
+    date = advanceDate(date, frequency, interval);
+
+  //
+  const isLive =
+    durationMs > 0 &&
+    nowMs >= date.getTime() &&
+    nowMs <= date.getTime() + durationMs;
+
+  // upcoming occurrences
+  let next = new Date(date);
+  if (isLive || next.getTime() <= nowMs)
+    next = advanceDate(next, frequency, interval);
+  while (next.getTime() <= nowMs) next = advanceDate(next, frequency, interval);
+
+  const upcoming: Date[] = [];
+  for (let i = 0; i < upcomingCount; i++) {
+    upcoming.push(new Date(next));
+    next = advanceDate(next, frequency, interval);
+  }
+
+  return { date, isLive, upcoming };
 };
 
 export const sortByNextDate = (events: EventData[]): EventData[] => {
   return [...events].sort(
-    (a, b) => getNextDate(a).getTime() - getNextDate(b).getTime()
+    (a, b) =>
+      getEventSchedule(a, 0).date.getTime() -
+      getEventSchedule(b, 0).date.getTime()
   );
 };
 
@@ -135,37 +178,54 @@ export const getTimezone = (date: Date | string) => {
   return cachedTimezone;
 };
 
-export const fromDiscord = (raw: any): EventData => {
-  const id = raw.id;
-  const hash = raw.image ?? null;
-  const rule = raw.recurrence_rule ?? null;
-  const host = raw.creator?.username ? `@${raw.creator.username}` : "";
+export const toEventData = (event: any): EventData => {
+  const id = event.id as string;
+
+  const startDate = event.scheduled_start_time ?? event.startDate ?? "";
+  const endDate = event.scheduled_end_time ?? event.endDate ?? null;
+  const rule = event.recurrence_rule ?? event.recurrenceRule ?? null;
+  const username = event.creator?.username ?? event.username ?? "";
+  const host = username ? `@${username}` : "";
+
+  const interval = Math.max(rule?.interval ?? 1, 1);
+  const recurrence =
+    rule?.frequency !== undefined && rule?.frequency !== null
+      ? {
+          frequency:
+            DISCORD_FREQUENCY[rule.frequency as 0 | 1 | 2 | 3] ?? "weekly",
+          interval,
+        }
+      : null;
+
+  const rawImage = event.image ?? null;
+  const isUrl =
+    rawImage?.startsWith("http://") || rawImage?.startsWith("https://");
+  const image = !rawImage
+    ? null
+    : isUrl
+      ? rawImage
+      : `https://cdn.discordapp.com/guild-events/${id}/${rawImage}.webp?size=512`;
+
+  const link =
+    event.guild_id != null
+      ? `https://discord.com/events/${event.guild_id}/${id}`
+      : (event.link ?? null);
 
   return {
     id,
-    name: raw.name,
-    description: raw.description ?? "",
-    location: raw.entity_metadata?.location ?? "",
-    startDate: raw.scheduled_start_time ?? "",
-    endDate: raw.scheduled_end_time ?? null,
-    image: hash
-      ? `https://cdn.discordapp.com/guild-events/${id}/${hash}.webp?size=512`
-      : null,
-    link:
-      raw.guild_id != null
-        ? `https://discord.com/events/${raw.guild_id}/${id}`
-        : null,
+    name: event.name ?? "",
+    description: event.description ?? "",
+    location: event.entity_metadata?.location ?? event.location ?? "",
+    startDate,
+    endDate,
+    image,
+    link,
     host,
-    recurrence: rule
-      ? {
-          frequency: DISCORD_FREQUENCY[rule.frequency] ?? "weekly",
-          interval: rule.interval ?? 1,
-        }
-      : null,
+    recurrence,
   };
 };
 
 export const getFallbackEvents = (): EventData[] => {
   if (!Array.isArray(testData)) return [];
-  return testData.map(fromDiscord);
+  return testData.map(toEventData);
 };

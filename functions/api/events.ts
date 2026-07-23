@@ -6,14 +6,16 @@ interface Env {
 const formatEvent = (event: any) => ({
   id: event.id,
   guild_id: event.guild_id,
-  username: event.creator?.username ?? "",
   name: event.name,
   description: event.description ?? "",
-  startDate: event.scheduled_start_time ?? "",
-  endDate: event.scheduled_end_time ?? null,
-  recurrenceRule: event.recurrence_rule ?? null,
+  scheduled_start_time: event.scheduled_start_time ?? "",
+  scheduled_end_time: event.scheduled_end_time ?? null,
+  recurrence_rule: event.recurrence_rule ?? null,
   image: event.image ?? null,
   entity_metadata: event.entity_metadata ?? { location: "" },
+  creator: event.creator
+    ? { username: event.creator.username ?? "" }
+    : null,
 });
 
 export const onRequestGet = async (context: { env: Env }) => {
@@ -23,12 +25,16 @@ export const onRequestGet = async (context: { env: Env }) => {
   const url = `https://discord.com/api/v10/guilds/${guildId}/scheduled-events`;
 
   if (!guildId || !token) {
-    return Response.json([], {
-      headers: {
-        "Cache-Control": "public, max-age=60, s-maxage=60",
-        "Content-Type": "application/json",
-      },
-    });
+    return Response.json(
+      { error: "Missing DISCORD_GUILD_ID or DISCORD_BOT_TOKEN" },
+      {
+        status: 500,
+        headers: {
+          "Cache-Control": "public, max-age=60, s-maxage=60",
+          "Content-Type": "application/json",
+        },
+      }
+    );
   }
 
   try {
@@ -50,6 +56,16 @@ export const onRequestGet = async (context: { env: Env }) => {
 
     const data = await response.json();
     const events = Array.isArray(data) ? data.map(formatEvent) : [];
+
+    if (events.length === 0) {
+      return Response.json([], {
+        status: 404,
+        headers: {
+          "Cache-Control": "public, max-age=60, s-maxage=60",
+          "Content-Type": "application/json",
+        },
+      });
+    }
 
     return Response.json(events, {
       headers: {

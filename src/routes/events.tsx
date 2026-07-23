@@ -1,14 +1,14 @@
 import { Link, Meta } from "@solidjs/meta";
-import { createResource, For } from "solid-js";
+import { createMemo, createResource, For } from "solid-js";
 import { AppTitle } from "~/components/AppTitle";
 import { Container } from "~/components/commons/Container";
 import { Typography } from "~/components/commons/Typography";
 import { Section } from "~/components/Section";
 import { MainLayout } from "~/layouts/MainLayout";
 import {
-  fromDiscord,
   getFallbackEvents,
   sortByNextDate,
+  toEventData,
   type EventData,
 } from "~/utils/events";
 import { getCustomEvents } from "~/assets/events-custom";
@@ -27,7 +27,12 @@ export default function EventsPage() {
         throw new Error(`Failed to fetch events: ${response.status}`);
 
       const result = (await response.json()) as unknown[];
-      return result.map(fromDiscord);
+
+      const status = response.status;
+      if (status === 404) console.warn("no events returned");
+      if (status === 500) console.error("server error fetching events");
+
+      return result.map(toEventData);
     } catch (error) {
       const msg = (error as Error).message;
       console.error(`Falling back to local events data: ${msg}`);
@@ -35,8 +40,8 @@ export default function EventsPage() {
     }
   });
 
-  const virtualEvents = () => sortByNextDate(events() ?? []);
-  const otherEvents = () => sortByNextDate(getCustomEvents());
+  const virtualEvents = createMemo(() => sortByNextDate(events() ?? []));
+  const otherEvents = createMemo(() => sortByNextDate(getCustomEvents()));
 
   const questions = Array.from({ length: QUESTIONS_COUNT }).map((_, index) => ({
     question: `events.faq.questions.question-${index + 1}.question`,
@@ -84,11 +89,7 @@ export default function EventsPage() {
 
         {/* FAQ */}
         <div class="mt-4">
-          <FAQSection
-            id="faq"
-            titleKey="events.faq.title"
-            items={questions}
-          />
+          <FAQSection id="faq" titleKey="events.faq.title" items={questions} />
         </div>
       </Section>
     </MainLayout>

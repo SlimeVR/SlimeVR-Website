@@ -9,6 +9,8 @@ import {
 
 interface ButtonProps extends ComponentProps<"button"> {
   variant: "primary" | "secondary" | "tertiary" | "quaternary";
+  rel?: string;
+  target?: string;
   size?: "default" | "big";
   href?: string;
   loading?: boolean;
@@ -65,7 +67,12 @@ export const Button: ParentComponent<ButtonProps> = (initialProps) => {
 
   if (props.href) {
     return (
-      <A href={props.href} class={classes()}>
+      <A
+        href={props.href}
+        class={classes()}
+        rel={props.rel}
+        target={props.target}
+      >
         {props.children}
       </A>
     );

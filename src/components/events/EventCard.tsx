@@ -1,4 +1,11 @@
-import { Component, For, Show } from "solid-js";
+import {
+  Component,
+  For,
+  Show,
+  createMemo,
+  createSignal,
+  onMount,
+} from "solid-js";
 import { CalendarIcon } from "~/components/commons/icons/CalendarIcon";
 import { LocationIcon } from "~/components/commons/icons/LocationIcon";
 import { UserIcon } from "~/components/commons/icons/UserIcon";
@@ -12,54 +19,52 @@ import {
   formatTimeLocal,
   getTimezone,
   getDayName,
-  getDates,
+  getEventSchedule,
   type EventData,
+  type EventSchedule,
 } from "~/utils/events";
 
 const EventCardHeader: Component<{
   event: EventData;
-  nextDate: Date | undefined;
-  day: string;
+  schedule: EventSchedule | null;
 }> = (props) => {
   const event = props.event;
-  const now = new Date();
-  const isLive = event.endDate
-    ? now >= new Date(event.startDate) && now <= new Date(event.endDate)
-    : false;
-  const isRecurring = !!event.recurrence;
+  const isRecurring = () => !!event.recurrence;
 
   return (
     <div class="grid gap-2">
-      <Typography tag="h2" textAlign="text-left" variant="section-title">
+      <Typography tag="h3" textAlign="text-left" variant="section-title">
         {event.name}
       </Typography>
       <div class="flex items-start justify-between gap-3">
         <div class="flex min-w-0 flex-1 flex-col gap-1">
-          {isLive ? (
-            <EventLiveBadge
-              startDate={event.startDate}
-              nextDate={props.nextDate}
-              day={props.day}
-              isRecurring={isRecurring}
-            />
-          ) : (
-            <>
-              {props.nextDate && (
-                <EventNextDate
+          <Show when={props.schedule}>
+            {(schedule) =>
+              schedule().isLive ? (
+                <EventLiveBadge
                   startDate={event.startDate}
-                  nextDate={props.nextDate}
-                />
-              )}
-              {isRecurring && props.day ? (
-                <EventRecurringInfo
-                  startDate={event.startDate}
-                  day={props.day}
+                  date={schedule().date}
+                  day={getDayName(schedule().date.getDay())}
+                  isRecurring={isRecurring()}
                 />
               ) : (
-                <EventOneTimeInfo />
-              )}
-            </>
-          )}
+                <>
+                  <EventNextDate
+                    startDate={event.startDate}
+                    date={schedule().date}
+                  />
+                  {isRecurring() ? (
+                    <EventRecurringInfo
+                      startDate={event.startDate}
+                      day={getDayName(schedule().date.getDay())}
+                    />
+                  ) : (
+                    <EventOneTimeInfo />
+                  )}
+                </>
+              )
+            }
+          </Show>
         </div>
         <div class="flex h-5 shrink-0 items-center gap-1.5 self-start">
           <LocationIcon class="size-4 shrink-0 text-accent-background-20" />
@@ -92,22 +97,27 @@ const EventCardUpcomingDates: Component<{ dates: Date[] }> = (props) => (
       color="secondary"
       key="events.upcoming"
     />
-    <For each={props.dates}>
-      {(date) => (
-        <div class="flex items-center gap-2 text-background-10">
-          <CalendarIcon class="size-4 text-background-30" />
-          <Typography tag="span" textAlign="text-left" color="primary">
-            {formatDate(date)} &bull; {formatTimeShort(date)}
-          </Typography>
-        </div>
-      )}
-    </For>
+    <Show
+      when={props.dates.length > 0}
+      fallback={<Typography tag="p" key="events.no-dates" />}
+    >
+      <For each={props.dates}>
+        {(date) => (
+          <div class="flex items-center gap-2 text-background-10">
+            <CalendarIcon class="size-4 text-background-30" />
+            <Typography tag="span" textAlign="text-left" color="primary">
+              {formatDate(date)} &bull; {formatTimeShort(date)}
+            </Typography>
+          </div>
+        )}
+      </For>
+    </Show>
   </div>
 );
 
 const EventLiveBadge: Component<{
   startDate: string;
-  nextDate: Date | undefined;
+  date: Date;
   day: string;
   isRecurring: boolean;
 }> = (props) => {
@@ -116,11 +126,7 @@ const EventLiveBadge: Component<{
     <div class="flex flex-col gap-1">
       <div
         class="flex h-5 items-center gap-2"
-        title={
-          props.nextDate
-            ? `${formatDate(props.nextDate)} \u2022 ${formatTimeShort(props.nextDate)}`
-            : undefined
-        }
+        title={`${formatDate(props.date)} \u2022 ${formatTimeShort(props.date)}`}
       >
         <span class="size-2 shrink-0 rounded-full bg-status-success" />
         <Typography
@@ -156,20 +162,15 @@ const EventLiveBadge: Component<{
 
 const EventNextDate: Component<{
   startDate: string;
-  nextDate: Date;
+  date: Date;
 }> = (props) => (
   <div class="flex h-5 items-center gap-2 text-background-10">
     <CalendarIcon class="size-4 shrink-0 text-accent-background-20" />
     <span
-      title={`${formatTimeLocal(props.nextDate)} ${getTimezone(props.startDate)}`}
+      title={`${formatTimeLocal(props.date)} ${getTimezone(props.startDate)}`}
     >
-      <Typography
-        tag="span"
-        textAlign="text-left"
-        color="primary"
-        class="text-sm"
-      >
-        {formatDate(props.nextDate)} &bull; {formatTimeShort(props.nextDate)}
+      <Typography tag="span" textAlign="text-left" color="primary">
+        {formatDate(props.date)} &bull; {formatTimeShort(props.date)}
       </Typography>
     </span>
   </div>
@@ -222,6 +223,8 @@ const EventCardBottomRow: Component<{
       <Button
         variant="primary"
         href={hasLink ? props.link! : undefined}
+        rel="noopener noreferrer"
+        target="_blank"
         disabled={!hasLink}
         class="min-h-10 px-4 py-2 text-sm rounded-lg"
       >
@@ -243,23 +246,36 @@ const EventCardImage: Component<{ src: string; alt: string }> = (props) => (
 );
 
 const EventCard: Component<{ event: EventData }> = (props) => {
+  // prevent hydration mismatch like in contributors page
+  const [mounted, setMounted] = createSignal(false);
+  onMount(() => setMounted(true));
+
   const event = props.event;
-  const dates = getDates(event, 2);
-  const day = dates.length > 0 ? getDayName(dates[0].getDay()) : "";
-  const image = event.image ?? "/images/nighty_floating.webp";
+
+  const schedule = createMemo(() =>
+    mounted() ? getEventSchedule(event, 2) : null
+  );
+
+  const image = () => event.image ?? "/images/nighty_floating.webp";
 
   return (
     <Container class="grid h-full grid-rows-[auto_auto_auto_auto_auto_1fr] gap-4 overflow-hidden">
-      <EventCardImage src={image} alt={event.name} />
+      <EventCardImage src={image()} alt={event.name} />
       <div class="grid gap-4">
-        <EventCardHeader event={event} nextDate={dates[0]} day={day} />
+        <EventCardHeader event={event} schedule={schedule()} />
         <div class="w-full h-px bg-background-40" />
         <EventCardDescription text={event.description} />
       </div>
       <div class="w-full h-px bg-background-40" />
       <EventCardBottomRow link={event.link} host={event.host} />
-      <div class="w-full h-px bg-background-40" />
-      <EventCardUpcomingDates dates={dates} />
+      <Show when={schedule()}>
+        {(s) => (
+          <>
+            <div class="w-full h-px bg-background-40" />
+            <EventCardUpcomingDates dates={s().upcoming} />
+          </>
+        )}
+      </Show>
     </Container>
   );
 };

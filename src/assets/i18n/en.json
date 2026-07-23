@@ -242,6 +242,7 @@
     "recurring": "Every {{day}} @ {{time}}",
     "one-time": "One-time event",
     "upcoming": "UPCOMING DATES",
+    "no-dates": "No upcoming dates",
     "info": "Event Info",
     "live": "Live now",
     "no-events": "No events found. Check back later!"
