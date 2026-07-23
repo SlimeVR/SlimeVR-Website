@@ -1,20 +1,17 @@
+import { A, useParams } from "@solidjs/router";
 import { Link, Meta, Title } from "@solidjs/meta";
-import { useLocation } from "@solidjs/router";
 import { createMemo, createResource, Show } from "solid-js";
-import { Container } from "~/components/commons/Container";
+import { FormattedDate } from "~/components/commons/FormattedDate";
+import { NewsPostContent } from "~/components/news";
 import { Typography } from "~/components/commons/Typography";
 import { Section } from "~/components/Section";
 import { MainLayout } from "~/layouts/MainLayout";
-import type { Post } from "~/utils/posts";
+import type { Post } from "~/types/posts";
 
 export default function PostPage() {
-  const location = useLocation();
-  const slug = createMemo(() => {
-    const parts = location.pathname.split("/");
-    return parts[parts.length - 1];
-  });
+  const params = useParams<{ slug: string }>();
   const [post] = createResource<Post | null, string>(
-    () => slug(),
+    () => params.slug,
     async (slug) => {
       const { getPost } = await import("~/utils/posts");
       return getPost(slug);
@@ -22,7 +19,7 @@ export default function PostPage() {
   );
 
   const metadata = createMemo(() => post()?.metadata);
-  const html = createMemo(() => post()?.html);
+  const markdown = createMemo(() => post()?.markdown);
 
   return (
     <MainLayout>
@@ -30,52 +27,65 @@ export default function PostPage() {
         <Title>{`${metadata()?.title} - SlimeVR Official`}</Title>
       </Show>
       <Meta name="robots" content="index, follow" />
-      <Link rel="canonical" href={`https://slimevr.dev/news/${slug()}`} />
+      <Link rel="canonical" href={`https://slimevr.dev/news/${params.slug}`} />
 
       <Section>
-        <div class="flex flex-col gap-6 py-6 sm:py-10">
-          <Container class="relative overflow-clip">
-            <div class="absolute inset-0 opacity-35 pattern"></div>
-            <div class="relative flex flex-col gap-3">
-              <Show
-                when={post()}
-                fallback={
-                  <Typography tag="h1" variant="section-title">
-                    Loading post...
-                  </Typography>
-                }
+        <Show
+          when={post()}
+          fallback={
+            <Typography tag="h1" variant="section-title">
+              Loading post...
+            </Typography>
+          }
+        >
+          <div class="rounded-2xl bg-background-70 border border-background-40 p-6 md:p-8 my-10">
+            <A
+              href="/news"
+              class="inline-flex items-center gap-1 text-sm text-background-30 hover:text-background-10 transition-colors mb-6"
+            >
+              <svg
+                class="w-4 h-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
               >
-                <>
-                  <Typography tag="h1" variant="section-title">
-                    {metadata()?.title}
-                  </Typography>
-                  <Typography tag="p" color="secondary">
-                    {metadata()?.date}
-                  </Typography>
-                  <Typography tag="p" class="max-w-3xl" color="secondary">
-                    {metadata()?.description}
-                  </Typography>
-                </>
+                <path d="M19 12H5m7-7-7 7 7 7" />
+              </svg>
+              Back to news
+            </A>
+
+            <div class="relative overflow-clip rounded-xl">
+              <div class="absolute inset-0 opacity-25 pattern" />
+              <div class="relative flex flex-col">
+                <Typography tag="p" class="text-xs font-medium tracking-widest text-background-30">
+                  <FormattedDate date={metadata()!.date} />
+                </Typography>
+                <Typography tag="h1" class="text-3xl sm:text-4xl font-bold leading-tight text-background-10 mb-3">
+                  {metadata()!.title}
+                </Typography>
+              </div>
+              <Show when={metadata()?.imageUrl}>
+                <img
+                  src={metadata()!.imageUrl}
+                  alt=""
+                  class="w-full object-cover max-h-96 mb-6"
+                />
               </Show>
             </div>
-          </Container>
 
-          <Container class="flex flex-col gap-4">
             <Show
-              when={html()}
+              when={markdown()}
               fallback={
                 <Typography tag="p" color="secondary">
                   Loading post content...
                 </Typography>
               }
             >
-              <div
-                innerHTML={html()}
-                class="text-sm w-full min-w-full prose-xl prose text-background-10 prose-h1:text-background-10 prose-h2:text-background-10 prose-h3:text-background-10 prose-h3:text-2xl prose-h4:text-background-10 prose-h4:text-xl prose-a:text-background-20 prose-strong:text-background-10 prose-code:text-background-20 prose-blockquote:text-background-10 prose-blockquote:border-background-30 prose-thead:text-background-10 prose-th:text-background-10 prose-td:text-background-10 prose-ul:list-disc prose-li:marker:text-background-10"
-              />
+              <NewsPostContent markdown={markdown()!} slug={params.slug} />
             </Show>
-          </Container>
-        </div>
+          </div>
+        </Show>
       </Section>
     </MainLayout>
   );

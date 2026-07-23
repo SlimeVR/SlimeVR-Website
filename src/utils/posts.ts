@@ -1,54 +1,88 @@
-// adapted from https://github.com/JovannMC/jovann.me/blob/main/src/lib/utils/posts.ts
-export interface Post {
-  slug: string;
-  metadata: PostMetadata;
-  html?: string;
-}
+import { isServer } from "solid-js/web";
+import { parseMarkdownFrontMatter } from "~/utils/markdown.helper";
+import type { Post } from "~/types/posts";
 
-export interface PostMetadata {
+interface ManifestEntry {
+  slug: string;
   title: string;
   date: string;
   description: string;
+  imageUrl: string | null;
 }
 
-export interface PostModule {
-  html: string;
-  attributes: PostMetadata;
+export interface PostsManifest {
+  total: number;
+  pageSize: number;
+  pages: number;
 }
 
-const postModules = import.meta.glob("/src/posts/*.md");
-const getSlug = (path: string) =>
-  path.split("/").pop()?.replace(".md", "") ?? "";
+const postCache = new Map<string, Post>();
 
-export async function getPosts() {
-  const posts: Post[] = [];
-
-  for (const path in postModules) {
-    // direct imports of the files handled by vite-plugin-markdown
-    const mod = (await postModules[path]()) as PostModule;
-    const slug = getSlug(path);
-    const metadata = mod.attributes as PostMetadata;
-
-    posts.push({ slug, metadata });
+async function readPublicFile(path: string): Promise<string> {
+  if (isServer) {
+    const fs = await import("node:fs/promises");
+    const { resolve } = await import("node:path");
+    return fs.readFile(resolve(process.cwd(), "public", path), "utf-8");
   }
+  const res = await fetch(`/${path}`);
+  return res.text();
+}
 
-  // latest posts first
-  return posts.sort((a, b) => {
-    const dateA = new Date(a.metadata.date);
-    const dateB = new Date(b.metadata.date);
-    return dateB.getTime() - dateA.getTime();
-  });
+function entryToPost(entry: ManifestEntry): Post {
+  return {
+    slug: entry.slug,
+    metadata: {
+      title: entry.title,
+      date: entry.date,
+      description: entry.description,
+      imageUrl: entry.imageUrl ?? undefined,
+    },
+  };
+}
+
+export async function getPostsManifest(): Promise<PostsManifest> {
+  const text = await readPublicFile("posts/index.json");
+  return JSON.parse(text);
+}
+
+export async function getPostsPage(page: number): Promise<Post[]> {
+  const text = await readPublicFile(`posts/index-${page}.json`);
+  const entries: ManifestEntry[] = JSON.parse(text);
+  return entries.map(entryToPost);
+}
+
+export async function getPosts(): Promise<Post[]> {
+  const manifest = await getPostsManifest();
+  const all: Post[] = [];
+  for (let i = 1; i <= manifest.pages; i++) {
+    const page = await getPostsPage(i);
+    all.push(...page);
+  }
+  return all;
 }
 
 export async function getPost(slug: string): Promise<Post | null> {
-  const importer = postModules[`/src/posts/${slug}.md`];
-  if (!importer) return null;
+  try {
+    const cached = postCache.get(slug);
+    if (cached) return cached;
 
-  const { attributes, html } = (await importer()) as PostModule;
+    const text = await readPublicFile(`posts/${slug}/${slug}.md`);
+    const { attributes, body } = parseMarkdownFrontMatter(text);
 
-  return {
-    slug,
-    metadata: attributes,
-    html,
-  };
+    const post: Post = {
+      slug,
+      metadata: {
+        title: attributes.title ?? "",
+        date: attributes.date ?? "",
+        description: attributes.description ?? "",
+        imageUrl: attributes.thumbnailUrl ? `/posts/${slug}/${attributes.thumbnailUrl}` : undefined,
+      },
+      markdown: body,
+    };
+
+    postCache.set(slug, post);
+    return post;
+  } catch {
+    return null;
+  }
 }
