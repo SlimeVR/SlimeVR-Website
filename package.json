@@ -2,8 +2,9 @@
   "name": "slimevr-website",
   "type": "module",
   "scripts": {
-    "dev": "vinxi dev",
-    "build": "vinxi build",
+    "dev": "tsx scripts/generate-posts-manifest.ts && vinxi dev",
+    "generate-posts": "tsx scripts/generate-posts-manifest.ts",
+    "build": "tsx scripts/generate-posts-manifest.ts && vinxi build",
     "start": "vinxi start",
     "serve": "npx serve .output/public"
   },
@@ -20,6 +21,7 @@
     "overlayscrollbars": "^2.13.0",
     "postcss": "^8.5.6",
     "rand-seed": "^3.0.0",
+    "rehype-raw": "^6.1.1",
     "remark-gfm": "3.0.0",
     "solid-js": "^1.9.10",
     "solid-markdown": "2.0.12",
@@ -34,7 +36,8 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19",
-    "prettier": "^3.7.4"
+    "prettier": "^3.7.4",
+    "tsx": "4.23.1"
   },
   "packageManager": "pnpm@9.15.9+sha512.68046141893c66fad01c079231128e9afb89ef87e2691d69e4d40eee228988295fd4682181bae55b58418c3a253bde65a505ec7c5f9403ece5cc3cd37dcf2531"
 }
