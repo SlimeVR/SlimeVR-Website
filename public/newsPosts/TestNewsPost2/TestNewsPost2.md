@@ -1,6 +1,6 @@
 ---
 title: "blog example 2"
-date: "2026-07-17"
+date: "2026-07-17T00:00:00.000Z"
 description: "test 2"
 ---
 
@@ -24,7 +24,7 @@ you can do stuff idk, make things **bold**, _italic_, ~~struck through~~, or lin
 2. give you
 3. up
 
-reference images like this `![example](/images/news/[slug]/[image])`: ![example](/images/nighty_floating.webp)
+reference images like this `![example](/images/news/[postId]/[image])`: ![example](/images/nighty_floating.webp)
 
 inline code `bun run dev` then some code blocks:
 

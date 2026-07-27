@@ -129,6 +129,7 @@
 @utility text-main-title {
   font-size: 2.7rem;
   font-weight: 700;
+  text-transform: capitalize;
 }
 
 @utility text-section-title {

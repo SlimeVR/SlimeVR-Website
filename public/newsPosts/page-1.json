@@ -1,0 +1,16 @@
+[
+  {
+    "postId": "TestNewsPost2",
+    "date": "2026-07-17T00:00:00.000Z",
+    "title": "blog example 2",
+    "description": "test 2",
+    "markdownContent": "something something hi this is a blog example to show off the formatting\n\nyou can do stuff idk, make things **bold**, _italic_, ~~struck through~~, or link [somewhere](/news) ok\n\n# example\n\n## example 2\n\n### example 3\n\n#### example 4\n\n- hello\n- world\n- yes\n\n1. never gonna\n2. give you\n3. up\n\nreference images like this `![example](/images/news/[postId]/[image])`: ![example](/images/nighty_floating.webp)\n\ninline code `bun run dev` then some code blocks:\n\n```typescript\n// typescript\nfunction hello(name: String) {\n    console.log(`Hello ${name}`);\n}\n\nhello(\"World\");\n```\n\n```python\n# python\ndef hello(name):\n  print(f'Hello {name}')\n\nhello('World')\n```\n\n> \"meow\"\n> — maya\n\nand make tables or something:\n\n| statement    | never gonna |\n| ------------ | ----------- |\n| give you up  | ✅          |\n| let you down | ✅          |\n| run around   | ✅          |\n| desert you   | ✅          |\n"
+  },
+  {
+    "postId": "TestNewsPost1",
+    "date": "2026-07-16T00:00:00.000Z",
+    "title": "blog example",
+    "description": "test 1",
+    "markdownContent": "something something hi this is a blog example to show off the formatting\n\nyou can do stuff idk, make things **bold**, _italic_, ~~struck through~~, or link [somewhere](/news) ok\n\n# example\n\n## example 2\n\n### example 3\n\n#### example 4\n\n- hello\n- world\n- yes\n\n1. never gonna\n2. give you\n3. up\n\nreference images like this `![example](/images/news/[postId]/[image])`: ![example](/images/nighty_floating.webp)\n\ninline code `bun run dev` then some code blocks:\n\n```typescript\n// typescript\nfunction hello(name: String) {\n    console.log(`Hello ${name}`);\n}\n\nhello(\"World\");\n```\n\n```python\n# python\ndef hello(name):\n  print(f'Hello {name}')\n\nhello('World')\n```\n\n> \"meow\"\n> — maya\n\nand make tables or something:\n\n| statement    | never gonna |\n| ------------ | ----------- |\n| give you up  | ✅          |\n| let you down | ✅          |\n| run around   | ✅          |\n| desert you   | ✅          |\n"
+  }
+]
