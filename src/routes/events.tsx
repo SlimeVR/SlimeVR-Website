@@ -1,11 +1,12 @@
 import { Link, Meta } from "@solidjs/meta";
-import { createMemo, createResource, For } from "solid-js";
+import { createMemo, createResource, For, Show } from "solid-js";
 import { AppTitle } from "~/components/AppTitle";
 import { Container } from "~/components/commons/Container";
 import { Typography } from "~/components/commons/Typography";
 import { Section } from "~/components/Section";
 import { MainLayout } from "~/layouts/MainLayout";
 import {
+  buildEventsJsonLd,
   getFallbackEvents,
   sortByNextDate,
   toEventData,
@@ -45,7 +46,12 @@ export default function EventsPage() {
   });
 
   const virtualEvents = createMemo(() => sortByNextDate(events() ?? []));
-  const otherEvents = createMemo(() => sortByNextDate(getCustomEvents()));
+  const otherEvents = createMemo(() => sortByNextDate(getCustomEvents() ?? []));
+
+  const eventsSchema = createMemo(() => {
+    const schema = buildEventsJsonLd([...virtualEvents(), ...otherEvents()]);
+    return schema ? JSON.stringify(schema) : null;
+  });
 
   const questions = Array.from({ length: QUESTIONS_COUNT }).map((_, index) => ({
     question: `events.faq.questions.question-${index + 1}.question`,
@@ -67,6 +73,9 @@ export default function EventsPage() {
       <AppTitle key="events.title"></AppTitle>
       <Meta name="robots" content="index, follow" />
       <Link rel="canonical" href="https://slimevr.dev/events" />
+      <Show when={eventsSchema()}>
+        {(schema) => <script type="application/ld+json">{schema()}</script>}
+      </Show>
 
       <Section>
         <Container class="mt-4">

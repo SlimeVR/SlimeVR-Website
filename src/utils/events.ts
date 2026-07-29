@@ -16,7 +16,7 @@ export interface EventData {
   endDate?: string | null;
   image?: string | null;
   link?: string | null;
-  host?: string;
+  host: string;
   recurrence?: Recurrence;
 }
 
@@ -178,38 +178,32 @@ export const getTimezone = (date: Date | string) => {
   return cachedTimezone;
 };
 
+// takes in "discord" events to convert into our EventData type
+// custom events are already in the correct format
 export const toEventData = (event: any): EventData => {
   const id = event.id as string;
 
-  const startDate = event.scheduled_start_time ?? event.startDate ?? "";
-  const endDate = event.scheduled_end_time ?? event.endDate ?? null;
-  const rule = event.recurrence_rule ?? event.recurrenceRule ?? null;
-  const username = event.creator?.username ?? event.username ?? "";
-  const host = username ? `@${username}` : "";
+  const startDate = event.scheduled_start_time ?? null;
+  const endDate = event.scheduled_end_time ?? null;
+  const rule = event.recurrence_rule ?? null;
+  const username = event.creator?.username ?? null;
+  const host = username ? `@${username}` : "SlimeVR";
 
   const interval = Math.max(rule?.interval ?? 1, 1);
-  const recurrence =
-    rule?.frequency !== undefined && rule?.frequency !== null
-      ? {
-          frequency:
-            DISCORD_FREQUENCY[rule.frequency as 0 | 1 | 2 | 3] ?? "weekly",
-          interval,
-        }
-      : null;
+  const recurrence = rule?.frequency
+    ? {
+        frequency: DISCORD_FREQUENCY[rule.frequency] ?? "weekly",
+        interval,
+      }
+    : null;
 
   const rawImage = event.image ?? null;
-  const isUrl =
-    rawImage?.startsWith("http://") || rawImage?.startsWith("https://");
-  const image = !rawImage
-    ? null
-    : isUrl
-      ? rawImage
-      : `https://cdn.discordapp.com/guild-events/${id}/${rawImage}.webp?size=512`;
+  const image = `https://cdn.discordapp.com/guild-events/${id}/${rawImage}.webp?size=512`;
 
   const link =
     event.guild_id != null
       ? `https://discord.com/events/${event.guild_id}/${id}`
-      : (event.link ?? null);
+      : null;
 
   return {
     id,
@@ -228,4 +222,53 @@ export const toEventData = (event: any): EventData => {
 export const getFallbackEvents = (): EventData[] => {
   if (!Array.isArray(testData)) return [];
   return testData.map(toEventData);
+};
+
+export const toEventJsonLd = (event: EventData) => {
+  const { date } = getEventSchedule(event, 0);
+  const durationMs = getDurationMs(event);
+  const end =
+    durationMs > 0 ? new Date(date.getTime() + durationMs) : undefined;
+  const image = event.image ?? undefined;
+  const url = event.link ?? undefined;
+
+  return {
+    "@type": "Event",
+    name: event.name,
+    description: event.description,
+    startDate: date.toISOString(),
+    endDate: end?.toISOString(),
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
+    location: {
+      "@type": "VirtualLocation",
+      name: event.location || "Online",
+      url,
+    },
+    image,
+    url,
+    organizer: {
+      "@type": "Organization",
+      name: "SlimeVR",
+      url: "https://slimevr.dev",
+    },
+    performer: {
+      "@type": "Person",
+      name: event.host,
+    },
+  };
+};
+
+export const buildEventsJsonLd = (events: EventData[]) => {
+  if (events.length === 0) return null;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: events.map((event, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: toEventJsonLd(event),
+    })),
+  };
 };

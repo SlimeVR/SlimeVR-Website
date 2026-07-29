@@ -96,9 +96,17 @@ a.link {
 
 /* OverlayScrollbars styling */
 .os-scrollbar-handle {
-  background: color-mix(in srgb, var(--color-on-surface) 60%, transparent) !important;
+  background: color-mix(
+    in srgb,
+    var(--color-on-surface) 60%,
+    transparent
+  ) !important;
 }
 
 .os-scrollbar-handle:hover {
-  background: color-mix(in srgb, var(--color-on-surface) 80%, transparent) !important;
+  background: color-mix(
+    in srgb,
+    var(--color-on-surface) 80%,
+    transparent
+  ) !important;
 }

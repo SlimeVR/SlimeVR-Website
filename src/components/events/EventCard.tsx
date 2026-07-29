@@ -201,24 +201,22 @@ const EventOneTimeInfo: Component = () => (
 
 const EventCardBottomRow: Component<{
   link?: string | null;
-  host?: string;
+  host: string;
 }> = (props) => {
   const hasLink = !!props.link;
 
   return (
     <div class="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4">
       <div class="flex min-w-0 items-center gap-1.5">
-        <Show when={props.host}>
-          <UserIcon class="size-4 text-background-30" />
-          <Typography
-            tag="p"
-            textAlign="text-center"
-            color="secondary"
-            class="text-sm truncate"
-          >
-            {props.host}
-          </Typography>
-        </Show>
+        <UserIcon class="size-4 text-background-30" />
+        <Typography
+          tag="p"
+          textAlign="text-center"
+          color="secondary"
+          class="text-sm truncate"
+        >
+          {props.host}
+        </Typography>
       </div>
       <Button
         variant="primary"

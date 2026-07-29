@@ -26,41 +26,41 @@
 
   --color-window-icon-stroke: rgb(192, 161, 216);
 
-  /* Material 3 — Primary (Purple) */
-  --color-primary: #9D5CD4;
-  --color-on-primary: #FFFFFF;
-  --color-primary-container: #65459A;
-  --color-on-primary-container: #EAD9FF;
+  /* primary (purple) */
+  --color-primary: #9d5cd4;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #65459a;
+  --color-on-primary-container: #ead9ff;
 
-  /* Material 3 — Secondary (Blue-grey) */
-  --color-secondary: #78A4C6;
-  --color-on-secondary: #FFFFFF;
-  --color-secondary-container: #3D6381;
-  --color-on-secondary-container: #D3E6F7;
+  /* secondary (blue-grey) */
+  --color-secondary: #78a4c6;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #3d6381;
+  --color-on-secondary-container: #d3e6f7;
 
-  /* Material 3 — Tertiary (Green) */
-  --color-tertiary: #50E897;
+  /* tertiary (green) */
+  --color-tertiary: #50e897;
   --color-on-tertiary: #003920;
-  --color-tertiary-container: #1B7A48;
-  --color-on-tertiary-container: #A4F7C5;
+  --color-tertiary-container: #1b7a48;
+  --color-on-tertiary-container: #a4f7c5;
 
-  /* Material 3 — Error (Pink-red) */
-  --color-error: #DF6D8C;
-  --color-on-error: #FFFFFF;
-  --color-error-container: #A63D5C;
-  --color-on-error-container: #FFD9E2;
+  /* error (pink-red) */
+  --color-error: #df6d8c;
+  --color-on-error: #ffffff;
+  --color-error-container: #a63d5c;
+  --color-on-error-container: #ffd9e2;
 
-  /* Material 3 — Neutral */
-  --color-surface: #112D43;
-  --color-on-surface: #FFFFFF;
-  --color-surface-variant: #1A3D59;
-  --color-on-surface-variant: #B8CDE0;
-  --color-background: #081E30;
-  --color-on-background: #E1EFF9;
+  /* neutral */
+  --color-surface: #112d43;
+  --color-on-surface: #ffffff;
+  --color-surface-variant: #1a3d59;
+  --color-on-surface-variant: #b8cde0;
+  --color-background: #081e30;
+  --color-on-background: #e1eff9;
 
-  /* Material 3 — Outline */
-  --color-outline: #4A6E88;
-  --color-outline-variant: #38536A;
+  /* outline */
+  --color-outline: #4a6e88;
+  --color-outline-variant: #38536a;
 
   --breakpoint-sm: 640px;
   --breakpoint-md: 932px;
