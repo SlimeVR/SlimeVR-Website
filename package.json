@@ -2,10 +2,11 @@
   "name": "slimevr-website",
   "type": "module",
   "scripts": {
-    "dev": "tsx tools/generatePostsManifest.script.ts && vinxi dev",
-    "build": "tsx tools/generatePostsManifest.script.ts && vinxi build",
+    "dev": "pnpm generateNewsManifest && vinxi dev",
+    "build": "pnpm generateNewsManifest && vinxi build",
     "start": "vinxi start",
-    "serve": "npx serve .output/public"
+    "serve": "npx serve .output/public",
+    "generateNewsManifest": "tsx tools/generatePostsManifest.script.ts"
   },
   "dependencies": {
     "@solid-primitives/i18n": "^2.2.1",

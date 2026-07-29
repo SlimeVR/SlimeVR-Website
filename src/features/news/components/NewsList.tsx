@@ -3,6 +3,7 @@ import { Component, For, Show } from "solid-js";
 import { Typography } from "~/components/commons/Typography";
 import { NewsPost } from "~/features/news/types/newsPost.type";
 import { FormattedDate } from "./FormattedDate";
+import { A } from "@solidjs/router";
 
 interface NewsListProps {
   posts: NewsPost[] | undefined;
@@ -20,7 +21,7 @@ export const NewsList: Component<NewsListProps> = (props) => {
 
 const NewsPostItem: Component<{ post: NewsPost }> = (props) => {
   return (
-    <a
+    <A
       href={`/news/${props.post.postId}`}
       class={clsx(
         "group relative",
@@ -50,6 +51,6 @@ const NewsPostItem: Component<{ post: NewsPost }> = (props) => {
           {props.post.description}
         </Typography>
       </div>
-    </a>
+    </A>
   );
 };
