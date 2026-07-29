@@ -371,7 +371,7 @@ export default function TeamPage() {
             />
             <Button
               variant="primary"
-              href="https://github.com/SlimeVR/SlimeVR-Server/blob/main/CONTRIBUTING.md"
+              href="https://github.com/SlimeVR/.github/blob/main/profile/CONTRIBUTING.md"
             >
               <Localized id="contributors.guide" />
             </Button>
