@@ -245,6 +245,7 @@
     "no-dates": "No upcoming dates",
     "info": "Event Info",
     "live": "Live now",
+    "loading": "Loading events...",
     "no-events": "No events found. Check back later!"
   },
   "tm": {

@@ -348,7 +348,7 @@ export default function TeamPage() {
 
   return (
     <MainLayout>
-      <AppTitle key="contributors.title"></AppTitle>
+      <AppTitle key="contributors.title" />
       <Meta name="robots" content="index, follow" />
       <Link rel="canonical" href="https://slimevr.dev/" />
       <Link

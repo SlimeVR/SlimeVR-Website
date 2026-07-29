@@ -10,7 +10,7 @@ import { MainLayout } from "~/layouts/MainLayout";
 export default function TmPage() {
   return (
     <MainLayout>
-      <AppTitle key="tm.title"></AppTitle>
+      <AppTitle key="tm.title" />
       <Link rel="canonical" href="https://slimevr.dev/tm" />
       <Meta name="robots" content="index, follow" />
 

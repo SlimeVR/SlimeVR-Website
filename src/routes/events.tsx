@@ -1,5 +1,5 @@
 import { Link, Meta } from "@solidjs/meta";
-import { createMemo, createResource, For, Show } from "solid-js";
+import { createMemo, createSignal, For, onMount, Show } from "solid-js";
 import { AppTitle } from "~/components/AppTitle";
 import { Container } from "~/components/commons/Container";
 import { Typography } from "~/components/commons/Typography";
@@ -20,10 +20,13 @@ import { FAQSection } from "~/components/commons/FAQSection";
 const QUESTIONS_COUNT = 5;
 
 export default function EventsPage() {
-  const [events] = createResource(async () => {
+  const [events, setEvents] = createSignal<EventData[] | null>(null);
+
+  onMount(async () => {
     if (import.meta.env.DEV) {
-      console.log(`Development environment, using fallback events`);
-      return getFallbackEvents();
+      console.log("Development environment, using fallback events");
+      setEvents(getFallbackEvents());
+      return;
     }
 
     try {
@@ -36,12 +39,11 @@ export default function EventsPage() {
         throw new Error(`Failed to fetch events: ${response.status}`);
 
       const result = (await response.json()) as unknown[];
-
-      return result.map(toEventData);
+      setEvents(result.map(toEventData));
     } catch (error) {
       const msg = (error as Error).message;
       console.error(`Failed to fetch events: ${msg}`);
-      return [];
+      setEvents([]);
     }
   });
 
@@ -58,19 +60,24 @@ export default function EventsPage() {
     answer: `events.faq.questions.question-${index + 1}.answer`,
   }));
 
-  const renderEvents = (list: EventData[]) => (
+  const renderEvents = (list: EventData[], isLoading = false) => (
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {list.length === 0 ? (
-        <Typography tag="p" key="events.no-events" />
-      ) : (
-        <For each={list}>{(event) => <EventCard event={event} />}</For>
-      )}
+      <Show
+        when={!isLoading}
+        fallback={<Typography tag="p" key="events.loading" />}
+      >
+        {list.length === 0 ? (
+          <Typography tag="p" key="events.no-events" />
+        ) : (
+          <For each={list}>{(event) => <EventCard event={event} />}</For>
+        )}
+      </Show>
     </div>
   );
 
   return (
     <MainLayout>
-      <AppTitle key="events.title"></AppTitle>
+      <AppTitle key="events.title" />
       <Meta name="robots" content="index, follow" />
       <Link rel="canonical" href="https://slimevr.dev/events" />
       <Show when={eventsSchema()}>
@@ -90,7 +97,7 @@ export default function EventsPage() {
           {/* virtual events */}
           <div class="flex flex-col mt-8 gap-4">
             <Typography tag="h2" variant="section-title" key="events.virtual" />
-            {renderEvents(virtualEvents())}
+            {renderEvents(virtualEvents(), events() === null)}
           </div>
 
           {/* other events */}

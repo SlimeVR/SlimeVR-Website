@@ -10,7 +10,7 @@ import { MainLayout } from "~/layouts/MainLayout";
 export default function PrivacyPage() {
   return (
     <MainLayout>
-      <AppTitle key="privacy.title"></AppTitle>
+      <AppTitle key="privacy.title" />
       <Link rel="canonical" href="https://slimevr.dev/privacy" />
       <Meta name="robots" content="index, follow" />
 
