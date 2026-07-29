@@ -238,7 +238,10 @@ const EventCardImage: Component<{ src: string; alt: string }> = (props) => (
       src={props.src}
       loading="lazy"
       alt={props.alt}
-      class="h-full w-full object-cover aspect-2/1"
+      class="h-full w-full object-cover aspect-[2.5/1]"
+      onError={(e) => {
+        e.currentTarget.src = "/images/Pattern.webp";
+      }}
     />
   </div>
 );
@@ -254,7 +257,7 @@ const EventCard: Component<{ event: EventData }> = (props) => {
     mounted() ? getEventSchedule(event, 2) : null
   );
 
-  const image = () => event.image ?? "/images/nighty_floating.webp";
+  const image = () => event.image ?? "/images/Pattern.webp";
 
   return (
     <Container
