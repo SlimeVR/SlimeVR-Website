@@ -257,7 +257,10 @@ const EventCard: Component<{ event: EventData }> = (props) => {
   const image = () => event.image ?? "/images/nighty_floating.webp";
 
   return (
-    <Container class="grid h-full grid-rows-[auto_auto_auto_auto_auto_1fr] gap-4 overflow-hidden">
+    <Container
+      class="grid h-full grid-rows-[auto_auto_auto_auto_auto_1fr] gap-4 overflow-hidden"
+      id={`event-${event.id}`}
+    >
       <EventCardImage src={image()} alt={event.name} />
       <div class="grid gap-4">
         <EventCardHeader event={event} schedule={schedule()} />

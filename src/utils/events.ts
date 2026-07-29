@@ -232,7 +232,7 @@ export const toEventJsonLd = (event: EventData) => {
   const image = event.image ?? undefined;
   const ogUrl = event.link ?? undefined;
   const url = ogUrl?.startsWith("https://discord.com/events/")
-    ? "https://slimevr.dev/events"
+    ? `https://slimevr.dev/events#event-${event.id}`
     : ogUrl;
 
   return {
