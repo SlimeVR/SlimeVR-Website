@@ -82,7 +82,7 @@ const EventCardHeader: Component<{
 };
 
 const EventCardDescription: Component<{ text: string }> = (props) => (
-  <div class="h-24">
+  <div class="h-24" title={props.text}>
     <Typography tag="p" textAlign="text-left" class="line-clamp-4">
       {props.text}
     </Typography>
