@@ -230,7 +230,10 @@ export const toEventJsonLd = (event: EventData) => {
   const end =
     durationMs > 0 ? new Date(date.getTime() + durationMs) : undefined;
   const image = event.image ?? undefined;
-  const url = event.link ?? undefined;
+  const ogUrl = event.link ?? undefined;
+  const url = ogUrl?.startsWith("https://discord.com/events/")
+    ? "https://slimevr.dev/events"
+    : ogUrl;
 
   return {
     "@type": "Event",
