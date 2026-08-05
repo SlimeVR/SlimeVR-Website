@@ -21,13 +21,13 @@ export default function HomePage() {
     if (!scrollTo) return;
 
     requestAnimationFrame(() => {
-      scrollToSection(scrollTo, location.pathname, () => {});
+      scrollToSection(scrollTo, location.pathname);
     });
   });
 
   return (
     <MainLayout>
-      <AppTitle key="home.title"></AppTitle>
+      <AppTitle key="home.title" />
       <Meta name="robots" content="index, follow" />
       <Link rel="canonical" href="https://slimevr.dev/" />
       <Link

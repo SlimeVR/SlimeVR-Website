@@ -1,0 +1,210 @@
+[
+  {
+    "id": "9999999999999999999",
+    "guild_id": "1039186635402793010",
+    "name": "TEST (always live)",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "channel_id": null,
+    "creator_id": "319116998384680960",
+    "creator": {
+      "id": "319116998384680960",
+      "username": "jovannmc",
+      "avatar": "7654223167c644b8ba49664d2ea5d999",
+      "discriminator": "0",
+      "public_flags": 64,
+      "flags": 64,
+      "banner": null,
+      "accent_color": 8245178,
+      "global_name": "maya",
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "display_name_styles": null,
+      "banner_color": "#7dcfba",
+      "clan": null,
+      "primary_guild": null
+    },
+    "image": null,
+    "scheduled_start_time": "2026-01-01T00:00:00+00:00",
+    "scheduled_end_time": "2030-12-31T23:59:59+00:00",
+    "status": 1,
+    "entity_type": 3,
+    "entity_id": null,
+    "recurrence_rule": null,
+    "user_count": 1,
+    "privacy_level": 2,
+    "sku_ids": [],
+    "guild_scheduled_event_exceptions": [],
+    "entity_metadata": {
+      "location": "testing"
+    }
+  },
+  {
+    "id": "1528370070311669770",
+    "guild_id": "1039186635402793010",
+    "name": "TEST (ignore)",
+    "description": "test event for development in SlimeVR stuff. ignore :p",
+    "channel_id": null,
+    "creator_id": "319116998384680960",
+    "creator": {
+      "id": "319116998384680960",
+      "username": "jovannmc",
+      "avatar": "7654223167c644b8ba49664d2ea5d999",
+      "discriminator": "0",
+      "public_flags": 64,
+      "flags": 64,
+      "banner": null,
+      "accent_color": 8245178,
+      "global_name": "maya",
+      "avatar_decoration_data": {
+        "asset": "a_c7b40675ee8e5d4a658a933629ac992f",
+        "sku_id": "1440063059740852315",
+        "expires_at": null
+      },
+      "collectibles": {
+        "nameplate": {
+          "sku_id": "1417311919399895081",
+          "asset": "nameplates/nameplate_bonanza/twilight_fuchsia/",
+          "label": "COLLECTIBLES_NAMEPLATE_BONANZA_TWILIGHT_FUCHSIA_NP_A11Y",
+          "palette": "bubble_gum"
+        }
+      },
+      "display_name_styles": null,
+      "banner_color": "#7dcfba",
+      "clan": {
+        "identity_guild_id": "817184208525983775",
+        "identity_enabled": true,
+        "tag": "SVRෆ",
+        "badge": "04cee49fbcaa69a71206ccb637470e72"
+      },
+      "primary_guild": {
+        "identity_guild_id": "817184208525983775",
+        "identity_enabled": true,
+        "tag": "SVRෆ",
+        "badge": "04cee49fbcaa69a71206ccb637470e72"
+      }
+    },
+    "image": "9ef04455eb408fb0603dabd7bdec911a",
+    "scheduled_start_time": "2026-07-26T15:00:00+00:00",
+    "scheduled_end_time": "2026-07-26T16:15:00+00:00",
+    "status": 1,
+    "entity_type": 3,
+    "entity_id": null,
+    "recurrence_rule": {
+      "start": "2026-07-19T15:00:00+00:00",
+      "end": null,
+      "frequency": 2,
+      "interval": 1,
+      "by_weekday": [6],
+      "by_n_weekday": null,
+      "by_month": null,
+      "by_month_day": null,
+      "by_year_day": null,
+      "count": null
+    },
+    "user_count": 71,
+    "privacy_level": 2,
+    "sku_ids": [],
+    "guild_scheduled_event_exceptions": [],
+    "entity_metadata": {
+      "location": "testing"
+    }
+  },
+  {
+    "id": "1394296914580734002",
+    "guild_id": "817184208525983775",
+    "name": "Calibrate + Chat!",
+    "description": "SlimeVR Calibration and tech support! Guided explanation of good tracker locations, resets, autobone and more! All are welcome, no FBT needed (Quest Compatible world)",
+    "channel_id": null,
+    "creator_id": "731636631454351402",
+    "creator": {
+      "id": "731636631454351402",
+      "username": "zrock35",
+      "avatar": "29934d49e639d3435c0a9fd0f27e786e",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": "270096f589cb418ccd99c302fccaebcc",
+      "accent_color": 13641424,
+      "global_name": "ZRock35",
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "banner_color": "#d026d0",
+      "clan": null,
+      "primary_guild": null
+    },
+    "image": "89d1d00bcda497c1fed8c0ca9242473a",
+    "scheduled_start_time": "2025-03-08T00:00:00+00:00",
+    "scheduled_end_time": "2025-03-07T23:00:00+00:00",
+    "status": 1,
+    "entity_type": 3,
+    "entity_id": null,
+    "recurrence_rule": {
+      "start": "2025-03-08T00:00:00+00:00",
+      "end": null,
+      "frequency": 2,
+      "interval": 2,
+      "by_weekday": [5],
+      "by_n_weekday": null,
+      "by_month": null,
+      "by_month_day": null,
+      "by_year_day": null,
+      "count": null
+    },
+    "user_count": 384,
+    "privacy_level": 2,
+    "sku_ids": [],
+    "guild_scheduled_event_exceptions": [],
+    "entity_metadata": {
+      "location": "VRChat"
+    }
+  },
+  {
+    "id": "1391816719655506001",
+    "guild_id": "817184208525983775",
+    "name": "Tech Support + Chat!",
+    "description": "Live tech support, news and chatting with Slime Gang! Ask questions, talk story, and improve your tracking! All are welcome, no FBT needed. (PC world)",
+    "channel_id": null,
+    "creator_id": "731636631454351402",
+    "creator": {
+      "id": "731636631454351402",
+      "username": "zrock35",
+      "avatar": "29934d49e639d3435c0a9fd0f27e786e",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": "270096f589cb418ccd99c302fccaebcc",
+      "accent_color": 13641424,
+      "global_name": "ZRock35",
+      "avatar_decoration_data": null,
+      "collectibles": null,
+      "banner_color": "#d026d0",
+      "clan": null,
+      "primary_guild": null
+    },
+    "image": "e9fa66196c9d4edd5ee436ba8b2443c8",
+    "scheduled_start_time": "2025-03-14T20:30:00+00:00",
+    "scheduled_end_time": "2025-03-14T21:30:00+00:00",
+    "status": 1,
+    "entity_type": 3,
+    "entity_id": null,
+    "recurrence_rule": {
+      "start": "2025-03-14T20:30:00+00:00",
+      "end": null,
+      "frequency": 2,
+      "interval": 2,
+      "by_weekday": [4],
+      "by_n_weekday": null,
+      "by_month": null,
+      "by_month_day": null,
+      "by_year_day": null,
+      "count": null
+    },
+    "user_count": 1671,
+    "privacy_level": 2,
+    "sku_ids": [],
+    "guild_scheduled_event_exceptions": [],
+    "entity_metadata": {
+      "location": "VRChat"
+    }
+  }
+]
