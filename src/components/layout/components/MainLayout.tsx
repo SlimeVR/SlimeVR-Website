@@ -6,8 +6,8 @@ import {
   onMount,
   ParentComponent,
 } from "solid-js";
-import { Footer } from "../components/Footer";
-import { Navbar } from "../components/Navbar";
+import { Footer } from "./Footer";
+import { Navbar } from "./Navbar";
 import clsx from "clsx";
 
 const ANIMATION_TIME = 5500;

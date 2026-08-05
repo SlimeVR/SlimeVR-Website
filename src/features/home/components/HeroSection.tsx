@@ -1,12 +1,11 @@
 import { A } from "@solidjs/router";
 import { Component } from "solid-js";
-import { ArrowButton } from "../commons/ArrowButton";
-import { CartIcon } from "../commons/icons/CartIcon";
-import { CrowdSupplyIcon } from "../commons/icons/CrowdSupplyIcon";
-import { DiscordIcon } from "../commons/icons/DiscordIcon";
-import { DownloadIcon } from "../commons/icons/DownloadIcon";
-import { Typography } from "../commons/Typography";
+import { CartIcon } from "../../../components/commons/icons/CartIcon";
+import { CrowdSupplyIcon } from "../../../components/commons/icons/CrowdSupplyIcon";
+import { DiscordIcon } from "../../../components/commons/icons/DiscordIcon";
+import { DownloadIcon } from "../../../components/commons/icons/DownloadIcon";
 import { scrollToSection } from "~/utils/dom";
+import { Typography, ArrowButton } from "~/components/commons";
 
 const TrackerCard: Component<{
   titleKey: string;

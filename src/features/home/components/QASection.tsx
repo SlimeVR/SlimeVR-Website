@@ -1,5 +1,5 @@
 import { Component, createMemo, createSignal } from "solid-js";
-import { FAQSection } from "../commons/FAQSection";
+import { FAQSection } from "../../../components/commons";
 
 const possibleImages = [
   "/images/Nighty_For_FAQ_Block_first_.webp",

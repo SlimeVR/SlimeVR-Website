@@ -1,10 +1,9 @@
 import { Component } from "solid-js";
-import { Button } from "~/components/commons/Button";
-import { Typography } from "~/components/commons/Typography";
+import { Typography, Button } from "~/components/commons";
 import { Localized } from "~/i18n";
 import { scrollToSection } from "~/utils/dom";
 
-const EventsHeader: Component = () => (
+export const EventsHeader: Component = () => (
   <div class="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
     <Typography
       tag="h1"
@@ -44,5 +43,3 @@ const EventsHeader: Component = () => (
     </div>
   </div>
 );
-
-export default EventsHeader;

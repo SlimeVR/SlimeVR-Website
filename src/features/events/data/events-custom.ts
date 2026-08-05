@@ -1,4 +1,4 @@
-import { filterUpcoming, type EventData } from "~/utils/events";
+import { filterUpcoming, type EventData } from "~/features/events/utils/events";
 
 // id isn't really used rn as its just from discord events. might be used in future, but can be anything
 // startDate/endDate is in UTC in format YYYY-MM-DDTHH:mm:ssZ

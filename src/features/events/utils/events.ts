@@ -1,4 +1,4 @@
-import testData from "./local-events.json";
+import testData from "../data/local-events.json";
 
 export type Frequency = "daily" | "weekly" | "monthly" | "yearly";
 

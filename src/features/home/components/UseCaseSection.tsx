@@ -1,6 +1,5 @@
 import { Component } from "solid-js";
-import { Typography } from "../commons/Typography";
-import { Container } from "../commons/Container";
+import { Container, Typography } from "~/components/commons";
 
 const UseCaseCard: Component<{ title: string; image: string; desc: string }> = (
   props

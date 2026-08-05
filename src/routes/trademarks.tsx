@@ -1,11 +1,9 @@
 import { Link, Meta } from "@solidjs/meta";
 import remarkGfm from "remark-gfm";
 import { SolidMarkdown } from "solid-markdown";
-import { AppTitle } from "~/components/AppTitle";
-import { Container } from "~/components/commons/Container";
-import { MarkdownLink } from "~/components/commons/Markdown";
-import { Section } from "~/components/Section";
-import { MainLayout } from "~/layouts/MainLayout";
+
+import { Container, MarkdownLink } from "~/components/commons";
+import { AppTitle, MainLayout, Section } from "~/components/layout";
 
 export default function TmPage() {
   return (

@@ -7,30 +7,30 @@ import {
   onMount,
   ParentComponent,
 } from "solid-js";
-import { Contributor } from ".";
-import { ArtistIcon } from "../commons/icons/ArtistIcon";
-import { DevIcon } from "../commons/icons/DevIcon";
-import { PeopleIcon } from "../commons/icons/PeopleIcon";
-import { BlueskyIcon } from "../commons/icons/socials/BlueskyIcon";
-import { DiscordIcon } from "../commons/icons/socials/DiscordIcon";
-import { GithubIcon } from "../commons/icons/socials/GithubIcon";
-import { InstagramIcon } from "../commons/icons/socials/InstagramIcon";
-import { KofiIcon } from "../commons/icons/socials/KofiIcon";
-import { MatrixIcon } from "../commons/icons/socials/MatrixIcon";
-import { PrintablesIcon } from "../commons/icons/socials/PrintablesIcon";
-import { SteamIcon } from "../commons/icons/socials/SteamIcon";
-import { TiktokIcon } from "../commons/icons/socials/TiktokIcon";
-import { TwitchIcon } from "../commons/icons/socials/TwitchIcon";
-import { TwitterIcon } from "../commons/icons/socials/TwitterIcon";
-import { WebsiteIcon } from "../commons/icons/socials/WebsiteIcon";
-import { YoutubeIcon } from "../commons/icons/socials/YoutubeIcon";
-import { RedditIcon } from "../commons/icons/socials/RedditIcon";
-import { Typography } from "../commons/Typography";
-import CircularIcon from "./CircularIcon";
-import { PatreonIcon } from "../commons/icons/socials/PatreonIcon";
-import { VGenIcon } from "../commons/icons/socials/VGenIcon";
-import { BoothIcon } from "../commons/icons/socials/BoothIcon";
+import { ArtistIcon } from "../../../components/commons/icons/ArtistIcon";
+import { DevIcon } from "../../../components/commons/icons/DevIcon";
+import { PeopleIcon } from "../../../components/commons/icons/PeopleIcon";
+import { BlueskyIcon } from "../../../components/commons/icons/socials/BlueskyIcon";
+import { DiscordIcon } from "../../../components/commons/icons/socials/DiscordIcon";
+import { GithubIcon } from "../../../components/commons/icons/socials/GithubIcon";
+import { InstagramIcon } from "../../../components/commons/icons/socials/InstagramIcon";
+import { KofiIcon } from "../../../components/commons/icons/socials/KofiIcon";
+import { MatrixIcon } from "../../../components/commons/icons/socials/MatrixIcon";
+import { PrintablesIcon } from "../../../components/commons/icons/socials/PrintablesIcon";
+import { SteamIcon } from "../../../components/commons/icons/socials/SteamIcon";
+import { TiktokIcon } from "../../../components/commons/icons/socials/TiktokIcon";
+import { TwitchIcon } from "../../../components/commons/icons/socials/TwitchIcon";
+import { TwitterIcon } from "../../../components/commons/icons/socials/TwitterIcon";
+import { WebsiteIcon } from "../../../components/commons/icons/socials/WebsiteIcon";
+import { YoutubeIcon } from "../../../components/commons/icons/socials/YoutubeIcon";
+import { RedditIcon } from "../../../components/commons/icons/socials/RedditIcon";
+import { Typography } from "../../../components/commons";
+import { PatreonIcon } from "../../../components/commons/icons/socials/PatreonIcon";
+import { VGenIcon } from "../../../components/commons/icons/socials/VGenIcon";
+import { BoothIcon } from "../../../components/commons/icons/socials/BoothIcon";
 import { getCardIndex, getCardName, getContentSize } from "~/utils/dom";
+import { Contributor } from "../contributors.types";
+import { CircularIcon } from "./CircularIcon";
 
 // constants
 const FALLBACK_COLOR = "#d9d9d9"; // fallback color for cards without a background or border set

@@ -3,13 +3,14 @@
   "type": "module",
   "scripts": {
     "dev": "vinxi dev",
-    "build": "vinxi build && rm -rf dist/_worker.js",
+    "build": "pnpm typecheck && pnpm vinxi build && node -e \"require('fs').rmSync('dist/_worker.js', { force: true })\"",
     "start": "vinxi start",
     "serve": "npx serve .output/public",
     "test": "vitest",
     "test-run": "vitest run --reporter=verbose",
     "test-coverage-export": "vitest run --coverage --reporter=lcov.verbose",
-    "test-ci": "vinxi test --test-coverage-export"
+    "test-ci": "vinxi test --test-coverage-export",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@solid-primitives/i18n": "^2.2.1",
@@ -42,6 +43,7 @@
     "happy-dom": "^20.11.1",
     "jsdom": "^30.0.1",
     "prettier": "^3.7.4",
+    "typescript": "7.0.2",
     "vite-plugin-solid": "^2.11.14",
     "vitest": "^3.2.7",
     "wrangler": "^4.113.0"

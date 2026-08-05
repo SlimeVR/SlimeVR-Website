@@ -3,11 +3,10 @@ import clsx from "clsx";
 import { Component, createSignal } from "solid-js";
 import { Localized } from "~/i18n";
 import { scrollToSection } from "~/utils/dom";
-import { Button } from "./commons/Button";
-import { ArrowIcon } from "./commons/icons/ArrowIcon";
-import { BarsIcon } from "./commons/icons/BarsIcon";
-import { SlimeVRIcon } from "./commons/icons/SlimeVRIcon";
-import { Typography } from "./commons/Typography";
+import { ArrowIcon } from "../../commons/icons/ArrowIcon";
+import { BarsIcon } from "../../commons/icons/BarsIcon";
+import { SlimeVRIcon } from "../../commons/icons/SlimeVRIcon";
+import { Button, Typography } from "~/components/commons";
 
 const InternalLinks: Component = () => {
   const navigate = useNavigate();

@@ -9,9 +9,6 @@ import {
 import { CalendarIcon } from "~/components/commons/icons/CalendarIcon";
 import { LocationIcon } from "~/components/commons/icons/LocationIcon";
 import { UserIcon } from "~/components/commons/icons/UserIcon";
-import { Button } from "~/components/commons/Button";
-import { Container } from "~/components/commons/Container";
-import { Typography } from "~/components/commons/Typography";
 import { useI18n } from "~/i18n";
 import {
   formatDate,
@@ -22,7 +19,8 @@ import {
   getEventSchedule,
   type EventData,
   type EventSchedule,
-} from "~/utils/events";
+} from "~/features/events/utils/events";
+import { Typography, Button, Container } from "~/components/commons";
 
 const EventCardHeader: Component<{
   event: EventData;
@@ -246,7 +244,7 @@ const EventCardImage: Component<{ src: string; alt: string }> = (props) => (
   </div>
 );
 
-const EventCard: Component<{ event: EventData }> = (props) => {
+export const EventCard: Component<{ event: EventData }> = (props) => {
   // prevent hydration mismatch like in contributors page
   const [mounted, setMounted] = createSignal(false);
   onMount(() => setMounted(true));
@@ -283,5 +281,3 @@ const EventCard: Component<{ event: EventData }> = (props) => {
     </Container>
   );
 };
-
-export default EventCard;

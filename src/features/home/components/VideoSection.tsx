@@ -9,10 +9,10 @@ import {
   onMount,
 } from "solid-js";
 import { isServer } from "solid-js/web";
-import { ArrowIcon } from "../../components/commons/icons/ArrowIcon";
-import { PlayIcon } from "../../components/commons/icons/PlayIcon";
-import { getContentSize } from "../../utils/dom";
-import { Typography } from "../commons/Typography";
+import { ArrowIcon } from "../../../components/commons/icons/ArrowIcon";
+import { PlayIcon } from "../../../components/commons/icons/PlayIcon";
+import { getContentSize } from "../../../utils/dom";
+import { Typography } from "../../../components/commons";
 
 interface Video {
   src: string;

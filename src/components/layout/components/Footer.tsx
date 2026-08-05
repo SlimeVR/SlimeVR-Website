@@ -1,7 +1,7 @@
 import { A, useNavigate } from "@solidjs/router";
 import { Component } from "solid-js";
-import { Typography } from "./commons/Typography";
-import { SlimeVRIcon } from "./commons/icons/SlimeVRIcon";
+import { Typography } from "../../commons/Typography";
+import { SlimeVRIcon } from "../../commons/icons/SlimeVRIcon";
 import { scrollToSection } from "~/utils/dom";
 
 export const Footer: Component = () => {

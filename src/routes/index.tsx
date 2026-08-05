@@ -1,15 +1,13 @@
 import { Link, Meta } from "@solidjs/meta";
 import { useLocation } from "@solidjs/router";
 import { createEffect } from "solid-js";
-import { AppTitle } from "~/components/AppTitle";
-import { DownloadSection } from "~/components/home/DownloadSection";
-import { HeroSection } from "~/components/home/HeroSection";
-import { QASection } from "~/components/home/QASection";
-import { UseCaseSection } from "~/components/home/UseCaseSection";
-import { VideoSection } from "~/components/home/VideoSection";
-import { Section } from "~/components/Section";
-import { MainLayout } from "~/layouts/MainLayout";
+import { DownloadSection } from "~/features/home/components/DownloadSection";
+import { HeroSection } from "~/features/home/components/HeroSection";
+import { QASection } from "~/features/home/components/QASection";
+import { UseCaseSection } from "~/features/home/components/UseCaseSection";
+import { VideoSection } from "~/features/home/components/VideoSection";
 import { scrollToSection } from "~/utils/dom";
+import { AppTitle, MainLayout, Section } from "~/components/layout";
 
 export default function HomePage() {
   const location = useLocation();

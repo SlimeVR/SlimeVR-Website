@@ -9,16 +9,16 @@ import {
   ParentComponent,
   splitProps,
 } from "solid-js";
-import { DownloadIcon } from "../../components/commons/icons/DownloadIcon";
+import { DownloadIcon } from "../../../components/commons/icons/DownloadIcon";
 import {
   AndroidIcon,
   AppleIcon,
   LinuxIcon,
   SideQuestIcon,
   WindowsIcon,
-} from "../../components/commons/icons/PlatformIcons";
-import { Typography } from "../commons/Typography";
-import { SteamIcon } from "../commons/icons/socials/SteamIcon";
+} from "../../../components/commons/icons/PlatformIcons";
+import { Typography } from "../../../components/commons/Typography";
+import { SteamIcon } from "../../../components/commons/icons/socials/SteamIcon";
 
 interface DownloadButtonProps extends AnchorProps {
   prefixIcon?: JSX.Element;
