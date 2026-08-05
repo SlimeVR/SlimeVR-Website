@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "run test-run",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "pnpm test-run",
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}

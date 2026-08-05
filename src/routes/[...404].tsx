@@ -1,9 +1,6 @@
 import { Meta } from "@solidjs/meta";
-import { ArrowButton } from "~/components/commons/ArrowButton";
-import { Container } from "~/components/commons/Container";
-import { Typography } from "~/components/commons/Typography";
-import { Section } from "~/components/Section";
-import { MainLayout } from "~/layouts/MainLayout";
+import { Typography, ArrowButton, Container } from "~/components/commons";
+import { MainLayout, Section } from "~/components/layout";
 
 export default function NotFound() {
   return (

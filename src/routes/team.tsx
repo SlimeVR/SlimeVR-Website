@@ -9,29 +9,22 @@ import {
   onCleanup,
   onMount,
 } from "solid-js";
-import { AppTitle } from "~/components/AppTitle";
-import { Button } from "~/components/commons/Button";
-import { Container } from "~/components/commons/Container";
 import { ShuffleIcon } from "~/components/commons/icons/ShuffleIcon";
-import { Typography } from "~/components/commons/Typography";
-import {
-  Contributor,
-  ContributorDisplay,
-  contributors,
-} from "~/components/contributors";
-import { Card } from "~/components/contributors/Card";
-import { SearchBox } from "~/components/contributors/SearchBox";
-import { Sponsor, SponsorCard, PastSponsorAvatar } from "~/components/sponsors";
-import { Section } from "~/components/Section";
+import { contributorsList } from "~/features/contributors/data/contributorsList";
+import { Card } from "~/features/contributors/components/Card";
+import { SearchBox } from "~/features/contributors/components/SearchBox";
+import { Sponsor, SponsorCard, PastSponsorAvatar } from "~/features/sponsors";
 import { Localized } from "~/i18n";
-import { MainLayout } from "~/layouts/MainLayout";
 import { DevIcon } from "~/components/commons/icons/DevIcon";
 import { ArtistIcon } from "~/components/commons/icons/ArtistIcon";
 import { PeopleIcon } from "~/components/commons/icons/PeopleIcon";
-import CircularIcon from "~/components/contributors/CircularIcon";
 import { useI18n } from "~/i18n";
 import { setScroll } from "~/utils/scrollbar";
 import { getCardIndex, getCardName } from "~/utils/dom";
+import { Contributor, ContributorDisplay } from "~/features/contributors/contributors.types";
+import { CircularIcon } from "~/features/contributors";
+import { Typography, Button, Container } from "~/components/commons";
+import { AppTitle, MainLayout, Section } from "~/components/layout";
 
 // constants
 const MAX_SHINY = 5;
@@ -58,7 +51,7 @@ const socialsPriority = [
   "patreon",
 ];
 
-const sortedContribs = contributors
+const sortedContribs = contributorsList
   .slice()
   // sort alphabetically by the stable top-level name.
   // NOTE: must NOT sort by getCardName(display), cuz that's date-dependent (crashes in SSR)

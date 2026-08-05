@@ -1,5 +1,4 @@
 import { Component } from "solid-js";
-import { IconProps } from "./Icon";
 
 export const DownloadIcon: Component<IconProps> = (props) => {
   return (
