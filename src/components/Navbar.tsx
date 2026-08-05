@@ -1,23 +1,51 @@
-import { A, useLocation, useNavigate } from "@solidjs/router";
+import { A, useNavigate } from "@solidjs/router";
 import clsx from "clsx";
 import { Component, createSignal } from "solid-js";
 import { Localized } from "~/i18n";
 import { scrollToSection } from "~/utils/dom";
 import { Button } from "./commons/Button";
+import { ArrowIcon } from "./commons/icons/ArrowIcon";
 import { BarsIcon } from "./commons/icons/BarsIcon";
 import { SlimeVRIcon } from "./commons/icons/SlimeVRIcon";
 import { Typography } from "./commons/Typography";
 
-export const NavItems: Component = () => {
+const InternalLinks: Component = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+
   return (
     <>
-      {location.pathname !== "/" && (
-        <A href="/" class="link px-2">
-          <Typography tag="span">Home</Typography>
-        </A>
-      )}
+      <A href="/" class="link px-2">
+        <Typography tag="span">Home</Typography>
+      </A>
+      <A
+        href="/#download"
+        onClick={(e) => {
+          e.preventDefault();
+          scrollToSection("download", "/", navigate);
+        }}
+        class="link px-2"
+      >
+        <Typography tag="span" key="navbar.download" />
+      </A>
+      <A href="/events" class="link px-2">
+        <Typography tag="span" key="navbar.events" />
+      </A>
+      {/* <A href="/events" class="link px-2">
+        News
+      </A> */}
+      <A href="/team" class="link px-2">
+        <Typography tag="span" key="navbar.team" />
+      </A>
+      {/* <A href="/events" class="link px-2">
+        Feedback
+      </A> */}
+    </>
+  );
+};
+
+const ExternalLinks: Component = () => {
+  return (
+    <>
       <a
         href="https://docs.slimevr.dev"
         target="_blank"
@@ -25,24 +53,6 @@ export const NavItems: Component = () => {
         class="link px-2"
       >
         <Typography key="navbar.documentation" tag="span" />
-      </a>
-      <A
-        href="/#download"
-        onClick={(e) => {
-          e.preventDefault();
-          scrollToSection("download", window.location.pathname, navigate);
-        }}
-        class="link px-2"
-      >
-        <Typography tag="span" key="navbar.download" />
-      </A>
-      <a
-        href="https://discord.gg/SlimeVR"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="link px-2"
-      >
-        <Typography key="navbar.discord" tag="span" />
       </a>
       <a href="https://shop.slimevr.dev/" class="link px-2">
         <Typography key="navbar.shop" tag="span" />
@@ -55,9 +65,14 @@ export const NavItems: Component = () => {
       >
         <Typography key="navbar.github" tag="span" />
       </a>
-      <A href="/team" class="link px-2">
-        <Typography tag="span" key="navbar.team" />
-      </A>
+      <a
+        href="https://discord.gg/SlimeVR"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="link px-2"
+      >
+        <Typography key="navbar.discord" tag="span" />
+      </a>
       <a
         href="https://shop.slimevr.dev/pages/support"
         target="_blank"
@@ -70,7 +85,62 @@ export const NavItems: Component = () => {
   );
 };
 
-export const Navbar: Component = (props) => {
+const ResourcesDropdown: Component = () => {
+  const [isOpen, setOpen] = createSignal(false);
+
+  return (
+    <div
+      class="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <button
+        type="button"
+        class="px-2 flex items-center gap-2 hover:underline"
+        aria-expanded={isOpen()}
+        aria-haspopup="true"
+      >
+        <Typography tag="span" key="navbar.resources" />
+        <ArrowIcon
+          direction={isOpen() ? "up" : "down"}
+          type="cheveron"
+          size={10}
+          class="fill-background-10"
+        />
+      </button>
+      <div
+        class={clsx(
+          "absolute top-full left-1/2 -translate-x-1/2 pt-6 pr-2 z-20 min-w-max transition-opacity duration-200",
+          isOpen()
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        )}
+      >
+        <div class="flex flex-col gap-2 bg-background-70 border border-background-40 rounded-lg p-2">
+          <ExternalLinks />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const NavItems: Component<{ mobile?: boolean }> = (props) => {
+  return (
+    <>
+      <InternalLinks />
+      {props.mobile ? (
+        <>
+          <div class="w-full h-px bg-background-40" />
+          <ExternalLinks />
+        </>
+      ) : (
+        <ResourcesDropdown />
+      )}
+    </>
+  );
+};
+
+export const Navbar: Component = () => {
   const [isOpen, setOpen] = createSignal(false);
 
   return (
@@ -111,7 +181,7 @@ export const Navbar: Component = (props) => {
           </div>
         </div>
         <div class="divide-x divide-background-20 justify-center items-center hidden mid:flex">
-          <NavItems></NavItems>
+          <NavItems />
         </div>
       </div>
       <div
@@ -122,7 +192,7 @@ export const Navbar: Component = (props) => {
             : "h-0"
         )}
       >
-        <NavItems></NavItems>
+        <NavItems mobile />
       </div>
     </div>
   );

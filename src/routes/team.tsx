@@ -348,7 +348,7 @@ export default function TeamPage() {
 
   return (
     <MainLayout>
-      <AppTitle key="contributors.title"></AppTitle>
+      <AppTitle key="contributors.title" />
       <Meta name="robots" content="index, follow" />
       <Link rel="canonical" href="https://slimevr.dev/" />
       <Link
@@ -371,7 +371,7 @@ export default function TeamPage() {
             />
             <Button
               variant="primary"
-              href="https://github.com/SlimeVR/SlimeVR-Server/blob/main/CONTRIBUTING.md"
+              href="https://github.com/SlimeVR/.github/blob/main/profile/CONTRIBUTING.md"
             >
               <Localized id="contributors.guide" />
             </Button>
@@ -389,33 +389,29 @@ export default function TeamPage() {
               "sm:flex-row sm:text-left"
             )}
           >
-            <Typography tag="h3" variant="section-title">
-              <Localized id="contributors.roles.title" />
-            </Typography>
+            <Typography
+              tag="h3"
+              variant="section-title"
+              key="contributors.roles.title"
+            />
             <div class="flex flex-wrap justify-evenly gap-4">
               <div class="flex items-center gap-2">
                 <CircularIcon size={28}>
                   <DevIcon size={20} />
                 </CircularIcon>
-                <Typography tag="span" variant="standard">
-                  <Localized id="contributors.roles.developer" />
-                </Typography>
+                <Typography tag="span" key="contributors.roles.developer" />
               </div>
               <div class="flex items-center gap-2">
                 <CircularIcon size={28}>
                   <PeopleIcon size={22} />
                 </CircularIcon>
-                <Typography tag="span" variant="standard">
-                  <Localized id="contributors.roles.community" />
-                </Typography>
+                <Typography tag="span" key="contributors.roles.community" />
               </div>
               <div class="flex items-center gap-2">
                 <CircularIcon size={28}>
                   <ArtistIcon size={18} />
                 </CircularIcon>
-                <Typography tag="span" variant="standard">
-                  <Localized id="contributors.roles.artist" />
-                </Typography>
+                <Typography tag="span" key="contributors.roles.artist" />
               </div>
             </div>
           </div>
@@ -539,9 +535,8 @@ export default function TeamPage() {
                             tag="h3"
                             variant="section-title"
                             textAlign="text-center"
-                          >
-                            <Localized id="sponsors.past" />
-                          </Typography>
+                            key="sponsors.past"
+                          />
                         </div>
                         <div class="flex flex-wrap justify-center gap-3">
                           {pastSponsors().map((sponsor) => (

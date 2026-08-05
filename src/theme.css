@@ -1,0 +1,152 @@
+@theme {
+  --default-font-family: "Poppins";
+
+  --color-background-10: rgb(255, 255, 255);
+  --color-background-20: rgb(120, 164, 198);
+  --color-background-30: rgb(96, 138, 171);
+  --color-background-40: rgb(61, 99, 129);
+  --color-background-50: rgb(26, 61, 89);
+  --color-background-60: rgb(17, 45, 67);
+  --color-background-70: rgb(8, 30, 48);
+  --color-background-80: rgb(0, 16, 28);
+  --color-background-90: rgb(0, 5, 9);
+
+  --color-accent-background-10: rgb(187, 138, 229);
+  --color-accent-background-20: rgb(157, 92, 212);
+  --color-accent-background-30: rgb(101, 69, 154);
+  --color-accent-background-40: rgb(98, 59, 131);
+  --color-accent-background-50: rgb(46, 33, 69);
+  --color-accent-background-60: rgb(30, 35, 60);
+  --color-accent-background-25: rgb(234, 0, 255, 0.4);
+
+  --color-status-success: rgb(80, 232, 151);
+  --color-status-warning: rgb(216, 205, 55);
+  --color-status-critical: rgb(223, 109, 140);
+  --color-status-special: rgb(164, 79, 237);
+
+  --color-window-icon-stroke: rgb(192, 161, 216);
+
+  /* primary (purple) */
+  --color-primary: #9d5cd4;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #65459a;
+  --color-on-primary-container: #ead9ff;
+
+  /* secondary (blue-grey) */
+  --color-secondary: #78a4c6;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #3d6381;
+  --color-on-secondary-container: #d3e6f7;
+
+  /* tertiary (green) */
+  --color-tertiary: #50e897;
+  --color-on-tertiary: #003920;
+  --color-tertiary-container: #1b7a48;
+  --color-on-tertiary-container: #a4f7c5;
+
+  /* error (pink-red) */
+  --color-error: #df6d8c;
+  --color-on-error: #ffffff;
+  --color-error-container: #a63d5c;
+  --color-on-error-container: #ffd9e2;
+
+  /* neutral */
+  --color-surface: #112d43;
+  --color-on-surface: #ffffff;
+  --color-surface-variant: #1a3d59;
+  --color-on-surface-variant: #b8cde0;
+  --color-background: #081e30;
+  --color-on-background: #e1eff9;
+
+  /* outline */
+  --color-outline: #4a6e88;
+  --color-outline-variant: #38536a;
+
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 932px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-mid: 1180px;
+  --breakpoint-2xl: 1836px;
+
+  --animate-explode: explode 6s ease-out;
+  @keyframes explode {
+    0% {
+      transform-origin: -100% 50%;
+      transform: scale(0);
+      rotate: 0deg;
+      opacity: 1;
+    }
+    70% {
+      transform: scale(100%);
+    }
+    100% {
+      transform: scale(100%);
+      rotate: 360deg;
+      opacity: 0;
+    }
+  }
+
+  --animate-floating: floating 12s cubic-bezier(0.64, 0.57, 0.67, 1.53) infinite;
+  @keyframes floating {
+    0% {
+      transform: translateY(0%);
+    }
+    50% {
+      transform: translateY(3%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+
+  --animate-rotated: rotated 6s ease-in-out infinite;
+  @keyframes rotated {
+    0% {
+      rotate: 0deg;
+    }
+    50% {
+      rotate: 3deg;
+    }
+    100% {
+      rotate: 0deg;
+    }
+  }
+
+  --animate-nighty: nighty 12s cubic-bezier(0.64, 0.57, 0.67, 1.53) infinite;
+  @keyframes nighty {
+    0% {
+      rotate: 1.5deg;
+      transform: translateY(0%);
+    }
+    50% {
+      rotate: 0deg;
+      transform: translateY(3%);
+    }
+    100% {
+      rotate: 1.5deg;
+      transform: translateY(0%);
+    }
+  }
+
+  --animate-stars: stars 2s ease-in-out infinite;
+  @keyframes stars {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  --animate-stars2: stars2 2s ease-in-out infinite;
+  @keyframes stars2 {
+    0%,
+    100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+}

@@ -2,10 +2,11 @@
 
 ```
 pnpm i
-pnpm start
+pnpm dev
 ```
 
-run with SSR
+For production preview:
 ```
-pnpm serve
+pnpm build
+npx serve .output/public
 ```
