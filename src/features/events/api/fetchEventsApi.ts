@@ -13,7 +13,7 @@ export const fetchEvents = async (): Promise<EventData[]> => {
     if (status === 404) console.warn("no events returned");
     if (status === 500) console.error("server error fetching events");
     if (!response.ok) {
-      throw new Error(`Failed to fetch events: ${response.status}`);
+      throw new Error(`Failed to fetch events: [${response.status}] ${response.statusText}`);
     }
 
     const result = (await response.json()) as unknown[];
