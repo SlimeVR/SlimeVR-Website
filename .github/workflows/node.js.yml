@@ -32,6 +32,7 @@ jobs:
           VITE_GITHUB_ORG: SlimeVR
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
+        if: github.ref == 'refs/heads/main' || github.event.pull_request.head.repo.full_name == github.repository # Secrets not passed to forks, so step is skipped for PRs from forks
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
