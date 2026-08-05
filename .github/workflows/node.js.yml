@@ -25,6 +25,7 @@ jobs:
           node-version: 22.x
           cache: "pnpm"
       - run: pnpm i
+      - run: pnpm test-ci
       - run: NITRO_PRESET=cloudflare_pages_static pnpm build
         env:
           VITE_GITHUB_AUTH_TOKEN: ${{ secrets.VITE_GITHUB_AUTH_TOKEN }}

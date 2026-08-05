@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { Component, createSignal } from "solid-js";
 import { Localized } from "~/i18n";
 import { scrollToSection } from "~/utils/dom";
-import { Button } from "./commons/Button";
+import { Button } from "./commons/Button/Button";
 import { BarsIcon } from "./commons/icons/BarsIcon";
 import { SlimeVRIcon } from "./commons/icons/SlimeVRIcon";
 import { Typography } from "./commons/Typography";

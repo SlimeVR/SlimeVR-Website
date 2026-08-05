@@ -10,7 +10,7 @@ import {
   onMount,
 } from "solid-js";
 import { AppTitle } from "~/components/AppTitle";
-import { Button } from "~/components/commons/Button";
+import { Button } from "~/components/commons/Button/Button";
 import { Container } from "~/components/commons/Container";
 import { ShuffleIcon } from "~/components/commons/icons/ShuffleIcon";
 import { Typography } from "~/components/commons/Typography";
