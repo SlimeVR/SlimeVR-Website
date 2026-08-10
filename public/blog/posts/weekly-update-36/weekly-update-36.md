@@ -1,0 +1,17 @@
+---
+title: "Dev Mondays-ish Updates #36"
+date: "2021-12-29T00:00:00.000Z"
+description: "Heyo, ! Guess what I forgot about? Right, SlimeVR's birthday <img src=\"/blog/emoji/firPog-785701297478959104.webp\" alt=\"firPog\" class=\"discord-emoji\" /> It was actually on 23rd, the day I got the i..."
+---
+
+Heyo, ! Guess what I forgot about? Right, SlimeVR's birthday <img src="/blog/emoji/firPog-785701297478959104.webp" alt="firPog" class="discord-emoji" /> It was actually on 23rd, the day I got the idea and ordered some parts to test it. I was sure it was later. I wrote a huge post from Crowd Supply update about chip shortages (see above), what has been done since the campaign end, and what are the plans for the next year, but it hasn't been published yet, because everyone is on a break :D So this would have to wait...
+
+What wouldn't have to wait, is **Dev Mondays-ish Updates #36**, not on Monday of course! Here's what happened this week:
+- **I am ordering most of the other chips right now!** This includes ESP-12F, CH340N, and TP4056 - the ones that can increase in price or get out of stock. Ordering 22000 of each <img src="/blog/emoji/notheh-820155473839128596.webp" alt="notheh" class="discord-emoji" /> That's a lot of kilograms of chips... Thankfully, they won't be going to my home, they're going directly to the PCB manufacturer's warehouse.
+- **I got battery samples!** 1000 mAh and 1400 mAh batteries just arrived. Pictures attached :3 They look nice, but I can't do a test until I get all my stuff.
+- **I've been doing a lot of project management this week.** Set up pretty cool management software Odoo, it helps track a lot of stuff like orders from suppliers, inventory, production, warehouses <img src="/blog/emoji/heh-458306855358169099.webp" alt="heh" class="discord-emoji" /> It's almost like I'm doing a big business here. It's important to be organized in this matters, or I may end up accidentally spending too much money on something, or forgetting something. I also have multiple Excel spreadsheets with formulas and tables... I'll probably show them to you one day, but no promises.
+
+Aaaanyway! **Thank you everyone for being here in this year of 2021 and the first year of SlimeVR!** <img src="/blog/emoji/firPog-785701297478959104.webp" alt="firPog" class="discord-emoji" /> It's so many of us, this is crazy! We are one of the biggest VR servers <img src="/blog/emoji/firPog-785701297478959104.webp" alt="firPog" class="discord-emoji" /> <img src="/blog/emoji/firLove-785675589037850665.webp" alt="firLove" class="discord-emoji" /> <img src="/blog/emoji/firLurk-785677360682237972.webp" alt="firLurk" class="discord-emoji" />
+**Happy birthday, SlimeVR!** The next year will be epiccccc!! <img src="/blog/emoji/blobsquee-711842986589290576.webp" alt="blobsquee" class="discord-emoji" /> <img src="/blog/emoji/slimenom-663823059920224277.webp" alt="slimenom" class="discord-emoji" /> <img src="/blog/emoji/slimepcbnom-839133114931347486.webp" alt="slimepcbnom" class="discord-emoji" />
+(Oh right, my stuff has a date of arrival now. We will be loading a *truck* tomorrow, and it will arrive to our new home around 2nd-3rd of January <img src="/blog/emoji/firPog-785701297478959104.webp" alt="firPog" class="discord-emoji" /> I'll be able to work again, heck yeah!)
+RIGHT I FORGOT THE BATTERIES, ! <img src="/blog/emoji/firL-785677220093231134.webp" alt="firL" class="discord-emoji" />
