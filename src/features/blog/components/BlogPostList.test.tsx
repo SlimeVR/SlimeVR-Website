@@ -1,6 +1,6 @@
 import { MemoryRouter, Route } from "@solidjs/router";
-import { fireEvent, render, screen } from "@solidjs/testing-library";
-import { describe, it, expect, afterAll } from "vitest";
+import { render, screen } from "@solidjs/testing-library";
+import { describe, it, expect } from "vitest";
 import { BlogPostList } from "./BlogPostList";
 import { BlogYearGroup } from "../blog.types";
 
@@ -32,20 +32,5 @@ describe("BlogPostList", () => {
 
     expect(screen.getByText("2025")).toBeInTheDocument();
     expect(screen.getByText("Test Post Title")).toBeInTheDocument();
-  });
-
-  it("display replace skeleton with image, once image is loaded", () => {
-    const { container } = renderWithRouter(() => (
-      <BlogPostList yearPosts={yearPage} />
-    ));
-    expect(screen.queryByTestId("image-skeleton")).toBeInTheDocument();
-    const img = container.querySelector("img") as HTMLImageElement;
-    expect(img).toBeTruthy();
-    expect(img?.className).toContain("opacity-0");
-
-    fireEvent.load(img);
-
-    expect(screen.queryByTestId("image-skeleton")).toBeNull();
-    expect(img?.className).toContain("opacity-100");
   });
 });

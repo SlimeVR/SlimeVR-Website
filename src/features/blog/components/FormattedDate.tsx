@@ -1,4 +1,4 @@
-import { Component, createMemo, createSignal, onMount } from "solid-js";
+import { Component, createMemo } from "solid-js";
 
 interface FormattedDateProps {
   date: Date;

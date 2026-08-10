@@ -7,7 +7,6 @@ import { createInfiniteQuery, createQuery } from "@tanstack/solid-query";
 import {
   BlogPaginationManifest,
   BlogPostMetadata,
-  BlogPostsByYear,
   BlogYearGroup,
 } from "../blog.types";
 import { createIntersectionObserver } from "@solid-primitives/intersection-observer";

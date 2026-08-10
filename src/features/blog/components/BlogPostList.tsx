@@ -1,5 +1,5 @@
-import { Component, createSignal, For, Match, Show, Switch } from "solid-js";
-import { BlogPost, BlogPostMetadata, BlogYearGroup } from "../blog.types";
+import { Component, For, Show } from "solid-js";
+import { BlogPostMetadata, BlogYearGroup } from "../blog.types";
 import { A } from "@solidjs/router";
 import clsx from "clsx";
 import { FormattedDate } from "./FormattedDate";

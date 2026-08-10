@@ -1,4 +1,5 @@
 import { SolidMarkdownComponents } from "solid-markdown";
+
 import "../emoji.css";
 
 export const MarkdownBaseComponentOverrides: SolidMarkdownComponents = {

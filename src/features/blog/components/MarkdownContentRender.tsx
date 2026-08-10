@@ -1,4 +1,4 @@
-import { Component, Resource } from "solid-js";
+import { Component } from "solid-js";
 import { SolidMarkdown } from "solid-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
