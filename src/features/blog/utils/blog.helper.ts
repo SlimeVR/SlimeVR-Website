@@ -31,7 +31,7 @@ export async function getBlogPaginationManifest(): Promise<BlogPaginationManifes
 }
 
 export async function getYearPagePosts(year: number, pageNumber: number): Promise<BlogPostMetadata[]> {
-  const fileString = await fetchPublicFileAsync(`blog/pagination/${year}/page-${pageNumber}.json`);
+  const fileString = await fetchPublicFileAsync(`blog/pagination/pages/${year}/page-${pageNumber}.json`);
 
   const postsByYear: BlogPostMetadata[] = JSON.parse(fileString);
   postsByYear.forEach((yearPosts) => (yearPosts.date = new Date(yearPosts.date)));
