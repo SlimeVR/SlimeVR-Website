@@ -18,13 +18,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - name: Use Node.js 22
-        uses: actions/setup-node@v4
+      - uses: pnpm/setup@v1
         with:
-          node-version: 22.x
-          cache: "pnpm"
-      - run: pnpm i
+          version: 11.21.0
+          runtime: node@24
+          install: true
+          cache: true
       - run: pnpm test-ci
       - run: NITRO_PRESET=cloudflare_pages_static pnpm build
         env:
