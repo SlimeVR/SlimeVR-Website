@@ -17,6 +17,11 @@ export default defineConfig({
       crawlLinks: true,
     },
     compatibilityDate: "2026-07-22",
+    esbuild: {
+      options: {
+        target: "es2025",
+      },
+    },
     // How to do redirects without workers:
     // routeRules: {
     //   "/download": { redirect: { to: "#download", statusCode: 301 } },
