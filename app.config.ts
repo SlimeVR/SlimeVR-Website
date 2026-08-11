@@ -19,7 +19,7 @@ export default defineConfig({
     compatibilityDate: "2026-07-22",
     esbuild: {
       options: {
-        target: "es2025",
+        target: "es2024",
       },
     },
     // How to do redirects without workers:
