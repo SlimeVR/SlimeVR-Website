@@ -1,8 +1,4 @@
 import { Show, createMemo, createSignal } from "solid-js";
-import {
-  getBlogPaginationManifest,
-  getYearPagePosts,
-} from "../utils/blog.helper";
 import { createInfiniteQuery, createQuery } from "@tanstack/solid-query";
 import {
   BlogPaginationManifest,
@@ -13,18 +9,13 @@ import { createIntersectionObserver } from "@solid-primitives/intersection-obser
 import { BlogPostListSkeleton } from "./BlogPostListSkeleton";
 import { BlogPostList } from "./BlogPostList";
 import { BlogEndBanner } from "./BlogEndBanner";
-
-type BlogPageParam = {
-  year: number;
-  page: number;
-};
+import {
+  BlogManifestQueryOptions,
+  blogPostInfiniteQueryOptions,
+} from "../utils/blog.queries";
 
 export function BlogInfiniteScroll() {
-  const manifestQuery = createQuery(() => ({
-    queryKey: ["blog-manifest"],
-    queryFn: getBlogPaginationManifest,
-    staleTime: Infinity,
-  }));
+  const manifestQuery = createQuery(() => BlogManifestQueryOptions());
 
   return (
     <Show
@@ -44,30 +35,9 @@ export function BlogInfiniteScroll() {
 }
 
 function BlogInfiniteQuery({ manifest }: { manifest: BlogPaginationManifest }) {
-  const postsQuery = createInfiniteQuery(() => ({
-    queryKey: ["blog-posts-infinite"],
-    queryFn: async ({ pageParam }) => {
-      const posts = await getYearPagePosts(pageParam.year, pageParam.page);
-      return { posts, year: pageParam.year, page: pageParam.page };
-    },
-    initialPageParam: {
-      year: manifest.latestPostYear,
-      page: 1,
-    } satisfies BlogPageParam,
-    getNextPageParam: (lastPage, _allPages, lastPageParam) => {
-      const currentYear = manifest.pageCountPerYear.find(
-        (year) => year.year === lastPageParam.year
-      );
-      if (currentYear && lastPageParam.page < currentYear.pagesCount) {
-        return { year: lastPageParam.year, page: lastPageParam.page + 1 };
-      }
-      const currentYearIndex = manifest.pageCountPerYear.findIndex(
-        (year) => year.year === lastPageParam.year
-      );
-      const nextYear = manifest.pageCountPerYear[currentYearIndex + 1];
-      return nextYear ? { year: nextYear.year, page: 1 } : undefined;
-    },
-  }));
+  const postsQuery = createInfiniteQuery(() =>
+    blogPostInfiniteQueryOptions(manifest)
+  );
 
   const [bottomSentinel, setBottomSentinel] = createSignal<HTMLElement | null>(
     null
