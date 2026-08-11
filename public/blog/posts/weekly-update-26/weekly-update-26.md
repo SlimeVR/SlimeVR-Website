@@ -18,7 +18,7 @@ I am incredibly thankful to all of you, but especially to people who helped in t
 
 I'm sorry this is pretty impersonal, but there are so many people who helped, I'd forget if I mentioned everyone by name! <img src="/blog/emoji/purple_heartnom-442037829623742474.webp" alt="purple_heartnom" class="discord-emoji" /> And there is hopefully more to come! <img src="/blog/emoji/blobmeltblush-580593103346597888.webp" alt="blobmeltblush" class="discord-emoji" />
 
-Huge thanks to all of you who became close friends to me in those months, you know who you are I love you all <img src="/blog/emoji/ablobmeltsoblove-580593529219448832.webp" alt="ablobmeltsoblove" class="discord-emoji" />
+Huge thanks to all of you who became close friends to me in those months, you know who you are I love you all <img src="/blog/emoji/ablobmeltsoblove-745764433997070427.webp" alt="ablobmeltsoblove" class="discord-emoji" />
 
 Basically: fsdfjsdfldhfdsglfhsfsdhfsdf AsdsdfaaAsdAAA?!?!?! <img src="/blog/emoji/slimepcbnom-839133114931347486.webp" alt="slimepcbnom" class="discord-emoji" /> <img src="/blog/emoji/enbyslime-663821266092032000.webp" alt="enbyslime" class="discord-emoji" />
 > **[Thank You!](https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker/updates/thank-you)**
