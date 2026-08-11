@@ -1,4 +1,5 @@
-import { Component, createMemo } from "solid-js";
+import { Component, createMemo, createSignal, onMount } from "solid-js";
+import { isServer } from "solid-js/web";
 
 interface FormattedDateProps {
   date: Date;
@@ -7,12 +8,16 @@ interface FormattedDateProps {
 const FallbackLocale = "en-US";
 
 export const FormattedDate: Component<FormattedDateProps> = (props) => {
-  const locale =
-    typeof navigator !== "undefined" ? navigator.language : FallbackLocale;
+  const [locale, setLocale] = createSignal(FallbackLocale);
+
+  onMount(() => {
+    if (!isServer && typeof navigator != "undefined")
+      setLocale(navigator.language);
+  });
 
   const formattedDate = createMemo(() => {
     try {
-      return props.date.toLocaleDateString(locale);
+      return props.date.toLocaleDateString(locale());
     } catch (e) {
       return props.date.toLocaleDateString(FallbackLocale);
     }

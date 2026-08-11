@@ -39,23 +39,27 @@ export const BlogPostList: Component<BlogPostListProps> = (props) => {
     >
       <div class="grid gap-4 grid-cols-1 sm:grid-cols-2">
         <For each={props.yearPosts}>
-          {(group) => (
-            <>
-              <Typography
-                tag="h2"
-                variant="section-title"
-                class="col-span-1 sm:col-span-2 text-background-10"
-              >
-                {group.year}
-              </Typography>
-              <For each={group.posts}>
-                {(post) => <BlogPostCard post={post} />}
-              </For>
-            </>
-          )}
+          {(yearGroup) => <YearGroupSection yearGroup={yearGroup} />}
         </For>
       </div>
     </Show>
+  );
+};
+
+const YearGroupSection: Component<{ yearGroup: BlogYearGroup }> = (props) => {
+  return (
+    <>
+      <Typography
+        tag="h2"
+        variant="section-title"
+        class="col-span-1 sm:col-span-2 text-background-10"
+      >
+        {props.yearGroup.year}
+      </Typography>
+      <For each={props.yearGroup.posts}>
+        {(post) => <BlogPostCard post={post} />}
+      </For>
+    </>
   );
 };
 
