@@ -8,6 +8,7 @@
     "github": "GitHub",
     "team": "Team",
     "events": "Events",
+    "blog": "Blog",
     "support": "Support",
     "order": "Order now",
     "resources": "Resources"
@@ -250,6 +251,9 @@
   },
   "tm": {
     "title": "SlimeVR Trademark Guidelines"
+  },
+  "blog": {
+    "title": "Blog"
   },
   "privacy": {
     "title": "Privacy Policy"

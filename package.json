@@ -3,17 +3,19 @@
   "type": "module",
   "scripts": {
     "dev": "vinxi dev",
-    "build": "pnpm typecheck && pnpm vinxi build && node -e \"require('fs').rmSync('dist/_worker.js', { force: true })\"",
+    "build": "pnpm typecheck && pnpm generate-blog-pagination-manifest && pnpm vinxi build && node -e \"require('fs').rmSync('dist/_worker.js', { force: true })\"",
     "start": "vinxi start",
     "serve": "npx serve .output/public",
     "test": "vitest",
     "test-run": "vitest run --reporter=verbose",
     "test-coverage": "vitest run --coverage --reporter=verbose",
     "test-ci": "pnpm test-coverage",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "generate-blog-pagination-manifest": "node src/features/blog/tools/generateBlogPaginationManifest.mts"
   },
   "dependencies": {
     "@solid-primitives/i18n": "^2.2.1",
+    "@solid-primitives/intersection-observer": "^2.2.5",
     "@solid-primitives/media": "^2.3.3",
     "@solid-primitives/storage": "^4.3.3",
     "@solidjs/meta": "^0.29.4",
@@ -21,17 +23,22 @@
     "@solidjs/start": "1.0.11",
     "@tailwindcss/forms": "^0.5.11",
     "@tailwindcss/postcss": "^4.1.18",
+    "@tanstack/solid-query": "^5.101.4",
     "clsx": "^2.1.1",
+    "front-matter": "^4.0.2",
+    "js-yaml": "^5.2.3",
     "overlayscrollbars": "^2.13.0",
     "postcss": "^8.5.6",
     "rand-seed": "^3.0.0",
+    "rehype-raw": "^6.1.1",
     "remark-gfm": "3.0.0",
     "solid-js": "^1.9.10",
     "solid-markdown": "2.0.12",
     "tailwindcss": "4.1.18",
     "tailwindcss-animated": "^1.1.2",
     "typescript-event-target": "^1.1.1",
-    "vinxi": "^0.4.3"
+    "vinxi": "^0.4.3",
+    "vite-plugin-markdown": "^2.2.0"
   },
   "engines": {
     "node": ">=18"
@@ -40,6 +47,7 @@
     "@solidjs/testing-library": "^0.8.10",
     "@tailwindcss/typography": "^0.5.19",
     "@testing-library/jest-dom": "^7.0.0",
+    "@types/js-yaml": "^4.0.9",
     "@vitest/coverage-v8": "3.2.7",
     "happy-dom": "^20.11.1",
     "jsdom": "^30.0.1",
