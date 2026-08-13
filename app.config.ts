@@ -1,8 +1,13 @@
 import { defineConfig } from "@solidjs/start/config";
+import { plugin as ViteMdPlugin, Mode } from "vite-plugin-markdown";
 
 export default defineConfig({
   vite: {
-    plugins: [],
+    plugins: [
+      ViteMdPlugin({
+        mode: [Mode.HTML, Mode.MARKDOWN],
+      }),
+    ],
   },
   ssr: true,
   server: {
@@ -12,6 +17,11 @@ export default defineConfig({
       crawlLinks: true,
     },
     compatibilityDate: "2026-07-22",
+    esbuild: {
+      options: {
+        target: "es2024",
+      },
+    },
     // How to do redirects without workers:
     // routeRules: {
     //   "/download": { redirect: { to: "#download", statusCode: 301 } },

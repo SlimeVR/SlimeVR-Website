@@ -42,7 +42,7 @@ export default function App() {
             <MetaProvider>
               <ErrorBoundary
                 fallback={(err) => {
-                  console.log("????", err);
+                  console.error(err.message, err.stack);
                   return <>ROUTER ERROR</>;
                 }}
               >
