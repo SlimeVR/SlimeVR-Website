@@ -20,7 +20,7 @@ export const BlogPostTableOfContents: Component<
   let observer: IntersectionObserver | undefined;
 
   onMount(() => {
-    const observer = new IntersectionObserver(
+    observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
@@ -34,7 +34,7 @@ export const BlogPostTableOfContents: Component<
 
     props.headings.forEach((heading) => {
       const element = document.getElementById(heading.id);
-      if (element) observer.observe(element);
+      if (element) observer?.observe(element);
     });
   });
 
