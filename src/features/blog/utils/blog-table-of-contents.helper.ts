@@ -23,7 +23,7 @@ export function extractBlogHeadings(markdownString: string): BlogHeading[] {
   const headings: BlogHeading[] = [];
 
   visit(hastTree, "element", (node) => {
-    if (!/^h[2-3]$/.test(node.tagName)) return;
+    if (!/^h[1-3]$/.test(node.tagName)) return;
 
     const text = toString(node).trim();
     const id = typeof node.properties.id === "string" ? node.properties.id : "";
