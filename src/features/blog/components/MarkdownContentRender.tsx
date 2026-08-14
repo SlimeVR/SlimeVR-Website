@@ -2,9 +2,10 @@ import { Component } from "solid-js";
 import { SolidMarkdown } from "solid-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
+import rehypeSlug from "rehype-slug";
+import { MarkdownBaseComponentOverrides } from "./MarkdownBaseComponentOverrides";
 
 import "../emoji.css";
-import { MarkdownBaseComponentOverrides } from "./MarkdownBaseComponentOverrides";
 
 interface MarkdownContentRenderProps {
   content: string;
@@ -17,7 +18,7 @@ export const MarkdownContentRender: Component<MarkdownContentRenderProps> = (
     <div class="prose prose-base max-w-none prose-invert">
       <SolidMarkdown
         remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeRaw]}
+        rehypePlugins={[rehypeRaw, rehypeSlug]}
         components={MarkdownBaseComponentOverrides}
       >
         {props.content}

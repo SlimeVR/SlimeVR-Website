@@ -3,3 +3,4 @@ export { FormattedDate } from "./components/FormattedDate";
 export { BlogPostList } from "./components/BlogPostList";
 export { BlogInfiniteScroll } from "./components/BlogInfiniteScroll";
 export { MarkdownContentRender } from "./components/MarkdownContentRender";
+export { BlogPostRender } from "./components/BlogPostRender";
