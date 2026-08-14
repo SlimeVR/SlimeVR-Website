@@ -2,7 +2,7 @@
 title: "Weekly Dev Update #239"
 date: "2026-07-11T00:00:00.000Z"
 description: "A week ago we ran a poll and asked for feedback on the most common issues you experience when using SlimeVR, and the response was immense. First up, thank you everyone who responded. Your feedback..."
-thumbnailUrl: "/blog/posts/weekly-update-239/6269_1785150664757_32.webp"
+thumbnailUrl: "/blog/posts/weekly-update-239/17266_1785150919961_64.webp"
 ---
 
 ## Feedback <img src="/blog/emoji/nighty_question-1314209482133209088.webp" alt="nighty_question" class="discord-emoji" />

@@ -1,4 +1,4 @@
-import { Component, For, Show } from "solid-js";
+import { Component, createMemo, For, Show } from "solid-js";
 import { BlogPostMetadata, BlogYearGroup } from "../blog.types";
 import { A } from "@solidjs/router";
 import clsx from "clsx";
@@ -7,9 +7,11 @@ import { Typography } from "~/components/commons";
 import { SolidMarkdown, SolidMarkdownComponents } from "solid-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
+import { MarkdownBaseComponentOverrides } from "./MarkdownBaseComponentOverrides";
+import { BlogPostThumbnail } from "./BlogPostThumbnail";
+import { buildBlogPostThumbnailPlaceholder } from "../utils/blog.thumbnail.helper";
 
 import "../emoji.css";
-import { MarkdownBaseComponentOverrides } from "./MarkdownBaseComponentOverrides";
 
 interface BlogPostListProps {
   yearPosts: BlogYearGroup[] | undefined;
@@ -64,8 +66,9 @@ const YearGroupSection: Component<{ yearGroup: BlogYearGroup }> = (props) => {
 };
 
 const BlogPostCard: Component<{ post: BlogPostMetadata }> = (props) => {
-  const isPostHasImage = () => !!props.post.thumbnailUrl;
-  const imageSrc = () => props.post.thumbnailUrl ?? "/images/purple_glow.webp";
+  const placeholderThumbnail = createMemo(() =>
+    buildBlogPostThumbnailPlaceholder(props.post.title)
+  );
 
   return (
     <A
@@ -83,21 +86,35 @@ const BlogPostCard: Component<{ post: BlogPostMetadata }> = (props) => {
         "hover:bg-background-60"
       )}
     >
-      <div class="relative w-full h-48 overflow-hidden rounded-2xl bg-background-60">
-        <div
-          data-testid="image-skeleton"
-          class="absolute inset-0 animate-pulse bg-background-60/50"
-        />
+      <Show
+        when={props.post.thumbnailUrl}
+        fallback={
+          <BlogPostThumbnail
+            title={props.post.title}
+            placeholder={placeholderThumbnail()}
+          />
+        }
+      >
+        <div class="relative w-full h-48 overflow-hidden rounded-2xl bg-background-60">
+          <div
+            data-testid="image-skeleton"
+            class="absolute inset-0 animate-pulse bg-background-60/50"
+          />
 
-        <img
-          src={imageSrc()}
-          alt={props.post.title}
-          class={clsx(
-            "relative z-10 w-full h-48 rounded-2xl bg-background-60",
-            isPostHasImage() ? "object-cover" : "object-fill"
-          )}
-        />
-      </div>
+          <img
+            src={props.post.thumbnailUrl}
+            alt={props.post.title}
+            class={clsx(
+              "relative",
+              "z-10",
+              "w-full h-48",
+              "rounded-2xl",
+              "bg-background-60",
+              "object-cover"
+            )}
+          />
+        </div>
+      </Show>
 
       <div class="px-6 py-3">
         <FormattedDate date={props.post.date} />
