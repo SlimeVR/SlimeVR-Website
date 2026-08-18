@@ -13,7 +13,7 @@ import type {
   BlogYearPaginatedGroup,
 } from "../blog.types.ts";
 import { BLOG_PAGE_SIZE } from "../utils/blog.helper.ts";
-import { fetchAllBlogPosts } from "./blogPosts.helper.ts";
+import { getAllBlogPosts } from "./blogPosts.helper.ts";
 
 const BLOG_PAGINATION_OUTPUT_PATH = resolve(
   process.cwd(),
@@ -116,7 +116,7 @@ function calculateAndWriteMainManifest(
   return paginationManifest;
 }
 
-const allPosts = fetchAllBlogPosts();
+const allPosts = getAllBlogPosts();
 const paginatedPostsByYears: BlogYearPaginatedGroup[] =
   calculatePostsByYears(allPosts);
 calculateAndWritePageManifests(paginatedPostsByYears);

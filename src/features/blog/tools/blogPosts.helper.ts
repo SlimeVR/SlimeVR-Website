@@ -5,7 +5,7 @@ import { parsePostFrontMatter } from "../utils/blog.helper.ts";
 
 const BLOG_POSTS_FOLDERS_PATH = resolve(process.cwd(), "public/blog/posts");
 
-export function fetchAllBlogPosts(): BlogPost[] {
+export function getAllBlogPosts(): BlogPost[] {
   const postsDirectories = readdirSync(BLOG_POSTS_FOLDERS_PATH, {
     withFileTypes: true,
   }).filter((item) => item.isDirectory());
