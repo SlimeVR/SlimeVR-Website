@@ -3,7 +3,7 @@ import {
   getLatestBlogPostDate,
 } from "../features/blog/tools/blogPosts.helper";
 import { join } from "path";
-import { writeFileSync } from "fs";
+import { mkdirSync, writeFileSync } from "fs";
 import { SitemapStream, streamToPromise } from "sitemap";
 
 const SITE_URL = "https://slimevr.dev";
@@ -45,6 +45,7 @@ export async function prerenderDone() {
   });
   stream.end();
 
+  mkdirSync(BUILD_OUTPUT_DIR, { recursive: true });
   writeFileSync(SITEMAP_OUTPUT_DIR, (await streamToPromise(stream)).toString());
 
   console.info(
