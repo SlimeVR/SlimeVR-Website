@@ -1,5 +1,5 @@
 import {
-  fetchAllBlogPosts,
+  getAllBlogPosts,
   getLatestBlogPostDate,
 } from "../features/blog/tools/blogPosts.helper";
 import { join } from "path";
@@ -18,7 +18,7 @@ export function prerenderGenerate(route: { route: string }) {
 }
 
 export async function prerenderDone() {
-  const allBlogPosts = fetchAllBlogPosts();
+  const allBlogPosts = getAllBlogPosts();
   const latestBlogPostDate = getLatestBlogPostDate(allBlogPosts);
   const blogPostPathsWithDates = new Map(
     allBlogPosts.map((post) => [
