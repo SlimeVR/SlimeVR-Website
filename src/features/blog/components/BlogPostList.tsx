@@ -9,7 +9,7 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import { MarkdownBaseComponentOverrides } from "./MarkdownBaseComponentOverrides";
 import { BlogPostThumbnail } from "./BlogPostThumbnail";
-import { buildBlogPostThumbnailPlaceholder } from "../utils/blog.thumbnail.helper";
+import { getBlogPostThumbnailPlaceholderAttributes } from "../utils/blog.thumbnail.helper";
 
 import "../emoji.css";
 
@@ -67,7 +67,7 @@ const YearGroupSection: Component<{ yearGroup: BlogYearGroup }> = (props) => {
 
 const BlogPostCard: Component<{ post: BlogPostMetadata }> = (props) => {
   const placeholderThumbnail = createMemo(() =>
-    buildBlogPostThumbnailPlaceholder(props.post.title)
+    getBlogPostThumbnailPlaceholderAttributes(props.post.title)
   );
 
   return (
