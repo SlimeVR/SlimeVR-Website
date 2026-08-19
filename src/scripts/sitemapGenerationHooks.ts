@@ -5,7 +5,7 @@ import {
 import { join } from "path";
 import { mkdirSync, writeFileSync } from "fs";
 import { SitemapStream, streamToPromise } from "sitemap";
-import { SITE_PATH } from "~/utils/constants";
+import { SITE_PATH } from "../utils/constants";
 
 const BUILD_OUTPUT_DIR = join(process.cwd(), ".output/public");
 const SITEMAP_OUTPUT_DIR = join(BUILD_OUTPUT_DIR, "sitemap.xml");
