@@ -1,17 +1,18 @@
-import { Title } from "@solidjs/meta";
+import { Meta, Title } from "@solidjs/meta";
 import { Component, createMemo, Show } from "solid-js";
 import { Container, Typography } from "~/components/commons";
 import { FormattedDate, MarkdownContentRender } from "~/features/blog";
 import { BlogPost } from "~/features/blog/blog.types";
 import { extractBlogHeadings } from "../utils/blog-table-of-contents.helper";
-import { buildBlogPostThumbnailPlaceholder } from "../utils/blog.thumbnail.helper";
+import { getBlogPostThumbnailPlaceholderAttributes } from "../utils/blog.thumbnail.helper";
 import { BlogPostTableOfContents } from "./BlogPostTableOfContents";
+import { SITE_PATH } from "~/utils/constants";
 
 const BlogPostThumbnailPlaceholder: Component<BlogPostRenderProps> = (
   props
 ) => {
   const thumbnailSettings = createMemo(() =>
-    buildBlogPostThumbnailPlaceholder(props.post.metadata.title)
+    getBlogPostThumbnailPlaceholderAttributes(props.post.metadata.title)
   );
 
   return (
@@ -58,6 +59,24 @@ export const BlogPostRender: Component<BlogPostRenderProps> = (props) => {
   return (
     <>
       <Title>{`${props.post.metadata.title} - SlimeVR Official`}</Title>
+      <Meta
+        property="og:title"
+        content={`${props.post.metadata.title} - SlimeVR Official`}
+      />
+      <Meta
+        property="og:description"
+        content={`${props.post.metadata.description}`}
+      />
+      <Show when={props.post.metadata.thumbnailUrl}>
+        <Meta
+          property="og:image"
+          content={`${props.post.metadata.thumbnailUrl}`}
+        />
+      </Show>
+      <Meta
+        property="og:url"
+        content={`${SITE_PATH}/blog/${props.post.metadata.postId}`}
+      />
 
       <div class="my-10 flex flex-col gap-7">
         <Container class="overflow-hidden !p-0">

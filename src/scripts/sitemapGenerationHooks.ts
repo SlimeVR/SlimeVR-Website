@@ -5,8 +5,8 @@ import {
 import { join } from "path";
 import { mkdirSync, writeFileSync } from "fs";
 import { SitemapStream, streamToPromise } from "sitemap";
+import { SITE_PATH } from "~/utils/constants";
 
-const SITE_URL = "https://slimevr.dev";
 const BUILD_OUTPUT_DIR = join(process.cwd(), ".output/public");
 const SITEMAP_OUTPUT_DIR = join(BUILD_OUTPUT_DIR, "sitemap.xml");
 const BASE_LASTMOD = new Date("2025-12-23T20:50:03.000Z").toISOString();
@@ -31,7 +31,7 @@ export async function prerenderDone() {
     (route) => !route.includes("/404")
   );
 
-  const stream = new SitemapStream({ hostname: SITE_URL });
+  const stream = new SitemapStream({ hostname: SITE_PATH });
   sitemapRoutes.forEach((sitemapRoute) => {
     stream.write({
       url: sitemapRoute,

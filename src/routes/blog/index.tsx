@@ -7,6 +7,7 @@ import {
   BlogManifestQueryOptions,
   blogPostInfiniteQueryOptions,
 } from "~/features/blog/utils/blog.queries";
+import { SITE_PATH } from "~/utils/constants";
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { retry: 1, staleTime: 5 * 60 * 1000 } },
@@ -32,7 +33,7 @@ export default function Blog() {
       <MainLayout>
         <AppTitle key="blog.title" />
         <Meta name="robots" content="index, follow" />
-        <Link rel="canonical" href="https://slimevr.dev/blog" />
+        <Link rel="canonical" href={`${SITE_PATH}/blog`} />
 
         <Section>
           <div class="flex flex-col py-5 mb-6">
