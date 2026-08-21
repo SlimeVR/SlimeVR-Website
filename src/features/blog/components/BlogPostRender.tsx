@@ -43,7 +43,7 @@ const BlogPostMarkdownContent: Component<BlogPostRenderProps> = (props) => {
   return (
     <Container>
       <article class="min-w-0">
-        <MarkdownContentRender content={props.post.content} />
+        <MarkdownContentRender postId={props.post.metadata.postId} content={props.post.content} />
       </article>
     </Container>
   );

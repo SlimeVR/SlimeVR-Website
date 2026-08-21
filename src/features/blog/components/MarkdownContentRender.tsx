@@ -8,6 +8,7 @@ import { MarkdownBaseComponentOverrides } from "./MarkdownBaseComponentOverrides
 import "../emoji.css";
 
 interface MarkdownContentRenderProps {
+  postId: string;
   content: string;
 }
 
@@ -19,7 +20,7 @@ export const MarkdownContentRender: Component<MarkdownContentRenderProps> = (
       <SolidMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw, rehypeSlug]}
-        components={MarkdownBaseComponentOverrides}
+        components={MarkdownBaseComponentOverrides({ postId: props.postId })}
       >
         {props.content}
       </SolidMarkdown>
