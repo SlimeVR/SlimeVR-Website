@@ -36,7 +36,7 @@ Imagine Timmy. Timmy loves the backrooms. Timmy wants to make a VR thing about b
 
 Get the idea? if not there is a video from them below from their YouTube.
 
-<video controls src="https://www.youtube.com/watch?v=wz4TnMTppmg"
+https://www.youtube.com/watch?v=wz4TnMTppmg
 
 ### So why does this matter?
 SlimeVR is planning to join them in their next load test to help fill up their instances. Ever been in an instance with 999 other people? Well that's the goal! If you want to see what the limits of social VR can be, you should come join us! https://discord.com/events/1239242259392757822/1483884192671600872
