@@ -9,7 +9,7 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import { MarkdownBaseComponentOverrides } from "./MarkdownBaseComponentOverrides";
 import { BlogPostThumbnail } from "./BlogPostThumbnail";
-import { buildBlogPostThumbnailPlaceholder } from "../utils/blog.thumbnail.helper";
+import { getBlogPostThumbnailPlaceholderAttributes } from "../utils/blog.thumbnail.helper";
 
 import "../emoji.css";
 
@@ -18,14 +18,14 @@ interface BlogPostListProps {
   pageError?: unknown;
 }
 
-const componentOverrides: SolidMarkdownComponents = {
-  ...MarkdownBaseComponentOverrides,
+const componentOverrides = (postId: string): SolidMarkdownComponents => ({
+  ...MarkdownBaseComponentOverrides({postId}),
   p: (pProps) => (
     <Typography tag="p" class="text-background-30">
       {pProps.children}
     </Typography>
   ),
-};
+});
 
 export const BlogPostList: Component<BlogPostListProps> = (props) => {
   return (
@@ -67,7 +67,7 @@ const YearGroupSection: Component<{ yearGroup: BlogYearGroup }> = (props) => {
 
 const BlogPostCard: Component<{ post: BlogPostMetadata }> = (props) => {
   const placeholderThumbnail = createMemo(() =>
-    buildBlogPostThumbnailPlaceholder(props.post.title)
+    getBlogPostThumbnailPlaceholderAttributes(props.post.title)
   );
 
   return (
@@ -129,7 +129,7 @@ const BlogPostCard: Component<{ post: BlogPostMetadata }> = (props) => {
           <SolidMarkdown
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}
-            components={componentOverrides}
+            components={componentOverrides(props.post.postId)}
           >
             {props.post.description}
           </SolidMarkdown>
