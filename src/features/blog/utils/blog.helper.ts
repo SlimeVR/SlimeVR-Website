@@ -65,7 +65,7 @@ export function parsePostFrontMatter(
     date: new Date(attributes.date),
     title: attributes.title ?? "",
     description: attributes.description ?? "",
-    thumbnailUrl: resolveAssetPath(attributes.postId, attributes.thumbnailUrl),
+    thumbnailUrl: resolveAssetPath(postId, attributes.thumbnailUrl),
   };
 
   return { metadata, content: body };
@@ -95,11 +95,11 @@ export function sanitizeFrontMatter(fileString: string): string {
 
 export function resolveAssetPath(
   postId: string,
-  thumbnailUrl: string
+  assetPath?: string
 ): string | undefined {
-  if (thumbnailUrl == undefined) return undefined;
+  if (assetPath == undefined) return undefined;
 
-  if (thumbnailUrl.startsWith("/public")) return thumbnailUrl;
+  if (assetPath.startsWith("/public")) return assetPath;
 
-  return `blog/posts/${postId}/${thumbnailUrl}`;
+  return `/blog/posts/${postId}/${assetPath}`;
 }

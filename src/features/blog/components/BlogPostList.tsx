@@ -18,14 +18,14 @@ interface BlogPostListProps {
   pageError?: unknown;
 }
 
-const componentOverrides: SolidMarkdownComponents = {
-  ...MarkdownBaseComponentOverrides,
+const componentOverrides = (postId: string): SolidMarkdownComponents => ({
+  ...MarkdownBaseComponentOverrides({postId}),
   p: (pProps) => (
     <Typography tag="p" class="text-background-30">
       {pProps.children}
     </Typography>
   ),
-};
+});
 
 export const BlogPostList: Component<BlogPostListProps> = (props) => {
   return (
@@ -129,7 +129,7 @@ const BlogPostCard: Component<{ post: BlogPostMetadata }> = (props) => {
           <SolidMarkdown
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}
-            components={componentOverrides}
+            components={componentOverrides(props.post.postId)}
           >
             {props.post.description}
           </SolidMarkdown>
