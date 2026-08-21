@@ -2,7 +2,7 @@
 title: "Weekly Dev Update #237"
 date: "2026-06-23T00:00:00.000Z"
 description: "Sup, <img src=\"/blog/emoji/nighty_yay-1319261631217143910.webp\" alt=\"nighty_yay\" class=\"discord-emoji\" /> I know you missed @Spazzwan 🐾⚡ already, but today you get me instead!..."
-thumbnailUrl: "/blog/posts/weekly-update-237/20637_1785151247754_91.webp"
+thumbnailUrl: "assets/hina_slime.webp"
 ---
 
 Sup, <img src="/blog/emoji/nighty_yay-1319261631217143910.webp" alt="nighty_yay" class="discord-emoji" /> I know you missed @Spazzwan 🐾⚡ already, but today you get me instead! <img src="/blog/emoji/Yus2-862786221537624104.webp" alt="Yus2" class="discord-emoji" /> It's been a while, so I bet you missed me too~ <img src="/blog/emoji/hina_1-1514646533264506890.webp" alt="hina_1" class="discord-emoji" /><img src="/blog/emoji/hina_2-1514646552185016320.webp" alt="hina_2" class="discord-emoji" />But don't get used to it <img src="/blog/emoji/nya_a-847203539352551544.webp" alt="nya_a" class="discord-emoji" /> As you might have noticed, we've got a new community manager a few weeks ago - @paralizzie - and she'll be way more active on all our socials, helping with making updates here, on Crowd Supply and everywhere else, and helping us with making a lot of new content! So get excited for a "1000 things you didn't know you could do with SlimeVR" series of YouTube videos in the near future <img src="/blog/emoji/slimenom-663823059920224277.webp" alt="slimenom" class="discord-emoji" />
@@ -24,10 +24,11 @@ Also Tracker Enclosure and Dongle Enclosure molds are finally in proper producti
 We got so much more stuff... I can yap for hours, but who's gonna read, so I won't! I'll leave it to @paralizzie and @Spazzwan 🐾⚡ to share all the small stuff throughout the weeks to come in bite-sized chunks or big posts, so go get yourself a role in <#844382850845376521> if you want more deep SlimeVR lore <img src="/blog/emoji/RWping-920549879456075777.webp" alt="RWping" class="discord-emoji" />
 
 And I'll see you soon~ Oh yeah we got new slimes, holly-molly they're so cool, @Flarchik outdid themselves once again... Soon™ on the Team page on [slime.gay](<https://slime.gay>).
-[19050_1785151131680_85.mp3](/blog/posts/weekly-update-237/19050_1785151131680_85.mp3)
-![attachment](/blog/posts/weekly-update-237/20637_1785151247754_91.webp)
-![attachment](/blog/posts/weekly-update-237/20642_1785151249715_92.webp)
-![attachment](/blog/posts/weekly-update-237/24313_1785151277706_94.webp)
-![attachment](/blog/posts/weekly-update-237/44743_1785151351944_98.webp)
-![attachment](/blog/posts/weekly-update-237/44832_1785151354338_99.webp)
-![attachment](/blog/posts/weekly-update-237/46278_1785151373740_101.webp)
+
+![alt text](assets/1.webp)
+![alt text](assets/2.webp)
+![alt text](assets/3.webp)
+![alt text](assets/4.webp)
+![alt text](assets/5.webp)
+![alt text](assets/6.webp)
+![alt text](assets/hina_slime.webp)

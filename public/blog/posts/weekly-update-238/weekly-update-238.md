@@ -2,7 +2,7 @@
 title: "Weekly Dev Update #238"
 date: "2026-07-02T00:00:00.000Z"
 description: "Hiyo Slimes, Spazzwan<img src=\"/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp\" alt=\"SKC_SpazzwanLogo\" class=\"discord-emoji\" />here, hoping those of you in the upper half of the world are sur..."
-thumbnailUrl: "/blog/posts/weekly-update-238/19046_1785151127664_83.webp"
+thumbnailUrl: "assets/c1_20260626_162906.jpg"
 ---
 
 Hiyo Slimes, Spazzwan<img src="/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp" alt="SKC_SpazzwanLogo" class="discord-emoji" />here, hoping those of you in the upper half of the world are surviving this very normal summer. Do not become cooked, please stay cool and hydrate!
@@ -32,8 +32,10 @@ For this reason, **we are once again asking for your support**
 If you want to help make slime more accessible and are fluent in any of the languages we support (or even want to add support for one we don't), head down to the https://discord.com/channels/817184208525983775/1277656291371778151 channel to find out more info on how you can contribute. Don't be scared to ask questions, either. The fox doesn't bite (much).
 
 Even just a few minutes of translating or reviewing others translations can go a long way to ensuring your fellow language-havers are taken care of (yes, including OwO-glish)!
-![attachment](/blog/posts/weekly-update-238/19046_1785151127664_83.webp)
-![attachment](/blog/posts/weekly-update-238/19047_1785151129707_84.webp)
+
+![alt text](assets/b1_IMG_4088.jpg)
+![alt text](assets/b2_utyv7iutc6yrx.webp)
+
 ## Rapid Roundup <img src="/blog/emoji/nighty_nom-1314209503276699708.webp" alt="nighty_nom" class="discord-emoji" />
 Ready yourself for a bunch of SlimeVR news bits to bite on:
 * The FLUFFY SQUISHY CUTE BALLS OF LOVE that are the Nighty Plushie have arrived at the SlimeVR Cave in Netherlands, ready to be re-directed towards Crowd Supply for order fulfilment. We are in the process of organising their shipment, and are expecting them to hit Crowd Supply warehouses sometime in late July. Check out how cute they are in the attached pics!
@@ -41,5 +43,7 @@ Ready yourself for a bunch of SlimeVR news bits to bite on:
 * The first video in our new slew of SlimeVR related content has been launched, hosted by the lovely Jacobfov. We plan to do lots more videos in the coming months, so stay subscribe to our YouTube channel for a bunch of informative and entertaining content like this! Check it out here: https://www.youtube.com/watch?v=quDmfCtTQ0Y
 
 *That's it for this week. Thank you for reading to the end, hope you all have a lovely week and weekend. See you space slimethings~! <3*
-![attachment](/blog/posts/weekly-update-238/19045_1785151124655_81.webp)
-![attachment](/blog/posts/weekly-update-238/19045_1785151125740_82.webp)
+
+
+![alt text](assets/c1_20260626_162906.jpg)
+![alt text](assets/c2_image.webp)
