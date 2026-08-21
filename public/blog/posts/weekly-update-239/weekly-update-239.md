@@ -2,7 +2,7 @@
 title: "Weekly Dev Update #239"
 date: "2026-07-11T00:00:00.000Z"
 description: "A week ago we ran a poll and asked for feedback on the most common issues you experience when using SlimeVR, and the response was immense. First up, thank you everyone who responded. Your feedback..."
-thumbnailUrl: "/blog/posts/weekly-update-239/17266_1785150919961_64.webp"
+thumbnailUrl: "assets/image-4.webp"
 ---
 
 ## Feedback <img src="/blog/emoji/nighty_question-1314209482133209088.webp" alt="nighty_question" class="discord-emoji" />
@@ -41,9 +41,10 @@ As usual, the team has been hard at work being busy bees in order to get the But
 https://discord.com/channels/817184208525983775/1129107343058153623 has been updated by our slime overlords to have the latest timeframes and info on Shipment 17, which many of you are frothing at the mouth for info on. Luckily for you, we can now say that shipment 17 is all piled up in the SlimeVR HQ and ready for UPS to whisk it away to America in the coming week. Yippee! <img src="/blog/emoji/SKC_yippie-1192868297713135626.webp" alt="SKC_yippie" class="discord-emoji" />
 
 *That's it for this week. Thank you for reading to the end, hope you all have a lovely week and weekend. See you, space slimethings!*
-![attachment](/blog/posts/weekly-update-239/6269_1785150664757_32.webp)
-![attachment](/blog/posts/weekly-update-239/17266_1785150919961_64.webp)
-[18865_1785151069827_77.wav](/blog/posts/weekly-update-239/18865_1785151069827_77.wav)
-![attachment](/blog/posts/weekly-update-239/18870_1785151071682_78.webp)
-![attachment](/blog/posts/weekly-update-239/19024_1785151120888_79.webp)
-![attachment](/blog/posts/weekly-update-239/19028_1785151122903_80.webp)
+
+![alt text](assets/image.webp)
+![alt text](assets/image-1.webp)
+![alt text](assets/image-2.webp)
+![alt text](assets/image-3.webp)
+![alt text](assets/image-4.webp)
+<video controls src="assets/PXL_20260706_063624828.mp4" title="Title" />

@@ -19,14 +19,19 @@ There are also a few leftover DIY kits available, but those will *only last unti
 Shipment 17 is set to be another big one, and is planned to once again re-invigorate the stock levels to the point where nearly everything will be in-stock and available for immediate purchase. This shipment is currently in the manufacturing stage, and will begin assembly once all the parts arrive where they need to be in the next week or two. We expect this shipment to arrive at CS in ~~early~~ mid June. More specifics on what's in this shipment will come in future updates.
 
 **If you are after something that's not listed as in-stock in the current stock section above, it will very likely be in Shipment 17.**
-![attachment](/blog/posts/weekly-update-234/72055_1785151683677_132.webp)
+
+![attachment](assets/s1-a1_in_stock_poster.webp)
+
 ## SlimeVR News <img src="/blog/emoji/nighty_trans-1488511807701385279.webp" alt="nighty_trans" class="discord-emoji" />
+
 Our original SlimeVR campaign just hit **$10 MILLION raised**. Holy moly that's a lot of slimes...
 Big congratulations to the SlimeVR team for reaching such an enormous milestone. This is only just the beginning tho, we have lots of plans and are aiming for the stars!!!
 
 In other news, SlimeVR infiltrated the Basis servers for their gigantic 1000 user load test last month. Thanks to everyone who repped SlimeVR by wearing the Nighty avatar, and those who stopped by to say howdy to Zrock35 and g'day to me.
 The instance peaked at over 1100 users in one single zone! Was ***so cool*** to experience, I would highly recommend checking out their technology if you are at all interested in cutting edge VR. (pic below)
-![attachment](/blog/posts/weekly-update-234/72052_1785151681720_131.webp)
+
+![attachment](assets/s2-b1_2435626426e.jpg)
+
 ## Butterfly News <img src="/blog/emoji/butterfly-1470467583323930685.webp" alt="butterfly" class="discord-emoji" />
 Its been a while since we have has any major news on Butterfly Trackers, but not due to lack of progress. Our design and development team have been flat out ensuring all the tiny little parts required to be designed, mass-manufactured, and put together are progressing as they should.
 
@@ -39,7 +44,10 @@ In other news, after many design iteration talks with the manufacturer, we have 
 Finally, we are nearly done with out final case design. While the overall shape and features of the case remain unchanged, there has been lots of work on preparing them for mass production with injection moulding. There are lots of weird design additions and things u need to add so they pop out of the mould nicely, so its a lot of small iterations and design discussions that need to be done with the designer and manufacturer.
 
 Pre-order here: http://slimevr.dev/smoldc
-![attachment](/blog/posts/weekly-update-234/71750_1785151670049_130.webp)
+
+
+![attachment](assets/s3-c5_butterflycase.png)
+
 ## Ecosystem News <img src="/blog/emoji/nighty_hug-1314209493747241011.webp" alt="nighty_hug" class="discord-emoji" />
 All the cool stuff that's been held up by the switch to Electron have finally breached the gates, with a flurry of new additions and changes being added to our upcoming v20 SlimeVR build. The common bugs with v19, such as config and java errors have been thoroughly smooshed, as well as a giant list of new additions and Quality of Life changes, such as:
 * Settings quiz on start-up to preconfigure your settings for what you plan to use slimes for (PCVR, standalone, vtubing, mocap, etc)
