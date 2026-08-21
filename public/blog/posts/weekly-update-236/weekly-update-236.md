@@ -64,7 +64,7 @@ Ready yourself for a bunch of SlimeVR news bits to bite on:
 * The Slime cave LASER has been heating up, branding its mark on loads of important and silly things to get the team familiar with how it works. We wanted to test 'stamping' important information such as FCC identification codes on some of our products, so these tests were very important to find the limits of what materials work, the speed at which we can fire out designs, and if it is good enough to meet the strict requirements for labelling compliance information. We decided to stick with other methods for marking certification stuff, but you can check out some of the cool stuff that's been melted in the cave below.
 
 <video controls src="assets/3-Rapid-Roundup/a1-d1_0606.mp4" />
-![attachment](assets/3-Rapid-Roundup/a2-d3_20260525_1952082026-06-04.mp4)
+<video controls src="assets/3-Rapid-Roundup/a2-d3_20260525_1952082026-06-04.mp4" />
 ![attachment](assets/3-Rapid-Roundup/a3-d4_79fdf16f-eb60-4e9c-a915-569b0cbc6a79.jpg)
 ![attachment](assets/3-Rapid-Roundup/a4-d5_20260525_212327.jpg)
 

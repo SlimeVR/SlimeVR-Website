@@ -64,6 +64,6 @@ Ready yourself for a bunch of SlimeVR news bits to bite on:
 * MOCAPers and VTubers rejoice... again. I personally took it upon myself to make fingers look cool as heck. Sickened by the old equi-length phalanx of our current finger system, I have added a system to asymmetrically divide fingers into more appealing and natural subdivisions. This is extremely important as now you can now do finger hearts! Check the little demo below.
 
 ![attachment](assets/s2/c1%20bafkreiacjnkspm47pbzg4fq6p6iddsv4clpgx3w2kpalej6ygp5umfaz2u.webp)
-![attachment](assets/s2/c2_0318.mp4)
+<video controls src="assets/s2/c2_0318.mp4" />
 
 *That's it for this week. Thank you for reading to the end, hope you all have a lovely week and weekend. See you space slimethings~! <3*
