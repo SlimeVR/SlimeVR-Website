@@ -44,6 +44,9 @@ importers:
       front-matter:
         specifier: ^4.0.2
         version: 4.0.2
+      get-video-id:
+        specifier: ^4.2.0
+        version: 4.2.0
       hast-util-to-string:
         specifier: ^3.0.1
         version: 3.0.1
@@ -2586,6 +2589,10 @@ packages:
   get-stream@8.0.1:
     resolution: {integrity: sha512-VaUJspBffn/LMCJVoMvSAdmscJyS1auj5Zulnn5UoYcY531UWmdwhRWkcGKnGU93m5HSXP9LP2usOryrBtQowA==}
     engines: {node: '>=16'}
+
+  get-video-id@4.2.0:
+    resolution: {integrity: sha512-jRGMts6wFqruMF85oEHY0aLqdn9Eo/AL/VVEwxJk8SWY5nNJDOK4fj1WUPO9/+CnhexZh2l3sZ4S+qGIJJJ8YA==}
+    engines: {node: ^20.19.0 || >=22.0.0}
 
   giget@2.0.0:
     resolution: {integrity: sha512-L5bGsVkxJbJgdnwyuheIunkGatUF/zssUoxxjACCseZYAVbaqdh9Tsmmlkl8vYan09H7sbvKt4pS8GqKLBrEzA==}
@@ -6336,6 +6343,8 @@ snapshots:
   get-port-please@3.2.0: {}
 
   get-stream@8.0.1: {}
+
+  get-video-id@4.2.0: {}
 
   giget@2.0.0:
     dependencies:

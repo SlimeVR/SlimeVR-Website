@@ -29,6 +29,7 @@
     "@tanstack/solid-query": "^5.101.4",
     "clsx": "^2.1.1",
     "front-matter": "^4.0.2",
+    "get-video-id": "^4.2.0",
     "hast-util-to-string": "^3.0.1",
     "js-yaml": "^5.2.3",
     "overlayscrollbars": "^2.13.0",
