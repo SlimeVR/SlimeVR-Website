@@ -47,4 +47,4 @@ https://discord.com/channels/817184208525983775/1129107343058153623 has been upd
 ![alt text](assets/image-2.webp)
 ![alt text](assets/image-3.webp)
 ![alt text](assets/image-4.webp)
-<video controls src="assets/PXL_20260706_063624828.mp4" title="Title" />
+<video controls src="assets/PXL_20260706_063624828.mp4" />

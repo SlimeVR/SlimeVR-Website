@@ -13,11 +13,17 @@ Shipment 16 has triumphantly arrived at Crowd Supply warehouses in Texas.** Orde
 
 **Shipment 17**
 Our next shipment, 17, has been organised and ordered. Expect this to be another big big shipment, hopefully with even more overstock. Not many details on this as yet, but parts and assembly are already being worked on, and I will have more info on this in the coming weeks once all our plans solidify.
-![attachment](/blog/posts/weekly-update-232/76569_1785151755807_138.webp)
+
+![attachment](assets/i1-13516137632512471d.png)
+
 ## Butterfly News
+
 While the SlimeVR team at the cave have been busy designing and organising production of our Butterfly Trackers, a second review of Butterfly Trackers has gone live, this time with the frenetic **Kokou**.
 
-It's an energetic, cute, and entertainingly unique take on what's so exciting about Butterfly Trackers. It's not too long, so I highly recommend checking it out if you are interested: https://www.youtube.com/watch?v=RC6hxWJvv9Q
+It's an energetic, cute, and entertainingly unique take on what's so exciting about Butterfly Trackers. It's not too long, so I highly recommend checking it out if you are interested: 
+
+<video controls src="https://www.youtube.com/watch?v=RC6hxWJvv9Q" />
+
 ## SlimeVR Server news <img src="/public/blog/emoji/nighty_a-1314209496029204572.webp" alt="nighty_a" class="discord-emoji" />
 You may have noticed news slowing down a bit recently. Well there is good reason for that, as our core team is shifting focus to re-evaluate and prioritise long standing problems with our software stack.
 
