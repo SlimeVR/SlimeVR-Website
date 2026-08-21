@@ -13,12 +13,13 @@ function getYoutubeVideoId(videoUrl: string | undefined): string | null {
     : null;
 }
 
-const YoutubeEmbed = (props: { url: string }) => (
+const YoutubeEmbed = (props: { videoId: string }) => (
   <div class="aspect-video">
     <iframe
-      src={props.url}
+      src={`https://www.youtube.com/embed/${props.videoId}`}
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowfullscreen
+      class="w-full h-full"
     />
   </div>
 );
@@ -31,6 +32,13 @@ export const MarkdownBaseComponentOverrides = ({
   a: ({ node, href, children, ...props }) => {
     const ytVideoId = getYoutubeVideoId(href);
 
+    const isPlainUrl =
+      node?.children?.length === 1 &&
+      node?.children[0].type === "text" &&
+      node?.children[0].value === href;
+
+    if (isPlainUrl && ytVideoId) return <YoutubeEmbed videoId={ytVideoId} />;
+
     return (
       <a href={href} {...props}>
         {children}
@@ -38,17 +46,16 @@ export const MarkdownBaseComponentOverrides = ({
     );
   },
   img: (props) => {
-    const { node, src, ...imgProps } = props;
     const resolvedSrc =
-      typeof src === "string" ? resolveAssetPath(postId, src) : src;
-    const isPlainUrl =
-      node?.children?.length === 1 &&
-      node?.children[0].type === "text" &&
-      node?.children[0].value === src;
+      typeof props.src === "string"
+        ? resolveAssetPath(postId, props.src)
+        : props.src;
 
-    if (isPlainUrl && resolvedSrc) return <YoutubeEmbed url={src} />;
+    if (props.class?.includes("discord-emoji")) {
+      return <img {...props} src={resolvedSrc} loading="lazy" />;
+    }
 
-    return <img {...props} src={resolvedSrc} loading="lazy" />;
+    return <img {...props} src={resolvedSrc} class="max-h-96 object-contain mx-auto" loading="lazy" />;
   },
   video: (props) => {
     const { src } = props;
