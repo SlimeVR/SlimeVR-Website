@@ -2,7 +2,7 @@
 title: "Weekly Dev Update #230"
 date: "2026-03-19T00:00:00.000Z"
 description: "Hiyo slime gang~! Spazzwan here, with my 30th official SlimeVR update. I hope you all have been enjoying them as much as I enjoy writing them..."
-thumbnailUrl: "assets/80147_1785151797077_145.webp"
+thumbnailUrl: "assets/s1/i4-a3_20260316_230556.jpg"
 ---
 
 Hiyo slime gang~! Spazzwan here, with my 30th official SlimeVR update. I hope you all have been enjoying them as much as I enjoy writing them <3

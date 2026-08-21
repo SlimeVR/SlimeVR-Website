@@ -2,6 +2,7 @@
 title: "Weekly Dev Update #226"
 date: "2026-02-07T00:00:00.000Z"
 description: "Hiyo slime gang~! Spazzwan here, with a very buttery update that I hope will fly into your hearts with a flutter. **Shipment 15.1:** Finally finished being packed, it is sitting patiently at SlimeV..."
+thumbnailUrl: "assets/1-b2.jpg"
 ---
 
 Hiyo slime gang~! Spazzwan here, with a very buttery update that I hope will fly into your hearts with a flutter.

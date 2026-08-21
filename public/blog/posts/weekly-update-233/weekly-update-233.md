@@ -2,6 +2,7 @@
 title: "Weekly Dev Update #233"
 date: "2026-04-14T00:00:00.000Z"
 description: "Hiyo Slimes, Spazzwan here, with a sooner than usual update to fill in for all the late ones recently. Enjoy..."
+thumbnailUrl: "assets/i1-INSTOCK123115135.png"
 ---
 
 Hiyo Slimes, Spazzwan here, with a sooner than usual update to fill in for all the late ones recently. Enjoy <3

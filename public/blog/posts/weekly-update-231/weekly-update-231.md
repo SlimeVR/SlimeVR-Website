@@ -2,7 +2,6 @@
 title: "Weekly Dev Update #231"
 date: "2026-03-29T00:00:00.000Z"
 description: "Hiyo Slimes, Spazzwan here, ready to slime you up with more news and info from across the slimeverse for this weeks update. Enjoy! **Shipment 16** Shipment 16 has left the Slime Cave and is on the..."
-thumbnailUrl: "assets/79342_1785151788642_142.webp"
 ---
 
 Hiyo Slimes, Spazzwan here, ready to slime you up with more news and info from across the slimeverse for this weeks update. Enjoy!

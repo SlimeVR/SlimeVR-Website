@@ -2,7 +2,7 @@
 title: "Weekly Dev Update #228"
 date: "2026-02-25T00:00:00.000Z"
 description: "Hiyo slime gang~! Spazzwan <img src=\"/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp\" alt=\"SKC_SpazzwanLogo\" class=\"discord-emoji\" /> here, with a rather late but still great update for you t..."
-thumbnailUrl: "assets/89959_1785152026682_166.webp"
+thumbnailUrl: "assets/Rapid-Roundup/2-c3_plushie.jpg"
 ---
 
 Hiyo slime gang~! Spazzwan <img src="/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp" alt="SKC_SpazzwanLogo" class="discord-emoji" /> here, with a rather late but still great update for you to enjoy! <3
