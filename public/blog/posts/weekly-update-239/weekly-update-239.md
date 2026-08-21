@@ -5,10 +5,10 @@ description: "A week ago we ran a poll and asked for feedback on the most common
 thumbnailUrl: "assets/image-4.webp"
 ---
 
-## Feedback <img src="/blog/emoji/nighty_question-1314209482133209088.webp" alt="nighty_question" class="discord-emoji" />
+## Feedback <img src="/public/blog/emoji/nighty_question-1314209482133209088.webp" alt="nighty_question" class="discord-emoji" />
 A week ago we ran a poll and asked for feedback on the most common issues you experience when using SlimeVR, and the response was immense. First up, thank you everyone who responded. Your feedback helps us direct our efforts effectively, and we want to use today's update to go over the most common issues that came up, and our plans to address them.
 
-## Calibration Issues <img src="/blog/emoji/reset_mounting-1398027229585211453.webp" alt="reset_mounting" class="discord-emoji" /> (45%)
+## Calibration Issues <img src="/public/blog/emoji/reset_mounting-1398027229585211453.webp" alt="reset_mounting" class="discord-emoji" /> (45%)
 By far the most common issue mentioned by SlimeVR users was mounting and reset issues. These often manifested as trackers not matching user movements, most noticeably in legs and hip when changing poses. While it's easy to say "do the resets better", it's clearly not working. Everyone is different, and getting good tracking shouldn't be locked behind a skill check.
 
 What are we doing about it?
@@ -25,7 +25,7 @@ What are we doing about it?
 * The complexity of home networks makes this hard to address, but our support has determined a few common router settings that can, in many cases, completely nullify this issue. Please give these a try if you are experiencing connection issues. More info here: https://discord.com/channels/817184208525983775/878727840118505533/1525566303694360636
 
 Of course, if you bought Butterfly Trackers, you are already set. Butterfly Trackers don't use Wi-Fi at all, and are bundled with a dedicated dongle already. You will never suffer from a forced ISP router update crippling your fun.
-## Drift <img src="/blog/emoji/nighty_cry-1314209498554175578.webp" alt="nighty_cry" class="discord-emoji" /> (17%)
+## Drift <img src="/public/blog/emoji/nighty_cry-1314209498554175578.webp" alt="nighty_cry" class="discord-emoji" /> (17%)
 Drift is when your trackers *very* slowly turn sideways during use, and drift is expected when using SlimeVR trackers. Depending on your activity level, official trackers are expected to achieve 30 to 60 minutes of play time before requiring correction. Correcting drift simply means triggering a Yaw Reset by facing forward and double-tapping your chest tracker (and can be done while sitting). Many calibration problems were incorrectly reported as drift.
 
 If you are getting worse results with official SlimeVR trackers, please calibrate your trackers' IMU chip before putting them on. Just turn them all on, place them down somewhere, and leave them completely still for 30 seconds before wearing them. Trackers will often warm up during use, which can result more drift if they were calibrated when cold. If you find this is the case, just take them off, set them down again for 10 seconds, then put them back on.
@@ -35,10 +35,10 @@ If you are getting worse results with official SlimeVR trackers, please calibrat
 * We have plans to add temperature based feedback in the server to warn users to re-calibrate their trackers if their tracker has changed temperature significantly since it was last done.
 * We are constantly re-tuning our IMU parameters to improve drift times, and will continue to do so. **Make sure your trackers are up to date to get the best tuning!** (current version is 0.7.2)
 * We are working on custom advanced fusion algorithms that account specifically for full-body tracking use-cases, which should also improve drift performance.
-## Butterfly News <img src="/blog/emoji/nighty_yay-1319261631217143910.webp" alt="nighty_yay" class="discord-emoji" /> <img src="/blog/emoji/butterfly-1470467583323930685.webp" alt="butterfly" class="discord-emoji" />
-As usual, the team has been hard at work being busy bees in order to get the Butterfly Trackers out on time. This week we saw our Butterfly Tracker case mould designs being finalised, a fresh design for our Butterfly Dongle tester jig, and a realised prototype of our redesigned and improved Charging Dock. Check out all the juicy pics and videos below! We even have a beautiful 4k render of a Butterfly Tracker for you to drool over (it looks so tasty!) <img src="/blog/emoji/mDrool-777575446665494558.webp" alt="mDrool" class="discord-emoji" />
-## Shipment Update <img src="/blog/emoji/bingus_gun-1404234276630958080.webp" alt="bingus_gun" class="discord-emoji" />
-https://discord.com/channels/817184208525983775/1129107343058153623 has been updated by our slime overlords to have the latest timeframes and info on Shipment 17, which many of you are frothing at the mouth for info on. Luckily for you, we can now say that shipment 17 is all piled up in the SlimeVR HQ and ready for UPS to whisk it away to America in the coming week. Yippee! <img src="/blog/emoji/SKC_yippie-1192868297713135626.webp" alt="SKC_yippie" class="discord-emoji" />
+## Butterfly News <img src="/public/blog/emoji/nighty_yay-1319261631217143910.webp" alt="nighty_yay" class="discord-emoji" /> <img src="/public/blog/emoji/butterfly-1470467583323930685.webp" alt="butterfly" class="discord-emoji" />
+As usual, the team has been hard at work being busy bees in order to get the Butterfly Trackers out on time. This week we saw our Butterfly Tracker case mould designs being finalised, a fresh design for our Butterfly Dongle tester jig, and a realised prototype of our redesigned and improved Charging Dock. Check out all the juicy pics and videos below! We even have a beautiful 4k render of a Butterfly Tracker for you to drool over (it looks so tasty!) <img src="/public/blog/emoji/mDrool-777575446665494558.webp" alt="mDrool" class="discord-emoji" />
+## Shipment Update <img src="/public/blog/emoji/bingus_gun-1404234276630958080.webp" alt="bingus_gun" class="discord-emoji" />
+https://discord.com/channels/817184208525983775/1129107343058153623 has been updated by our slime overlords to have the latest timeframes and info on Shipment 17, which many of you are frothing at the mouth for info on. Luckily for you, we can now say that shipment 17 is all piled up in the SlimeVR HQ and ready for UPS to whisk it away to America in the coming week. Yippee! <img src="/public/blog/emoji/SKC_yippie-1192868297713135626.webp" alt="SKC_yippie" class="discord-emoji" />
 
 *That's it for this week. Thank you for reading to the end, hope you all have a lovely week and weekend. See you, space slimethings!*
 

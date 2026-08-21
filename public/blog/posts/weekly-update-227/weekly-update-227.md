@@ -1,11 +1,11 @@
 ---
 title: "Weekly Dev Update #227"
 date: "2026-02-16T00:00:00.000Z"
-description: "Hiyo slime gang~! Spazzwan <img src=\"/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp\" alt=\"SKC_SpazzwanLogo\" class=\"discord-emoji\" /> here, with a relaxing update to refresh your mind and sti..."
+description: "Hiyo slime gang~! Spazzwan <img src=\"/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp\" alt=\"SKC_SpazzwanLogo\" class=\"discord-emoji\" /> here, with a relaxing update to refresh your mind and sti..."
 ---
 
-Hiyo slime gang~! Spazzwan <img src="/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp" alt="SKC_SpazzwanLogo" class="discord-emoji" /> here, with a relaxing update to refresh your mind and stimulate your senses.
-## Shipment update <img src="/blog/emoji/nighty_nom-1314209503276699708.webp" alt="nighty_nom" class="discord-emoji" />
+Hiyo slime gang~! Spazzwan <img src="/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp" alt="SKC_SpazzwanLogo" class="discord-emoji" /> here, with a relaxing update to refresh your mind and stimulate your senses.
+## Shipment update <img src="/public/blog/emoji/nighty_nom-1314209503276699708.webp" alt="nighty_nom" class="discord-emoji" />
 **Shipment 15.1:**
 Currently working its way through the complicated maze that is international logistics, Shipment 15.1 has departed NL, and is set to arrive in Dallas Fort Worth airport on Wednesday after its brief stopover in Chicago. There have been no exceptions so far, no paperwork issues, and no delays, so it looks to be quite zoomy this time. I am expecting we will start seeing activity from Crowd Supply regarding orders from this shipment sometime next week, so keep your eyes on your inbox in the coming week for shipping notifications from Crowd Supply.
 There is always a chance something holds up the shipment, but I am expecting this shipment to **arrive at CS late this week.** Over 3000 sets in this one!
@@ -20,7 +20,7 @@ __To sum up the current sets and when they are next expected:__
 S**15.1** (~~mid~~-late Feb) **-** Contains: 5+0, 6+2, 8+2, 12+4, upgrades (hip, feet)
 S**15.2** (early March) **-** Contains: DIY, upgrades
 S**16** (mid-late March) **-** Contains: **5+0**, **6+0**, 6+2, DIY, upgrades
-## Butterfly News <img src="/blog/emoji/nighty_hug-1314209493747241011.webp" alt="nighty_hug" class="discord-emoji" />
+## Butterfly News <img src="/public/blog/emoji/nighty_hug-1314209493747241011.webp" alt="nighty_hug" class="discord-emoji" />
 Wow.... what a week. It has been 6 days since we launched the Butterfly Tracker campaign, with the campaign officially hitting 100% a little over a day after starting. We are incredibly humbled by the love and support that you slimes have shown us and the community, not just by pledging but by commenting on our trailer, our posts on social media, and in this discord. After such an exhausting lead-up to the launch, it was a breath of fresh air to see all the positivity. Thank you all <3
 
 With that all said, let's get to the meat of the news.
@@ -29,7 +29,7 @@ We have posted our first campaign update since it was launched. You all had SO m
 https://www.crowdsupply.com/slimevr/slimevr-butterfly-trackers/updates/were-funded-plus-q-and-a
 
 Next, we have shipped out even more review sets! The first wave of sets were sent out a few weeks ago, more were shipped out this week, and we have even more going out this week. There is still over 30 days left in the campaign, so expect a bunch of reviews to start streaming out in the next few weeks from the amazing creators we hand-picked. I am really looking forward to seeing them.
-## Butterfly News Continued... <img src="/blog/emoji/butterfly-1470467583323930685.webp" alt="butterfly" class="discord-emoji" />
+## Butterfly News Continued... <img src="/public/blog/emoji/butterfly-1470467583323930685.webp" alt="butterfly" class="discord-emoji" />
 
 On the hardware design side of things, we have had two strong advancements. Firstly, Cake has been hard at work on our Butterfly tester, which is now approaching design completion. It's one of those weird pieces of the hardware development puzzle, but VERY important for quality assurance, so it's good to see it slowly fleshing out. Similarly, Meia has been working on our Butterfly Dongle PCB, which has been fully panelised and is also coming along fantastically.
 
@@ -46,7 +46,7 @@ As always, if you are interested in Butterfly Trackers, head over to the campaig
 ![attachment](/blog/posts/weekly-update-227/102208_1785152390765_195.webp)
 ![attachment](/blog/posts/weekly-update-227/102474_1785152394662_197.webp)
 ![attachment](/blog/posts/weekly-update-227/102522_1785152396664_198.webp)
-## Rapid Roundup <img src="/blog/emoji/nighty_art-1314209500709781524.webp" alt="nighty_art" class="discord-emoji" />
+## Rapid Roundup <img src="/public/blog/emoji/nighty_art-1314209500709781524.webp" alt="nighty_art" class="discord-emoji" />
 Ready yourself for a bunch of SlimeVR news bits to bite on:
 * For those of you who missed the announcement on our Livestream the other day, our Plushie is finally heading to the store! Expect it to show up in our official slime store in the next few weeks for $60 USD https://shop.slimevr.dev/collections/all
 * Our new SlimeVR Glove PCB arrived in the cave (pic below). This bad boy can fit so many IMU's on it *slaps the top*. Capable of running up to 23(!!!) IMUs at full speed, this new model fixes one of the biggest issues that was holding us back, as older versions that relied on I2C would get slower for every IMU added. Big team effort to this point, way to go team!

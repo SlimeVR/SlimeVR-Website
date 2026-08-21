@@ -5,7 +5,7 @@ description: "Hiyo slime gang~! Spazzwan here, with a very buttery update that I
 ---
 
 Hiyo slime gang~! Spazzwan here, with a very buttery update that I hope will fly into your hearts with a flutter.
-## Shipment update <img src="/blog/emoji/nighty_nom-1314209503276699708.webp" alt="nighty_nom" class="discord-emoji" />
+## Shipment update <img src="/public/blog/emoji/nighty_nom-1314209503276699708.webp" alt="nighty_nom" class="discord-emoji" />
 **Shipment 15.1:**
 Finally finished being packed, it is sitting patiently at SlimeVR HQ, all wrapped up and ready for Truck-kun to arrive. UPS pickup has been confirmed, with pick up **locked in for MONDAY**. Good news is we managed to squeeze on 1400 more sets, so there are still a lot of LBS, FBS and DTS sets unsold in this shipment, so waits should be short if u order those. The bad news is that the small handful of you waiting for DIY sets will have to wait a few weeks more, unfortunately. <#1129107343058153623> was updated yesterday with exact numbers of what's in here. I will be posting shipment updates at each major milestone of this shipment once tracking is up and running, and we expect these to arrive at CS **early march**
 
@@ -19,7 +19,7 @@ __To sum up the current sets and when they are next expected:__
 S**15.1** (mid-late Feb) **-** Contains: 6+0, 6+2, 8+2, 12+4, upgrades
 S**15.2** (late Feb-early March) **-** Contains: DIY, upgrades
 S**16** (mid-late March) **-** Contains: 5+0, 6+0, 6+2, 12+4, DIY, upgrades
-## Butterfly News <img src="/blog/emoji/nighty_hug-1314209493747241011.webp" alt="nighty_hug" class="discord-emoji" />
+## Butterfly News <img src="/public/blog/emoji/nighty_hug-1314209493747241011.webp" alt="nighty_hug" class="discord-emoji" />
 2 DAYS LEFT UNTIL BUTTERFLY CAMPAIGN!! 2 DAYS LEFT!! *2 DAYS LEFT!! 2 DAYS LEFT!!* **2 DAYS LEFT!! 2 DAYS LEFT!!** *shakes you*
 
 *Ahem*... Sorry about that. I am just very excited about Butterfly trackers....
@@ -32,7 +32,7 @@ Oh and obviously goes without saying, but if you are interested in Butterfly tra
 
 We hope you can feel all the love and passion the whole team has poured into this over the last few years.
 ![attachment](/blog/posts/weekly-update-226/103850_1785152442689_219.webp)
-## SlimeVR Tip Corner <img src="/blog/emoji/nighty_nerd-1451711628595691560.webp" alt="nighty_nerd" class="discord-emoji" />
+## SlimeVR Tip Corner <img src="/public/blog/emoji/nighty_nerd-1451711628595691560.webp" alt="nighty_nerd" class="discord-emoji" />
 **Trackers lagging or ping going wild? **The main reason for this is packet loss, and is usually caused by interference on the radio bands your 2.4ghz WiFi is using for the trackers.
 ### How do I fix it?
 There are three main strategies to resolve this issue, all are found in the 2.4ghz settings of the router:
@@ -44,7 +44,7 @@ This makes your WiFi more likely to 'miss' sources of interference at the cost o
 This is mostly for routers with WiFi 6 and higher, as Wi Fi 6 uses both 2.4ghz and 5ghz together to boost the speed of main devices. The downside is it can cripple things that rely on 2.4ghz, like Slime trackers. Ideally set to "b/g/n" or lowest you can set it that includes those versions.
 
 Accessing these settings is different for every router, but it can usually be done by following this guide from Nintendo and navigating to either 2.4ghz WiFi settings, advanced WiFi options, or WiFi security options: https://en-americas-support.nintendo.com/app/answers/detail/a_id/657
-## Rapid Roundup <img src="/blog/emoji/nighty_art-1314209500709781524.webp" alt="nighty_art" class="discord-emoji" />
+## Rapid Roundup <img src="/public/blog/emoji/nighty_art-1314209500709781524.webp" alt="nighty_art" class="discord-emoji" />
 Ready yourself for a bunch of SlimeVR news bits to bite on:
 * Aed has begun working on a setup onboarding quiz, similar to how discord does it, where users will go through a small series of questions to set up the server for them. Standalone users will have OSC enabled automatically, while a mocap artist might have mocap mode enabled if they dont have a headset.
 * A new MUMO has entered the battle! Well not really completely new, but Meia has a shiny new revision of her ever-popular ICM module. Check it out below.
