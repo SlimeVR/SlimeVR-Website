@@ -2,6 +2,7 @@
 title: "Weekly Dev Update #225"
 date: "2026-01-27T00:00:00.000Z"
 description: "Hiyo slime gang~! Spazzwan<img src=\"/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp\" alt=\"SKC_SpazzwanLogo\" class=\"discord-emoji\" /> here, with more slimevr news to fill up the news-hole in y..."
+thumbnailUrl: "assets/1-a1.png"
 ---
 
 Hiyo slime gang~! Spazzwan<img src="/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp" alt="SKC_SpazzwanLogo" class="discord-emoji" /> here, with more slimevr news to fill up the news-hole in your heart. What a year so far huh?... its *what*? ***its still only January***? oh...<img src="/public/blog/emoji/nyaflop2-1369612021267693610.webp" alt="nyaflop2" class="discord-emoji" />

@@ -2,6 +2,7 @@
 title: "Weekly Dev Update #227"
 date: "2026-02-16T00:00:00.000Z"
 description: "Hiyo slime gang~! Spazzwan <img src=\"/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp\" alt=\"SKC_SpazzwanLogo\" class=\"discord-emoji\" /> here, with a relaxing update to refresh your mind and sti..."
+thumbnailUrl: "assets/Butterfly-News-Continued/3-c5slimerave.png"
 ---
 
 Hiyo slime gang~! Spazzwan <img src="/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp" alt="SKC_SpazzwanLogo" class="discord-emoji" /> here, with a relaxing update to refresh your mind and stimulate your senses.
