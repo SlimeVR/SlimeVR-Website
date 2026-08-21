@@ -41,7 +41,7 @@ Ready yourself for a bunch of SlimeVR news bits to bite on:
 * The FLUFFY SQUISHY CUTE BALLS OF LOVE that are the Nighty Plushie have arrived at the SlimeVR Cave in Netherlands, ready to be re-directed towards Crowd Supply for order fulfilment. We are in the process of organising their shipment, and are expecting them to hit Crowd Supply warehouses sometime in late July. Check out how cute they are in the attached pics!
 * Sapphire has managed to get our serial console to work with smol slimes, including having all the important commands such as `Meow!` as clickable buttons. This should help with simplifying and reducing the knowledge wall for debugging and messing with smol slimes (including Butterfly Trackers). Be sure to give them a pat on the head if you see them in VR (with consent of course).
 * The first video in our new slew of SlimeVR related content has been launched, hosted by the lovely Jacobfov. We plan to do lots more videos in the coming months, so stay subscribe to our YouTube channel for a bunch of informative and entertaining content like this! Check it out here: 
- <video controls src="https://www.youtube.com/watch?v=quDmfCtTQ0Y" />
+ <video controls src="https://www.youtube.com/watch?v=quDmfCtTQ0Y"
 
 ![alt text](assets/c1_20260626_162906.jpg)
 ![alt text](assets/c2_image.webp)

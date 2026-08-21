@@ -8,6 +8,7 @@ import fm from "front-matter";
 import { dump } from "js-yaml";
 
 export const BLOG_PAGE_SIZE = 20;
+const ASSETS_BASE_PATH = "/public";
 
 const blogPostsCache: Map<string, BlogPost> = new Map();
 let cacheManifestGeneratedAt: string | null = null;
@@ -99,7 +100,11 @@ export function resolveAssetPath(
 ): string | undefined {
   if (assetPath == undefined) return undefined;
 
-  if (assetPath.startsWith("/public")) return assetPath;
+  const assetPathInAssetsFolder = assetPath.startsWith(ASSETS_BASE_PATH)
+    ? assetPath.replace("ASSETS_BASE_PATH", "")
+    : assetPath;
 
-  return `/blog/posts/${postId}/${assetPath}`;
+  if (assetPathInAssetsFolder.startsWith("/")) return assetPathInAssetsFolder;
+
+  return `/blog/posts/${postId}/${assetPathInAssetsFolder}`;
 }
