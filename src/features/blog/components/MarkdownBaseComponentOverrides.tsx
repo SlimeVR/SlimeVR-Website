@@ -1,10 +1,7 @@
 import { SolidMarkdownComponents } from "solid-markdown";
 import getVideoId from "get-video-id";
-
-import "../emoji.css";
 import { resolveAssetPath } from "../utils/blog.helper";
-import { children } from "solid-js";
-import { noop } from "@tanstack/solid-query";
+import "../emoji.css";
 
 function getYoutubeVideoId(videoUrl: string | undefined): string | null {
   if (videoUrl === undefined) return null;

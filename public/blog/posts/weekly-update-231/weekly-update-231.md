@@ -28,7 +28,7 @@ I will provide graphs of the info in an upcoming update, so think of this kind o
 Ready yourself for a bunch of SlimeVR news bits to bite on:
 * Stermere was able to weave his wizardry and get our floor tweaks tech to be more reliable. A bug that caused certain edge cases to not have feet clipping engage has been, hopefully, found and squished. Expect a this to appear in a beta build very soon! Video demo below.
 * For those who missed it, the SlimeVR team was interviewed in the latest Virtual Show Production podcast, with the effervescent **Smeltie** and your favourite demon-cat **ZRock35** taking the stage to answer all their Butterfly Tracker related questions and discussions. It's a fun watch if you love SlimeVR or want to learn more about Butterfly Trackers. Check it out here: 
- <video controls src="https://www.youtube.com/watch?v=_ulecbS6kwU"
+ https://www.youtube.com/watch?v=_ulecbS6kwU
 * Aed has been working on allowing users to customize which tracker taps do what, so those of you who hate tapping your chest to yaw reset have something to look forward to. Wont be out for a while, but good news for a lot of you I'm sure.
  <video controls src="assets/c103302026-03-30x.mp4" />
 

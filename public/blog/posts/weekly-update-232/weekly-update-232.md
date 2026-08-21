@@ -22,7 +22,7 @@ While the SlimeVR team at the cave have been busy designing and organising produ
 
 It's an energetic, cute, and entertainingly unique take on what's so exciting about Butterfly Trackers. It's not too long, so I highly recommend checking it out if you are interested: 
 
-<video controls src="https://www.youtube.com/watch?v=RC6hxWJvv9Q"
+https://www.youtube.com/watch?v=RC6hxWJvv9Q
 
 ## SlimeVR Server news <img src="/public/blog/emoji/nighty_a-1314209496029204572.webp" alt="nighty_a" class="discord-emoji" />
 You may have noticed news slowing down a bit recently. Well there is good reason for that, as our core team is shifting focus to re-evaluate and prioritise long standing problems with our software stack.

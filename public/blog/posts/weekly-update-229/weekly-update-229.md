@@ -27,7 +27,7 @@ S**16** (mid-late March) **-** Contains: **6+0**, 6+2, DIY, upgrades
 
 ## Butterfly News <img src="/public/blog/emoji/butterfly-1470467583323930685.webp" alt="butterfly" class="discord-emoji" />
 Having just hit 300% funding, our Butterfly campaign has been a stellar success. You may have already seen, but our first review was extremely positive! Check it out if you haven't, as Jacobfov did an amazing job showcasing them: 
-<video controls src="https://www.youtube.com/watch?v=vBZreCeOmio"
+https://www.youtube.com/watch?v=vBZreCeOmio
 Expect to see more reviews*** very soon***.
 
 Only 12 days remain before the campaign officially concludes, though work continues on in the background as usual to make sure we hit our August shipping target. A few new advancements have been made since the last update, mostly related to quality assurance and materials testing.
