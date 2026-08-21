@@ -2,7 +2,7 @@
 title: "Weekly Dev Update #228"
 date: "2026-02-25T00:00:00.000Z"
 description: "Hiyo slime gang~! Spazzwan <img src=\"/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp\" alt=\"SKC_SpazzwanLogo\" class=\"discord-emoji\" /> here, with a rather late but still great update for you t..."
-thumbnailUrl: "/blog/posts/weekly-update-228/89959_1785152026682_166.webp"
+thumbnailUrl: "assets/89959_1785152026682_166.webp"
 ---
 
 Hiyo slime gang~! Spazzwan <img src="/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp" alt="SKC_SpazzwanLogo" class="discord-emoji" /> here, with a rather late but still great update for you to enjoy! <3
@@ -15,7 +15,9 @@ Now with the combined might of 15.2, this shipment will once again be moderately
 __To sum up the current sets and when they are next expected:__
 S**15.1** (At Crowd Supply) **-** Contains: 5+0, 6+2, 8+2, 12+4, upgrades (hip, feet)
 S**16** (mid-late March) **-** Contains: **5+0**, **6+0**, 6+2, DIY, upgrades
+
 ## Butterfly News <img src="/public/blog/emoji/butterfly-1470467583323930685.webp" alt="butterfly" class="discord-emoji" />
+
 Our campaign is going strong, with our funding goal passing 200% this week. Those of your hanging out for reviews will hopefully not have to wait much longer, as we have been confirming many of the review sets arrived in the hands of content creators shortly after the last update.
 
 Meanwhile the team chugs along as usual, perfecting all the little details that are required to make an exceptional product. The iron-on and Velcro patches patches are having their designs and documentation hopefully finalised to allow us to start ordering production samples for testing. Pics are attached below for your viewing pleasure.
@@ -27,13 +29,14 @@ Meanwhile, we have received the latest batch of Dock and Dongle cradle prototype
 We have also given strict battery tolerances guidelines for our battery manufacturers to ensure consistent and predictable sizing on the batteries we receive. Very important for such a tiny little gadget where every spare mm counts!
 
 And last but not least, we have been given the official Valve blessing to post a video of the Steam Frame running SlimeVR natively. Super cool to see it running so cleanly, and with our server on Steam, installing it will be just a click away. Check it out below! (Steam version is currently in beta testing [here](https://discord.com/channels/817184208525983775/1475535820822679552))
-![attachment](/blog/posts/weekly-update-228/89959_1785152026682_166.webp)
-![attachment](/blog/posts/weekly-update-228/89959_1785152027657_167.webp)
-![attachment](/blog/posts/weekly-update-228/89959_1785152029694_168.webp)
-![attachment](/blog/posts/weekly-update-228/92945_1785152101839_169.webp)
-![attachment](/blog/posts/weekly-update-228/93550_1785152155678_172.webp)
-![attachment](/blog/posts/weekly-update-228/95256_1785152205717_175.webp)
-![attachment](/blog/posts/weekly-update-228/99727_1785152232674_179.webp)
+
+![attachment](assets/Butterfly-News/1-b3_23523627.png)
+![attachment](assets/Butterfly-News/2-b4_23523628.png)
+![attachment](assets/Butterfly-News/3-b6_15ce2fe3-98d6-4f2c-b754-b24b1f2be410.jpg)
+![attachment](assets/Butterfly-News/4-b7_20260224_193115.jpg)
+![attachment](assets/Butterfly-News/5-b8_20260224_193346.jpg)
+![attachment](assets/Butterfly-News/6-b9_1356135age.png)
+
 ## Merch News <img src="/public/blog/emoji/nighty_hug-1314209493747241011.webp" alt="nighty_hug" class="discord-emoji" />
 
 We are finally about to launch our first ever official SlimeVR Merch!!
@@ -46,7 +49,8 @@ Ready yourself for a bunch of SlimeVR news bits to bite on:
 * Our SlimeVR server software currently has a release candidate in v18.2.0 RC1, which includes a few minor bug fixes, some rolled back resets code, and a framework for showing packet loss (currently only works with smol slimes on TDMA firmware). Go test it out if you can, particularly if you have any mounting reset issues with 18.1. Remember to leave feedback! Info here: https://discord.com/channels/817184208525983775/1474361730640515112
 * Our driver also has a release candidate, which removes that annoying chest binding popup in addition to a few other things like steam link support, acceleration data, and hmd names. Info here: https://discord.com/channels/817184208525983775/1471335847210254519
 
+![attachment](assets/Rapid-Roundup/1-c_2bafkreih6dt3nmnuucuynmect5lapsablue755vvhxkhalwnycusxuxun4e.jpg)
+![attachment](assets/Rapid-Roundup/2-c3_plushie.jpg)
+<video controls src="assets/Rapid-Roundup/d2_0226_2.mp4" />
+
 *That's it for this week. Thank you for reading to the end, hope you all have a lovely week and weekend. See you space slimethings~! <3*
-![attachment](/blog/posts/weekly-update-228/85767_1785151938660_163.webp)
-![attachment](/blog/posts/weekly-update-228/88757_1785151990691_164.webp)
-![attachment](/blog/posts/weekly-update-228/88892_1785151991738_165.webp)

@@ -75,7 +75,7 @@ Just a reminder, we have an amazing beta Butterscotch is working on that is gonn
 This beta changes how mounting resets work, changing it from a Ski pose to just **a single step forward**. It takes all the hard work out of learning the ski pose, and should make getting great tracking a lot easier.
 **We need more testers though, so head on over if you think this sounds interesting!!**
 
-*That's it for this week. Thank you for reading to the end, hope you all have a lovely week and weekend. See you space slimethings~! <3*
-
 ![attachment](assets/section-3/1.png)
 ![attachment](assets/section-3/2.png)
+
+*That's it for this week. Thank you for reading to the end, hope you all have a lovely week and weekend. See you space slimethings~! <3*

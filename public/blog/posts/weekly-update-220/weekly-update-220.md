@@ -23,7 +23,11 @@ Earlier this week, Shipment 15 started its long journey towards its final destin
 
 * If you ordered other things (DIY, upgrade):
 *Then the answer is **MAYBE.** You might be fulfilled by S15 or S15.1.*
+
+![attachment](assets/i1-a1.png)
+
 ## New Server!!! <img src="/public/blog/emoji/nighty_question-1314209482133209088.webp" alt="nighty_question" class="discord-emoji" />
+
 Wake up babe! New RC Just dropped!!!!
 
 18.0 is likely the biggest patch we have ever released, and is prepping for official launch with a Release candidate finally available. I have mentioned this for months in previous updates, but we are finally seeing the fruits of the months of labour by our team.
@@ -51,6 +55,13 @@ This update is HUGE, so we really need feedback to make sure this all goes smoot
 I know you are interested now. Go here to get it: https://discord.com/channels/817184208525983775/1446657436512419941
 ### **Please provide feedback if you can**
 It is invaluable to ensure we stay on the right track. Even small stuff can go a long way!
+
+
+![attachment](assets/Please-provide-feedback-if-you-can/1-b2.png)
+![attachment](assets/Please-provide-feedback-if-you-can/2-b3.png)
+![attachment](assets/Please-provide-feedback-if-you-can/3-b4.png)
+![attachment](assets/Please-provide-feedback-if-you-can/4-b5.png)
+
 ## Butterfly Launch SOON™ <img src="/public/blog/emoji/nighty_hug-1314209493747241011.webp" alt="nighty_hug" class="discord-emoji" />
 The cave is abuzz with preparation for the grand opening of our Butterfly Tracker campaign. There is a bunch of stuff being worked on, such as media, writing, voiceover, review kits, and much more. Expect lots more butterfly news in the coming weeks!
 Sign up for the campaign to get notified the moment we go live: https://slimevr.dev/smol

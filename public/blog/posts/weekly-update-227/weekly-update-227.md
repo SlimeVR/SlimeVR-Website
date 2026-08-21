@@ -43,9 +43,11 @@ As always, if you are interested in Butterfly Trackers, head over to the campaig
 
 ...............................................................................................................
 -# https://discord.com/events/817184208525983775/1472683026164219924
-![attachment](/blog/posts/weekly-update-227/102208_1785152390765_195.webp)
-![attachment](/blog/posts/weekly-update-227/102474_1785152394662_197.webp)
-![attachment](/blog/posts/weekly-update-227/102522_1785152396664_198.webp)
+
+![attachment](assets/Butterfly-News-Continued/1-c2tester.png)
+![attachment](assets/Butterfly-News-Continued/2-c3Panel2fixgenalphacensored.png)
+![attachment](assets/Butterfly-News-Continued/3-c5slimerave.png)
+
 ## Rapid Roundup <img src="/public/blog/emoji/nighty_art-1314209500709781524.webp" alt="nighty_art" class="discord-emoji" />
 Ready yourself for a bunch of SlimeVR news bits to bite on:
 * For those of you who missed the announcement on our Livestream the other day, our Plushie is finally heading to the store! Expect it to show up in our official slime store in the next few weeks for $60 USD https://shop.slimevr.dev/collections/all
@@ -54,5 +56,6 @@ Ready yourself for a bunch of SlimeVR news bits to bite on:
 * Hannah has been grinding away getting our behind-closed-doors Steam release and has a build successfully running on Linux. Big milestone for this hitting a public release. Way to go! pics below
 * Sebby is at it again, this time using slimes to emulate a controller to play Halo and Terraria. Why? To prove she can. If you are at all interested in using IMUs as a game controller, check out her demo posted in the media channel here: https://discord.com/channels/817184208525983775/903962635161174076/1472910637259686041
 
+![attachment](assets/Rapid-Roundup/d2SPIgloveprotomeia.jpg)
+
 *That's it for this week. Thank you for reading to the end, hope you all have a lovely week and weekend. See you space slimethings~! <3*
-![attachment](/blog/posts/weekly-update-227/100723_1785152249715_181.webp)

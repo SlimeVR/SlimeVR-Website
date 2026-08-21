@@ -48,4 +48,9 @@ Ready yourself for a bunch of SlimeVR news bits to bite on:
 * Due to hardware failures, our primary event manager and mascot, ZRock35, has been out of commission for the past few days. Big thank you to the lovely community members that have been helping cover for them <3
 * There has been a storm of tweaks, edits, and additions to our documentation by our loyal swarm of wordsmiths spearheaded by the venerable Amebun. There is far too much to list here, but hopefully if you need it you will appreciate their hard work maintaining the sacred texts.
 
+
+![attachment](assets/1-c1.png)
+![attachment](assets/2-c2.png)
+<video controls src="assets/3-c3.mp4" />
+
 *That's it for this week. Thank you for reading to the end, hope you all have a lovely week and weekend. See you space slimethings~! <3*

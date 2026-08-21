@@ -63,9 +63,9 @@ Ready yourself for a bunch of SlimeVR news bits to bite on:
 * Hannah has been working on our SlimeVR Updater program that installs and updates the server software in a super simple and seamless way on all platforms. It already looks amazing, check out her progress in the demo below.
 * The Slime cave LASER has been heating up, branding its mark on loads of important and silly things to get the team familiar with how it works. We wanted to test 'stamping' important information such as FCC identification codes on some of our products, so these tests were very important to find the limits of what materials work, the speed at which we can fire out designs, and if it is good enough to meet the strict requirements for labelling compliance information. We decided to stick with other methods for marking certification stuff, but you can check out some of the cool stuff that's been melted in the cave below.
 
-*That's it for this week. Thank you for reading to the end, hope you all have a lovely week and weekend. See you space slimethings~! <3*
-
 <video controls src="assets/3-Rapid-Roundup/a1-d1_0606.mp4" />
 ![attachment](assets/3-Rapid-Roundup/a2-d3_20260525_1952082026-06-04.mp4)
 ![attachment](assets/3-Rapid-Roundup/a3-d4_79fdf16f-eb60-4e9c-a915-569b0cbc6a79.jpg)
 ![attachment](assets/3-Rapid-Roundup/a4-d5_20260525_212327.jpg)
+
+*That's it for this week. Thank you for reading to the end, hope you all have a lovely week and weekend. See you space slimethings~! <3*
