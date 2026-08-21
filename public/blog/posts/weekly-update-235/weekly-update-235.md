@@ -1,12 +1,12 @@
 ---
 title: "Weekly Dev Update #235"
 date: "2026-05-22T00:00:00.000Z"
-description: "Hiyo Slimes, Spazzwan<img src=\"/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp\" alt=\"SKC_SpazzwanLogo\" class=\"discord-emoji\" /> here, back to regularly scheduled programming with another week..."
+description: "Hiyo Slimes, Spazzwan<img src=\"/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp\" alt=\"SKC_SpazzwanLogo\" class=\"discord-emoji\" /> here, back to regularly scheduled programming with another week..."
 thumbnailUrl: "assets/section-1/1.webp"
 ---
 
-Hiyo Slimes, Spazzwan<img src="/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp" alt="SKC_SpazzwanLogo" class="discord-emoji" /> here, back to regularly scheduled programming with another weekly SlimeVR update. My cat Puck says hi <img src="/blog/emoji/SKC_PuckJudges-1195088997211451463.webp" alt="SKC_PuckJudges" class="discord-emoji" />
-## Shipment News <img src="/blog/emoji/nighty_data-1314209491365007360.webp" alt="nighty_data" class="discord-emoji" />
+Hiyo Slimes, Spazzwan<img src="/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp" alt="SKC_SpazzwanLogo" class="discord-emoji" /> here, back to regularly scheduled programming with another weekly SlimeVR update. My cat Puck says hi <img src="/public/blog/emoji/SKC_PuckJudges-1195088997211451463.webp" alt="SKC_PuckJudges" class="discord-emoji" />
+## Shipment News <img src="/public/blog/emoji/nighty_data-1314209491365007360.webp" alt="nighty_data" class="discord-emoji" />
 **Current Stock**
 After Shipment 16 fully stocked most sets to 'in-stock' status, most of the stock has slowly been whittled away by fervent new slimes to the point where only the following sets and upgrades are available for immediate shipping:
 * Core Set V1.2 (6+0)
@@ -27,7 +27,7 @@ One of the biggest changes in this version was removing the feeder. It is now in
 The steam launch has been a long time coming, and was the culmination of huge work from many of the team, in particular Hannah, Sapphire, and Futura. Well done you amazing dorks! <3
 
 Check it out here: https://store.steampowered.com/app/3245490/SlimeVR/
-## Butterfly News <img src="/blog/emoji/butterfly-1470467583323930685.webp" alt="butterfly" class="discord-emoji" />
+## Butterfly News <img src="/public/blog/emoji/butterfly-1470467583323930685.webp" alt="butterfly" class="discord-emoji" />
 Butterfly Tracker development is kicking into high gear, with loads of parts in pre-production or already in production. There are still many hurdles we have to get over, but we are currently very confident in hitting our projected August 31 deadline for our first shipment. With that said, let me show you the cool stuff we have been working on recently.
 
 First up, we are progressing on packaging. While we are still in the design phase for this, there isn't too much iteration that needs to be done before we are ready to print. One of the most important parts for us is the art, which already has some concepts done for our Butterfly Tracker single packages and Dongle Kit, while our Sakura set has some special art that's close to complete. The current sketches for our tracker and dongle box are below. The art is so amazingly cute.
@@ -48,7 +48,7 @@ If you want to find out more or join the other cool people who ordered, go here:
 ![attachment](assets/section-1/5.webp)
 ![attachment](assets/section-1/6.webp)
 
-## SlimeVR News <img src="/blog/emoji/nighty_hug-1314209493747241011.webp" alt="nighty_hug" class="discord-emoji" />
+## SlimeVR News <img src="/public/blog/emoji/nighty_hug-1314209493747241011.webp" alt="nighty_hug" class="discord-emoji" />
 Lasers. SlimeVR has lasers now. Oh i need to explain? ...ok. The SlimeVR cave in Netherlands now home to a CO2 laser cutter/engraver machine for all kinds of prototyping and shenanigans. We plan to use this for making cool stuff, but for now its on toast duty. Check out the breakfast of champions that was crafted in the picture below.
 
 Our latest glove prototype is finally on order, and our dev team is excited for this one as it will be one of the main working prototypes we start sending out for devs to work with. Its a good first step from the design/concept phase to a working product, but there is still a lot of testing, changing, and testing again that needs to be done before this gets into your hands.. or onto your hands. The picture below is a render of what it will look like once the required parts are sourced by the manufacturer, hopefully very soon.
@@ -62,7 +62,7 @@ Last but not least, we have big plans to increase transparency within the SlimeV
 ![attachment](assets/section-2/3.webp)
 ![attachment](assets/section-2/4.webp)
 
-## Rapid Roundup <img src="/blog/emoji/nighty_nom-1314209503276699708.webp" alt="nighty_nom" class="discord-emoji" />
+## Rapid Roundup <img src="/public/blog/emoji/nighty_nom-1314209503276699708.webp" alt="nighty_nom" class="discord-emoji" />
 
 Ready yourself for a bunch of SlimeVR news bits to bite on:
 * The significant backlog of Official SlimeVR warranty claims has nearly been cleared thanks to the diligent work of our support team. Unfortunately our stockpile of extension cables ran dry and we are waiting on more short cables, so there may be delays for those. If you are affected, you will likely be contacted soon.

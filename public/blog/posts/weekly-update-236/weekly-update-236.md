@@ -1,12 +1,12 @@
 ---
 title: "Weekly Dev Update #236"
 date: "2026-06-09T00:00:00.000Z"
-description: "Hiyo Slimes, Spazzwan<img src=\"/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp\" alt=\"SKC_SpazzwanLogo\" class=\"discord-emoji\" /> here, with another weekly update. If you experience any symptom..."
+description: "Hiyo Slimes, Spazzwan<img src=\"/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp\" alt=\"SKC_SpazzwanLogo\" class=\"discord-emoji\" /> here, with another weekly update. If you experience any symptom..."
 thumbnailUrl: "assets/1-Butterfly-News-Part-2/i3-b4_20260520_211754.jpg"
 ---
 
-Hiyo Slimes, Spazzwan<img src="/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp" alt="SKC_SpazzwanLogo" class="discord-emoji" /> here, with another weekly update. If you experience any symptoms of lightheaded-ness or dizziness while digesting this update, please discontinue reading immediately and see a SlimeVR professional.
-## Shipment News <img src="/blog/emoji/nighty_data-1314209491365007360.webp" alt="nighty_data" class="discord-emoji" />
+Hiyo Slimes, Spazzwan<img src="/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp" alt="SKC_SpazzwanLogo" class="discord-emoji" /> here, with another weekly update. If you experience any symptoms of lightheaded-ness or dizziness while digesting this update, please discontinue reading immediately and see a SlimeVR professional.
+## Shipment News <img src="/public/blog/emoji/nighty_data-1314209491365007360.webp" alt="nighty_data" class="discord-emoji" />
 **Current Stock**
 The following sets and upgrades are *still* available for immediate shipping:
 * Core Set V1.2 (6+0)
@@ -16,12 +16,12 @@ The following sets and upgrades are *still* available for immediate shipping:
 **Shipment 17**
 Shipment 17 has now entered the assembly stage by Chain. Most of the work at the moment is being done assembly main trackers, as sets are still waiting on a few remaining parts before they can be packaged and stacked up for delivery.
 As mentioned last week, this shipment will likely arrive in the **later half of this month**.
-## Butterfly News Part 1 <img src="/blog/emoji/butterfly-1470467583323930685.webp" alt="butterfly" class="discord-emoji" />
+## Butterfly News Part 1 <img src="/public/blog/emoji/butterfly-1470467583323930685.webp" alt="butterfly" class="discord-emoji" />
 So... We have good news and we have not so good news. I'll get the not so good news out of the way:
 **Butterfly Trackers shipment will be delayed by 1 to 2 months**
 
-We evaluate our projections each month as part of our project management, and the fulfilment date has been shifted back to October due to case mould production being a little later than we originally projected. There is a chance they come earlier than October, but we are confident there will be no more significant delays. We will continue to do our best and be as transparent as possible, and we have even more checks in place to find and resolve issues that arise before they become a problem. We are deeply sorry. <img src="/blog/emoji/bingus_sad-1398416913222336582.webp" alt="bingus_sad" class="discord-emoji" />
-## Butterfly News Part 2 <img src="/blog/emoji/butterfly-1470467583323930685.webp" alt="butterfly" class="discord-emoji" />
+We evaluate our projections each month as part of our project management, and the fulfilment date has been shifted back to October due to case mould production being a little later than we originally projected. There is a chance they come earlier than October, but we are confident there will be no more significant delays. We will continue to do our best and be as transparent as possible, and we have even more checks in place to find and resolve issues that arise before they become a problem. We are deeply sorry. <img src="/public/blog/emoji/bingus_sad-1398416913222336582.webp" alt="bingus_sad" class="discord-emoji" />
+## Butterfly News Part 2 <img src="/public/blog/emoji/butterfly-1470467583323930685.webp" alt="butterfly" class="discord-emoji" />
 With that out of the way, lets move on to more positive news:
 
 We received new samples of tracker patches to the Slime cave for inspection and testing, and included both our Hook and Loop stick-on and iron-on attachment pads (AKA Velcro stickers). Preliminary test on these were perfect enough for us to lock them in with the manufacturer and place an order for mass-production. One more thing crossed off the list, check them out in the picture below!
@@ -39,7 +39,7 @@ If you want more detail about our the current state of manufacturing, our latest
 ![attachment](assets/1-Butterfly-News-Part-2/i3-b4_20260520_211754.jpg)
 ![attachment](assets/1-Butterfly-News-Part-2/i4-b5_20260520_212701.jpg)
 
-## SlimeVR News <img src="/blog/emoji/nighty_hug-1314209493747241011.webp" alt="nighty_hug" class="discord-emoji" />
+## SlimeVR News <img src="/public/blog/emoji/nighty_hug-1314209493747241011.webp" alt="nighty_hug" class="discord-emoji" />
 
 ### Steam
 Our steam version has had a few small but very cool additions added in that give it a small edge over using the standard version. Firstly, we have integrated the first beta branch for the amazing **Step mounting beta** being developed by the prodigal Butterscotch! If you are interested, switching from the normal version to this version is now just a few clicks inside the steam settings menu (see picture below).
@@ -57,7 +57,7 @@ We love transparency here at SlimeVR, and a lot of you have questions as to what
 ![attachment](assets/2-SlimeVR-News/i2-c2_x234236324image.png)
 ![attachment](assets/2-SlimeVR-News/i3-c3_autostart.png)
 
-## Rapid Roundup <img src="/blog/emoji/nighty_nom-1314209503276699708.webp" alt="nighty_nom" class="discord-emoji" />
+## Rapid Roundup <img src="/public/blog/emoji/nighty_nom-1314209503276699708.webp" alt="nighty_nom" class="discord-emoji" />
 Ready yourself for a bunch of SlimeVR news bits to bite on:
 * We had a minor facelift on our website at https://slime.gay/, with a few things shuffled around and a some links added or removed, such as a download link for steam. We plan to tweak this a lot more over the next few months to make sure its super cute and easy to navigate.
 * Hannah has been working on our SlimeVR Updater program that installs and updates the server software in a super simple and seamless way on all platforms. It already looks amazing, check out her progress in the demo below.

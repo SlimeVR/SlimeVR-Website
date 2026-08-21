@@ -1,12 +1,12 @@
 ---
 title: "Weekly Dev Update #234"
 date: "2026-05-11T00:00:00.000Z"
-description: "Hiyo Slimes, Spazzwan<img src=\"/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp\" alt=\"SKC_SpazzwanLogo\" class=\"discord-emoji\" /> here, with a long overdue update on all things slime-verse. Kic..."
+description: "Hiyo Slimes, Spazzwan<img src=\"/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp\" alt=\"SKC_SpazzwanLogo\" class=\"discord-emoji\" /> here, with a long overdue update on all things slime-verse. Kic..."
 thumbnailUrl: "/blog/posts/weekly-update-234/71750_1785151670049_130.webp"
 ---
 
-Hiyo Slimes, Spazzwan<img src="/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp" alt="SKC_SpazzwanLogo" class="discord-emoji" /> here, with a long overdue update on all things slime-verse. Kick back and enjoy the news, there is a lot to go through....
-## Shipment News <img src="/blog/emoji/nighty_data-1314209491365007360.webp" alt="nighty_data" class="discord-emoji" />
+Hiyo Slimes, Spazzwan<img src="/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp" alt="SKC_SpazzwanLogo" class="discord-emoji" /> here, with a long overdue update on all things slime-verse. Kick back and enjoy the news, there is a lot to go through....
+## Shipment News <img src="/public/blog/emoji/nighty_data-1314209491365007360.webp" alt="nighty_data" class="discord-emoji" />
 **Current Stock**
 After Shipment 16 fully stocked most sets to 'in-stock' status, most of the stock has slowly been whittled away by fervent new slimes to the point where only the following sets and upgrades are available for immediate shipping:
 * Core Set V1.2 (6+0)
@@ -22,7 +22,7 @@ Shipment 17 is set to be another big one, and is planned to once again re-invigo
 
 ![attachment](assets/s1-a1_in_stock_poster.webp)
 
-## SlimeVR News <img src="/blog/emoji/nighty_trans-1488511807701385279.webp" alt="nighty_trans" class="discord-emoji" />
+## SlimeVR News <img src="/public/blog/emoji/nighty_trans-1488511807701385279.webp" alt="nighty_trans" class="discord-emoji" />
 
 Our original SlimeVR campaign just hit **$10 MILLION raised**. Holy moly that's a lot of slimes...
 Big congratulations to the SlimeVR team for reaching such an enormous milestone. This is only just the beginning tho, we have lots of plans and are aiming for the stars!!!
@@ -32,7 +32,7 @@ The instance peaked at over 1100 users in one single zone! Was ***so cool*** to 
 
 ![attachment](assets/s2-b1_2435626426e.jpg)
 
-## Butterfly News <img src="/blog/emoji/butterfly-1470467583323930685.webp" alt="butterfly" class="discord-emoji" />
+## Butterfly News <img src="/public/blog/emoji/butterfly-1470467583323930685.webp" alt="butterfly" class="discord-emoji" />
 Its been a while since we have has any major news on Butterfly Trackers, but not due to lack of progress. Our design and development team have been flat out ensuring all the tiny little parts required to be designed, mass-manufactured, and put together are progressing as they should.
 
 As mentioned, many of the parts are either ordered or in pre-production (i.e. soon to be ordered). As mentioned in a previous update, our screws and straps are already locked in and stacked up in the cave, and joining those parts soon will be our dongle cradle PCB that is included with the Butterfly Dongle to nicely hold it in the vertical position. Speaking of dongle, we are also looking into plasti-welding machines to marry the top and bottom half of our dongles together, so hopefully I can get you some cool pics that machine soon.
@@ -48,7 +48,7 @@ Pre-order here: http://slimevr.dev/smoldc
 
 ![attachment](assets/s3-c5_butterflycase.png)
 
-## Ecosystem News <img src="/blog/emoji/nighty_hug-1314209493747241011.webp" alt="nighty_hug" class="discord-emoji" />
+## Ecosystem News <img src="/public/blog/emoji/nighty_hug-1314209493747241011.webp" alt="nighty_hug" class="discord-emoji" />
 All the cool stuff that's been held up by the switch to Electron have finally breached the gates, with a flurry of new additions and changes being added to our upcoming v20 SlimeVR build. The common bugs with v19, such as config and java errors have been thoroughly smooshed, as well as a giant list of new additions and Quality of Life changes, such as:
 * Settings quiz on start-up to preconfigure your settings for what you plan to use slimes for (PCVR, standalone, vtubing, mocap, etc)
 * Fix for a fairly common floor clipping issue in some setups (base-station tracked headsets). Also makes tracking in Steam-link much better
@@ -63,7 +63,7 @@ Also note; This comes with a new driver that includes a compatibility toggle so 
 If you would like to help out, please consider trying the new release candidate here: https://discord.com/channels/817184208525983775/1494793758808604702
 
 Helping test these builds and providing feedback is one of the best things you can do to contribute to SlimeVR, so if u cant code and want to give something back to the community, this is a great opportunity for you <3
-## Rapid Roundup <img src="/blog/emoji/nighty_nom-1314209503276699708.webp" alt="nighty_nom" class="discord-emoji" />
+## Rapid Roundup <img src="/public/blog/emoji/nighty_nom-1314209503276699708.webp" alt="nighty_nom" class="discord-emoji" />
 Ready yourself for a bunch of SlimeVR news bits to bite on:
 * Every week theres something cool being added by our amazing devs to make life easier for everyone, and since we haven't had an update for a while there is a small backlog of cool stuff that will be added into the server soon. As such I will rapidfire out some of the most notable stuff, check underneath for videos and pictures:
 * Sapphire has somehow bent the reality of SteamVR to his will, adding in the ability for slimevr to detect our SlimeVR driver being disabled and re-enable it a single button in the checklist. This will for sure put one of my infographics out to pasture.
