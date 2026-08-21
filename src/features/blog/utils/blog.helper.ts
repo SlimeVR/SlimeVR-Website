@@ -101,7 +101,7 @@ export function resolveAssetPath(
   if (assetPath == undefined) return undefined;
 
   const assetPathInAssetsFolder = assetPath.startsWith(ASSETS_BASE_PATH)
-    ? assetPath.replace("ASSETS_BASE_PATH", "")
+    ? assetPath.replace(ASSETS_BASE_PATH, "")
     : assetPath;
 
   if (assetPathInAssetsFolder.startsWith("/")) return assetPathInAssetsFolder;
