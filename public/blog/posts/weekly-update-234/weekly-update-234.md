@@ -2,7 +2,7 @@
 title: "Weekly Dev Update #234"
 date: "2026-05-11T00:00:00.000Z"
 description: "Hiyo Slimes, Spazzwan<img src=\"/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp\" alt=\"SKC_SpazzwanLogo\" class=\"discord-emoji\" /> here, with a long overdue update on all things slime-verse. Kic..."
-thumbnailUrl: "/blog/posts/weekly-update-234/71750_1785151670049_130.webp"
+thumbnailUrl: "assets/s2-b1_2435626426e.jpg"
 ---
 
 Hiyo Slimes, Spazzwan<img src="/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp" alt="SKC_SpazzwanLogo" class="discord-emoji" /> here, with a long overdue update on all things slime-verse. Kick back and enjoy the news, there is a lot to go through....
@@ -72,7 +72,9 @@ Ready yourself for a bunch of SlimeVR news bits to bite on:
 * Much of the core team has been hard at work grinding out the incredibly complex task of re-writing most of our core tracking and feature code from scratch. This is a huge undertaking but will really lay the foundations for a lot of stuff people have been wanting for a very long time, and will have the big benefit of include testing in the code to ensure nothing explodes from tiny changes. Keep it up, you are doing amazing!!
 * For those DIY'ers out there living under a rock, our ICM45686 v1.1 is back in stock! Head to https://slimevr.dev/ to buy
 
+
+<video controls src="e1-Sapphire20260504 0429302026-05-04.mp4" />
+<video controls src="e2-Hannah2026050618423402273532026-05-11.mp4" />
+![attachment](e5_aed0989234tn24gn.png)
+
 *That's it for this week. Thank you for reading to the end, hope you all have a lovely week and weekend. See you space slimethings~! <3*
-![attachment](/blog/posts/weekly-update-234/71398_1785151654727_127.webp)
-![attachment](/blog/posts/weekly-update-234/71404_1785151656761_128.webp)
-![attachment](/blog/posts/weekly-update-234/71495_1785151658727_129.webp)

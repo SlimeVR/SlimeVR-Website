@@ -43,8 +43,7 @@ Ready yourself for a bunch of SlimeVR news bits to bite on:
 * The first video in our new slew of SlimeVR related content has been launched, hosted by the lovely Jacobfov. We plan to do lots more videos in the coming months, so stay subscribe to our YouTube channel for a bunch of informative and entertaining content like this! Check it out here: 
  <video controls src="https://www.youtube.com/watch?v=quDmfCtTQ0Y" />
 
-*That's it for this week. Thank you for reading to the end, hope you all have a lovely week and weekend. See you space slimethings~! <3*
-
-
 ![alt text](assets/c1_20260626_162906.jpg)
 ![alt text](assets/c2_image.webp)
+
+*That's it for this week. Thank you for reading to the end, hope you all have a lovely week and weekend. See you space slimethings~! <3*

@@ -46,6 +46,6 @@ Ready yourself for a bunch of SlimeVR news bits to bite on:
 * Meia has been working hard on our Butterfly Tracker hardware, and has a cool picture of Revision 2 of our Butterfly Dongle Cradle PCB to show off. Check it out below. The team is working hard every week iterating on and testing designs, so I am hoping we get to see more very soon!
 * As you all know, a lot of new Slimes are getting trackers in the next few days. The server might get a little crazy with Shipment fever, so just remember we are all human, or human-adjacent creatures in some cases, that have feelings. It's very stressful for everyone so please have some patience when asking for help, and please respect each other when asking for help or providing help to others! If you are new, be sure to check the pins thoroughly before asking for advice, as most answers to common questions will be in the first 4 pins of each channel <3
 
-*That's it for this week. Thank you for reading to the end, hope you all have a lovely week and weekend. See you space slimethings~! <3*
-
 ![attachment](assets/i2-577964470-4fa5d8c5-07bc-42a4-a79a-1ed5f92858b3.png)
+
+*That's it for this week. Thank you for reading to the end, hope you all have a lovely week and weekend. See you space slimethings~! <3*

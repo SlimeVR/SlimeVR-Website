@@ -44,4 +44,7 @@ Ready yourself for a bunch of SlimeVR news bits to bite on:
 * Do you like open source stuff and VR? Well so does Rexa, who has been busy fusing our tracking into a prototype game constructed in the Godot engine. For now, its just over VMC, but they hope to be able to pull tracking info directly form our interoperability protocol, SolarXR, to get a native tracking layer for games to be able to use slimes directly. Check out their demo video below.
 * Steam is cool right? Slime on steam would be cool... right? Well we now have an internal beta for steam we are testing, and expect to have a public beta available in the near future. More news on this soon.
 
+![attachment](assets/2-c3.png)
+<video controls src="assets/1-c2.mp4" />
+
 *That's it for this week. Thank you for reading to the end, hope you all have a lovely week and weekend. See you space slimethings~! <3*

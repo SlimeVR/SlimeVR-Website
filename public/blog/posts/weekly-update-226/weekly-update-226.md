@@ -31,7 +31,9 @@ On the Butterfly front, the team has collectively been maniacally preparing for 
 Oh and obviously goes without saying, but if you are interested in Butterfly trackers, sign up for the campaign here: https://slimevr.dev/smol
 
 We hope you can feel all the love and passion the whole team has poured into this over the last few years.
-![attachment](/blog/posts/weekly-update-226/103850_1785152442689_219.webp)
+
+![attachment](assets/1-b2.jpg)
+
 ## SlimeVR Tip Corner <img src="/public/blog/emoji/nighty_nerd-1451711628595691560.webp" alt="nighty_nerd" class="discord-emoji" />
 **Trackers lagging or ping going wild? **The main reason for this is packet loss, and is usually caused by interference on the radio bands your 2.4ghz WiFi is using for the trackers.
 ### How do I fix it?
@@ -44,12 +46,15 @@ This makes your WiFi more likely to 'miss' sources of interference at the cost o
 This is mostly for routers with WiFi 6 and higher, as Wi Fi 6 uses both 2.4ghz and 5ghz together to boost the speed of main devices. The downside is it can cripple things that rely on 2.4ghz, like Slime trackers. Ideally set to "b/g/n" or lowest you can set it that includes those versions.
 
 Accessing these settings is different for every router, but it can usually be done by following this guide from Nintendo and navigating to either 2.4ghz WiFi settings, advanced WiFi options, or WiFi security options: https://en-americas-support.nintendo.com/app/answers/detail/a_id/657
+
 ## Rapid Roundup <img src="/public/blog/emoji/nighty_art-1314209500709781524.webp" alt="nighty_art" class="discord-emoji" />
+
 Ready yourself for a bunch of SlimeVR news bits to bite on:
 * Aed has begun working on a setup onboarding quiz, similar to how discord does it, where users will go through a small series of questions to set up the server for them. Standalone users will have OSC enabled automatically, while a mocap artist might have mocap mode enabled if they dont have a headset.
 * A new MUMO has entered the battle! Well not really completely new, but Meia has a shiny new revision of her ever-popular ICM module. Check it out below.
 * Speaking of new, the cave team has two new physical members at the cave, with Meia and Em now able to physically touch the beacon at the SlimeVR HQ in Netherlands. SlimeVR is one step closer to amassing an army of catgirls now.
 * Our steam release progresses quietly in the background, with Hannah working on getting it ready for release, mostly focussing on linux which will help make it much simpler to get going on the Steam Frame one day.
 
+![attachment](assets/2-d1.png)
+
 *That's it for this week. Thank you for reading to the end, hope you all have a lovely week and weekend. See you space slimethings~! <3*
-![attachment](/blog/posts/weekly-update-226/103677_1785152440650_218.webp)
