@@ -73,8 +73,8 @@ Ready yourself for a bunch of SlimeVR news bits to bite on:
 * For those DIY'ers out there living under a rock, our ICM45686 v1.1 is back in stock! Head to https://slimevr.dev/ to buy
 
 
-<video controls src="e1-Sapphire20260504 0429302026-05-04.mp4" />
-<video controls src="e2-Hannah2026050618423402273532026-05-11.mp4" />
-![attachment](e5_aed0989234tn24gn.png)
+<video controls src="assets/Rapid-Roundup/e1-Sapphire20260504 0429302026-05-04.mp4" />
+<video controls src="assets/Rapid-Roundup/e2-Hannah2026050618423402273532026-05-11.mp4" />
+![attachment](assets/Rapid-Roundup/e5_aed0989234tn24gn.png)
 
 *That's it for this week. Thank you for reading to the end, hope you all have a lovely week and weekend. See you space slimethings~! <3*
