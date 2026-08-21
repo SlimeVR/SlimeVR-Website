@@ -40,11 +40,11 @@ As usual, the team has been hard at work being busy bees in order to get the But
 ## Shipment Update <img src="/public/blog/emoji/bingus_gun-1404234276630958080.webp" alt="bingus_gun" class="discord-emoji" />
 https://discord.com/channels/817184208525983775/1129107343058153623 has been updated by our slime overlords to have the latest timeframes and info on Shipment 17, which many of you are frothing at the mouth for info on. Luckily for you, we can now say that shipment 17 is all piled up in the SlimeVR HQ and ready for UPS to whisk it away to America in the coming week. Yippee! <img src="/public/blog/emoji/SKC_yippie-1192868297713135626.webp" alt="SKC_yippie" class="discord-emoji" />
 
-*That's it for this week. Thank you for reading to the end, hope you all have a lovely week and weekend. See you, space slimethings!*
-
 ![alt text](assets/image.webp)
 ![alt text](assets/image-1.webp)
 ![alt text](assets/image-2.webp)
 ![alt text](assets/image-3.webp)
 ![alt text](assets/image-4.webp)
 <video controls src="assets/PXL_20260706_063624828.mp4" />
+
+*That's it for this week. Thank you for reading to the end, hope you all have a lovely week and weekend. See you, space slimethings!*
