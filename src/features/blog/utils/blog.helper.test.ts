@@ -17,7 +17,7 @@ lorem ipsum`;
 
     expect(result.metadata).toEqual({
       date: new Date("2025-12-06T00:00:00.000Z"),
-      description: "Hiyo slime gang~! Spazzwan<img src=\"/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp\" alt=\"SKC_SpazzwanLogo\" class=\"discord-emoji\" /> here, with a fresh new update... 100% fat free and no...",
+      description: "Hiyo slime gang~! Spazzwan<img src=\"/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp\" alt=\"SKC_SpazzwanLogo\" /> here, with a fresh new update... 100% fat free and no...",
       postId: PostId,
       thumbnailUrl: undefined,
       title: "Weekly Dev Update #220",
