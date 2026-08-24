@@ -5,8 +5,6 @@ import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
 import { MarkdownBaseComponentOverrides } from "./MarkdownBaseComponentOverrides";
 
-import "../emoji.css";
-
 interface MarkdownContentRenderProps {
   postId: string;
   content: string;

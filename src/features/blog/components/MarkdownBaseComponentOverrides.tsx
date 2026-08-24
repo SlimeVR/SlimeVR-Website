@@ -1,7 +1,6 @@
 import { SolidMarkdownComponents } from "solid-markdown";
 import getVideoId from "get-video-id";
 import { resolveAssetPath } from "../utils/blog.helper";
-import "../emoji.css";
 
 function getYoutubeVideoId(videoUrl: string | undefined): string | null {
   if (videoUrl === undefined) return null;
@@ -51,11 +50,32 @@ export const MarkdownBaseComponentOverrides = ({
         ? resolveAssetPath(postId, props.src)
         : props.src;
 
-    if (props.class?.includes("discord-emoji")) {
-      return <img {...props} src={resolvedSrc} loading="lazy" />;
+    if (resolvedSrc?.startsWith("/blog/emoji/")) {
+      return (
+        <img
+          {...props}
+          src={resolvedSrc}
+          loading="lazy"
+          style={{
+            display: "inline-block",
+            height: "1.2em",
+            width: "1.2em",
+            margin: "0 0.05em",
+            "vertical-align": "-0.2em",
+            "object-fit": "contain",
+          }}
+        />
+      );
     }
 
-    return <img {...props} src={resolvedSrc} class="max-h-96 object-contain mx-auto" loading="lazy" />;
+    return (
+      <img
+        {...props}
+        src={resolvedSrc}
+        class="max-h-96 object-contain mx-auto"
+        loading="lazy"
+      />
+    );
   },
   video: (props) => {
     const { src } = props;

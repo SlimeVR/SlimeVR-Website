@@ -11,8 +11,6 @@ import { MarkdownBaseComponentOverrides } from "./MarkdownBaseComponentOverrides
 import { BlogPostThumbnail } from "./BlogPostThumbnail";
 import { getBlogPostThumbnailPlaceholderAttributes } from "../utils/blog.thumbnail.helper";
 
-import "../emoji.css";
-
 interface BlogPostListProps {
   yearPosts: BlogYearGroup[] | undefined;
   pageError?: unknown;
