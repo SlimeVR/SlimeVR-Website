@@ -5,7 +5,7 @@ description: "Hiyo slime gang~! Spazzwan <img src=\"/public/blog/emoji/SKC_Spazz
 thumbnailUrl: "assets/1-a1_instock.jpg"
 ---
 
-Hiyo slime gang~! Spazzwan <img src="/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp" alt="SKC_SpazzwanLogo" class="discord-emoji" /> here, updatemaxxing and trackermog... that hurt to write I'm sorry. Just enjoy the update and have a nice weekend <3
+Hiyo slime gang~! Spazzwan <img src="/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp" alt="SKC_SpazzwanLogo" /> here, updatemaxxing and trackermog... that hurt to write I'm sorry. Just enjoy the update and have a nice weekend <3
 
 https://slimevr.dev/buy
 SLIMES IN STOCK SLIMES IN STOCK SLIMES IN STOCK SLIMES IN STOCK SLIMES IN STOCK SLIMES IN STOCK SLIMES IN STOCK SLIMES IN STOCK SLIMES IN STOCK SLIMES IN STOCK SLIMES IN STOCK SLIMES IN STOCK SLIMES IN STOCK SLIMES IN STOCK SLIMES IN STOCK SLIMES IN STOCK SLIMES IN STOCK SLIMES IN STOCK SLIMES IN STOCK SLIMES IN STOCK SLIMES IN STOCK SLIMES IN STOCK SLIMES IN STOCK SLIMES IN STOCK ... Sorry where was I...
@@ -25,7 +25,7 @@ S**16** (mid-late March) **-** Contains: **6+0**, 6+2, DIY, upgrades
 
 ![attachment](assets/1-a1_instock.jpg)
 
-## Butterfly News <img src="/public/blog/emoji/butterfly-1470467583323930685.webp" alt="butterfly" class="discord-emoji" />
+## Butterfly News <img src="/public/blog/emoji/butterfly-1470467583323930685.webp" alt="butterfly" />
 Having just hit 300% funding, our Butterfly campaign has been a stellar success. You may have already seen, but our first review was extremely positive! Check it out if you haven't, as Jacobfov did an amazing job showcasing them: 
 https://www.youtube.com/watch?v=vBZreCeOmio
 Expect to see more reviews*** very soon***.
@@ -39,7 +39,7 @@ Moving on, Meia has manufactures some magnificent little gizmos to test our Butt
 <video controls src="assets/Butterfly-News/1-B1.2Pxl_20260303_1115196982026-03-04.mp4" />
 ![attachment](assets/Butterfly-News/2-b2_IMG_3759.jpg)
 
-## Butterfly News Continued <img src="/public/blog/emoji/butterfly-1470467583323930685.webp" alt="butterfly" class="discord-emoji" />
+## Butterfly News Continued <img src="/public/blog/emoji/butterfly-1470467583323930685.webp" alt="butterfly" />
 
 Aura has designed and printed the first version of our USB cradle that will be shipped as part of each Butterfly Dongle pack. While its only the first iteration, its already close to production ready, and may only need a few minor tweaks or cosmetic adjustments before its ready to have its very own (extremely expensive) mould made for it. Pics below
 
@@ -53,7 +53,7 @@ As usual, if you are interested in pre-ordering Butterfly Trackers, or just want
 ![attachment](assets/Butterfly-News-Continued/2-c5x20260224_193431.jpg)
 ![attachment](assets/Butterfly-News-Continued/3-c7_H2f7154420c084154b8ad342d08f87b32P.png)
 
-## Ecosystem News <img src="/public/blog/emoji/nighty_hug-1314209493747241011.webp" alt="nighty_hug" class="discord-emoji" />
+## Ecosystem News <img src="/public/blog/emoji/nighty_hug-1314209493747241011.webp" alt="nighty_hug" />
 A triple update was just launched the other day, with the Server app, Driver, ***and*** Installer all launching new versions into the wild. These have been in open testing for a few weeks now. Here is a list of the most notable changes:
 
 Server:
@@ -68,7 +68,7 @@ Driver:
 Installer:
 * Fixed the installer running slimevr as admin after installing resulting in it not being usable in VR until restarted
 * Fixed a few copy, unzipping, and user state errors
-## Rapid Roundup <img src="/public/blog/emoji/nighty_nom-1314209503276699708.webp" alt="nighty_nom" class="discord-emoji" />
+## Rapid Roundup <img src="/public/blog/emoji/nighty_nom-1314209503276699708.webp" alt="nighty_nom" />
 Ready yourself for a bunch of SlimeVR news bits to bite on:
 * Summer has been busy with their new Butterfly Trackers, creating what I can only describe as the nerdiest magic wand I've ever seen. Its used to collect paired data from the attached Vive tracker in hopes to improve the quality of our fusion algorithm. Not stopping there, he's also working on magnetometer bias calculations to aid in checking user movement and investigating how gravity maths can better optimised in our fusion. Pic below
 * MOCAPers and VTubers rejoice, as we are going through our BVH and VMC/OSC protocols to fix longstanding issues and polish our implementations to make them much more user friendly, such as BVH rest pose and T-pose injection being added soon to make animation retargeting much easier. See: https://discord.com/channels/817184208525983775/1475504963810754652

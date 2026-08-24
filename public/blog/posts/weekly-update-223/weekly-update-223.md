@@ -5,8 +5,8 @@ description: "Hiyo slime gang~! Spazzwan<img src=\"/public/blog/emoji/SKC_Spazzw
 thumbnailUrl: "assets/Butterfly-News/3-b4.jpg"
 ---
 
-Hiyo slime gang~! Spazzwan<img src="/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp" alt="SKC_SpazzwanLogo" class="discord-emoji" /> here, with this years first official-sized update. We hope you had an amazing holiday and are as excited as I am for all the cool new VR stuff coming out this year 🦋🖼️.
-## Shipment update <img src="/public/blog/emoji/nighty_nom-1314209503276699708.webp" alt="nighty_nom" class="discord-emoji" />
+Hiyo slime gang~! Spazzwan<img src="/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp" alt="SKC_SpazzwanLogo" /> here, with this years first official-sized update. We hope you had an amazing holiday and are as excited as I am for all the cool new VR stuff coming out this year 🦋🖼️.
+## Shipment update <img src="/public/blog/emoji/nighty_nom-1314209503276699708.webp" alt="nighty_nom" />
 **Shipment 15.1:**
 After a few minor delays and a holiday break, s15.1 is finally approaching its release date. There is a high chance it will be finally shipped this coming week as we have most of the sets already packed up and ready to go. After it has been picked up by UPS from our cave in NL, I am expecting a similar timeframe of around 15-20 days for it to arrive at Crowd Supply.
 **Shipment 16:**
@@ -21,7 +21,7 @@ Please note these dates and stock levels can change after I post this at any tim
 
 ![attachment](assets/1-a1.png)
 
-## Butterfly News <img src="/public/blog/emoji/nighty_hug-1314209493747241011.webp" alt="nighty_hug" class="discord-emoji" />
+## Butterfly News <img src="/public/blog/emoji/nighty_hug-1314209493747241011.webp" alt="nighty_hug" />
 
 Butterfly campaign launch is *just* around the corner. I know I've said this a few times but the team is really pulling out all the stops when it comes to this release to make sure its amazing. Development chugs away in the background un-hindered too, so even though our launch date has slipped a little it shouldn't affect the shipping date *too* much. With that all said, lets get into the cool stuff that's been going on by the team!
 
@@ -35,13 +35,13 @@ Next, the team has been frantically making promotional materials and organising 
 ![attachment](assets/Butterfly-News/2-b3.jpg)
 ![attachment](assets/Butterfly-News/3-b4.jpg)
 
-## Butterfly News continued... <img src="/public/blog/emoji/nighty_hug-1314209493747241011.webp" alt="nighty_hug" class="discord-emoji" />
+## Butterfly News continued... <img src="/public/blog/emoji/nighty_hug-1314209493747241011.webp" alt="nighty_hug" />
 
 Last but not least, the design team has been prototyping and refining a whole bunch of stuff. Meia has continued working on the teemny dongle, which is now up to prototype 3. Its very cute, pics below. Meanwhile Snaila has been toiling over triangles to find the their perfect arrangement for our Butterfly tracker cases, the clothing clippies, and the compliant mechanism that holds the tracker into its little charging dock. All these are being tuned for our in-house printing solutions during the prototyping phase, but will need to be adjusted for injection moulding when the designs are finalised. Luckily with out new injection moulding machine we can test this in-house before committing to expensive moulds.
 
 Sign up to stay in the loop at: https://slimevr.dev/smol
 
-## Rapid Roundup <img src="/public/blog/emoji/nighty_art-1314209500709781524.webp" alt="nighty_art" class="discord-emoji" />
+## Rapid Roundup <img src="/public/blog/emoji/nighty_art-1314209500709781524.webp" alt="nighty_art" />
 
 Ready yourself for a bunch of SlimeVR news bits to bite on:
 * Resident skunk Bubblesconch has been busy tinkering with a whole slew of server-related things, including squashing android bugs, updating their 'step mounting' beta (now based off 18.1), and doing a thorough clean and rewrite of a bunch of OSC-related code that will hopefully make OSCquery work way better!
