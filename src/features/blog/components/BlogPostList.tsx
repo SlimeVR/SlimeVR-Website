@@ -7,7 +7,7 @@ import { Typography } from "~/components/commons";
 import { SolidMarkdown, SolidMarkdownComponents } from "solid-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import { MarkdownBaseComponentOverrides } from "./MarkdownBaseComponentOverrides";
+import { MarkdownBaseComponentOverrides } from "./markdown/MarkdownBaseComponentOverrides";
 import { BlogPostThumbnail } from "./BlogPostThumbnail";
 import { getBlogPostThumbnailPlaceholderAttributes } from "../utils/blog.thumbnail.helper";
 
