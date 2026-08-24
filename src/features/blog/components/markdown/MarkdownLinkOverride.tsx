@@ -1,16 +1,12 @@
 import getVideoId from "get-video-id";
+import { Element } from "hast";
 import { SolidMarkdownComponents } from "solid-markdown";
 
 export function markdownLinkOverride(): SolidMarkdownComponents["a"] {
   return ({ node, href, children, ...props }) => {
     const ytVideoId = getYoutubeVideoId(href);
 
-    const isPlainUrl =
-      node?.children?.length === 1 &&
-      node?.children[0].type === "text" &&
-      node?.children[0].value === href;
-
-    if (isPlainUrl && ytVideoId) return <YoutubeEmbed videoId={ytVideoId} />;
+    if (isHasLabel(node, href) && ytVideoId) return <YoutubeEmbed videoId={ytVideoId} />;
 
     return (
       <a href={href} {...props}>
@@ -18,6 +14,12 @@ export function markdownLinkOverride(): SolidMarkdownComponents["a"] {
       </a>
     );
   };
+}
+
+function isHasLabel(node: Element, href: string | undefined) {
+  return node?.children?.length === 1 &&
+    node?.children[0].type === "text" &&
+    node?.children[0].value === href;
 }
 
 function getYoutubeVideoId(videoUrl: string | undefined): string | null {
