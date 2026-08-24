@@ -6,10 +6,12 @@ export function markdownLinkOverride(): SolidMarkdownComponents["a"] {
   return ({ node, href, children, ...props }) => {
     const ytVideoId = getYoutubeVideoId(href);
 
-    if (isHasLabel(node, href) && ytVideoId) return <YoutubeEmbed videoId={ytVideoId} />;
+    const hasLabel = isHasLabel(node, href);
+
+    if (hasLabel && ytVideoId) return <YoutubeEmbed videoId={ytVideoId} />;
 
     return (
-      <a href={href} {...props}>
+      <a href={href} class={hasLabel ? "break-all" : "block max-w-full truncate"} {...props}>
         {children}
       </a>
     );
