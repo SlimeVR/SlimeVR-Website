@@ -3,7 +3,7 @@ import { SolidMarkdown } from "solid-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
-import { MarkdownBaseComponentOverrides } from "./MarkdownBaseComponentOverrides";
+import { MarkdownBaseComponentOverrides } from "./markdown/MarkdownBaseComponentOverrides";
 
 interface MarkdownContentRenderProps {
   postId: string;
