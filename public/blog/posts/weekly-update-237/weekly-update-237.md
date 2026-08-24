@@ -21,7 +21,7 @@ Also Tracker Enclosure and Dongle Enclosure molds are finally in proper producti
 
 ## More stuff
 
-We got so much more stuff... I can yap for hours, but who's gonna read, so I won't! I'll leave it to @paralizzie and @Spazzwan 🐾⚡ to share all the small stuff throughout the weeks to come in bite-sized chunks or big posts, so go get yourself a role in <#844382850845376521> if you want more deep SlimeVR lore <img src="/public/blog/emoji/RWping-920549879456075777.webp" alt="RWping" />
+We got so much more stuff... I can yap for hours, but who's gonna read, so I won't! I'll leave it to @paralizzie and @Spazzwan 🐾⚡ to share all the small stuff throughout the weeks to come in bite-sized chunks or big posts, so go get yourself a role in [#roles (discord server)](https://discord.com/channels/817184208525983775/844382850845376521) if you want more deep SlimeVR lore <img src="/public/blog/emoji/RWping-920549879456075777.webp" alt="RWping" />
 
 And I'll see you soon~ Oh yeah we got new slimes, holly-molly they're so cool, @Flarchik outdid themselves once again... Soon™ on the Team page on [slime.gay](<https://slime.gay>).
 
