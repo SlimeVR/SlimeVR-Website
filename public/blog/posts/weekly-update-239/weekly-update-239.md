@@ -16,7 +16,7 @@ What are we doing about it?
 * Better and more accessible guides. This means Infographics, proper and more frequent video guides, and in-server tips and info on perfecting your tracking. We clearly need to reduce the friction of getting information, so having stuff directly in the server should help everyone.
 * We have been cooking up more ideas to address your feedback, but we will talk about them more in a future update when we can show you.
 
-Also, don't forget we have regular <#941879974808416306> where u can get in-person help! Check the pins in the event channel for more info.
+Also, don't forget we have regular [#events (discord server)](https://discord.com/channels/817184208525983775/941879974808416306) where u can get in-person help! Check the pins in the event channel for more info.
 ## Connectivity Issues 📶 (20%)
 The most frustrating issue for many of you, and second most common was issues with Wi-Fi. We have seen a surge of Wi-Fi issues in the last 6 months, most commonly of lagging, high ping, and disconnections. Unfortunately this is one of the most complicated for us to address. Our support and community has been diligently investigating the causes, but unfortunately we have not found any simple fixes. It has affected both official and DIY trackers, and downgrading software and firmware does not help.
 

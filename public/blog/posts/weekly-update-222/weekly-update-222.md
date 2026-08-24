@@ -14,7 +14,7 @@ Current status: **Shipping!**
 
 **Shipment 15.1:**
 The smaller second shipment 15.1 is still being worked on by Chain, our assembling partner. While a later than we hoped, we expect this shipment to be assembled and leave our head office in NL sometime in the next two weeks. I know this is not amazing news, but unfortunately it gets very messy around December and the timing just didn't line up for it to leave before holidays start next week.
-The sunny side is that given shipment 15's relatively smooth progress through its shipping route, I am expecting everything to run similarly smooth for this shipment. This means roughly 2-3 weeks (s15 was 19 days) after shipment notice they will arrive at Crowd Supply. Keep an eye on <#1129107343058153623> and this post for updates, as myself and Hina will be editing them whenever major shipment milestones occur.
+The sunny side is that given shipment 15's relatively smooth progress through its shipping route, I am expecting everything to run similarly smooth for this shipment. This means roughly 2-3 weeks (s15 was 19 days) after shipment notice they will arrive at Crowd Supply. Keep an eye on [#shipping-progress (discord  server)](https://discord.com/channels/817184208525983775/1129107343058153623) and this post for updates, as myself and Hina will be editing them whenever major shipment milestones occur.
 
 Current status: **Assembly**
 ## Butterfly Campaign SOON™ <img src="/public/blog/emoji/nighty_hug-1314209493747241011.webp" alt="nighty_hug" />
