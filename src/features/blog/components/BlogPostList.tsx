@@ -4,10 +4,6 @@ import { A } from "@solidjs/router";
 import clsx from "clsx";
 import { FormattedDate } from "./FormattedDate";
 import { Typography } from "~/components/commons";
-import { SolidMarkdown, SolidMarkdownComponents } from "solid-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeRaw from "rehype-raw";
-import { MarkdownBaseComponentOverrides } from "./markdown/MarkdownBaseComponentOverrides";
 import { BlogPostThumbnail } from "./BlogPostThumbnail";
 import { getBlogPostThumbnailPlaceholderAttributes } from "../utils/blog.thumbnail.helper";
 
@@ -15,15 +11,6 @@ interface BlogPostListProps {
   yearPosts: BlogYearGroup[] | undefined;
   pageError?: unknown;
 }
-
-const componentOverrides = (postId: string): SolidMarkdownComponents => ({
-  ...MarkdownBaseComponentOverrides({ postId }),
-  p: (pProps) => (
-    <Typography tag="p" class="text-background-30">
-      {pProps.children}
-    </Typography>
-  ),
-});
 
 export const BlogPostList: Component<BlogPostListProps> = (props) => {
   return (
