@@ -1,7 +1,7 @@
 ---
 title: "Weekly Dev Update #232"
 date: "2026-04-10T00:00:00.000Z"
-description: "Hiyo Slimes, Spazzwan<img src=\"/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp\" alt=\"SKC_SpazzwanLogo\" class=\"discord-emoji\" /> here, with a sticky slew of fresh slime news. Enjoy..."
+description: "Hiyo Slimes, Spazzwan here, with a sticky slew of fresh slime news. Enjoy..."
 ---
 
 Hiyo Slimes, Spazzwan<img src="/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp" alt="SKC_SpazzwanLogo" /> here, with a sticky slew of fresh slime news. Enjoy <3
