@@ -1,11 +1,11 @@
 ---
 title: "Weekly Dev Update #237"
 date: "2026-06-23T00:00:00.000Z"
-description: "Sup, I know you missed @Spazzwan 🐾⚡ already, but today you get me instead!..."
+description: "Sup, I know you missed Spazzwan 🐾⚡ already, but today you get me instead!..."
 thumbnailUrl: "assets/hina_slime.webp"
 ---
 
-Sup, <img src="/public/blog/emoji/nighty_yay-1319261631217143910.webp" alt="nighty_yay" /> I know you missed @Spazzwan 🐾⚡ already, but today you get me instead! <img src="/public/blog/emoji/Yus2-862786221537624104.webp" alt="Yus2" /> It's been a while, so I bet you missed me too~ <img src="/public/blog/emoji/hina_1-1514646533264506890.webp" alt="hina_1" /><img src="/public/blog/emoji/hina_2-1514646552185016320.webp" alt="hina_2" />But don't get used to it <img src="/public/blog/emoji/nya_a-847203539352551544.webp" alt="nya_a" /> As you might have noticed, we've got a new community manager a few weeks ago - @paralizzie - and she'll be way more active on all our socials, helping with making updates here, on Crowd Supply and everywhere else, and helping us with making a lot of new content! So get excited for a "1000 things you didn't know you could do with SlimeVR" series of YouTube videos in the near future <img src="/public/blog/emoji/slimenom-663823059920224277.webp" alt="slimenom" />
+Sup, <img src="/public/blog/emoji/nighty_yay-1319261631217143910.webp" alt="nighty_yay" /> I know you missed Spazzwan 🐾⚡ already, but today you get me instead! <img src="/public/blog/emoji/Yus2-862786221537624104.webp" alt="Yus2" /> It's been a while, so I bet you missed me too~ <img src="/public/blog/emoji/hina_1-1514646533264506890.webp" alt="hina_1" /><img src="/public/blog/emoji/hina_2-1514646552185016320.webp" alt="hina_2" />But don't get used to it <img src="/public/blog/emoji/nya_a-847203539352551544.webp" alt="nya_a" /> As you might have noticed, we've got a new community manager a few weeks ago - paralizzie - and she'll be way more active on all our socials, helping with making updates here, on Crowd Supply and everywhere else, and helping us with making a lot of new content! So get excited for a "1000 things you didn't know you could do with SlimeVR" series of YouTube videos in the near future <img src="/public/blog/emoji/slimenom-663823059920224277.webp" alt="slimenom" />
 
 But I know what you've been actually waiting for. **Where slimes?**
 
@@ -21,9 +21,9 @@ Also Tracker Enclosure and Dongle Enclosure molds are finally in proper producti
 
 ## More stuff
 
-We got so much more stuff... I can yap for hours, but who's gonna read, so I won't! I'll leave it to @paralizzie and @Spazzwan 🐾⚡ to share all the small stuff throughout the weeks to come in bite-sized chunks or big posts, so go get yourself a role in [#roles (discord server)](https://discord.com/channels/817184208525983775/844382850845376521) if you want more deep SlimeVR lore <img src="/public/blog/emoji/RWping-920549879456075777.webp" alt="RWping" />
+We got so much more stuff... I can yap for hours, but who's gonna read, so I won't! I'll leave it to paralizzie and Spazzwan 🐾⚡ to share all the small stuff throughout the weeks to come in bite-sized chunks or big posts, so go get yourself a role in [#roles (discord server)](https://discord.com/channels/817184208525983775/844382850845376521) if you want more deep SlimeVR lore <img src="/public/blog/emoji/RWping-920549879456075777.webp" alt="RWping" />
 
-And I'll see you soon~ Oh yeah we got new slimes, holly-molly they're so cool, @Flarchik outdid themselves once again... Soon™ on the Team page on [slime.gay](<https://slime.gay>).
+And I'll see you soon~ Oh yeah we got new slimes, holly-molly they're so cool, Flarchik outdid themselves once again... Soon™ on the Team page on [slime.gay](<https://slime.gay>).
 
 ![alt text](assets/1.webp)
 ![alt text](assets/2.webp)
