@@ -17,7 +17,7 @@ interface BlogPostListProps {
 }
 
 const componentOverrides = (postId: string): SolidMarkdownComponents => ({
-  ...MarkdownBaseComponentOverrides({postId}),
+  ...MarkdownBaseComponentOverrides({ postId }),
   p: (pProps) => (
     <Typography tag="p" class="text-background-30">
       {pProps.children}
@@ -123,15 +123,9 @@ const BlogPostCard: Component<{ post: BlogPostMetadata }> = (props) => {
         >
           {props.post.title}
         </Typography>
-        <div class="line-clamp-4">
-          <SolidMarkdown
-            remarkPlugins={[remarkGfm]}
-            rehypePlugins={[rehypeRaw]}
-            components={componentOverrides(props.post.postId)}
-          >
-            {props.post.description}
-          </SolidMarkdown>
-        </div>
+        <Typography tag="p" class="text-background-30 line-clamp-4">
+          {props.post.description}
+        </Typography>
       </div>
     </A>
   );
