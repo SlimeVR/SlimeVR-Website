@@ -1,7 +1,7 @@
 ---
 title: "Weekly Dev Update #220"
 date: "2025-12-06T00:00:00.000Z"
-description: "Hiyo slime gang~! Spazzwan<img src=\"/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp\" alt=\"SKC_SpazzwanLogo\" class=\"discord-emoji\" /> here, with a fresh new update... 100% fat free and no adde..."
+description: "Hiyo slime gang~! Spazzwan here, with a fresh new update... 100% fat free and no adde..."
 ---
 
 Hiyo slime gang~! Spazzwan<img src="/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp" alt="SKC_SpazzwanLogo" /> here, with a fresh new update... 100% fat free and no added sugar! *(Ingredients: Natural flavour, Aqua, Chemical X, Corn syrup, Potassium benzoate, Ajinomoto)*

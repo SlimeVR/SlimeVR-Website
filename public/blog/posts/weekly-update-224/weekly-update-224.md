@@ -1,7 +1,7 @@
 ---
 title: "Weekly Dev Update #224"
 date: "2026-01-19T00:00:00.000Z"
-description: "Hiyo slime gang~! Head cat Spazzwan<img src=\"/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp\" alt=\"SKC_SpazzwanLogo\" class=\"discord-emoji\" /> here, with another hot update set to toast up you..."
+description: "Hiyo slime gang~! Head cat Spazzwan here, with another hot update set to toast up you..."
 ---
 
 Hiyo slime gang~! Head cat Spazzwan<img src="/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp" alt="SKC_SpazzwanLogo" /> here, with another hot update set to toast up your IMU's for maximum performance!

@@ -1,7 +1,7 @@
 ---
 title: "Weekly Dev Update #222"
 date: "2025-12-21T00:00:00.000Z"
-description: "Hiyo slime gang~! Spazzwan<img src=\"/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp\" alt=\"SKC_SpazzwanLogo\" class=\"discord-emoji\" /> here, with the jolliest of news for all you SlimeVR users,..."
+description: "Hiyo slime gang~! Spazzwan here, with the jolliest of news for all you SlimeVR users,..."
 thumbnailUrl: "assets/Butterfly-Campaign/2-b3.jpg"
 ---
 

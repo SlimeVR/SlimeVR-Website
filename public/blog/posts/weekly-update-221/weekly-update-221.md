@@ -1,7 +1,7 @@
 ---
 title: "Weekly Dev Update #221"
 date: "2025-12-14T00:00:00.000Z"
-description: "Hiyo slime gang~! Spazzwan<img src=\"/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp\" alt=\"SKC_SpazzwanLogo\" class=\"discord-emoji\" /> here, but mostly in a metaphorical sense. It's more like t..."
+description: "Hiyo slime gang~! Spazzwan here, but mostly in a metaphorical sense. It's more like t..."
 ---
 
 Hiyo slime gang~! Spazzwan<img src="/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp" alt="SKC_SpazzwanLogo" /> here, but mostly in a metaphorical sense. It's more like that of a primal deity of updates.

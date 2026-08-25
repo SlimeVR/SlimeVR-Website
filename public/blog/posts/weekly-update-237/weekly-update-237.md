@@ -1,7 +1,7 @@
 ---
 title: "Weekly Dev Update #237"
 date: "2026-06-23T00:00:00.000Z"
-description: "Sup, <img src=\"/public/blog/emoji/nighty_yay-1319261631217143910.webp\" alt=\"nighty_yay\" class=\"discord-emoji\" /> I know you missed @Spazzwan 🐾⚡ already, but today you get me instead!..."
+description: "Sup, I know you missed @Spazzwan 🐾⚡ already, but today you get me instead!..."
 thumbnailUrl: "assets/hina_slime.webp"
 ---
 

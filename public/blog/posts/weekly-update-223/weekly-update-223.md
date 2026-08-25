@@ -1,7 +1,7 @@
 ---
 title: "Weekly Dev Update #223"
 date: "2026-01-11T00:00:00.000Z"
-description: "Hiyo slime gang~! Spazzwan<img src=\"/public/blog/emoji/SKC_SpazzwanLogo-1369048981102919742.webp\" alt=\"SKC_SpazzwanLogo\" class=\"discord-emoji\" /> here, with this years first official-sized update. We hope..."
+description: "Hiyo slime gang~! Spazzwan here, with this years first official-sized update. We hope..."
 thumbnailUrl: "assets/Butterfly-News/3-b4.jpg"
 ---
 
