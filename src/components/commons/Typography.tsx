@@ -48,7 +48,7 @@ export const Typography: Component<TypographyProps> = (initialProps) => {
   const classes = createMemo(() =>
     clsx([
       props.variant === "main-title" && "text-section-title sm:text-main-title",
-      props.variant === "section-title" && "text-section-title",
+      props.variant === "section-title" && "text-lg font-bold sm:text-section-title",
       props.variant === "standard" &&
         (props.bold ? "text-standard-bold" : "text-standard"),
       props.color === "primary" && "text-background-10",
