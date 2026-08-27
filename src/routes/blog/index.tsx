@@ -36,12 +36,12 @@ export default function Blog() {
         <Link rel="canonical" href={`${SITE_PATH}/blog`} />
 
         <Section>
-          <div class="flex flex-col py-5 mb-6">
+          <div class="flex flex-col mb-6">
             <Typography
               tag="h1"
               variant="main-title"
               key="blog.title"
-              class="mt-12 mb-2"
+              class="mt-4 sm:mt-6 2xl:mt-12 pl-1 pr-6 rounded-xs w-fit from-background-70/80 to-transparent bg-linear-to-r"
             />
             <BlogInfiniteScroll />
           </div>
