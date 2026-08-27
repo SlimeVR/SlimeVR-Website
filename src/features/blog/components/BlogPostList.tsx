@@ -39,7 +39,7 @@ const YearGroupSection: Component<{ yearGroup: BlogYearGroup }> = (props) => {
       <Typography
         tag="h2"
         variant="section-title"
-        class="col-span-1 sm:col-span-2 text-background-10"
+        class="col-span-1 sm:col-span-2 pl-1 pr-6 lg:mb-1 rounded-xs w-fit from-background-70/80 to-transparent bg-linear-to-r"
       >
         {props.yearGroup.year}
       </Typography>
