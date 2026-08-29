@@ -41,7 +41,7 @@ export default function Blog() {
               tag="h1"
               variant="main-title"
               key="blog.title"
-              class="mt-4 sm:mt-6 2xl:mt-12 pl-1 pr-6 rounded-xs w-fit from-background-70/80 to-transparent bg-linear-to-r"
+              class="mt-4 sm:mt-6 2xl:mt-9"
             />
             <BlogInfiniteScroll />
           </div>
