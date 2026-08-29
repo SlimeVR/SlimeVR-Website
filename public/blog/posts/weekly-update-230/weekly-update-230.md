@@ -2,7 +2,7 @@
 title: "Weekly Dev Update #230"
 date: "2026-03-19T00:00:00.000Z"
 description: "Hiyo slime gang~! Spazzwan here, with my 30th official SlimeVR update. I hope you all have been enjoying them as much as I enjoy writing them..."
-thumbnailUrl: "/blog/posts/weekly-update-230/80147_1785151797077_145.webp"
+thumbnailUrl: "assets/s1/i4-a3_20260316_230556.jpg"
 ---
 
 Hiyo slime gang~! Spazzwan here, with my 30th official SlimeVR update. I hope you all have been enjoying them as much as I enjoy writing them <3
@@ -20,7 +20,7 @@ __To sum up the current sets and when they are next expected:__
 S**15.1** (At Crowd Supply) **-** Contains: 5+0, 6+2, 8+2, 12+4, upgrades (hip, feet)
 S**16** (late March) **-** Contains: **6+0**, 6+2, DIY, upgrades
 
-## Butterfly News <img src="/blog/emoji/butterfly-1470467583323930685.webp" alt="butterfly" class="discord-emoji" />
+## Butterfly News <img src="/public/blog/emoji/butterfly-1470467583323930685.webp" alt="butterfly" />
 Work continues on in the Slime cave to ensure we hit our release target. We have received and begun testing on the 4th prototype of our Butterfly dongle. Check them out in the pictures below, along with a beauty pic of our newest Butterfly Panel tester that will be used to test each Butterfly Tracker we ship for quality assurance.
 
 While the campaign official ends today, pre-orders for Butterfly Trackers will continue to be open just as they are now. To order or just learn more, head over to: https://slimevr.dev/smol
@@ -30,11 +30,12 @@ While the campaign official ends today, pre-orders for Butterfly Trackers will c
 > **[SlimeVR Butterfly Trackers](https://slimevr.dev/smol)**
 > Super comfortable IMU body-tracking for virtual reality, motion capture, and VTubing
 
-![attachment](/blog/posts/weekly-update-230/80147_1785151797077_145.webp)
-![attachment](/blog/posts/weekly-update-230/81411_1785151801819_146.webp)
-![attachment](/blog/posts/weekly-update-230/81803_1785151809017_148.webp)
-![attachment](/blog/posts/weekly-update-230/82610_1785151827878_152.webp)
-## Ecosystem News <img src="/blog/emoji/nighty_hug-1314209493747241011.webp" alt="nighty_hug" class="discord-emoji" />
+![attachment](assets/s1/i1-a1_20260314_212600.jpg)
+![attachment](assets/s1/i2-a5_Tester_Render.jpg)
+![attachment](assets/s1/i3-a2_20260316_230532.jpg)
+![attachment](assets/s1/i4-a3_20260316_230556.jpg)
+
+## Ecosystem News <img src="/public/blog/emoji/nighty_hug-1314209493747241011.webp" alt="nighty_hug" />
 ### A fairly huge change you will hopefully never notice is happening:
 
 In simple terms we are changing one of core technologies we use to display stuff in the GUI.
@@ -57,11 +58,12 @@ First up, you can get the latest Release Candidate in our beta testing forum, he
 Second, you can try out our steam release! Keys will go out periodically, so keep an eye on this thread if you are interested in providing feedback: https://discord.com/channels/817184208525983775/1475535820822679552
 
 Please leave feedback in the relevant thread! Both positive and negative is much appreciated <3
-## Rapid Roundup <img src="/blog/emoji/nighty_nom-1314209503276699708.webp" alt="nighty_nom" class="discord-emoji" />
+## Rapid Roundup <img src="/public/blog/emoji/nighty_nom-1314209503276699708.webp" alt="nighty_nom" />
 Ready yourself for a bunch of SlimeVR news bits to bite on:
 * The next batch of SlimeVR stickers are in the sketching stage and are looking so amazing! Once again modelled after various contributors, the finished designs of these will be included in Butterfly Tracker bundles and some of the future 1.2 tracker sets. Check out the fantastic artistry below!
 * MOCAPers and VTubers rejoice... again. I personally took it upon myself to make fingers look cool as heck. Sickened by the old equi-length phalanx of our current finger system, I have added a system to asymmetrically divide fingers into more appealing and natural subdivisions. This is extremely important as now you can now do finger hearts! Check the little demo below.
 
+![attachment](assets/s2/c1%20bafkreiacjnkspm47pbzg4fq6p6iddsv4clpgx3w2kpalej6ygp5umfaz2u.webp)
+<video controls src="assets/s2/c2_0318.mp4" />
+
 *That's it for this week. Thank you for reading to the end, hope you all have a lovely week and weekend. See you space slimethings~! <3*
-![attachment](/blog/posts/weekly-update-230/80137_1785151791125_143.webp)
-![attachment](/blog/posts/weekly-update-230/80139_1785151794031_144.webp)

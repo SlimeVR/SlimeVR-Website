@@ -1,5 +1,6 @@
 import { defineConfig } from "@solidjs/start/config";
 import { plugin as ViteMdPlugin, Mode } from "vite-plugin-markdown";
+import { prerenderDone, prerenderGenerate } from "./src/scripts/sitemapGenerationHooks";
 
 export default defineConfig({
   vite: {
@@ -13,10 +14,13 @@ export default defineConfig({
   server: {
     static: true,
     prerender: {
-      routes: ["/404.html"],
+      routes: ["/404.html", "/blog"],
       crawlLinks: true,
     },
-    compatibilityDate: "2026-07-22",
+    hooks: {
+      "prerender:generate": prerenderGenerate,
+      "prerender:done": prerenderDone,
+    },
     esbuild: {
       options: {
         target: "es2024",
