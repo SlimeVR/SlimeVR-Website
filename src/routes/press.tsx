@@ -1,7 +1,8 @@
 import { Link, Meta } from "@solidjs/meta";
 import { AppTitle, MainLayout, Section } from "~/components/layout";
+import { PressKit } from "~/features/press-kit";
 
-export default function PressKit() {
+export default function PressKitPage() {
   return (
     <MainLayout>
       <AppTitle key="press.title" />

@@ -2,11 +2,11 @@ import { SolidMarkdownComponents } from "solid-markdown";
 import { resolveAssetPath } from "../../utils/blog.helper";
 
 export function markdownImgOverride(
-  postId: string
+  postId?: string
 ): SolidMarkdownComponents["img"] {
   return (props) => {
     const resolvedSrc =
-      typeof props.src === "string"
+      typeof props.src === "string" && postId != null
         ? resolveAssetPath(postId, props.src)
         : props.src;
 

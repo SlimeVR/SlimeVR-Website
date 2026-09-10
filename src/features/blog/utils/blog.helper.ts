@@ -95,7 +95,7 @@ export function sanitizeFrontMatter(fileString: string): string {
 }
 
 export function resolveAssetPath(
-  postId: string,
+  postId?: string,
   assetPath?: string
 ): string | undefined {
   if (assetPath == undefined) return undefined;
