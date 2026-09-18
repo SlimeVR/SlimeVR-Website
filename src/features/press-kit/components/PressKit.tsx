@@ -20,7 +20,7 @@ export const PressKit: Component = () => {
       >
         Press Kit
       </Typography>
-      <Container class="flex flex-col mt-4">
+      <Container class="flex flex-col mt-4 gap-6">
         <AboutUsSection />
         <PressKitMediaGallery />
         <SlimeVrEcosystemSection />
