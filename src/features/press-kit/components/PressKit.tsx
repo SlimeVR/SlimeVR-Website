@@ -4,11 +4,13 @@ import { Component } from "solid-js";
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
 import { Container } from "~/components/commons";
+import { PressKitMediaGallery } from "./PressKitMediaGallery";
 
 export const PressKit: Component = (props) => {
   return (
-    <Container class="mt-4">
-      <div class="prose prose-base max-w-none prose-invert"></div>
-    </Container>
+    <div class="flex flex-col gap-12 mt-4">
+      asd
+      <PressKitMediaGallery/>
+    </div>
   );
 };
