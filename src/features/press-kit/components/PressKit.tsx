@@ -104,7 +104,7 @@ const SlimeVrEcosystemSection: Component = () => (
     </Typography>
     <PressKitBulletList
       items={[
-        "The first generation of SlimeVR trackers were based on the ESP-32, using Wi-Fi",
+        "The first generation of SlimeVR trackers were based on the ESP8266, using Wi-Fi",
         <>
           The next generation, Butterfly Trackers, are the official version of
           the <strong>"Smol trackers"</strong>
