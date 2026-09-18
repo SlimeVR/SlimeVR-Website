@@ -35,10 +35,6 @@ const mediaGalleryContents: {
         href: "images/press-kit/product-shots/SlimeVR Wi-Fi Trackers_1599x620.jpg",
         label: "SlimeVR Wi-Fi Trackers",
       },
-      {
-        href: "images/press-kit/product-shots/SlimeVR Wi-Fi tracker with Ibis 2.0 nrf diy tracker for comparison_1647x856.webp",
-        label: "An Official Tracker (left) and Ibis 2.0 Smol Tracker (right)",
-      },
     ],
   },
 ];
