@@ -47,10 +47,10 @@ const AboutUsSection: Component = () => (
           an open-source server that facilitates{" "}
           <ExternalLink href="https://wiki.vrchat.com/wiki/Full-Body_Tracking">
             Full-Body Tracking (FBT)
-          </ExternalLink>
+          </ExternalLink>.
         </>,
-        "It is designed to be affordable, comfortable, and completely open, requiring no base stations or cameras",
-        "SlimeVR is commonly used for virtual reality, VTubing, and motion capture",
+        "It is designed to be affordable, comfortable, and completely open, requiring no base stations or cameras.",
+        "SlimeVR is commonly used for virtual reality, VTubing, and motion capture.",
       ]}
     />
 
@@ -64,13 +64,13 @@ const AboutUsSection: Component = () => (
       hips, to the fingers and toes.
     </Typography>
     <Typography tag="p">
-      This lets user bring their real-life movements into VR, do VTubing, and
+      This lets users bring their real-life movements into VR, do VTubing, and
       perform motion capture.
     </Typography>
     <Typography tag="p">
       SlimeVR trackers are based on IMUs which do not require base stations or
-      cameras, completely avoiding occlusion issues - you can use them under
-      comfort of blanket!
+      cameras, completely avoiding occlusion issues - you can use them from the
+      comfort of a blanket!
     </Typography>
     <Typography tag="p" bold>
       Applications:
@@ -104,10 +104,10 @@ const SlimeVrEcosystemSection: Component = () => (
     </Typography>
     <PressKitBulletList
       items={[
-        "The first generation of SlimeVR trackers were based on the ESP8266, using Wi-Fi",
+        "The first generation of SlimeVR trackers were based on the ESP8266, using Wi-Fi.",
         <>
           The next generation, Butterfly Trackers, are the official version of
-          the <strong>"Smol trackers"</strong>
+          the <strong>"Smol trackers"</strong>.
         </>,
         "Both generations of official trackers can be ordered through Crowd Supply, but can also be built yourself (DIY) or bought from the community marketplace in the SlimeVR Discord.",
       ]}
@@ -135,7 +135,7 @@ const KeyValuePropsSection: Component = () => (
       offer with SlimeVR, which is why one of our most important resources is
       the SlimeVR Discord server. It provides a valuable place for our users to
       not only turn to for help and guidance, but also develop their own SlimeVR
-      tracker designs, implementations, software integrations, and more
+      tracker designs, implementations, software integrations, and more.
     </Typography>
   </PressKitSection>
 );
@@ -144,12 +144,12 @@ const CommunitySection: Component = () => (
   <PressKitSection title="Key Value Props">
     <PressKitBulletList
       items={[
-        "Full-body tracking from the torso, arms, and legs-down, to fingers and toes - it's an entire full-body tracking system",
-        "Tracking that you can build yourself for affordible prices",
+        "Full-body tracking from the torso, arms, and legs-down, to fingers and toes - it's an entire full-body tracking system.",
+        "Tracking that you can build yourself for affordable prices.",
         "Works great with blankets - no occlusion!",
-        "SlimeVR Server automatically detects your VRChat settings and suggests the best settings for your tracking",
-        "A strong community on Discord",
-        "Windows, MacOS, Linux, mobile, and even standalone headsets supported",
+        "SlimeVR Server automatically detects your VRChat settings and suggests the best settings for your tracking.",
+        "A strong community on Discord.",
+        "Windows, MacOS, Linux, mobile, and even standalone headsets supported.",
       ]}
     />
   </PressKitSection>
@@ -159,11 +159,11 @@ const HowToTalkAboutUsSection: Component = () => (
   <PressKitSection title="How to Talk About Us (Brand Voice Tips)">
     <PressKitBulletList
       items={[
-        "Mention the most common uses: VR games (including social VR like VRChat), motion capture, and VTubing",
-        "Emphasize that the project has a strong community drive, where get to contribute their thoughts and ideas, even manufacturing and selling their own parts and trackers",
-        "Highlight that there are official trackers, a community marketplace, and the option to build your own set",
-        "Mention that SlimeVR works well in small playspaces, as base stations or cameras are not needed",
-        "Mention that we're community driven, open, affordable, and flexible",
+        "Mention the most common uses: VR games (including social VR like VRChat), motion capture, and VTubing.",
+        "Emphasize that the project has a strong community drive, where people get to contribute their thoughts and ideas, even manufacturing and selling their own parts and trackers.",
+        "Highlight that there are official trackers, a community marketplace, and the option to build your own set.",
+        "Mention that SlimeVR works well in small play spaces, as base stations or cameras are not needed.",
+        "Mention that we're community driven, open, affordable, and flexible.",
       ]}
     />
   </PressKitSection>
@@ -195,7 +195,7 @@ const ContactsSection: Component = () => (
     <PressKitBulletList
       items={[
         <ExternalLink href="https://discord.gg/SlimeVR">Discord</ExternalLink>,
-        <ExternalLink href="https://github.com/SlimeVR">Github</ExternalLink>,
+        <ExternalLink href="https://github.com/SlimeVR">GitHub</ExternalLink>,
         <ExternalLink href="support@slimevr.dev">Support</ExternalLink>,
         <ExternalLink href="https://bsky.app/profile/slimevr.dev">
           Bluesky
