@@ -8,8 +8,8 @@ interface PressKitSectionProps {
 export const PressKitSection: ParentComponent<PressKitSectionProps> = (
   props
 ) => (
-  <div class="flex flex-col gap-4 mb-1">
-    <Typography tag="h2" variant="section-title">
+  <div class="flex flex-col gap-4">
+    <Typography tag="h2" variant="section-title" class="mb-1">
       {props.title}
     </Typography>
     {props.children}

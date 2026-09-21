@@ -40,8 +40,8 @@ const mediaGalleryContents: {
 ];
 
 export const PressKitMediaGallery: Component = () => (
-  <div class="flex flex-col gap-4 mb-1">
-    <Typography tag="h2" variant="section-title">
+  <div class="flex flex-col gap-4">
+    <Typography tag="h2" variant="section-title" class="mb-1">
       Media Gallery
     </Typography>
     <For each={mediaGalleryContents}>

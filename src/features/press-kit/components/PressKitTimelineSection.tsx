@@ -51,14 +51,16 @@ const timeline = [
 
 export const PressKitTimelineSection: Component = () => (
   <PressKitSection title="Project Timeline">
-    <ul class="list-disc pl-5 flex flex-col gap-2">
+    <ul class="list-disc pl-5 flex flex-col gap-4">
       <For each={timeline}>
         {(entry) => (
           <li>
-            <Typography tag="span" bold>
-              {entry.date}
-            </Typography>
-            <Typography tag="p">{entry.text}</Typography>
+            <div class="flex flex-col gap-1">
+              <Typography tag="span" bold>
+                {entry.date}
+              </Typography>
+              <Typography tag="p">{entry.text}</Typography>
+            </div>
           </li>
         )}
       </For>

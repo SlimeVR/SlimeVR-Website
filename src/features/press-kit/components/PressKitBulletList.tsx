@@ -3,7 +3,7 @@ import { Typography } from "~/components/commons";
 import { PressKitBulletListProps } from "./PressKit";
 
 export const PressKitBulletList: Component<PressKitBulletListProps> = (props) => (
-  <ul class="list-disc pl-5 flex flex-col gap-2">
+  <ul class="list-disc pl-5 flex flex-col gap-4">
     <For each={props.items}>
       {(item) => (
         <li>
