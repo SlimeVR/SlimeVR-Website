@@ -29,9 +29,9 @@ const InternalLinks: Component = () => {
       <A href="/events" class="link px-2">
         <Typography tag="span" key="navbar.events" />
       </A>
-      {/* <A href="/events" class="link px-2">
-        News
-      </A> */}
+      <A href="/blog" class="link px-2">
+        <Typography tag="span" key="navbar.blog" />
+      </A>
       <A href="/team" class="link px-2">
         <Typography tag="span" key="navbar.team" />
       </A>

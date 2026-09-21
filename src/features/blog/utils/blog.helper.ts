@@ -1,9 +1,14 @@
-import type { BlogPaginationManifest, BlogPost, BlogPostMetadata } from "../blog.types.ts";
+import type {
+  BlogPaginationManifest,
+  BlogPost,
+  BlogPostMetadata,
+} from "../blog.types.ts";
 import { isServer } from "solid-js/web";
 import fm from "front-matter";
 import { dump } from "js-yaml";
 
 export const BLOG_PAGE_SIZE = 20;
+const ASSETS_BASE_PATH = "/public";
 
 const blogPostsCache: Map<string, BlogPost> = new Map();
 let cacheManifestGeneratedAt: string | null = null;
@@ -18,7 +23,9 @@ async function fetchPublicFileAsync(path: string): Promise<string> {
 }
 
 export async function getBlogPaginationManifest(): Promise<BlogPaginationManifest> {
-  const manifestContent = await fetchPublicFileAsync("blog/pagination/blog-pagination-manifest.json");
+  const manifestContent = await fetchPublicFileAsync(
+    "blog/pagination/blog-pagination-manifest.json"
+  );
 
   const manifest: BlogPaginationManifest = JSON.parse(manifestContent);
 
@@ -30,16 +37,26 @@ export async function getBlogPaginationManifest(): Promise<BlogPaginationManifes
   return manifest;
 }
 
-export async function getYearPagePosts(year: number, pageNumber: number): Promise<BlogPostMetadata[]> {
-  const fileString = await fetchPublicFileAsync(`blog/pagination/pages/${year}/page-${pageNumber}.json`);
+export async function getYearPagePosts(
+  year: number,
+  pageNumber: number
+): Promise<BlogPostMetadata[]> {
+  const fileString = await fetchPublicFileAsync(
+    `blog/pagination/pages/${year}/page-${pageNumber}.json`
+  );
 
   const postsByYear: BlogPostMetadata[] = JSON.parse(fileString);
-  postsByYear.forEach((yearPosts) => (yearPosts.date = new Date(yearPosts.date)));
+  postsByYear.forEach(
+    (yearPosts) => (yearPosts.date = new Date(yearPosts.date))
+  );
 
   return postsByYear;
 }
 
-export function parsePostFrontMatter(postId: string, fileString: string): BlogPost {
+export function parsePostFrontMatter(
+  postId: string,
+  fileString: string
+): BlogPost {
   const { attributes, body } = fm<Record<string, string>>(fileString);
   if (isNaN(new Date(attributes.date).getTime()))
     throw new Error(`Post: ${postId}: Incorrect date: ${attributes.date}`);
@@ -49,7 +66,7 @@ export function parsePostFrontMatter(postId: string, fileString: string): BlogPo
     date: new Date(attributes.date),
     title: attributes.title ?? "",
     description: attributes.description ?? "",
-    thumbnailUrl: attributes.thumbnailUrl,
+    thumbnailUrl: resolveAssetPath(postId, attributes.thumbnailUrl),
   };
 
   return { metadata, content: body };
@@ -75,4 +92,19 @@ export function sanitizeFrontMatter(fileString: string): string {
 
   const cleanYaml = dump(attributes).trim();
   return `---\n${cleanYaml}\n---\n${body}`;
+}
+
+export function resolveAssetPath(
+  postId: string,
+  assetPath?: string
+): string | undefined {
+  if (assetPath == undefined) return undefined;
+
+  const assetPathInAssetsFolder = assetPath.startsWith(ASSETS_BASE_PATH)
+    ? assetPath.replace(ASSETS_BASE_PATH, "")
+    : assetPath;
+
+  if (assetPathInAssetsFolder.startsWith("/")) return assetPathInAssetsFolder;
+
+  return `/blog/posts/${postId}/${assetPathInAssetsFolder}`;
 }

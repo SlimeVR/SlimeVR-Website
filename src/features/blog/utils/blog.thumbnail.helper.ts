@@ -17,7 +17,7 @@ const ACCENT_COLORS = [
   "#bdb2ff",
 ] as const;
 
-export function buildBlogPostThumbnailPlaceholder(
+export function getBlogPostThumbnailPlaceholderAttributes(
   title: string
 ): BlogPostThumbnailPlaceholder {
   const rand = new Rand(title);
