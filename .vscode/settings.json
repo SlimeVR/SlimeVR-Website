@@ -1,3 +1,11 @@
 {
-  "html.customData": ["./node_modules/vidstack/vscode.html-data.json"]
+  "html.customData": [
+    "./node_modules/vidstack/vscode.html-data.json"
+  ],
+  "cSpell.words": [
+    "Eiren",
+    "Polymoria",
+    "sctanf",
+    "Smol"
+  ]
 }

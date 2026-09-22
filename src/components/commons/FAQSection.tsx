@@ -3,7 +3,7 @@ import { Component, createMemo, For } from "solid-js";
 import { SolidMarkdown } from "solid-markdown";
 import { useI18n } from "~/i18n";
 import { Drawer, DrawerItem } from "./Drawer";
-import { MarkdownLink } from "./Markdown";
+import { ExternalLink } from "./Link";
 import { Typography } from "./Typography";
 
 export interface FAQItem {
@@ -85,7 +85,7 @@ export const FAQSection: Component<FAQSectionProps> = (props) => {
                 <div class="w-full min-w-full prose-md prose text-background-10 prose-h1:text-background-10 prose-h2:text-background-10 prose-a:text-background-20 prose-strong:text-background-10 prose-code:text-background-20">
                   <SolidMarkdown
                     remarkPlugins={[remarkGfm]}
-                    components={{ a: MarkdownLink }}
+                    components={{ a: ExternalLink }}
                   >
                     {translator(item.answer) as string}
                   </SolidMarkdown>
