@@ -15,9 +15,9 @@ const TrackerCard: Component<{
   href: string;
 }> = (props) => {
   return (
-    <div class="group rounded-2xl flex flex-col overflow-clip items-center gap-2 sm:gap-4 justify-between bg-background-60/40 border backdrop-blur-[9px] border-background-40">
+    <div class="group bg-background-60/40 border-background-40 flex flex-col items-center justify-between gap-2 overflow-clip rounded-2xl border backdrop-blur-[9px] sm:gap-4">
       <A
-        class="px-6 pt-6 flex flex-col gap-2 sm:gap-4 items-center justify-between w-full"
+        class="flex w-full flex-col items-center justify-between gap-2 px-6 pt-6 sm:gap-4"
         href={props.href}
         aria-label="Card linking to SlimeVR tracker order page"
       >
@@ -25,29 +25,29 @@ const TrackerCard: Component<{
           tag="h1"
           textAlign="text-center"
           key={props.titleKey}
-          class="text-[24px] lg:text-[28px] xl:text-[32px] font-bold"
+          class="text-[32px] font-bold xl:text-[38px]"
         />
-        <div class="relative h-30 md:h-40 w-full flex justify-center items-center">
+        <div class="relative flex h-36 w-full items-center justify-center md:h-48 md:h-56">
           <img
             src="/images/purple_glow.webp"
-            class="absolute object-contain h-full scale-200 blur-2xl no-interact"
+            class="no-interact absolute h-full scale-200 object-contain blur-2xl"
             fetchpriority="high"
             alt=""
           />
           <img
             src="/images/tracker_card_border.webp"
-            class="absolute object-contain h-full scale-[90%] group-hover:rotate-1 transition-transform duration-500 no-interact"
+            class="no-interact absolute h-full scale-[90%] object-contain transition-transform duration-500 group-hover:rotate-1"
             fetchpriority="high"
             alt=""
           />
           <img
             src={props.mainImage}
-            class="absolute object-contain h-full top-2 blur-[3px] group-hover:-rotate-3 transition-transform no-interact"
+            class="no-interact absolute top-2 h-full object-contain blur-[3px] transition-transform group-hover:-rotate-3"
             alt=""
           />
           <img
             src={props.mainImage}
-            class="absolute object-contain h-full top-2 group-hover:-rotate-3 transition-transform no-interact"
+            class="no-interact absolute top-2 h-full object-contain transition-transform group-hover:-rotate-3"
             fetchpriority="high"
             alt="SlimeVR tracker image"
           />
@@ -55,18 +55,18 @@ const TrackerCard: Component<{
         <Typography
           key={props.priceKey}
           tag="p"
-          class="text-[20px] lg:text-[24px] xl:text-[28px] font-bold"
+          class="text-[20px] font-bold lg:text-[18px] xl:text-[22px]"
         />
       </A>
 
       {/* regular version of order button */}
-      <div class="w-full px-6 pb-6 hidden 2xl:block">
+      <div class="hidden w-full px-6 pb-6 2xl:block">
         <ArrowButton
           variant="primary"
           prefixIcon={<CartIcon size={36}></CartIcon>}
           href={props.href}
         >
-          <div class="flex flex-col flex-wrap relative justify-center pb-2">
+          <div class="relative flex flex-col flex-wrap justify-center pb-2">
             <Typography
               variant="section-title"
               tag="span"
@@ -79,13 +79,13 @@ const TrackerCard: Component<{
       </div>
 
       {/* smaller version for anything smaller than 1080p </3 */}
-      <div class="w-full md:px-6 md:pb-6 px-4 pb-4 block 2xl:hidden">
+      <div class="block w-full px-4 pb-4 md:px-6 md:pb-6 2xl:hidden">
         <ArrowButton
           variant="primary"
           prefixIcon={<CartIcon size={30}></CartIcon>}
           href={props.href}
         >
-          <div class="flex flex-col flex-wrap relative justify-center pb-2">
+          <div class="relative flex flex-col flex-wrap justify-center pb-2">
             <Typography
               tag="span"
               whitespace="whitespace-nowrap"
@@ -102,132 +102,93 @@ const TrackerCard: Component<{
 
 export const HeroSection: Component = () => {
   return (
-    <div class="flex flex-col h-full sm:h-220 justify-between items-center my-8 relative">
-      <div class="hidden w-full md:flex flex-col gap-8 items-center">
-        <Typography
-          tag="h1"
-          key="home.hero.description"
-          textAlign="text-center"
-          class="text-[40px] font-bold"
-        />
-        {/* desktop hero */}
-        <div class="grid-cols-3 w-full gap-4 md:gap-8 lg:gap-12 hidden md:grid">
-          <TrackerCard
-            titleKey="home.hero.butterfly-slime"
-            mainImage="/images/butterfly_dock.webp"
-            priceKey="home.hero.price-butterfly"
-            orderKey="home.hero.preorder-btn"
-            href="https://slime.gay/site-cs-bf"
-          />
-          <div></div>
-          <TrackerCard
-            titleKey="home.hero.og-slime"
-            mainImage="/images/og_slime.webp"
-            priceKey="home.hero.price"
-            orderKey="home.hero.order-btn"
-            href="https://slime.gay/site-cs-og"
-          />
-        </div>
-      </div>
-      {/* mobile hero */}
-      <div class="grid grid-cols-1 w-full gap-4 md:hidden">
-        <Typography
-          tag="h1"
-          key="home.hero.description"
-          textAlign="text-center"
-          class="text-[1.75rem] -mt-4 font-bold"
-        />
-        <TrackerCard
-          titleKey="home.hero.butterfly-slime"
-          mainImage="/images/butterfly_dock.webp"
-          priceKey="home.hero.price-butterfly"
-          orderKey="home.hero.preorder-btn"
-          href="https://www.crowdsupply.com/slimevr/slimevr-butterfly-trackers"
-        />
-        <TrackerCard
-          titleKey="home.hero.og-slime"
-          mainImage="/images/og_slime.webp"
-          priceKey="home.hero.price"
-          orderKey="home.hero.order-btn"
-          href="https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker"
-        />
-      </div>
+    <div class="relative my-8 flex">
+      <HeroSectionFloatingNighty />
 
-      {/* nighty showing trackers bg */}
-      <div class="hidden flex-col justify-between items-center no-interact md:flex">
-        {/* nighty */}
-        <div class="absolute w-full h-full top-0 left-0 pointer-events-none">
-          <img
-            src="/images/nighty_floating.webp"
-            class="absolute -z-10 scale-[150%] md:mt-90 mt-40 md:animate-floating blur-lg min-w-280 left-1/2 -translate-x-[55%] md:-translate-x-1/2"
-            alt="Nightly floating in the background"
-          ></img>
-          <img
-            src="/images/nighty_floating.webp"
-            class="absolute -z-10 scale-[150%] md:mt-90 mt-40 md:animate-floating min-w-280 left-1/2 -translate-x-[55%] md:-translate-x-1/2 brightness-75 md:brightness-100"
-            alt=""
-          ></img>
-          <img
-            src="/images/stars.webp"
-            class="absolute -z-10 scale-[135%] md:mt-80 mt-40 md:animate-stars"
-            alt=""
-          ></img>
-        </div>
-
-        {/* tracker */}
-        <div class="absolute mid:top-14 md:top-40 lg:top-30 top-12 w-100 lg:w-110 2xl:w-130 no-interact hidden md:block">
-          <img
-            src="/images/purple_glow.webp"
-            class="w-full scale-120 absolute top-0 -z-10"
-            alt=""
-          ></img>
-          <img
-            src="/images/butterfly_tracker.webp"
-            class="w-full animate-rotated"
-            alt="SlimeVR Butterfly Tracker floating in the background"
-          ></img>
-          <div class="absolute w-full h-full top-20 left-0 brightness-90 animate-stars2 -z-10">
-            <img src="/images/stars.webp" class="w-full" alt=""></img>
-          </div>
-        </div>
-      </div>
-
-      {/* CTA stuff */}
-      <div class="w-full flex flex-col gap-4 items-center">
-        <div class="grid md:grid-cols-2 grid-cols-1 w-full md:gap-10 gap-4">
-          <div>
-            <ArrowButton
-              prefixIcon={<DownloadIcon size={35}></DownloadIcon>}
-              href="#download"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("download", location.pathname);
-              }}
-            >
-              <Typography
-                variant="section-title"
-                tag="span"
-                key="home.hero.download-server.title"
-              />
-              <Typography tag="p" key="home.hero.download-server.desc" />
-            </ArrowButton>
-          </div>
-
-          <div>
-            <ArrowButton
-              prefixIcon={<DiscordIcon size={40}></DiscordIcon>}
-              href="https://discord.gg/SlimeVR"
-            >
-              <Typography
-                variant="section-title"
-                tag="span"
-                key="home.hero.join-discord.title"
-              />
-              <Typography tag="p" key="home.hero.join-discord.desc" />
-            </ArrowButton>
-          </div>
-        </div>
+      <div class="grid w-full grid-cols-1 gap-6 md:h-[750px] md:grid-cols-12">
+        <HeroSectionLeftColumn />
+        <HeroSectionRightColumn />
       </div>
     </div>
   );
 };
+
+const HeroSectionFloatingNighty: Component = () => (
+  <div class="animate-floating pointer-events-none absolute top-0 right-0 hidden h-full w-full justify-end py-[5%] md:flex">
+    <img
+      src="/images/nighty_floating_vertically.png"
+      class="no-interact h-full w-auto object-contain"
+      fetchpriority="high"
+      alt="Nighty, the SlimeVR mascot, floating"
+    />
+  </div>
+);
+
+const HeroSectionLeftColumn: Component = () => (
+  <div class="z-10 flex h-full flex-col justify-between gap-6 py-5 md:col-span-6">
+    <Typography
+      tag="h1"
+      key="home.hero.description"
+      textAlign="text-center"
+      class="text-center text-[1.75rem] font-bold md:mt-15 md:text-left md:text-[40px]"
+    />
+    {/* desktop hero */}
+    <div class="w-full">
+      <TrackerCard
+        titleKey="home.hero.butterfly-slime"
+        mainImage="/images/butterfly_dock.webp"
+        priceKey="home.hero.price-butterfly"
+        orderKey="home.hero.preorder-btn"
+        href="https://slime.gay/site-cs-bf"
+      />
+    </div>
+  </div>
+);
+
+const HeroSectionRightColumn: Component = () => (
+  <div class="z-10 flex flex-row justify-between gap-3 py-5 md:col-span-6 md:col-start-8 md:grid md:grid-cols-1 md:auto-rows-fr md:self-end">
+    <div class="ml-auto grid w-full max-w-100">
+      <ArrowButton
+        prefixIcon={<DownloadIcon size={26}></DownloadIcon>}
+        href="#download"
+        onClick={(e) => {
+          e.preventDefault();
+          scrollToSection("download", location.pathname);
+        }}
+      >
+        <Typography
+          variant="section-title"
+          bold
+          tag="span"
+          class="max-lg:!text-[1.1rem]"
+          key="home.hero.download-server.title"
+        />
+        <Typography
+          tag="p"
+          key="home.hero.download-server.desc"
+          class="max-lg:!text-sm"
+        />
+      </ArrowButton>
+    </div>
+
+    <div class="ml-auto grid w-full max-w-100">
+      <ArrowButton
+        prefixIcon={<DiscordIcon size={26}></DiscordIcon>}
+        class="h-full"
+        href="https://discord.gg/SlimeVR"
+      >
+        <Typography
+          variant="section-title"
+          tag="span"
+          class="max-lg:!text-[1.1rem]"
+          key="home.hero.join-discord.title"
+        />
+        <Typography
+          tag="p"
+          key="home.hero.join-discord.desc"
+          class="max-lg:!text-sm"
+        />
+      </ArrowButton>
+    </div>
+  </div>
+);
