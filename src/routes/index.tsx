@@ -51,10 +51,10 @@ export default function HomePage() {
       />
 
       <Section>
-        <HeroSection></HeroSection>
+        <HeroSection />
       </Section>
 
-      <div class="flex flex-col pt-20 sm:pt-64 md:pt-16 gap-20 w-full items-center">
+      <div class="flex w-full flex-col items-center gap-20 pt-5 md:pt-16 md:pt-20 lg:pt-64">
         <Section gizmo="/images/Webpage_Design_Parts_first_block_bg.webp">
           <VideoSection></VideoSection>
         </Section>
