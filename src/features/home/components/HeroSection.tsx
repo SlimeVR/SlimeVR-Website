@@ -146,7 +146,7 @@ const HeroSectionLeftColumn: Component = () => (
 );
 
 const HeroSectionRightColumn: Component = () => (
-  <div class="z-10 flex flex-row justify-between gap-3 py-5 md:col-span-6 md:col-start-8 md:grid md:grid-cols-1 md:auto-rows-fr md:self-end">
+  <div class="mid:grid-cols-1 z-10 flex grid grid-cols-1 flex-row justify-between gap-3 py-5 md:col-span-6 md:col-start-8 md:auto-rows-fr md:self-end sm:grid-cols-2">
     <div class="ml-auto grid w-full max-w-100">
       <ArrowButton
         prefixIcon={<DownloadIcon size={26}></DownloadIcon>}
