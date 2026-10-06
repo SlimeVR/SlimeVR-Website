@@ -23,6 +23,7 @@ export const PressKit: Component = () => {
       <Container class="flex flex-col mt-4 gap-10">
         <AboutUsSection />
         <PressKitMediaGallery />
+        <BrandFontSection />
         <SlimeVrEcosystemSection />
         <KeyValuePropsSection />
         <PressKitTimelineSection />
@@ -103,6 +104,14 @@ const AboutUsSection: Component = () => (
         />
       </div>
     </div>
+  </PressKitSection>
+);
+
+const BrandFontSection: Component = () => (
+  <PressKitSection title="SlimeVR Brand Font">
+      <Typography tag="p">
+        SlimeVR Brand Font is Poppins.
+      </Typography>
   </PressKitSection>
 );
 
