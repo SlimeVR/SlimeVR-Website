@@ -1,6 +1,6 @@
 import { ComponentProps } from "solid-js";
 
-export const MarkdownLink = (props: ComponentProps<"a">) => (
+export const ExternalLink = (props: ComponentProps<"a">) => (
   <a
     target="_blank"
     rel="noopener noreferrer"

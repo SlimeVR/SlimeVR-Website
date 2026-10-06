@@ -17,7 +17,8 @@
     "column": {
       "resources": {
         "title": "Resources",
-        "tm": "Trademark"
+        "tm": "Trademark",
+        "press": "Press"
       },
       "shop": {
         "title": "Shop",
@@ -263,5 +264,8 @@
   },
   "ogslime": {
     "title": "SlimeVR V1.2 Trackers"
+  },
+  "press": {
+    "title": "SlimeVR Press Kit"
   }
 }
