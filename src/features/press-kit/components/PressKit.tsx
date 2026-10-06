@@ -212,12 +212,12 @@ const ContactsSection: Component = () => (
   <PressKitSection title="Contacts">
     <PressKitBulletList
       items={[
-        <ExternalLink href="https://discord.gg/SlimeVR">Discord</ExternalLink>,
-        <ExternalLink href="https://github.com/SlimeVR">GitHub</ExternalLink>,
-        <ExternalLink href="support@slimevr.dev">Support</ExternalLink>,
+        <ExternalLink href="mailto:support@slimevr.dev">Email</ExternalLink>,
         <ExternalLink href="https://bsky.app/profile/slimevr.dev">
           Bluesky
         </ExternalLink>,
+        <ExternalLink href="https://discord.gg/SlimeVR">Discord</ExternalLink>,
+        <ExternalLink href="https://github.com/SlimeVR">GitHub</ExternalLink>,
       ]}
     />
   </PressKitSection>
