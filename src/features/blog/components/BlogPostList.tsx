@@ -3,7 +3,7 @@ import { BlogPostMetadata, BlogYearGroup } from "../blog.types";
 import { A } from "@solidjs/router";
 import clsx from "clsx";
 import { FormattedDate } from "./FormattedDate";
-import { Typography } from "~/components/commons";
+import { LazyLoadImage, Typography } from "~/components/commons";
 import { BlogPostThumbnail } from "./BlogPostThumbnail";
 import { getBlogPostThumbnailPlaceholderAttributes } from "../utils/blog.thumbnail.helper";
 
@@ -80,25 +80,11 @@ const BlogPostCard: Component<{ post: BlogPostMetadata }> = (props) => {
           />
         }
       >
-        <div class="relative w-full h-48 overflow-hidden rounded-2xl bg-background-60">
-          <div
-            data-testid="image-skeleton"
-            class="absolute inset-0 animate-pulse bg-background-60/50"
-          />
-
-          <img
-            src={props.post.thumbnailUrl}
-            alt={props.post.title}
-            class={clsx(
-              "relative",
-              "z-10",
-              "w-full h-48",
-              "rounded-2xl",
-              "bg-background-60",
-              "object-cover"
-            )}
-          />
-        </div>
+        <LazyLoadImage
+          src={props.post.thumbnailUrl}
+          containerClasses="h-48 rounded-2xl"
+          class="w-full h-full object-cover"
+        />
       </Show>
 
       <div class="px-6 py-3">
