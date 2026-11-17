@@ -122,7 +122,7 @@ const VideoControl: Component<{
     <div class={clsx("flex h-full justify-center items-center")}>
       <button
         class={clsx(
-          "bg-accent-background-10 md:w-12 md:h-12 h-8 w-8 rounded-full p-3 flex justify-center items-center transition-colors",
+          "bg-accent-background-10 md:w-12 md:h-12 h-8 w-8 rounded-full p-3 flex justify-center items-center transition-colors hover:cursor-pointer",
           props.active
             ? "bg-accent-background-10 hover:bg-accent-background-30"
             : "bg-background-80"
