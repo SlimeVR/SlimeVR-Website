@@ -46,7 +46,7 @@ const YoutubeEmbed = (props: { videoId: string }) => (
       src={`https://www.youtube.com/embed/${props.videoId}`}
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowfullscreen
-      class="w-full h-full"
+      class="h-full w-full"
     />
   </div>
 );

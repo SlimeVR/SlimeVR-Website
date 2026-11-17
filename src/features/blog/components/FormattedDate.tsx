@@ -26,7 +26,7 @@ export const FormattedDate: Component<FormattedDateProps> = (props) => {
   return (
     <time
       dateTime={props.date.toISOString()}
-      class="text-xs font-medium tracking-widest text-background-30"
+      class="text-background-30 text-xs font-medium tracking-widest"
     >
       {formattedDate()}
     </time>

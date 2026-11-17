@@ -475,7 +475,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
 
       {/* the actual card */}
       <div
-        class={cardClasses() + " rounded-2xl shadow-lg relative"}
+        class={cardClasses() + " relative rounded-2xl shadow-lg"}
         ref={card}
         onClick={handleClick}
         onPointerEnter={cardHoverEnter}
@@ -485,7 +485,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
       >
         {/* glow effect when hovering */}
         <div
-          class="absolute inset-0 rounded-2xl no-interact pointer-events-none z-20"
+          class="no-interact pointer-events-none absolute inset-0 z-20 rounded-2xl"
           style={{
             background: `radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,var(--glow-opacity, 0)) 0%, transparent 50%)`,
             opacity: `var(--glow-opacity, 0)`,
@@ -494,21 +494,21 @@ export const Card: ParentComponent<CardProps> = (props) => {
         />
         <div
           ref={innerDiv}
-          class="aspect-[0.71/1] max-w-59.25 max-h-84 w-full h-full flex flex-col items-center justify-evenly rounded-xl px-2 relative overflow-hidden"
+          class="relative flex aspect-[0.71/1] h-full max-h-84 w-full max-w-59.25 flex-col items-center justify-evenly overflow-hidden rounded-xl px-2"
         >
           {/* background image */}
           <div
-            class="absolute inset-0 rounded-xl z-0"
+            class="absolute inset-0 z-0 rounded-xl"
             style={{
               background: `linear-gradient(135deg, ${borderColor}40, ${borderColor}20, ${borderColor}60)`,
             }}
             aria-hidden="true"
           />
           {/* slight blur for bg overlay */}
-          <div class="absolute inset-0 bg-black/20 rounded-xl z-0" />
-          <div class="relative z-10 w-full h-full flex flex-col items-center justify-evenly">
+          <div class="absolute inset-0 z-0 rounded-xl bg-black/20" />
+          <div class="relative z-10 flex h-full w-full flex-col items-center justify-evenly">
             {/* card header - name, role(s), image */}
-            <div class="flex flex-col flex-1">
+            <div class="flex flex-1 flex-col">
               <div class="flex flex-row justify-between p-2">
                 <Typography
                   tag="h3"
@@ -518,7 +518,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
                   {name()}
                 </Typography>
                 {/* roles */}
-                <div class="flex flex-row -space-x-2.5 mt-1">
+                <div class="mt-1 flex flex-row -space-x-2.5">
                   {roles.map((role, i) => {
                     const RoleConfig = ROLE_ICONS[role];
                     if (!RoleConfig) return null;
@@ -532,7 +532,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
                 </div>
               </div>
               {/* card image - bg and slime photo */}
-              <div class="w-54.5 h-35.25 overflow-visible rounded-2xl rounded-tr-[70px] pattern bg-size-[80%]! bg-[#1E2442]! -mt-0.5 relative">
+              <div class="pattern relative -mt-0.5 h-35.25 w-54.5 overflow-visible rounded-2xl rounded-tr-[70px] bg-[#1E2442]! bg-size-[80%]!">
                 <img
                   src={imgSrc()}
                   alt={name()}
@@ -545,7 +545,7 @@ export const Card: ParentComponent<CardProps> = (props) => {
                   }}
                 />
                 {(imageLoading() || imageError()) && (
-                  <div class="absolute inset-0 flex items-center justify-center no-interact">
+                  <div class="no-interact absolute inset-0 flex items-center justify-center">
                     <span class="text-6xl font-bold text-white">?</span>
                   </div>
                 )}
@@ -553,10 +553,10 @@ export const Card: ParentComponent<CardProps> = (props) => {
             </div>
 
             {/* card info/footer */}
-            <div class="flex flex-col items-center gap-4 flex-1 mt-4">
+            <div class="mt-4 flex flex-1 flex-col items-center gap-4">
               {/* socials */}
               {Object.keys(socials).length > 0 && (
-                <div class="flex flex-row flex-wrap gap-2 justify-center min-h-8">
+                <div class="flex min-h-8 flex-row flex-wrap justify-center gap-2">
                   {Object.entries(socials).map(([key, value]) => {
                     if (!value || !SOCIAL_ICONS[key]) return null;
                     const {
@@ -580,9 +580,9 @@ export const Card: ParentComponent<CardProps> = (props) => {
               )}
               {/* tags */}
               {tags && tags.length > 0 && (
-                <div class="flex flex-row flex-wrap gap-2 justify-center">
+                <div class="flex flex-row flex-wrap justify-center gap-2">
                   {tags.map((tag, i) => (
-                    <span class="bg-background-10 opacity-80 text-background-90 px-4 py-1.5 text-xs rounded-lg">
+                    <span class="bg-background-10 text-background-90 rounded-lg px-4 py-1.5 text-xs opacity-80">
                       {tag}
                     </span>
                   ))}

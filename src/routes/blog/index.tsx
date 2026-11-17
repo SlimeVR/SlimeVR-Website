@@ -36,7 +36,7 @@ export default function Blog() {
         <Link rel="canonical" href={`${SITE_PATH}/blog`} />
 
         <Section>
-          <div class="flex flex-col mb-6">
+          <div class="mb-6 flex flex-col">
             <Typography
               tag="h1"
               variant="main-title"

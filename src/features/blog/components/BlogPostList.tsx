@@ -24,7 +24,7 @@ export const BlogPostList: Component<BlogPostListProps> = (props) => {
         </Show>
       }
     >
-      <div class="grid gap-4 grid-cols-1 sm:grid-cols-2">
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <For each={props.yearPosts}>
           {(yearGroup) => <YearGroupSection yearGroup={yearGroup} />}
         </For>
@@ -80,10 +80,10 @@ const BlogPostCard: Component<{ post: BlogPostMetadata }> = (props) => {
           />
         }
       >
-        <div class="relative w-full h-48 overflow-hidden rounded-2xl bg-background-60">
+        <div class="bg-background-60 relative h-48 w-full overflow-hidden rounded-2xl">
           <div
             data-testid="image-skeleton"
-            class="absolute inset-0 animate-pulse bg-background-60/50"
+            class="bg-background-60/50 absolute inset-0 animate-pulse"
           />
 
           <img
@@ -92,7 +92,7 @@ const BlogPostCard: Component<{ post: BlogPostMetadata }> = (props) => {
             class={clsx(
               "relative",
               "z-10",
-              "w-full h-48",
+              "h-48 w-full",
               "rounded-2xl",
               "bg-background-60",
               "object-cover"

@@ -95,7 +95,7 @@ const ResourcesDropdown: Component = () => {
     >
       <button
         type="button"
-        class="px-2 flex items-center gap-2 hover:underline"
+        class="flex items-center gap-2 px-2 hover:underline"
         aria-expanded={isOpen()}
         aria-haspopup="true"
       >
@@ -109,13 +109,13 @@ const ResourcesDropdown: Component = () => {
       </button>
       <div
         class={clsx(
-          "absolute top-full left-1/2 -translate-x-1/2 pt-6 pr-2 z-20 min-w-max transition-opacity duration-200",
+          "absolute top-full left-1/2 z-20 min-w-max -translate-x-1/2 pt-6 pr-2 transition-opacity duration-200",
           isOpen()
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none opacity-0"
         )}
       >
-        <div class="flex flex-col gap-2 bg-background-70 border border-background-40 rounded-lg p-2">
+        <div class="bg-background-70 border-background-40 flex flex-col gap-2 rounded-lg border p-2">
           <ExternalLinks />
         </div>
       </div>
@@ -129,7 +129,7 @@ export const NavItems: Component<{ mobile?: boolean }> = (props) => {
       <InternalLinks />
       {props.mobile ? (
         <>
-          <div class="w-full h-px bg-background-40" />
+          <div class="bg-background-40 h-px w-full" />
           <ExternalLinks />
         </>
       ) : (
@@ -143,11 +143,11 @@ export const Navbar: Component = () => {
   const [isOpen, setOpen] = createSignal(false);
 
   return (
-    <div class="flex w-full flex-col gap-4 relative">
-      <div class="flex gap-2 h-18 w-full justify-between rounded-xl pl-1 pr-4 bg-background-70 border border-background-40">
-        <div class="flex gap-2 p-2 w-full justify-between mid:w-auto">
+    <div class="relative flex w-full flex-col gap-4">
+      <div class="bg-background-70 border-background-40 flex h-18 w-full justify-between gap-2 rounded-xl border pr-4 pl-1">
+        <div class="mid:w-auto flex w-full justify-between gap-2 p-2">
           <A
-            class="flex gap-2 justify-center items-center hover:bg-background-60 pl-2 pr-4 rounded-xl"
+            class="hover:bg-background-60 flex items-center justify-center gap-2 rounded-xl pr-4 pl-2"
             href="/"
           >
             <SlimeVRIcon
@@ -159,7 +159,7 @@ export const Navbar: Component = () => {
             </Typography>
           </A>
           <div class="flex">
-            <div class="items-center sm:flex hidden">
+            <div class="hidden items-center sm:flex">
               <Button
                 variant="primary"
                 href="https://slime.gay/site-cs-bf"
@@ -168,9 +168,9 @@ export const Navbar: Component = () => {
                 <Localized id="navbar.order" />
               </Button>
             </div>
-            <div class="flex mid:hidden justify-end">
+            <div class="mid:hidden flex justify-end">
               <button
-                class="hover:bg-background-60 px-4 rounded-lg"
+                class="hover:bg-background-60 rounded-lg px-4"
                 onClick={() => setOpen((open) => !open)}
                 aria-label="Toggle navigation menu"
               >
@@ -179,15 +179,15 @@ export const Navbar: Component = () => {
             </div>
           </div>
         </div>
-        <div class="divide-x divide-background-20 justify-center items-center hidden mid:flex">
+        <div class="divide-background-20 mid:flex hidden items-center justify-center divide-x">
           <NavItems />
         </div>
       </div>
       <div
         class={clsx(
-          "flex flex-col divide-background-20 gap-2 absolute top-full mt-2 bg-background-70 overflow-clip z-10 mid:hidden",
+          "divide-background-20 bg-background-70 mid:hidden absolute top-full z-10 mt-2 flex flex-col gap-2 overflow-clip",
           isOpen()
-            ? "h-fit p-4 border border-background-40 w-full rounded-lg "
+            ? "border-background-40 h-fit w-full rounded-lg border p-4"
             : "h-0"
         )}
       >

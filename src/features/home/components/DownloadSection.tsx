@@ -84,7 +84,7 @@ export const DownloadButton: ParentComponent<DownloadButtonProps> = (
     <A
       {...anchorProps}
       class={clsx(
-        "flex items-center sm:gap-5 gap-2 bg-background-60 rounded-2xl p-3 sm:pl-5 sm:pr-5 px-5 hover:cursor-pointer group hover:bg-background-50 opacity-95 transition-colors border min-h-19",
+        "bg-background-60 group hover:bg-background-50 flex min-h-19 items-center gap-2 rounded-2xl border p-3 px-5 opacity-95 transition-colors hover:cursor-pointer sm:gap-5 sm:pr-5 sm:pl-5",
         props.variant === "primary"
           ? "border-status-success"
           : "border-background-40"
@@ -94,13 +94,13 @@ export const DownloadButton: ParentComponent<DownloadButtonProps> = (
     >
       <div
         class={clsx(
-          "w-12 justify-center group-hover:fill-status-success fill-white hidden sm:flex"
+          "group-hover:fill-status-success hidden w-12 justify-center fill-white sm:flex"
         )}
       >
         {prefixIcon()}
       </div>
-      <div class="flex flex-col grow">{props.children}</div>
-      <div class="flex w-9 group-hover:translate-y-1 transition-transform duration-200">
+      <div class="flex grow flex-col">{props.children}</div>
+      <div class="flex w-9 transition-transform duration-200 group-hover:translate-y-1">
         <DownloadIcon size={30} class="fill-background-10"></DownloadIcon>
       </div>
     </A>
@@ -109,21 +109,21 @@ export const DownloadButton: ParentComponent<DownloadButtonProps> = (
 
 export const DownloadSection: Component = () => {
   return (
-    <div class="flex flex-col gap-4 w-full items-center relative" id="download">
+    <div class="relative flex w-full flex-col items-center gap-4" id="download">
       <div class="relative">
         <Typography tag="h2" variant="main-title" textAlign="text-center">
           Download SlimeVR Server
         </Typography>
-        <div class="absolute -top-10 -left-21 scale-90 -z-10 no-interact">
+        <div class="no-interact absolute -top-10 -left-21 -z-10 scale-90">
           <img src="/images/butterfly1.webp" alt="" loading="lazy"></img>
         </div>
       </div>
-      <div class="flex gap-4 md:gap-8 flex-col md:flex-row w-full">
+      <div class="flex w-full flex-col gap-4 md:flex-row md:gap-8">
         <div class="flex flex-col gap-2 md:w-125">
           <Typography tag="h3" textAlign="text-center" variant="section-title">
             Desktop
           </Typography>
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-2">
+          <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-1">
             <For each={DownloadLinks.desktop}>
               {(link) => (
                 <DownloadButton prefixIcon={link.icon()} href={link.href}>
@@ -142,7 +142,7 @@ export const DownloadSection: Component = () => {
           >
             Mobile
           </Typography>
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-2">
+          <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-1">
             <For each={DownloadLinks.mobile}>
               {(link) => (
                 <DownloadButton prefixIcon={link.icon()} href={link.href}>
@@ -155,18 +155,18 @@ export const DownloadSection: Component = () => {
           </div>
         </div>
 
-        <div class="no-interact w-full flex flex-col justify-center grow pr-8">
-          <div class="w-full relative aspect-video mt-4">
-            <div class="bg-background-70 rounded-lg border border-background-40 absolute w-full top-0 left-0">
+        <div class="no-interact flex w-full grow flex-col justify-center pr-8">
+          <div class="relative mt-4 aspect-video w-full">
+            <div class="bg-background-70 border-background-40 absolute top-0 left-0 w-full rounded-lg border">
               <img
                 src="/images/slimevr_desktop.webp"
-                class="w-full aspect-video p-2 rounded-2xl"
+                class="aspect-video w-full rounded-2xl p-2"
                 loading="lazy"
                 alt="SlimeVR Server running on a PC"
               ></img>
             </div>
 
-            <div class="bg-background-70 rounded-lg border border-background-40 absolute overflow-clip top-[15%] sm:top-[12%] md:top-[16%] -right-8 p-1 shadow-background-80 w-1/4 sm:w-[27%] md:w-[24%]">
+            <div class="bg-background-70 border-background-40 shadow-background-80 absolute top-[15%] -right-8 w-1/4 overflow-clip rounded-lg border p-1 sm:top-[12%] sm:w-[27%] md:top-[16%] md:w-[24%]">
               <img
                 class="w-full rounded-lg"
                 loading="lazy"

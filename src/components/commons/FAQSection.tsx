@@ -52,7 +52,7 @@ export const FAQSection: Component<FAQSectionProps> = (props) => {
   );
 
   return (
-    <div class="flex flex-col gap-3 w-full" id={props.id}>
+    <div class="flex w-full flex-col gap-3" id={props.id}>
       <script type="application/ld+json">{schema()}</script>
       <Typography
         tag="h2"
@@ -68,7 +68,7 @@ export const FAQSection: Component<FAQSectionProps> = (props) => {
           whitespace="whitespace-pre-line"
         />
       )}
-      <div class="bg-background-70 w-full p-4 rounded-lg border border-background-40">
+      <div class="bg-background-70 border-background-40 w-full rounded-lg border p-4">
         <Drawer onOpen={props.onOpen}>
           <For each={props.items}>
             {(item, index) => (
@@ -82,7 +82,7 @@ export const FAQSection: Component<FAQSectionProps> = (props) => {
                 }
                 open={index() === 0}
               >
-                <div class="w-full min-w-full prose-md prose text-background-10 prose-h1:text-background-10 prose-h2:text-background-10 prose-a:text-background-20 prose-strong:text-background-10 prose-code:text-background-20">
+                <div class="prose-md prose text-background-10 prose-h1:text-background-10 prose-h2:text-background-10 prose-a:text-background-20 prose-strong:text-background-10 prose-code:text-background-20 w-full min-w-full">
                   <SolidMarkdown
                     remarkPlugins={[remarkGfm]}
                     components={{ a: MarkdownLink }}

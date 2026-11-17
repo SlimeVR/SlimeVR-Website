@@ -358,7 +358,7 @@ export default function TeamPage() {
       <Section>
         <Container class="mt-4">
           {/* section text */}
-          <div class="flex flex-row justify-between items-center mb-8">
+          <div class="mb-8 flex flex-row items-center justify-between">
             <Typography
               tag="h2"
               variant="main-title"
@@ -381,7 +381,7 @@ export default function TeamPage() {
           {/* roles legend */}
           <div
             class={clsx(
-              "flex flex-col gap-4 mt-6 p-4 bg-background-70 border border-background-40 rounded-xl text-center",
+              "bg-background-70 border-background-40 mt-6 flex flex-col gap-4 rounded-xl border p-4 text-center",
               "sm:flex-row sm:text-left"
             )}
           >
@@ -413,7 +413,7 @@ export default function TeamPage() {
           </div>
 
           {/* poge actions - search & shuffle */}
-          <div class="flex flex-row justify-between gap-4 items-center mt-8">
+          <div class="mt-8 flex flex-row items-center justify-between gap-4">
             <SearchBox
               class="w-full sm:max-w-60"
               onChange={(e) =>
@@ -424,7 +424,7 @@ export default function TeamPage() {
             </SearchBox>
             <Button
               variant="quaternary"
-              class="border border-background-40 rounded-full! p-2.5! sm:px-5! sm:py-2.5!"
+              class="border-background-40 rounded-full! border p-2.5! sm:px-5! sm:py-2.5!"
               onClick={shuffle}
             >
               <span class="hidden sm:inline">
@@ -435,7 +435,7 @@ export default function TeamPage() {
           </div>
 
           {/* page cards - slimevr contributors */}
-          <div class="flex flex-row flex-wrap gap-4 mt-8 justify-around">
+          <div class="mt-8 flex flex-row flex-wrap justify-around gap-4">
             {/* filter slimes by search term if exists */}
             {filteredContribs().map((contrib) => {
               const isShiny = shinyContribs().some(
@@ -445,10 +445,10 @@ export default function TeamPage() {
               return (
                 <div
                   class={clsx(
-                    "max-w-62.5 w-full transform",
+                    "w-full max-w-62.5 transform",
                     isShuffling()
-                      ? "animate-pulse scale-95 opacity-80 rotate-1 no-interact duration-200"
-                      : "scale-100 opacity-100 rotate-0"
+                      ? "no-interact scale-95 rotate-1 animate-pulse opacity-80 duration-200"
+                      : "scale-100 rotate-0 opacity-100"
                   )}
                 >
                   <Card
@@ -475,7 +475,7 @@ export default function TeamPage() {
         <Section>
           <Container class="mt-4">
             {/* section text */}
-            <div class="flex flex-row justify-between items-center mb-8">
+            <div class="mb-8 flex flex-row items-center justify-between">
               <Typography
                 tag="h2"
                 variant="main-title"
@@ -503,13 +503,13 @@ export default function TeamPage() {
 
             {/* sponsor states & content */}
             {sponsors.loading && (
-              <div class="text-center py-8">
+              <div class="py-8 text-center">
                 <Typography tag="p" key="sponsors.loading" />
               </div>
             )}
 
             {sponsors.error && (
-              <div class="text-center py-8">
+              <div class="py-8 text-center">
                 <Typography tag="p" key="sponsors.error" color="text-red-400" />
               </div>
             )}
@@ -518,15 +518,15 @@ export default function TeamPage() {
               <>
                 {activeSponsors().length > 0 ? (
                   <>
-                    <div class="flex flex-wrap justify-center gap-4 mb-8">
+                    <div class="mb-8 flex flex-wrap justify-center gap-4">
                       {activeSponsors().map((sponsor) => (
                         <SponsorCard sponsor={sponsor} />
                       ))}
                     </div>
 
                     {pastSponsors().length > 0 && (
-                      <div class="border-t border-background-40 pt-6 pb-4">
-                        <div class="mb-4 text-center text-text-secondary">
+                      <div class="border-background-40 border-t pt-6 pb-4">
+                        <div class="text-text-secondary mb-4 text-center">
                           <Typography
                             tag="h3"
                             variant="section-title"
@@ -545,7 +545,7 @@ export default function TeamPage() {
                 ) : null}
 
                 {activeSponsors().length === 0 && (
-                  <div class="text-center py-8">
+                  <div class="py-8 text-center">
                     <Typography tag="p" key="sponsors.none" />
                   </div>
                 )}

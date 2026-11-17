@@ -116,10 +116,10 @@ export const DrawerItem: ParentComponent<DrawerItemProps> = (props) => {
     <>
       <div class="flex flex-col gap-3" ref={itemRef} id={props.id}>
         <div
-          class={"rounded-lg group hover:cursor-pointer hover:bg-background-50"}
+          class={"group hover:bg-background-50 rounded-lg hover:cursor-pointer"}
           onClick={toggleOpen}
         >
-          <div class="flex justify-between group-hover:border-transparent border-b-2 border-background-50 px-4 py-2 w-full">
+          <div class="border-background-50 flex w-full justify-between border-b-2 px-4 py-2 group-hover:border-transparent">
             {props.title}
             <ArrowIcon
               direction={isOpen() ? "down" : "right"}
@@ -129,10 +129,10 @@ export const DrawerItem: ParentComponent<DrawerItemProps> = (props) => {
           </div>
         </div>
         <div
-          class="overflow-clip transition-[height] bg-background-50 rounded-lg"
+          class="bg-background-50 overflow-clip rounded-lg transition-[height]"
           style={style()}
         >
-          <div ref={itemContentRef} class="p-4 rounded-lg">
+          <div ref={itemContentRef} class="rounded-lg p-4">
             {props.children}
           </div>
         </div>

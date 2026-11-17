@@ -16,7 +16,7 @@ export const MarkdownBaseComponentOverrides = ({
       <video
         {...props}
         src={resolveAssetPath(postId, src)}
-        class="object-contain mx-auto"
+        class="mx-auto object-contain"
         controls
       />
     );
