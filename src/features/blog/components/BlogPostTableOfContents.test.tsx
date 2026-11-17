@@ -34,7 +34,9 @@ describe("BlogPostTableOfContents", () => {
 
     vi.stubGlobal(
       "IntersectionObserver",
-      vi.fn().mockImplementation((callback: IntersectionObserverCallback) => {
+      vi.fn().mockImplementation(function MockIntersectionObserver(
+        callback: IntersectionObserverCallback
+      ) {
         observerCallback = callback;
         return {
           observe: observerSpy,
