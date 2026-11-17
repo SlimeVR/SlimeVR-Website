@@ -45,12 +45,18 @@ const ProductCard: Component<{
           />
           <img
             src={props.mainImage}
-            class={clsx(`absolute object-contain h-full blur-[3px] group-hover:-rotate-3 transition-transform no-interact`, props.imgClass)}
+            class={clsx(
+              `absolute object-contain h-full blur-[3px] group-hover:-rotate-3 transition-transform no-interact`,
+              props.imgClass
+            )}
             alt=""
           />
           <img
             src={props.mainImage}
-            class={clsx("absolute object-contain h-full group-hover:-rotate-3 transition-transform no-interact", props.imgClass)}
+            class={clsx(
+              "absolute object-contain h-full group-hover:-rotate-3 transition-transform no-interact",
+              props.imgClass
+            )}
             fetchpriority="high"
             alt="SlimeVR tracker image"
           />

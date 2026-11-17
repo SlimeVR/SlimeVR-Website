@@ -21,7 +21,10 @@ import { PeopleIcon } from "~/components/commons/icons/PeopleIcon";
 import { useI18n } from "~/i18n";
 import { setScroll } from "~/utils/scrollbar";
 import { getCardIndex, getCardName } from "~/utils/dom";
-import { Contributor, ContributorDisplay } from "~/features/contributors/contributors.types";
+import {
+  Contributor,
+  ContributorDisplay,
+} from "~/features/contributors/contributors.types";
 import { CircularIcon } from "~/features/contributors";
 import { Typography, Button, Container } from "~/components/commons";
 import { AppTitle, MainLayout, Section } from "~/components/layout";

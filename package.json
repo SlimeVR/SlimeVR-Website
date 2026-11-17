@@ -14,6 +14,8 @@
     "test-coverage": "vitest run --coverage --reporter=verbose",
     "test-ci": "pnpm test-coverage",
     "typecheck": "tsc --noEmit",
+    "format": "prettier --write ./src",
+    "format:check": "prettier --check ./src",
     "generate:blog:paginationApi": "node src/features/blog/tools/generateBlogPaginationApi.mts"
   },
   "dependencies": {

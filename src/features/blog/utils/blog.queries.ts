@@ -1,8 +1,5 @@
 import type { BlogPaginationManifest, BlogPostMetadata } from "../blog.types";
-import {
-  getBlogPaginationManifest,
-  getYearPagePosts,
-} from "./blog.helper";
+import { getBlogPaginationManifest, getYearPagePosts } from "./blog.helper";
 
 type BlogPageParam = {
   year: number;

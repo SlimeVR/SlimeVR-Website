@@ -93,6 +93,8 @@ describe("BlogPostTableOfContents", () => {
       {} as IntersectionObserver
     );
 
-    expect(screen.getByRole("link", {name: "sub-heading"})).toHaveClass("font-semibold");
+    expect(screen.getByRole("link", { name: "sub-heading" })).toHaveClass(
+      "font-semibold"
+    );
   });
 });
