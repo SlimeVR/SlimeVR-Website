@@ -6,16 +6,19 @@ import { DiscordIcon } from "../../../components/commons/icons/DiscordIcon";
 import { DownloadIcon } from "../../../components/commons/icons/DownloadIcon";
 import { scrollToSection } from "~/utils/dom";
 import { Typography, ArrowButton } from "~/components/commons";
+import clsx from "clsx";
 
-const TrackerCard: Component<{
+const ProductCard: Component<{
   titleKey: string;
   mainImage: string;
   priceKey: string;
-  orderKey?: string;
+  orderKey: string;
   href: string;
+  imgClass?: string;
 }> = (props) => {
   return (
     <div class="group rounded-2xl flex flex-col overflow-clip items-center gap-2 sm:gap-4 justify-between bg-background-60/40 border backdrop-blur-[9px] border-background-40">
+      {/* images */}
       <A
         class="px-6 pt-6 flex flex-col gap-2 sm:gap-4 items-center justify-between w-full"
         href={props.href}
@@ -35,19 +38,19 @@ const TrackerCard: Component<{
             alt=""
           />
           <img
-            src="/images/tracker_card_border.webp"
+            src="/images/product_card_border.webp"
             class="absolute object-contain h-full scale-[90%] group-hover:rotate-1 transition-transform duration-500 no-interact"
             fetchpriority="high"
             alt=""
           />
           <img
             src={props.mainImage}
-            class="absolute object-contain h-full top-2 blur-[3px] group-hover:-rotate-3 transition-transform no-interact"
+            class={clsx(`absolute object-contain h-full blur-[3px] group-hover:-rotate-3 transition-transform no-interact`, props.imgClass)}
             alt=""
           />
           <img
             src={props.mainImage}
-            class="absolute object-contain h-full top-2 group-hover:-rotate-3 transition-transform no-interact"
+            class={clsx("absolute object-contain h-full group-hover:-rotate-3 transition-transform no-interact", props.imgClass)}
             fetchpriority="high"
             alt="SlimeVR tracker image"
           />
@@ -71,7 +74,7 @@ const TrackerCard: Component<{
               variant="section-title"
               tag="span"
               whitespace="whitespace-nowrap"
-              key={props.orderKey ?? "home.hero.preorder-btn"}
+              key={props.orderKey}
             />
             <CrowdSupplyIcon size={162}></CrowdSupplyIcon>
           </div>
@@ -89,7 +92,7 @@ const TrackerCard: Component<{
             <Typography
               tag="span"
               whitespace="whitespace-nowrap"
-              key={props.orderKey ?? "home.hero.preorder-btn"}
+              key={props.orderKey}
               class="text-[1.2rem] font-bold"
             />
             <CrowdSupplyIcon size={144}></CrowdSupplyIcon>
@@ -112,20 +115,21 @@ export const HeroSection: Component = () => {
         />
         {/* desktop hero */}
         <div class="grid-cols-3 w-full gap-4 md:gap-8 lg:gap-12 hidden md:grid">
-          <TrackerCard
-            titleKey="home.hero.butterfly-slime"
+          <ProductCard
+            titleKey="home.hero.butterfly.name"
             mainImage="/images/butterfly_dock.webp"
-            priceKey="home.hero.price-butterfly"
-            orderKey="home.hero.preorder-btn"
+            priceKey="home.hero.butterfly.price"
+            orderKey="home.hero.butterfly.order"
             href="https://slime.gay/site-cs-bf"
+            imgClass="top-2"
           />
           <div></div>
-          <TrackerCard
-            titleKey="home.hero.og-slime"
-            mainImage="/images/og_slime.webp"
-            priceKey="home.hero.price"
-            orderKey="home.hero.order-btn"
-            href="https://slime.gay/site-cs-og"
+          <ProductCard
+            titleKey="home.hero.nighty.name"
+            mainImage="/images/nighty_plushie.webp"
+            priceKey="home.hero.nighty.price"
+            orderKey="home.hero.nighty.order"
+            href="https://slime.gay/site-cs-bf#products"
           />
         </div>
       </div>
@@ -137,19 +141,20 @@ export const HeroSection: Component = () => {
           textAlign="text-center"
           class="text-[1.75rem] -mt-4 font-bold"
         />
-        <TrackerCard
-          titleKey="home.hero.butterfly-slime"
+        <ProductCard
+          titleKey="home.hero.butterfly.name"
           mainImage="/images/butterfly_dock.webp"
-          priceKey="home.hero.price-butterfly"
-          orderKey="home.hero.preorder-btn"
+          priceKey="home.hero.butterfly.price"
+          orderKey="home.hero.butterfly.order"
           href="https://www.crowdsupply.com/slimevr/slimevr-butterfly-trackers"
+          imgClass="top-2"
         />
-        <TrackerCard
-          titleKey="home.hero.og-slime"
-          mainImage="/images/og_slime.webp"
-          priceKey="home.hero.price"
-          orderKey="home.hero.order-btn"
-          href="https://www.crowdsupply.com/slimevr/slimevr-full-body-tracker"
+        <ProductCard
+          titleKey="home.hero.nighty.name"
+          mainImage="/images/nighty_plushie.webp"
+          priceKey="home.hero.nighty.price"
+          orderKey="home.hero.nighty.order"
+          href="https://www.crowdsupply.com/slimevr/slimevr-butterfly-trackers#products"
         />
       </div>
 
@@ -159,12 +164,12 @@ export const HeroSection: Component = () => {
         <div class="absolute w-full h-full top-0 left-0 pointer-events-none">
           <img
             src="/images/nighty_floating.webp"
-            class="absolute -z-10 scale-[150%] md:mt-90 mt-40 md:animate-floating blur-lg min-w-280 left-1/2 -translate-x-[55%] md:-translate-x-1/2"
+            class="absolute -z-10 scale-[150%] md:mt-90 mt-40 md:animate-floating blur-lg min-w-280 left-1/2 translate-x-[-55%] md:-translate-x-1/2"
             alt="Nightly floating in the background"
           ></img>
           <img
             src="/images/nighty_floating.webp"
-            class="absolute -z-10 scale-[150%] md:mt-90 mt-40 md:animate-floating min-w-280 left-1/2 -translate-x-[55%] md:-translate-x-1/2 brightness-75 md:brightness-100"
+            class="absolute -z-10 scale-[150%] md:mt-90 mt-40 md:animate-floating min-w-280 left-1/2 translate-x-[-55%] md:-translate-x-1/2 brightness-75 md:brightness-100"
             alt=""
           ></img>
           <img
