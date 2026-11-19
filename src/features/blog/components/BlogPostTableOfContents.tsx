@@ -46,9 +46,9 @@ export const BlogPostTableOfContents: Component<
         <Show when={props.headings.length > 0}>
           <nav
             aria-label="On this page"
-            class="flex flex-col gap-4 rounded-2xl border border-background-40 bg-background-70 p-4"
+            class="border-background-40 bg-background-70 flex flex-col gap-4 rounded-2xl border p-4"
           >
-            <span class="text-xs font-medium uppercase tracking-widest text-background-30">
+            <span class="text-background-30 text-xs font-medium tracking-widest uppercase">
               On this page
             </span>
             <ul class="flex flex-col gap-2">
@@ -61,10 +61,10 @@ export const BlogPostTableOfContents: Component<
                       <a
                         href={`#${heading.id}`}
                         class={clsx(
-                          "block text-sm leading snug transition-colors",
+                          "leading snug block text-sm transition-colors",
                           heading.level === 3 && "pl-4",
                           isActive()
-                            ? "font-semibold text-accent-background-10"
+                            ? "text-accent-background-10 font-semibold"
                             : "text-background-10/80 hover:text-accent-background-10"
                         )}
                       >

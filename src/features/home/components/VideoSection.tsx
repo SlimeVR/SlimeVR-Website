@@ -78,7 +78,7 @@ const VideoThumbnail: Component<{
   return (
     <button
       class={clsx(
-        "rounded-lg overflow-clip aspect-video h-22.5 sm:h-31.5 relative border-2 cursor-pointer group",
+        "group relative aspect-video h-22.5 cursor-pointer overflow-clip rounded-lg border-2 sm:h-31.5",
         props.active ? "border-accent-background-10" : "border-transparent"
       )}
       onClick={props.onClick}
@@ -86,26 +86,26 @@ const VideoThumbnail: Component<{
     >
       <div
         class={clsx(
-          "absolute top-0 h-full w-full bg-background-80 transition-opacity"
+          "bg-background-80 absolute top-0 h-full w-full transition-opacity"
         )}
       >
-        <div class={clsx("h-full w-full bg-background-50 animate-pulse")}></div>
+        <div class={clsx("bg-background-50 h-full w-full animate-pulse")}></div>
       </div>
       <img
         src={props.thumbnail}
-        class="w-full h-full object-cover absolute top-0"
+        class="absolute top-0 h-full w-full object-cover"
         loading="lazy"
         alt="Video thumbnail"
       ></img>
 
       <div
         class={clsx(
-          "w-full h-full top-0 absolute bg-accent-background-10",
-          props.active ? " opacity-50" : "opacity-0"
+          "bg-accent-background-10 absolute top-0 h-full w-full",
+          props.active ? "opacity-50" : "opacity-0"
         )}
       ></div>
-      <div class="absolute top-0 h-full w-full flex justify-center items-center">
-        <div class="bg-accent-background-10 w-12 h-12 rounded-full p-3 flex justify-center transition-colors group-hover:bg-accent-background-30">
+      <div class="absolute top-0 flex h-full w-full items-center justify-center">
+        <div class="bg-accent-background-10 group-hover:bg-accent-background-30 flex h-12 w-12 justify-center rounded-full p-3 transition-colors">
           <PlayIcon size={20} class="fill-background-10"></PlayIcon>
         </div>
       </div>
@@ -119,10 +119,10 @@ const VideoControl: Component<{
   active: boolean;
 }> = (props) => {
   return (
-    <div class={clsx("flex h-full justify-center items-center")}>
+    <div class={clsx("flex h-full items-center justify-center")}>
       <button
         class={clsx(
-          "bg-accent-background-10 md:w-12 md:h-12 h-8 w-8 rounded-full p-3 flex justify-center items-center transition-colors",
+          "bg-accent-background-10 flex h-8 w-8 items-center justify-center rounded-full p-3 transition-colors hover:cursor-pointer md:h-12 md:w-12",
           props.active
             ? "bg-accent-background-10 hover:bg-accent-background-30"
             : "bg-background-80"
@@ -217,7 +217,7 @@ export const VideoSection: Component = () => {
   };
 
   return (
-    <div class="flex flex-col gap-4 relative">
+    <div class="relative flex flex-col gap-4">
       <Typography
         tag="h2"
         variant="main-title"
@@ -225,9 +225,9 @@ export const VideoSection: Component = () => {
         key="home.video-section"
       />
       <div class="flex">
-        <div class="flex grow flex-col gap-2 sm:gap-4 w-full">
-          <div class="flex gap-4 flex-col justify-center">
-            <div class="w-full flex aspect-video bg-background-60 rounded-lg md:rounded-3xl p-2 md:p-4 border border-background-40 group">
+        <div class="flex w-full grow flex-col gap-2 sm:gap-4">
+          <div class="flex flex-col justify-center gap-4">
+            <div class="bg-background-60 border-background-40 group flex aspect-video w-full rounded-lg border p-2 md:rounded-3xl md:p-4">
               {autoplay() ? (
                 <iframe
                   title="YouTube video player"
@@ -240,7 +240,7 @@ export const VideoSection: Component = () => {
                 ></iframe>
               ) : (
                 <button
-                  class="w-full h-full relative flex items-center justify-center rounded-lg overflow-hidden cursor-pointer"
+                  class="relative flex h-full w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg"
                   aria-label="Play video"
                   onClick={() => setAutoplay(true)}
                 >
@@ -249,25 +249,25 @@ export const VideoSection: Component = () => {
                       "hqdefault",
                       "maxresdefault"
                     )}
-                    class="w-full h-full object-cover absolute top-0"
+                    class="absolute top-0 h-full w-full object-cover"
                     loading="lazy"
                     alt="Video thumbnail"
                   ></img>
-                  <div class="relative z-10 bg-transparent border-0 p-0">
-                    <div class="bg-accent-background-10 group-hover:bg-accent-background-30 w-16 h-16 rounded-full p-3 flex justify-center transition-colors">
+                  <div class="relative z-10 border-0 bg-transparent p-0">
+                    <div class="bg-accent-background-10 group-hover:bg-accent-background-30 flex h-16 w-16 justify-center rounded-full p-3 transition-colors">
                       <PlayIcon size={26} class="fill-background-10"></PlayIcon>
                     </div>
                   </div>
                 </button>
               )}
             </div>
-            <div class="flex gap-2 md:gap-4 justify-center items-center">
+            <div class="flex items-center justify-center gap-2 md:gap-4">
               <VideoControl
                 onClick={() => scrollPrev()}
                 active={shouldShowPrev()}
               ></VideoControl>
               <div
-                class="flex overflow-x-auto no-scrollbar scroll-smooth bg-background-60 rounded-lg md:rounded-3xl p-2 md:p-4 border border-background-40"
+                class="no-scrollbar bg-background-60 border-background-40 flex overflow-x-auto scroll-smooth rounded-lg border p-2 md:rounded-3xl md:p-4"
                 ref={videosScrollRef}
               >
                 <div class="flex gap-2 md:gap-4" ref={videosContainerRef}>

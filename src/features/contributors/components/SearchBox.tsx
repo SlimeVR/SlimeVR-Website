@@ -31,12 +31,12 @@ export const SearchBox: ParentComponent<SearchProps> = (initialProps) => {
   return (
     <div
       class={clsx(
-        "flex items-center rounded-full bg-background-70 border border-background-40 px-6 py-2 gap-3"
+        "bg-background-70 border-background-40 flex items-center gap-3 rounded-full border px-6 py-2"
       )}
       style={{ position: "relative" }}
     >
       {/* hide text on mobile */}
-      <span class={"text-background-10 text-lg hidden sm:inline"}>
+      <span class={"text-background-10 hidden text-lg sm:inline"}>
         {props.children}
       </span>
       <SearchIcon size={20} />
@@ -49,7 +49,7 @@ export const SearchBox: ParentComponent<SearchProps> = (initialProps) => {
           onInput={(e) => props.onChange && props.onChange(e)}
         />
         <span
-          class="absolute left-0 right-0 bottom-0 h-px bg-background-10"
+          class="bg-background-10 absolute right-0 bottom-0 left-0 h-px"
           style={{ width: "100%" }}
         />
       </span>

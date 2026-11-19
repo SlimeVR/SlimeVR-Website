@@ -39,4 +39,4 @@ export const CircularIcon = (props: CircularIconProps) => {
       </Match>
     </Switch>
   );
-}
+};

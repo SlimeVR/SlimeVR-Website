@@ -63,7 +63,7 @@ const ExplosionDot: Component = () => {
 
   return (
     <div class="absolute -z-10" style={explodeStyle()}>
-      <div class="linear-gradient size-75 rounded-full animate-explode"></div>
+      <div class="linear-gradient animate-explode size-75 rounded-full"></div>
     </div>
   );
 };
@@ -74,19 +74,19 @@ interface MainLaoutProps {
 
 export const MainLayout: ParentComponent<MainLaoutProps> = (props) => {
   return (
-    <main class={clsx("flex flex-col min-h-screen pattern", props.variant)}>
-      <div class="relative overflow-clip grow">
+    <main class={clsx("pattern flex min-h-screen flex-col", props.variant)}>
+      <div class="relative grow overflow-clip">
         <ExplosionDot></ExplosionDot>
         <ExplosionDot></ExplosionDot>
         <ExplosionDot></ExplosionDot>
         <ExplosionDot></ExplosionDot>
-        <div class="flex flex-col w-full items-center relative overflow-y-clip py-4">
+        <div class="relative flex w-full flex-col items-center overflow-y-clip py-4">
           <img
-            class="absolute w-full top-0 no-interact"
+            class="no-interact absolute top-0 w-full"
             src="/images/Webpage_Design_Parts_header_block.webp"
             alt=""
           ></img>
-          <div class="max-w-6xl 2xl:max-w-350 w-full top-5 z-20 px-4">
+          <div class="top-5 z-20 w-full max-w-6xl px-4 2xl:max-w-350">
             <Navbar></Navbar>
           </div>
           {props.children}

@@ -67,7 +67,7 @@ const BlogPostHeader: Component<BlogPostRenderProps> = (props) => {
     <Container class="overflow-hidden p-0!">
       <div class="grid grid-cols-1 lg:grid-cols-[3fr_2fr]">
         <div class="flex flex-col justify-center gap-4 p-6 sm:p-8">
-          <h1 class="text-main-title leading-tight text-background-10">
+          <h1 class="text-main-title text-background-10 leading-tight">
             {props.post.metadata.title}
           </h1>
           <FormattedDate date={props.post.metadata.date} />
@@ -92,7 +92,7 @@ const BlogPostThumbnailPlaceholder: Component<BlogPostRenderProps> = (
   );
 
   return (
-    <div class="relative h-62 from-transparent to-background-80 bg-linear-to-b lg:bg-linear-to-r">
+    <div class="to-background-80 relative h-62 bg-linear-to-b from-transparent lg:bg-linear-to-r">
       <div class="absolute inset-x-0 top-[15%] flex justify-end pr-4">
         <img
           src={thumbnailSettings().thumbnailPictureUrl}
@@ -109,7 +109,7 @@ const BlogPostThumbnailImage: Component<BlogPostRenderProps> = (props) => {
       <img
         src={props.post.metadata.thumbnailUrl}
         alt={props.post.metadata.title}
-        class="h-full w-full object-cover bg-background-80 rounded-2xl"
+        class="bg-background-80 h-full w-full rounded-2xl object-cover"
       />
     </div>
   );

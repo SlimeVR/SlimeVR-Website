@@ -34,7 +34,9 @@ describe("BlogPostTableOfContents", () => {
 
     vi.stubGlobal(
       "IntersectionObserver",
-      vi.fn().mockImplementation((callback: IntersectionObserverCallback) => {
+      vi.fn().mockImplementation(function MockIntersectionObserver(
+        callback: IntersectionObserverCallback
+      ) {
         observerCallback = callback;
         return {
           observe: observerSpy,
@@ -91,6 +93,8 @@ describe("BlogPostTableOfContents", () => {
       {} as IntersectionObserver
     );
 
-    expect(screen.getByRole("link", {name: "sub-heading"})).toHaveClass("font-semibold");
+    expect(screen.getByRole("link", { name: "sub-heading" })).toHaveClass(
+      "font-semibold"
+    );
   });
 });

@@ -63,7 +63,7 @@ export const ArrowButton: ParentComponent<ArrowButtonProps> = (
       {...anchorProps}
       ref={containerRef}
       class={clsx(
-        "flex items-center sm:gap-5 gap-2 bg-background-60/80 rounded-2xl p-3 sm:pl-5 sm:pr-10 px-5 hover:cursor-pointer group hover:bg-background-50 backdrop-blur-[9px] transition-colors border",
+        "bg-background-60/80 group hover:bg-background-50 flex items-center gap-2 rounded-2xl border p-3 px-5 backdrop-blur-[9px] transition-colors hover:cursor-pointer sm:gap-5 sm:pr-10 sm:pl-5",
         props.variant === "primary"
           ? "border-status-success"
           : "border-background-40"
@@ -72,18 +72,18 @@ export const ArrowButton: ParentComponent<ArrowButtonProps> = (
       <Show when={prefixIcon()}>
         <div
           class={clsx(
-            "w-12 justify-center group-hover:fill-status-success fill-white hidden sm:flex"
+            "group-hover:fill-status-success hidden w-12 justify-center fill-white sm:flex"
           )}
         >
           {prefixIcon()}
         </div>
       </Show>
-      <div class="flex flex-col grow">{props.children}</div>
+      <div class="flex grow flex-col">{props.children}</div>
 
       <div
         ref={arrowRef}
         class={clsx(
-          "flex w-9 group-hover:translate-x-5 transition-transform duration-200",
+          "flex w-9 transition-transform duration-200 group-hover:translate-x-5",
           !showArrow() && "invisible"
         )}
       >

@@ -32,7 +32,7 @@ export function markdownImgOverride(
       <img
         {...props}
         src={resolvedSrc}
-        class="max-h-96 object-contain mx-auto"
+        class="mx-auto max-h-96 object-contain"
         loading="lazy"
       />
     );

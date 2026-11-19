@@ -17,7 +17,7 @@ export const PastSponsorAvatar: Component<PastSponsorAvatarProps> = (props) => {
       <img
         src={props.sponsor.avatarUrl}
         alt={props.sponsor.name}
-        class="w-10 h-10 rounded-full object-cover border border-background-40 group-hover:border-accent-100 transition-colors duration-200 grayscale group-hover:grayscale-0"
+        class="border-background-40 group-hover:border-accent-100 h-10 w-10 rounded-full border object-cover grayscale transition-colors duration-200 group-hover:grayscale-0"
         loading="lazy"
       />
     </a>

@@ -17,10 +17,7 @@ export default function BlogPostRoute() {
     <MainLayout>
       <AppTitle key="blog.title" />
       <Meta name="robots" content="index, follow" />
-      <Link
-        rel="canonical"
-        href={`${SITE_PATH}/blog/${params.postId}`}
-      />
+      <Link rel="canonical" href={`${SITE_PATH}/blog/${params.postId}`} />
 
       <Section>
         <Show when={post()} fallback={<BlogPostSkeleton />}>

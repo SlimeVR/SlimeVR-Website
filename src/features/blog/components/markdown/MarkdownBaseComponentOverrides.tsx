@@ -12,7 +12,13 @@ export const MarkdownBaseComponentOverrides = ({
   img: markdownImgOverride(postId),
   video: (props) => {
     const { src } = props;
-    return <video {...props} src={resolveAssetPath(postId, src)} class="object-contain mx-auto" controls />;
+    return (
+      <video
+        {...props}
+        src={resolveAssetPath(postId, src)}
+        class="mx-auto object-contain"
+        controls
+      />
+    );
   },
 });
-

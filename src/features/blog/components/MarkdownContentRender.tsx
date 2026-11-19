@@ -14,7 +14,7 @@ export const MarkdownContentRender: Component<MarkdownContentRenderProps> = (
   props
 ) => {
   return (
-    <div class="prose prose-base max-w-none prose-invert">
+    <div class="prose prose-base prose-invert max-w-none">
       <SolidMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw, rehypeSlug]}

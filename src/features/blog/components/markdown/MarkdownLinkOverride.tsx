@@ -11,7 +11,11 @@ export function markdownLinkOverride(): SolidMarkdownComponents["a"] {
     if (hasLabel && ytVideoId) return <YoutubeEmbed videoId={ytVideoId} />;
 
     return (
-      <a href={href} class={hasLabel ? "break-all" : "block max-w-full truncate"} {...props}>
+      <a
+        href={href}
+        class={hasLabel ? "break-all" : "block max-w-full truncate"}
+        {...props}
+      >
         {children}
       </a>
     );
@@ -19,9 +23,11 @@ export function markdownLinkOverride(): SolidMarkdownComponents["a"] {
 }
 
 function isHasLabel(node: Element, href: string | undefined) {
-  return node?.children?.length === 1 &&
+  return (
+    node?.children?.length === 1 &&
     node?.children[0].type === "text" &&
-    node?.children[0].value === href;
+    node?.children[0].value === href
+  );
 }
 
 function getYoutubeVideoId(videoUrl: string | undefined): string | null {
@@ -40,7 +46,7 @@ const YoutubeEmbed = (props: { videoId: string }) => (
       src={`https://www.youtube.com/embed/${props.videoId}`}
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowfullscreen
-      class="w-full h-full"
+      class="h-full w-full"
     />
   </div>
 );

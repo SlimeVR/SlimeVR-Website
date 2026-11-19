@@ -1,10 +1,4 @@
-import {
-  readFileSync,
-  existsSync,
-  writeFileSync,
-  mkdirSync,
-  rmSync,
-} from "fs";
+import { readFileSync, existsSync, writeFileSync, mkdirSync, rmSync } from "fs";
 import { join, resolve } from "path";
 import type {
   BlogPaginationManifest,

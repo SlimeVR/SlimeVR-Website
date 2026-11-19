@@ -32,7 +32,6 @@ export function getAllBlogPosts(): BlogPost[] {
   return posts;
 }
 
-
 export function getLatestBlogPostDate(allBlogPosts: BlogPost[]) {
   const latestBlogPostDate = allBlogPosts[0]?.metadata.date;
 

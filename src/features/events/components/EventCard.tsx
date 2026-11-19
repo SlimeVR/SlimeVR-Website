@@ -65,7 +65,7 @@ const EventCardHeader: Component<{
           </Show>
         </div>
         <div class="flex h-5 shrink-0 items-center gap-1.5 self-start">
-          <LocationIcon class="size-4 shrink-0 text-accent-background-20" />
+          <LocationIcon class="text-accent-background-20 size-4 shrink-0" />
           <Typography
             tag="span"
             color="secondary"
@@ -101,8 +101,8 @@ const EventCardUpcomingDates: Component<{ dates: Date[] }> = (props) => (
     >
       <For each={props.dates}>
         {(date) => (
-          <div class="flex items-center gap-2 text-background-10">
-            <CalendarIcon class="size-4 text-background-30" />
+          <div class="text-background-10 flex items-center gap-2">
+            <CalendarIcon class="text-background-30 size-4" />
             <Typography tag="span" textAlign="text-left" color="primary">
               {formatDate(date)} &bull; {formatTimeShort(date)}
             </Typography>
@@ -126,7 +126,7 @@ const EventLiveBadge: Component<{
         class="flex h-5 items-center gap-2"
         title={`${formatDate(props.date)} \u2022 ${formatTimeShort(props.date)}`}
       >
-        <span class="size-2 shrink-0 rounded-full bg-status-success" />
+        <span class="bg-status-success size-2 shrink-0 rounded-full" />
         <Typography
           tag="span"
           textAlign="text-left"
@@ -162,8 +162,8 @@ const EventNextDate: Component<{
   startDate: string;
   date: Date;
 }> = (props) => (
-  <div class="flex h-5 items-center gap-2 text-background-10">
-    <CalendarIcon class="size-4 shrink-0 text-accent-background-20" />
+  <div class="text-background-10 flex h-5 items-center gap-2">
+    <CalendarIcon class="text-accent-background-20 size-4 shrink-0" />
     <span
       title={`${formatTimeLocal(props.date)} ${getTimezone(props.startDate)}`}
     >
@@ -206,12 +206,12 @@ const EventCardBottomRow: Component<{
   return (
     <div class="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4">
       <div class="flex min-w-0 items-center gap-1.5">
-        <UserIcon class="size-4 text-background-30" />
+        <UserIcon class="text-background-30 size-4" />
         <Typography
           tag="p"
           textAlign="text-center"
           color="secondary"
-          class="text-sm truncate"
+          class="truncate text-sm"
         >
           {props.host}
         </Typography>
@@ -222,7 +222,7 @@ const EventCardBottomRow: Component<{
         rel="noopener noreferrer"
         target="_blank"
         disabled={!hasLink}
-        class="min-h-10 px-4 py-2 text-sm rounded-lg"
+        class="min-h-10 rounded-lg px-4 py-2 text-sm"
       >
         <Typography tag="span" key="events.info" />
       </Button>
@@ -231,12 +231,12 @@ const EventCardBottomRow: Component<{
 };
 
 const EventCardImage: Component<{ src: string; alt: string }> = (props) => (
-  <div class="-mx-4 -mt-4 w-[calc(100%+2rem)] overflow-hidden bg-background-40 no-interact rounded-none">
+  <div class="bg-background-40 no-interact -mx-4 -mt-4 w-[calc(100%+2rem)] overflow-hidden rounded-none">
     <img
       src={props.src}
       loading="lazy"
       alt={props.alt}
-      class="h-full w-full object-cover aspect-[2.5/1]"
+      class="aspect-[2.5/1] h-full w-full object-cover"
       onError={(e) => {
         e.currentTarget.src = "/images/Pattern.webp";
       }}
@@ -265,15 +265,15 @@ export const EventCard: Component<{ event: EventData }> = (props) => {
       <EventCardImage src={image()} alt={event.name} />
       <div class="grid gap-4">
         <EventCardHeader event={event} schedule={schedule()} />
-        <div class="w-full h-px bg-background-40" />
+        <div class="bg-background-40 h-px w-full" />
         <EventCardDescription text={event.description} />
       </div>
-      <div class="w-full h-px bg-background-40" />
+      <div class="bg-background-40 h-px w-full" />
       <EventCardBottomRow link={event.link} host={event.host} />
       <Show when={schedule()}>
         {(s) => (
           <>
-            <div class="w-full h-px bg-background-40" />
+            <div class="bg-background-40 h-px w-full" />
             <EventCardUpcomingDates dates={s().upcoming} />
           </>
         )}

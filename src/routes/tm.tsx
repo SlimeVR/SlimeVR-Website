@@ -17,7 +17,7 @@ export default function TmPage() {
           <SolidMarkdown
             remarkPlugins={[remarkGfm]}
             components={{ a: MarkdownLink }}
-            class="text-sm w-full min-w-full prose-xl prose text-background-10 prose-h1:text-background-10 prose-h2:text-background-10 prose-a:text-background-20 prose-strong:text-background-10 prose-code:text-background-20"
+            class="prose-xl prose text-background-10 prose-h1:text-background-10 prose-h2:text-background-10 prose-a:text-background-20 prose-strong:text-background-10 prose-code:text-background-20 w-full min-w-full text-sm"
           >
             {`
 ## SlimeVR and Butterfly Trackers are a trademark or a registered trademark of SlimeVR B.V.

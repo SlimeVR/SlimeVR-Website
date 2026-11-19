@@ -37,16 +37,15 @@
     "title": "SlimeVR Full-Body Trackers",
     "hero": {
       "description": "The affordable VR full-body tracking solution.",
-      "price": "From $219",
-      "price-butterfly": "From $279",
-      "order-btn": "Order on",
-      "preorder-btn": "Pre-order on",
-      "join-btn": "Join campaign at",
-      "butterfly-slime": "Butterfly Trackers",
-      "og-slime": "SlimeVR V1.2",
-      "buy-slime": {
-        "order": "Order SlimeVR 1.2 on",
-        "preorder": "Pre-order Butterfly Trackers on"
+      "butterfly": {
+        "name": "Butterfly Trackers",
+        "price": "From $279",
+        "order": "Pre-order now"
+      },
+      "nighty": {
+        "name": "Nighty Plushie",
+        "price": "For $59",
+        "order": "Order now"
       },
       "download-server": {
         "title": "Download the server",
@@ -54,7 +53,7 @@
       },
       "join-discord": {
         "title": "Join our Discord",
-        "desc": "With 70.000 members"
+        "desc": "With 80.000+ members"
       }
     },
     "video-section": "Reviews and Demos",

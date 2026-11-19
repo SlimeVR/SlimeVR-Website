@@ -35,7 +35,7 @@ export default function EventsPage() {
   }));
 
   const renderEvents = (list: EventData[], isLoading = false) => (
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
       <Show
         when={!isLoading}
         fallback={<Typography tag="p" key="events.loading" />}
@@ -69,13 +69,13 @@ export default function EventsPage() {
           />
 
           {/* virtual events */}
-          <div class="flex flex-col mt-8 gap-4">
+          <div class="mt-8 flex flex-col gap-4">
             <Typography tag="h2" variant="section-title" key="events.virtual" />
             {renderEvents(virtualEvents(), events() === null)}
           </div>
 
           {/* other events */}
-          <div class="flex flex-col mt-8 gap-4">
+          <div class="mt-8 flex flex-col gap-4">
             <Typography tag="h2" variant="section-title" key="events.other" />
             {renderEvents(otherEvents())}
           </div>

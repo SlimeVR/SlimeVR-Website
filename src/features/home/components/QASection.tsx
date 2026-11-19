@@ -27,17 +27,17 @@ export const QASection: Component = () => {
   );
 
   return (
-    <div class="flex md:gap-12 relative md:pl-12">
-      <div class="sticky top-0 left-0 h-full sm:flex hidden">
-        <div class="md:flex w-72 items-center justify-center pt-12 hidden">
+    <div class="relative flex md:gap-12 md:pl-12">
+      <div class="sticky top-0 left-0 hidden h-full sm:flex">
+        <div class="hidden w-72 items-center justify-center pt-12 md:flex">
           <img
             src={currentImage()}
-            class="object-contain object-center no-interact"
+            class="no-interact object-contain object-center"
             alt=""
           ></img>
         </div>
       </div>
-      <div class="flex flex-col gap-3 w-full">
+      <div class="flex w-full flex-col gap-3">
         <FAQSection
           titleKey="home.qa.title"
           items={questions()}

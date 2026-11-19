@@ -7,9 +7,9 @@ import { scrollToSection } from "~/utils/dom";
 export const Footer: Component = () => {
   const navigate = useNavigate();
   return (
-    <footer class="bg-background-70 border-t border-background-50 w-full flex flex-col items-center">
-      <div class="max-w-6xl 2xl:max-w-350 w-full px-4 grid grid-cols-1 gap-5 sm:grid-cols-4 py-10">
-        <div class="flex flex-col order-last items-center sm:order-first sm:items-start">
+    <footer class="bg-background-70 border-background-50 flex w-full flex-col items-center border-t">
+      <div class="grid w-full max-w-6xl grid-cols-1 gap-5 px-4 py-10 sm:grid-cols-4 2xl:max-w-350">
+        <div class="order-last flex flex-col items-center sm:order-first sm:items-start">
           <SlimeVRIcon
             size={128}
             class="stroke-accent-background-10"
@@ -18,7 +18,7 @@ export const Footer: Component = () => {
             © {new Date().getFullYear()} SlimeVR BV.
           </Typography>
           <A
-            class="mt-2 text-center sm:text-left text-xs text-background-30 link"
+            class="text-background-30 link mt-2 text-center text-xs sm:text-left"
             href="/tm"
           >
             SlimeVR and Butterfly Trackers are a trademark or a registered
@@ -31,7 +31,7 @@ export const Footer: Component = () => {
             variant="section-title"
             key="footer.column.resources.title"
           />
-          <div class="flex sm:flex-col sm:gap-0.5 gap-3 flex-wrap">
+          <div class="flex flex-wrap gap-3 sm:flex-col sm:gap-0.5">
             <a
               href="https://docs.slimevr.dev"
               target="_blank"
@@ -85,7 +85,7 @@ export const Footer: Component = () => {
             variant="section-title"
             key="footer.column.shop.title"
           />
-          <div class="flex sm:flex-col sm:gap-0.5 gap-3 flex-wrap">
+          <div class="flex flex-wrap gap-3 sm:flex-col sm:gap-0.5">
             <a
               href="https://slime.gay/site-cs-og"
               target="_blank"
@@ -118,7 +118,7 @@ export const Footer: Component = () => {
             variant="section-title"
             key="footer.column.social.title"
           />
-          <div class="flex sm:flex-col sm:gap-0.5 gap-3 flex-wrap">
+          <div class="flex flex-wrap gap-3 sm:flex-col sm:gap-0.5">
             <a
               href="https://bsky.app/profile/slimevr.dev"
               target="_blank"
@@ -155,7 +155,7 @@ export const Footer: Component = () => {
         </div>
       </div>
       <div class="bg-background-80 w-full py-4">
-        <div class=" flex justify-center divide-x divide-background-20">
+        <div class="divide-background-20 flex justify-center divide-x">
           {/* <A class="link px-2" href="/terms">
             <Typography tag="span" key="footer.terms" />
           </A> */}

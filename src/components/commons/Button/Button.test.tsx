@@ -26,7 +26,7 @@ describe("Button", () => {
       </Router>
     ));
 
-    const button =  document.querySelector("a");
+    const button = document.querySelector("a");
     expect(button).toBeTruthy();
     expect(button?.textContent).toBe("button-text");
     expect(button?.getAttribute("href")).toBe("/test");

@@ -28,14 +28,14 @@ export const BlogPostThumbnail: Component<BlogPostThumbnailProps> = (props) => {
         "select-none"
       )}
     >
-      <div class="absolute inset-3 py-3 z-10">
+      <div class="absolute inset-3 z-10 py-3">
         <div class="inline-block max-w-full">
-          <h3 class="line-clamp-3 text-xl font-bold leading-tight">
+          <h3 class="line-clamp-3 text-xl leading-tight font-bold">
             <span class={textBlockClasses}>{props.title}</span>
           </h3>
 
           <div
-            class="absolute right-[225px] left-1 h-1.5 w-68 rounded-full ml-1 mr-3 mt-1"
+            class="absolute right-[225px] left-1 mt-1 mr-3 ml-1 h-1.5 w-68 rounded-full"
             style={{ background: props.placeholder.accentColor }}
           />
         </div>
@@ -48,7 +48,7 @@ export const BlogPostThumbnail: Component<BlogPostThumbnailProps> = (props) => {
       <img
         src={props.placeholder.thumbnailPictureUrl}
         alt={props.title}
-        class="absolute right-1 mt-3 max-h-50 md:w-3/6 object-contain mx-auto"
+        class="absolute right-1 mx-auto mt-3 max-h-50 object-contain md:w-3/6"
         loading="lazy"
       />
     </div>
