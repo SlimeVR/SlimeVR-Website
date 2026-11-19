@@ -228,17 +228,6 @@ export const contributorsList: Contributor[] = [
     tags: ["#programmer", "#not_creative"],
   },
   {
-    name: "ImUrX",
-    display: [{ name: "ImUrX", src: "/images/contributors/imurx.webp" }],
-    roles: ["dev"],
-    color: "#fde09c",
-    socials: {
-      website: "https://imurx.github.io",
-    },
-    tags: ["#eevee", "#silly", "#:3", "#funky", "#rust"],
-    classes: "scale-[105%]!",
-  },
-  {
     name: "Eiren",
     display: [
       { name: "Eiren", src: "/images/contributors/hina.webp" },
