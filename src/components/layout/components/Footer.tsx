@@ -66,9 +66,12 @@ export const Footer: Component = () => {
             >
               <Typography key="navbar.github" tag="span" />
             </a>
-            <A href="/tm" class="link w-fit">
+            <a href="/tm" class="link w-fit">
               <Typography tag="span" key="footer.column.resources.tm" />
-            </A>
+            </a>
+            <a href="/press" class="link w-fit">
+              <Typography tag="span" key="footer.column.resources.press" />
+            </a>
             <a
               href="https://shop.slimevr.dev/pages/support"
               target="_blank"
