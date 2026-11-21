@@ -5,3 +5,4 @@ export { FAQSection } from "./FAQSection";
 export { MarkdownLink } from "./Markdown";
 export { Typography } from "./Typography";
 export { Button } from "./Button/Button";
+export { LazyLoadImage } from "./LazyLoadImage";

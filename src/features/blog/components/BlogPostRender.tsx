@@ -1,6 +1,10 @@
 import { Meta, Title } from "@solidjs/meta";
 import { Component, createMemo, Show } from "solid-js";
-import { Container, Typography } from "~/components/commons";
+import {
+  Container,
+  LazyLoadImage,
+  Typography,
+} from "~/components/commons";
 import { FormattedDate, MarkdownContentRender } from "~/features/blog";
 import { BlogPost } from "~/features/blog/blog.types";
 import { extractBlogHeadings } from "../utils/blog-table-of-contents.helper";
@@ -77,7 +81,13 @@ const BlogPostHeader: Component<BlogPostRenderProps> = (props) => {
           when={props.post.metadata.thumbnailUrl}
           fallback={<BlogPostThumbnailPlaceholder post={props.post} />}
         >
-          <BlogPostThumbnailImage post={props.post} />
+          <LazyLoadImage
+            src={props.post.metadata.thumbnailUrl}
+            alt={props.post.metadata.title}
+            containerClasses="h-80 rounded-2xl"
+            imageClasses="h-full object-cover"
+            class="w-full"
+          />
         </Show>
       </div>
     </Container>
@@ -94,23 +104,13 @@ const BlogPostThumbnailPlaceholder: Component<BlogPostRenderProps> = (
   return (
     <div class="relative h-62 from-transparent to-background-80 bg-linear-to-b lg:bg-linear-to-r">
       <div class="absolute inset-x-0 top-[15%] flex justify-end pr-4">
-        <img
+        <LazyLoadImage
           src={thumbnailSettings().thumbnailPictureUrl}
-          class="h-50 w-auto"
+          imageClasses="object-cover"
+          containerClasses="h-50 w-auto"
+          skeletonClasses="rounded-xl"
         />
       </div>
-    </div>
-  );
-};
-
-const BlogPostThumbnailImage: Component<BlogPostRenderProps> = (props) => {
-  return (
-    <div class="relative h-80 w-full">
-      <img
-        src={props.post.metadata.thumbnailUrl}
-        alt={props.post.metadata.title}
-        class="h-full w-full object-cover bg-background-80 rounded-2xl"
-      />
     </div>
   );
 };

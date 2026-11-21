@@ -1,6 +1,7 @@
 import { Component } from "solid-js";
 import { BlogPostThumbnailPlaceholder } from "../utils/blog.thumbnail.helper";
 import clsx from "clsx";
+import { LazyLoadImage } from "~/components/commons";
 
 interface BlogPostThumbnailProps {
   title: string;
@@ -45,11 +46,12 @@ export const BlogPostThumbnail: Component<BlogPostThumbnailProps> = (props) => {
         </div>
       </div>
 
-      <img
+      <LazyLoadImage
         src={props.placeholder.thumbnailPictureUrl}
         alt={props.title}
-        class="absolute right-1 mt-3 max-h-50 md:w-3/6 object-contain mx-auto"
-        loading="lazy"
+        containerClasses="absolute right-1 mt-3 max-h-50 md:w-3/6 mx-auto"
+        imageClasses="object-cover"
+        skeletonClasses="rounded-xl mr-3"
       />
     </div>
   );

@@ -1,5 +1,6 @@
 import { SolidMarkdownComponents } from "solid-markdown";
 import { resolveAssetPath } from "../../utils/blog.helper";
+import { LazyLoadImage } from "~/components/commons";
 
 export function markdownImgOverride(
   postId: string
@@ -29,11 +30,12 @@ export function markdownImgOverride(
     }
 
     return (
-      <img
+      <LazyLoadImage
         {...props}
         src={resolvedSrc}
-        class="max-h-96 object-contain mx-auto"
-        loading="lazy"
+        containerClasses="grid-cols-1 justify-items center"
+        skeletonClasses="h-96 my-2 mx-auto w-full rounded-xl"
+        imageClasses="max-h-96 object-contain mx-auto"
       />
     );
   };
