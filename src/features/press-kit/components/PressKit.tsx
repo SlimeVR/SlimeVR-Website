@@ -38,6 +38,15 @@ export const PressKit: Component = () => {
 const AboutUsSection: Component = () => (
   <PressKitSection title="About Us">
     <div>
+      <div class="pb-3">
+        <Typography tag="h3" variant="section-title">
+          About SlimeVR (One Line)
+        </Typography>
+        <Typography tag="span">
+          SlimeVR is an affordable, open source, community driven Full Body
+          Tracking solution for VR, MoCap, and VTubing.
+        </Typography>
+      </div>
       <Typography tag="h3" variant="section-title">
         About SlimeVR (Short)
       </Typography>
