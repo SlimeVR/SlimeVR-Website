@@ -27,8 +27,7 @@ export const PressKit: Component = () => {
         <SlimeVrEcosystemSection />
         <KeyValuePropsSection />
         <PressKitTimelineSection />
-        <CommunitySection />
-        <HowToTalkAboutUsSection />
+        <KeyMessagesSection />
         <NameUsageSection />
         <ContactsSection />
       </Container>
@@ -163,30 +162,31 @@ const KeyValuePropsSection: Component = () => (
   </PressKitSection>
 );
 
-const CommunitySection: Component = () => (
-  <PressKitSection title="Key Value Props">
+const KeyMessagesSection: Component = () => (
+  <PressKitSection title="Key Messages">
     <PressKitBulletList
       items={[
-        "Full-body tracking from the torso, arms, and legs-down, to fingers and toes - it's an entire full-body tracking system.",
-        "Tracking that you can build yourself for affordable prices.",
+        "SlimeVR is Full-body tracking from the torso, arms, and legs-down, to fingers and toes - it's an entire full-body tracking ecosystem.",
+        <>
+          <Typography tag="span" bold>
+            Most common uses:
+          </Typography>{" "}
+          VR games (including social VR like VRChat), motion capture, and
+          VTubing.
+        </>,
+        "Project has a strong community drive, where people get to contribute their thoughts and ideas, even manufacturing and selling their own parts and trackers on community marketplace in discord.",
+        <>
+          There are official trackers on{" "}
+          <ExternalLink href="https://www.crowdsupply.com/slimevr">
+            Crowd Supply
+          </ExternalLink>
+          , community trackers on discord community marketplace, and the option
+          to build your own set.
+        </>,
+        "SlimeVR works well in small play spaces, as base stations or cameras are not needed.",
         "Works great with blankets - no occlusion!",
-        "SlimeVR Server automatically detects your VRChat settings and suggests the best settings for your tracking.",
-        "A strong community on Discord.",
-        "Windows, MacOS, Linux, mobile, and even standalone headsets supported.",
-      ]}
-    />
-  </PressKitSection>
-);
-
-const HowToTalkAboutUsSection: Component = () => (
-  <PressKitSection title="How to Talk About Us (Brand Voice Tips)">
-    <PressKitBulletList
-      items={[
-        "Mention the most common uses: VR games (including social VR like VRChat), motion capture, and VTubing.",
-        "Emphasize that the project has a strong community drive, where people get to contribute their thoughts and ideas, even manufacturing and selling their own parts and trackers.",
-        "Highlight that there are official trackers, a community marketplace, and the option to build your own set.",
-        "Mention that SlimeVR works well in small play spaces, as base stations or cameras are not needed.",
-        "Mention that we're community driven, open, affordable, and flexible.",
+        "SlimeVR is community driven, open, affordable, and flexible.",
+        "Windows, MacOS, Linux, mobile, and even standalone headsets are supported.",
       ]}
     />
   </PressKitSection>
