@@ -175,15 +175,9 @@ const KeyMessagesSection: Component = () => (
   <PressKitSection title="Key Messages">
     <PressKitBulletList
       items={[
-        "SlimeVR is Full-body tracking from the torso, arms, and legs-down, to fingers and toes - it's an entire full-body tracking ecosystem.",
-        <>
-          <Typography tag="span" bold>
-            Most common uses:
-          </Typography>{" "}
-          VR games (including social VR like VRChat), motion capture, and
-          VTubing.
-        </>,
-        "Project has a strong community drive, where people get to contribute their thoughts and ideas, even manufacturing and selling their own parts and trackers on community marketplace in discord.",
+        "Tracking from the torso, arms, and legs - down, to fingers and toes - SlimeVR is an entire full-body tracking ecosystem.",
+        "Commonly used for VR games (including social VR like VRChat), motion capture, and VTubing",
+        "Strong community drive, where people get to contribute their thoughts and ideas, even manufacturing and selling their own parts and trackers on community marketplace in discord.",
         <>
           There are official trackers on{" "}
           <ExternalLink href="https://www.crowdsupply.com/slimevr">
@@ -194,7 +188,6 @@ const KeyMessagesSection: Component = () => (
         </>,
         "SlimeVR works well in small play spaces, as base stations or cameras are not needed.",
         "Works great with blankets - no occlusion!",
-        "SlimeVR is community driven, open, affordable, and flexible.",
         "Windows, MacOS, Linux, mobile, and even standalone headsets are supported.",
       ]}
     />
