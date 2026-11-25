@@ -4,28 +4,13 @@ import { A } from "@solidjs/router";
 import clsx from "clsx";
 import { FormattedDate } from "./FormattedDate";
 import { Typography } from "~/components/commons";
-import { SolidMarkdown, SolidMarkdownComponents } from "solid-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeRaw from "rehype-raw";
-import { MarkdownBaseComponentOverrides } from "./MarkdownBaseComponentOverrides";
 import { BlogPostThumbnail } from "./BlogPostThumbnail";
-import { buildBlogPostThumbnailPlaceholder } from "../utils/blog.thumbnail.helper";
-
-import "../emoji.css";
+import { getBlogPostThumbnailPlaceholderAttributes } from "../utils/blog.thumbnail.helper";
 
 interface BlogPostListProps {
   yearPosts: BlogYearGroup[] | undefined;
   pageError?: unknown;
 }
-
-const componentOverrides: SolidMarkdownComponents = {
-  ...MarkdownBaseComponentOverrides,
-  p: (pProps) => (
-    <Typography tag="p" class="text-background-30">
-      {pProps.children}
-    </Typography>
-  ),
-};
 
 export const BlogPostList: Component<BlogPostListProps> = (props) => {
   return (
@@ -54,7 +39,7 @@ const YearGroupSection: Component<{ yearGroup: BlogYearGroup }> = (props) => {
       <Typography
         tag="h2"
         variant="section-title"
-        class="col-span-1 sm:col-span-2 text-background-10"
+        class="col-span-1 sm:col-span-2 lg:mb-1"
       >
         {props.yearGroup.year}
       </Typography>
@@ -67,7 +52,7 @@ const YearGroupSection: Component<{ yearGroup: BlogYearGroup }> = (props) => {
 
 const BlogPostCard: Component<{ post: BlogPostMetadata }> = (props) => {
   const placeholderThumbnail = createMemo(() =>
-    buildBlogPostThumbnailPlaceholder(props.post.title)
+    getBlogPostThumbnailPlaceholderAttributes(props.post.title)
   );
 
   return (
@@ -125,15 +110,9 @@ const BlogPostCard: Component<{ post: BlogPostMetadata }> = (props) => {
         >
           {props.post.title}
         </Typography>
-        <div class="line-clamp-4">
-          <SolidMarkdown
-            remarkPlugins={[remarkGfm]}
-            rehypePlugins={[rehypeRaw]}
-            components={componentOverrides}
-          >
-            {props.post.description}
-          </SolidMarkdown>
-        </div>
+        <Typography tag="p" class="text-background-30 line-clamp-4">
+          {props.post.description}
+        </Typography>
       </div>
     </A>
   );

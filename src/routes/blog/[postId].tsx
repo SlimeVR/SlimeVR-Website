@@ -4,6 +4,7 @@ import { createResource, Show } from "solid-js";
 import { AppTitle, MainLayout, Section } from "~/components/layout";
 import { BlogPostRender, BlogPostSkeleton } from "~/features/blog";
 import { getBlogPost } from "~/features/blog/utils/blog.helper";
+import { SITE_PATH } from "~/utils/constants";
 
 export default function BlogPostRoute() {
   const params = useParams<{ postId: string }>();
@@ -18,7 +19,7 @@ export default function BlogPostRoute() {
       <Meta name="robots" content="index, follow" />
       <Link
         rel="canonical"
-        href={`https://slimevr.dev/blog/${params.postId}`}
+        href={`${SITE_PATH}/blog/${params.postId}`}
       />
 
       <Section>
