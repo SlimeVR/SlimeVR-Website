@@ -2,7 +2,7 @@ import { Link, Meta } from "@solidjs/meta";
 import remarkGfm from "remark-gfm";
 import { SolidMarkdown } from "solid-markdown";
 
-import { Container, MarkdownLink } from "~/components/commons";
+import { Container, ExternalLink } from "~/components/commons";
 import { AppTitle, MainLayout, Section } from "~/components/layout";
 
 export default function TmPage() {
@@ -16,7 +16,7 @@ export default function TmPage() {
         <Container class="mt-4">
           <SolidMarkdown
             remarkPlugins={[remarkGfm]}
-            components={{ a: MarkdownLink }}
+            components={{ a: ExternalLink }}
             class="text-sm w-full min-w-full prose-xl prose text-background-10 prose-h1:text-background-10 prose-h2:text-background-10 prose-a:text-background-20 prose-strong:text-background-10 prose-code:text-background-20"
           >
             {`
