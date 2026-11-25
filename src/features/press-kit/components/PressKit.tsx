@@ -220,7 +220,7 @@ const NameUsageSection: Component = () => (
 );
 
 const ContactsSection: Component = () => (
-  <PressKitSection title="Contacts">
+  <PressKitSection title="Contact">
     <PressKitBulletList
       items={[
         <ExternalLink href="mailto:support@slimevr.dev">Email</ExternalLink>,
