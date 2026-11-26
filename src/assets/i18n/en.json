@@ -36,7 +36,7 @@
   "home": {
     "title": "SlimeVR Full-Body Trackers",
     "hero": {
-      "description": "The affordable VR full-body tracking solution.",
+      "description": "The affordable VR full-body tracking solution",
       "price": "From $219",
       "price-butterfly": "From $279",
       "order-btn": "Order on",
@@ -54,7 +54,7 @@
       },
       "join-discord": {
         "title": "Join our Discord",
-        "desc": "With 70.000 members"
+        "desc": "With 80.000 members"
       }
     },
     "video-section": "Reviews and Demos",
